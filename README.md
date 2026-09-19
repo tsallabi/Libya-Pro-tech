@@ -19,6 +19,9 @@
 `{"id","name","latin","tag","sector","desc","tech":[],"repo","demo","shot","shotAlt"}`
 `shot` فارغ ⇒ يظهر في السجل النصي. `demo` فارغ ⇒ زر «تفاصيل العرض».
 
+## النشر
+Cloudflare Pages بلا خطوة بناء — التفاصيل في [docs/DEPLOY.md](docs/DEPLOY.md).
+
 ## تشغيل محلي
 ```
 python3 -m http.server 8080

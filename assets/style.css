@@ -295,3 +295,9 @@ p{margin:0}
 .index .ds{color:var(--mut);font-size:15px}
 .index .ac{display:flex;gap:10px;flex-wrap:wrap}
 @media (max-width:760px){.index li{grid-template-columns:1fr;gap:12px}}
+
+/* ---------- أدوات صغيرة (بدل الأنماط المضمّنة، لتشديد سياسة CSP) ---------- */
+.hero-figure{margin:0}
+.fine{font-size:13px}
+.mark-stack{margin-bottom:18px}
+.foot-about{max-width:38ch;font-size:15px}
