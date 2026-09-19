@@ -1,5 +1,115 @@
 [
  {
+  "id": "amanpro",
+  "name": "أمان برو للتحويلات",
+  "tag": "منظومة تحصيل ومحاسبة تشغيلية",
+  "sector": "finance",
+  "desc": "منظومة مالية تشغيلية لشركة تحويلات: لوحة متابعة بالمستحقات والمحصّل والأرباح، سندات قبض، جرد يومي، موردون، تقارير شهرية قابلة للطباعة، وإنذارات تأخير آلية تُرسل عبر واتساب.",
+  "tech": [
+   "Next.js 16",
+   "Prisma",
+   "SQLite",
+   "RBAC",
+   "PDF"
+  ],
+  "repo": "tsallabi/MINI-AMAN-PRO",
+  "demo": "",
+  "latin": "AMANPRO",
+  "shot": "assets/shots/amanpro-dashboard.webp",
+  "shotAlt": "لوحة المتابعة: بطاقات المستحقات والمحصّل والأرباح مع تنبيه الجرد اليومي"
+ },
+ {
+  "id": "taybaa",
+  "name": "المكتبة الطيبة",
+  "tag": "منصة نشر وقراءة رقمية",
+  "sector": "commerce",
+  "desc": "مكتبة عربية رقمية: فهرس كتب، صفحة كتاب، قارئ داخل المتصفح، اشتراك مميز، ولوحة تحكم للنشر. الأرقام الظاهرة في اللقطة من المنصة نفسها: 196 كتاباً و422.9 ألف قارئ و227.9 ألف تحميل.",
+  "tech": [
+   "Static",
+   "Reader",
+   "Subscriptions",
+   "Admin"
+  ],
+  "repo": "tsallabi/TAYBAA-LIBRARY",
+  "demo": "",
+  "latin": "TAYBAA",
+  "shot": "assets/shots/taybaa-home.webp",
+  "shotAlt": "واجهة المكتبة الداكنة الذهبية مع عدادات الكتب والقرّاء والتحميلات"
+ },
+ {
+  "id": "libyapro-ai",
+  "name": "AgentCollab",
+  "tag": "مساحة عمل عربية بوكلاء ذكاء اصطناعي",
+  "sector": "ai",
+  "desc": "بديل موحّد عن أربع أدوات منفصلة داخل منصة واحدة عربية أولاً: محادثة، مهام، علاقات عملاء، ووكلاء ذكاء اصطناعي — مع فواتير ZATCA ودعم بالعربية.",
+  "tech": [
+   "AI Agents",
+   "RTL",
+   "ZATCA",
+   "Multi-tenant"
+  ],
+  "repo": "tsallabi/LibyaPro-AI",
+  "demo": "",
+  "latin": "AGENTCOLLAB",
+  "shot": "assets/shots/libyaproai-home.webp",
+  "shotAlt": "الصفحة الرئيسية بعنوان المقارنة مع الأدوات العالمية وصف الأرقام"
+ },
+ {
+  "id": "vidio",
+  "name": "استوديو الإعلانات",
+  "tag": "إنتاج إعلانات فيديو بالذكاء الاصطناعي",
+  "sector": "ai",
+  "desc": "من فكرة مكتوبة وصور منتج إلى ستوري بورد كامل ثم إعلان فيديو جاهز للنشر، عبر مسار عمل من تسع مراحل داخل المنصة.",
+  "tech": [
+   "Next.js 15",
+   "FastAPI",
+   "Generative AI",
+   "Storyboard"
+  ],
+  "repo": "tsallabi/vidio",
+  "demo": "",
+  "latin": "VIDIO",
+  "shot": "assets/shots/vidio-home.webp",
+  "shotAlt": "مسار إنتاج الإعلان المكوّن من تسع مراحل"
+ },
+ {
+  "id": "fairfix",
+  "name": "FairFix.ie",
+  "tag": "منصة تسعير عادل لخدمات الصيانة — أيرلندا",
+  "sector": "apps",
+  "desc": "نسخة أيرلندية بالإنجليزية من نموذج التسعير العادل: تقدير سعر بالذكاء الاصطناعي قبل أي عرض، ثم حرفيون مُتحقَّق منهم يتقدمون بعروضهم. دليل على قدرتنا على المنافسة في سوق أوروبي.",
+  "tech": [
+   "Next.js 14",
+   "AI Estimation",
+   "Marketplace",
+   "i18n"
+  ],
+  "repo": "tsallabi/fairfix",
+  "demo": "",
+  "latin": "FAIRFIX",
+  "shot": "assets/shots/fairfix-home.webp",
+  "shotAlt": "الصفحة الرئيسية بالإنجليزية مع نموذج انتظار وتطبيق جوال"
+ },
+ {
+  "id": "usta",
+  "name": "توّا — Tawwa",
+  "tag": "منصة خدمات الصيانة بتسعير عادل",
+  "sector": "apps",
+  "desc": "سوق خدمات منزلية: العميل يصف العطل بجملة أو صورة، فيصله تقدير سعر عادل بالذكاء الاصطناعي خلال ثوانٍ، ثم عروض من أسطوات مُتحقَّق منهم يدوياً.",
+  "tech": [
+   "Next.js 14",
+   "TypeScript",
+   "Tailwind",
+   "AI Estimation",
+   "RTL"
+  ],
+  "repo": "tsallabi/Usta",
+  "demo": "",
+  "latin": "TAWWA",
+  "shot": "assets/shots/usta-home.webp",
+  "shotAlt": "الصفحة الرئيسية بواجهة عربية وتقدير سعر ذكي"
+ },
+ {
   "id": "macchinaa",
   "name": "ماكينا MACCHINAA",
   "tag": "منصة سيارات ومزادات إلكترونية",
@@ -50,55 +160,6 @@
   "shot": ""
  },
  {
-  "id": "amanpro",
-  "name": "أمان برو AmanPro",
-  "tag": "منظومة أمن وحراسة المنشآت",
-  "sector": "gov",
-  "desc": "إدارة الحرّاس، الورديات، الحضور بالموقع الجغرافي، البلاغات والتقارير — مصممة للجهات الحكومية والمنشآت الحيوية.",
-  "tech": [
-   "Mobile",
-   "GPS",
-   "Reports",
-   "RBAC"
-  ],
-  "repo": "tsallabi/AMANPRO-FULL",
-  "demo": "",
-  "latin": "AMANPRO",
-  "shot": ""
- },
- {
-  "id": "accounting",
-  "name": "المحاسبة الاحترافية",
-  "tag": "نظام محاسبي مالي",
-  "sector": "finance",
-  "desc": "دليل حسابات، قيود، فواتير، ضرائب، تقارير مالية وميزانيات — مناسب للمصارف والشركات.",
-  "tech": [
-   "Ledger",
-   "Reports",
-   "Multi-currency"
-  ],
-  "repo": "tsallabi/Accounting-",
-  "demo": "",
-  "latin": "ACCOUNTING",
-  "shot": ""
- },
- {
-  "id": "libyapro-ai",
-  "name": "ليبيا برو AI",
-  "tag": "وكلاء ذكاء اصطناعي للمؤسسات",
-  "sector": "ai",
-  "desc": "وكلاء ذكيون يخدمون العملاء، يحللون البيانات، ويؤتمتون العمليات داخل منظومات المؤسسة.",
-  "tech": [
-   "LLM Agents",
-   "RAG",
-   "Automation"
-  ],
-  "repo": "tsallabi/LibyaPro-AI",
-  "demo": "",
-  "latin": "LIBYAPRO AI",
-  "shot": ""
- },
- {
   "id": "mazadna",
   "name": "مزادنا Mazadna",
   "tag": "منصة مزادات عامة",
@@ -114,45 +175,11 @@
   "shot": ""
  },
  {
-  "id": "usta",
-  "name": "توّا — Tawwa",
-  "tag": "منصة خدمات الصيانة بتسعير عادل",
-  "sector": "apps",
-  "desc": "سوق خدمات منزلية: العميل يصف العطل بجملة أو صورة، فيصله تقدير سعر عادل بالذكاء الاصطناعي خلال ثوانٍ، ثم عروض من أسطوات مُتحقَّق منهم يدوياً.",
-  "tech": [
-   "Next.js 14",
-   "TypeScript",
-   "Tailwind",
-   "AI Estimation",
-   "RTL"
-  ],
-  "repo": "tsallabi/Usta",
-  "demo": "",
-  "latin": "TAWWA",
-  "shot": "assets/shots/usta-home.webp",
-  "shotAlt": "الصفحة الرئيسية بواجهة عربية وتقدير سعر ذكي"
- },
- {
-  "id": "fairfix",
-  "name": "فيرفكس FairFix",
-  "tag": "صيانة بتسعير عادل",
-  "sector": "apps",
-  "desc": "عروض أسعار شفافة لصيانة السيارات والمنازل من ورش معتمدة.",
-  "tech": [
-   "Mobile",
-   "Quotes"
-  ],
-  "repo": "tsallabi/fairfix",
-  "demo": "",
-  "latin": "FAIRFIX",
-  "shot": ""
- },
- {
   "id": "ajrly",
   "name": "أجّرلي Ajrly",
   "tag": "منصة تأجير",
   "sector": "commerce",
-  "desc": "تأجير سيارات وعقارات ومعدات مع حجز وتقويم ودفع إلكتروني.",
+  "desc": "منظومة تأجير بواجهة عربية كاملة خلف بوابة دخول: إدارة الأصول والعقود والحجوزات والفواتير. النظام مغلق للعامة، ويُعرض بجلسة مشاركة شاشة.",
   "tech": [
    "Booking",
    "Calendar",
@@ -192,51 +219,6 @@
   "repo": "tsallabi/Irish-castle-",
   "demo": "",
   "latin": "IRISH CASTLE",
-  "shot": ""
- },
- {
-  "id": "taybaa",
-  "name": "مكتبة طيبة",
-  "tag": "متجر إلكتروني للكتب",
-  "sector": "commerce",
-  "desc": "متجر كتب متكامل: سلة، دفع، شحن، وإدارة مخزون.",
-  "tech": [
-   "E-commerce",
-   "Inventory"
-  ],
-  "repo": "tsallabi/TAYBAA-LIBRARY",
-  "demo": "",
-  "latin": "TAYBAA",
-  "shot": ""
- },
- {
-  "id": "kakawi",
-  "name": "كاكاوي Kakawi",
-  "tag": "متجر إلكتروني",
-  "sector": "commerce",
-  "desc": "متجر حلويات وهدايا بتجربة شراء سريعة من الجوال.",
-  "tech": [
-   "E-commerce",
-   "PWA"
-  ],
-  "repo": "tsallabi/kakawi",
-  "demo": "",
-  "latin": "KAKAWI",
-  "shot": ""
- },
- {
-  "id": "vidio",
-  "name": "فيديو Vidio",
-  "tag": "منصة محتوى مرئي",
-  "sector": "apps",
-  "desc": "رفع وبث الفيديو مع اشتراكات وتحليلات مشاهدة.",
-  "tech": [
-   "Streaming",
-   "Subscriptions"
-  ],
-  "repo": "tsallabi/vidio",
-  "demo": "",
-  "latin": "VIDIO",
   "shot": ""
  },
  {
