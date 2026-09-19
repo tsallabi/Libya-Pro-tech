@@ -1,18 +1,256 @@
 [
-  {"id":"macchinaa","name":"ماكينا MACCHINAA","tag":"منصة سيارات ومزادات إلكترونية","sector":"auctions","featured":true,"desc":"سوق سيارات متكامل مع مزادات حية، عروض، تمويل، وربط بوسائل الدفع الليبية. لوحات تحكم للإدارة والتجار والعملاء.","tech":["Next.js","PostgreSQL","Realtime","Payments"],"repo":"tsallabi/MACCHINAA-NEW-ERA","demo":"","icon":"🚗"},
-  {"id":"autopro","name":"أوتوبرو AutoPro","tag":"منظومة خدمات ومراكز السيارات","sector":"erp","featured":true,"desc":"إدارة مراكز الصيانة، الحجوزات، المخزون، الفواتير والعملاء — بأدوار متعددة (مدير / فني / عميل).","tech":["React","Node.js","ERP","PWA"],"repo":"libya-autopro/autopro-final","demo":"https://autopro.ac","icon":"🔧"},
-  {"id":"autopro-logistics","name":"أوتوبرو لوجستيك","tag":"شحن وتتبع الشحنات","sector":"logistics","featured":true,"desc":"تتبع الشحنات لحظياً، إدارة الأساطيل، الجمارك، وإشعارات العملاء عبر واتساب.","tech":["Maps","Tracking","Notifications"],"repo":"tsallabi/AUTOPRO-LOGISTICS","demo":"","icon":"🚚"},
-  {"id":"amanpro","name":"أمان برو AmanPro","tag":"منظومة أمن وحراسة المنشآت","sector":"gov","featured":true,"desc":"إدارة الحرّاس، الورديات، الحضور بالموقع الجغرافي، البلاغات والتقارير — مصممة للجهات الحكومية والمنشآت الحيوية.","tech":["Mobile","GPS","Reports","RBAC"],"repo":"tsallabi/AMANPRO-FULL","demo":"","icon":"🛡️"},
-  {"id":"accounting","name":"المحاسبة الاحترافية","tag":"نظام محاسبي مالي","sector":"finance","featured":true,"desc":"دليل حسابات، قيود، فواتير، ضرائب، تقارير مالية وميزانيات — مناسب للمصارف والشركات.","tech":["Ledger","Reports","Multi-currency"],"repo":"tsallabi/Accounting-","demo":"","icon":"📊"},
-  {"id":"libyapro-ai","name":"ليبيا برو AI","tag":"وكلاء ذكاء اصطناعي للمؤسسات","sector":"ai","featured":true,"desc":"وكلاء ذكيون يخدمون العملاء، يحللون البيانات، ويؤتمتون العمليات داخل منظومات المؤسسة.","tech":["LLM Agents","RAG","Automation"],"repo":"tsallabi/LibyaPro-AI","demo":"","icon":"🤖"},
-  {"id":"mazadna","name":"مزادنا Mazadna","tag":"منصة مزادات عامة","sector":"auctions","desc":"مزادات إلكترونية لأي سلعة مع مزايدة حية، ضمانات، وتسوية مالية.","tech":["Realtime","Payments"],"repo":"tsallabi/Mazadna","demo":"","icon":"🔨"},
-  {"id":"usta","name":"أسطى Usta","tag":"تطبيق خدمات الصنايعية","sector":"apps","desc":"اطلب سباك أو كهربائي أو نجار، تتبّع الطلب، وقيّم الخدمة — iOS / Android.","tech":["Flutter","Maps","Ratings"],"repo":"tsallabi/Usta","demo":"","icon":"🧰"},
-  {"id":"fairfix","name":"فيرفكس FairFix","tag":"صيانة بتسعير عادل","sector":"apps","desc":"عروض أسعار شفافة لصيانة السيارات والمنازل من ورش معتمدة.","tech":["Mobile","Quotes"],"repo":"tsallabi/fairfix","demo":"","icon":"⚖️"},
-  {"id":"ajrly","name":"أجّرلي Ajrly","tag":"منصة تأجير","sector":"commerce","desc":"تأجير سيارات وعقارات ومعدات مع حجز وتقويم ودفع إلكتروني.","tech":["Booking","Calendar","Payments"],"repo":"tsallabi/Ajrly-","demo":"","icon":"🔑"},
-  {"id":"carrie","name":"Carr.ie","tag":"سوق سيارات — أيرلندا","sector":"commerce","desc":"سوق سيارات دولي بواجهة إنجليزية، دليل على قدرتنا على المنافسة عالمياً.","tech":["Next.js","SEO","i18n"],"repo":"tsallabi/Carr.ie","demo":"","icon":"🇮🇪"},
-  {"id":"irish-castle","name":"Irish Castle","tag":"ضيافة وسياحة","sector":"commerce","desc":"موقع حجز وضيافة لقلعة أيرلندية مع معرض صور وحجوزات.","tech":["Booking","Gallery"],"repo":"tsallabi/Irish-castle-","demo":"","icon":"🏰"},
-  {"id":"taybaa","name":"مكتبة طيبة","tag":"متجر إلكتروني للكتب","sector":"commerce","desc":"متجر كتب متكامل: سلة، دفع، شحن، وإدارة مخزون.","tech":["E-commerce","Inventory"],"repo":"tsallabi/TAYBAA-LIBRARY","demo":"","icon":"📚"},
-  {"id":"kakawi","name":"كاكاوي Kakawi","tag":"متجر إلكتروني","sector":"commerce","desc":"متجر حلويات وهدايا بتجربة شراء سريعة من الجوال.","tech":["E-commerce","PWA"],"repo":"tsallabi/kakawi","demo":"","icon":"🍫"},
-  {"id":"vidio","name":"فيديو Vidio","tag":"منصة محتوى مرئي","sector":"apps","desc":"رفع وبث الفيديو مع اشتراكات وتحليلات مشاهدة.","tech":["Streaming","Subscriptions"],"repo":"tsallabi/vidio","demo":"","icon":"🎬"},
-  {"id":"carshipment","name":"Car Shipment","tag":"شحن السيارات الدولي","sector":"logistics","desc":"تتبع شحن السيارات من الموانئ إلى العميل.","tech":["Tracking"],"repo":"Ahmed-Dakrory/carShipment","demo":"","icon":"🚢"}
+ {
+  "id": "macchinaa",
+  "name": "ماكينا MACCHINAA",
+  "tag": "منصة سيارات ومزادات إلكترونية",
+  "sector": "auctions",
+  "desc": "سوق سيارات متكامل مع مزادات حية، عروض، تمويل، وربط بوسائل الدفع الليبية. لوحات تحكم للإدارة والتجار والعملاء.",
+  "tech": [
+   "Next.js",
+   "PostgreSQL",
+   "Realtime",
+   "Payments"
+  ],
+  "repo": "tsallabi/MACCHINAA-NEW-ERA",
+  "demo": "",
+  "latin": "MACCHINAA",
+  "shot": ""
+ },
+ {
+  "id": "autopro",
+  "name": "أوتوبرو AutoPro",
+  "tag": "منظومة خدمات ومراكز السيارات",
+  "sector": "erp",
+  "desc": "إدارة مراكز الصيانة، الحجوزات، المخزون، الفواتير والعملاء — بأدوار متعددة (مدير / فني / عميل).",
+  "tech": [
+   "React",
+   "Node.js",
+   "ERP",
+   "PWA"
+  ],
+  "repo": "libya-autopro/autopro-final",
+  "demo": "https://autopro.ac",
+  "latin": "AUTOPRO",
+  "shot": ""
+ },
+ {
+  "id": "autopro-logistics",
+  "name": "أوتوبرو لوجستيك",
+  "tag": "شحن وتتبع الشحنات",
+  "sector": "logistics",
+  "desc": "تتبع الشحنات لحظياً، إدارة الأساطيل، الجمارك، وإشعارات العملاء عبر واتساب.",
+  "tech": [
+   "Maps",
+   "Tracking",
+   "Notifications"
+  ],
+  "repo": "tsallabi/AUTOPRO-LOGISTICS",
+  "demo": "",
+  "latin": "AUTOPRO LOGISTICS",
+  "shot": ""
+ },
+ {
+  "id": "amanpro",
+  "name": "أمان برو AmanPro",
+  "tag": "منظومة أمن وحراسة المنشآت",
+  "sector": "gov",
+  "desc": "إدارة الحرّاس، الورديات، الحضور بالموقع الجغرافي، البلاغات والتقارير — مصممة للجهات الحكومية والمنشآت الحيوية.",
+  "tech": [
+   "Mobile",
+   "GPS",
+   "Reports",
+   "RBAC"
+  ],
+  "repo": "tsallabi/AMANPRO-FULL",
+  "demo": "",
+  "latin": "AMANPRO",
+  "shot": ""
+ },
+ {
+  "id": "accounting",
+  "name": "المحاسبة الاحترافية",
+  "tag": "نظام محاسبي مالي",
+  "sector": "finance",
+  "desc": "دليل حسابات، قيود، فواتير، ضرائب، تقارير مالية وميزانيات — مناسب للمصارف والشركات.",
+  "tech": [
+   "Ledger",
+   "Reports",
+   "Multi-currency"
+  ],
+  "repo": "tsallabi/Accounting-",
+  "demo": "",
+  "latin": "ACCOUNTING",
+  "shot": ""
+ },
+ {
+  "id": "libyapro-ai",
+  "name": "ليبيا برو AI",
+  "tag": "وكلاء ذكاء اصطناعي للمؤسسات",
+  "sector": "ai",
+  "desc": "وكلاء ذكيون يخدمون العملاء، يحللون البيانات، ويؤتمتون العمليات داخل منظومات المؤسسة.",
+  "tech": [
+   "LLM Agents",
+   "RAG",
+   "Automation"
+  ],
+  "repo": "tsallabi/LibyaPro-AI",
+  "demo": "",
+  "latin": "LIBYAPRO AI",
+  "shot": ""
+ },
+ {
+  "id": "mazadna",
+  "name": "مزادنا Mazadna",
+  "tag": "منصة مزادات عامة",
+  "sector": "auctions",
+  "desc": "مزادات إلكترونية لأي سلعة مع مزايدة حية، ضمانات، وتسوية مالية.",
+  "tech": [
+   "Realtime",
+   "Payments"
+  ],
+  "repo": "tsallabi/Mazadna",
+  "demo": "",
+  "latin": "MAZADNA",
+  "shot": ""
+ },
+ {
+  "id": "usta",
+  "name": "توّا — Tawwa",
+  "tag": "منصة خدمات الصيانة بتسعير عادل",
+  "sector": "apps",
+  "desc": "سوق خدمات منزلية: العميل يصف العطل بجملة أو صورة، فيصله تقدير سعر عادل بالذكاء الاصطناعي خلال ثوانٍ، ثم عروض من أسطوات مُتحقَّق منهم يدوياً.",
+  "tech": [
+   "Next.js 14",
+   "TypeScript",
+   "Tailwind",
+   "AI Estimation",
+   "RTL"
+  ],
+  "repo": "tsallabi/Usta",
+  "demo": "",
+  "latin": "TAWWA",
+  "shot": "assets/shots/usta-home.webp",
+  "shotAlt": "الصفحة الرئيسية بواجهة عربية وتقدير سعر ذكي"
+ },
+ {
+  "id": "fairfix",
+  "name": "فيرفكس FairFix",
+  "tag": "صيانة بتسعير عادل",
+  "sector": "apps",
+  "desc": "عروض أسعار شفافة لصيانة السيارات والمنازل من ورش معتمدة.",
+  "tech": [
+   "Mobile",
+   "Quotes"
+  ],
+  "repo": "tsallabi/fairfix",
+  "demo": "",
+  "latin": "FAIRFIX",
+  "shot": ""
+ },
+ {
+  "id": "ajrly",
+  "name": "أجّرلي Ajrly",
+  "tag": "منصة تأجير",
+  "sector": "commerce",
+  "desc": "تأجير سيارات وعقارات ومعدات مع حجز وتقويم ودفع إلكتروني.",
+  "tech": [
+   "Booking",
+   "Calendar",
+   "Payments"
+  ],
+  "repo": "tsallabi/Ajrly-",
+  "demo": "",
+  "latin": "AJRLY",
+  "shot": ""
+ },
+ {
+  "id": "carrie",
+  "name": "Carr.ie",
+  "tag": "سوق سيارات — أيرلندا",
+  "sector": "commerce",
+  "desc": "سوق سيارات دولي بواجهة إنجليزية، دليل على قدرتنا على المنافسة عالمياً.",
+  "tech": [
+   "Next.js",
+   "SEO",
+   "i18n"
+  ],
+  "repo": "tsallabi/Carr.ie",
+  "demo": "",
+  "latin": "CARR.IE",
+  "shot": ""
+ },
+ {
+  "id": "irish-castle",
+  "name": "Irish Castle",
+  "tag": "ضيافة وسياحة",
+  "sector": "commerce",
+  "desc": "موقع حجز وضيافة لقلعة أيرلندية مع معرض صور وحجوزات.",
+  "tech": [
+   "Booking",
+   "Gallery"
+  ],
+  "repo": "tsallabi/Irish-castle-",
+  "demo": "",
+  "latin": "IRISH CASTLE",
+  "shot": ""
+ },
+ {
+  "id": "taybaa",
+  "name": "مكتبة طيبة",
+  "tag": "متجر إلكتروني للكتب",
+  "sector": "commerce",
+  "desc": "متجر كتب متكامل: سلة، دفع، شحن، وإدارة مخزون.",
+  "tech": [
+   "E-commerce",
+   "Inventory"
+  ],
+  "repo": "tsallabi/TAYBAA-LIBRARY",
+  "demo": "",
+  "latin": "TAYBAA",
+  "shot": ""
+ },
+ {
+  "id": "kakawi",
+  "name": "كاكاوي Kakawi",
+  "tag": "متجر إلكتروني",
+  "sector": "commerce",
+  "desc": "متجر حلويات وهدايا بتجربة شراء سريعة من الجوال.",
+  "tech": [
+   "E-commerce",
+   "PWA"
+  ],
+  "repo": "tsallabi/kakawi",
+  "demo": "",
+  "latin": "KAKAWI",
+  "shot": ""
+ },
+ {
+  "id": "vidio",
+  "name": "فيديو Vidio",
+  "tag": "منصة محتوى مرئي",
+  "sector": "apps",
+  "desc": "رفع وبث الفيديو مع اشتراكات وتحليلات مشاهدة.",
+  "tech": [
+   "Streaming",
+   "Subscriptions"
+  ],
+  "repo": "tsallabi/vidio",
+  "demo": "",
+  "latin": "VIDIO",
+  "shot": ""
+ },
+ {
+  "id": "carshipment",
+  "name": "Car Shipment",
+  "tag": "شحن السيارات الدولي",
+  "sector": "logistics",
+  "desc": "تتبع شحن السيارات من الموانئ إلى العميل.",
+  "tech": [
+   "Tracking"
+  ],
+  "repo": "Ahmed-Dakrory/carShipment",
+  "demo": "",
+  "latin": "CAR SHIPMENT",
+  "shot": ""
+ }
 ]

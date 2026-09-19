@@ -2,160 +2,299 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ليبيا برو للتقنية — تصميم وبرمجة المنظومات والتطبيقات في ليبيا</title>
-<meta name="description" content="ليبيا برو للتقنية: تصميم وبرمجة المواقع والمنظومات والتطبيقات للمصارف والجهات الحكومية والشركات والمتاجر الإلكترونية. +30 منظومة مُنفَّذة، جرّبها الآن.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ليبيا برو للتقنية — أنظمة للمصارف والجهات الحكومية والشركات</title>
+<meta name="description" content="ليبيا برو للتقنية: بناء المنظومات والتطبيقات الحرجة للمصارف والجهات الحكومية والشركات في ليبيا. افتح منظومة حقيقية وجرّبها قبل أن تتواصل معنا.">
+<meta name="theme-color" content="#08090A">
+<meta property="og:title" content="ليبيا برو للتقنية">
+<meta property="og:description" content="نبني الأنظمة التي لا يُسمح لها بالتوقف.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+
 <header class="nav">
-  <a href="#top" class="brand"><span class="logo">&lt;/&gt;</span><span>ليبيا برو <b>للتقنية</b></span></a>
-  <nav class="links">
-    <a href="#services">الخدمات</a><a href="#portfolio">أعمالنا</a><a href="#sectors">القطاعات</a><a href="#process">كيف نعمل</a><a href="#about">عن الشركة</a>
+  <a href="#top" class="mark"><span class="dot"></span>LIBYA PRO <small>TECH</small></a>
+  <nav class="nav-links">
+    <a href="#work">الأعمال</a>
+    <a href="#capabilities">القدرات</a>
+    <a href="#sectors">القطاعات</a>
+    <a href="#security">الأمان</a>
+    <a href="#process">المنهجية</a>
   </nav>
-  <a href="#quote" class="btn btn-primary btn-sm">اطلب عرض سعر</a>
-  <button class="burger" aria-label="القائمة" onclick="document.body.classList.toggle('nav-open')">☰</button>
+  <a href="#contact" class="btn btn-gold btn-sm">اطلب عرضاً</a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">القائمة</button>
 </header>
 
-<section class="hero" id="top">
-  <div class="hero-glow"></div>
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <div class="pill">🏅 فرع من شركة <b>Egypt Pro Ospra</b> العريقة</div>
-      <h1>نبني المنظومات التي <span class="grad">تُدير ليبيا الرقمية</span></h1>
-      <p class="lead">+30 منظومة وتطبيق مُنفَّذ للمصارف والجهات الحكومية والشركات والمتاجر. لا نكتفي بالوعود — <b>جرّب الديمو بنفسك</b> قبل أن تتواصل معنا.</p>
-      <div class="cta-row">
-        <a href="#portfolio" class="btn btn-primary">🚀 جرّب أعمالنا الآن</a>
-        <a href="#quote" class="btn btn-ghost">احصل على عرض سعر خلال 24 ساعة</a>
-      </div>
-      <div class="trust">
-        <span>🏦 المصارف</span><span>🏛️ الجهات الحكومية</span><span>🏢 الشركات</span><span>🛒 المتاجر الإلكترونية</span>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="device phone"><div class="screen" id="hero-screen-1"></div></div>
-      <div class="device laptop"><div class="screen" id="hero-screen-2"></div></div>
-    </div>
+<!-- ═══ البطل: منتج حقيقي فوق الطية، نداء واحد ═══ -->
+<main id="top">
+<section class="hero wrap">
+  <div class="eyebrow"><span>ليبيا برو للتقنية · فرع Egypt Pro Ospra</span></div>
+  <h1>نبني الأنظمة <span class="thin">التي لا يُسمح لها</span> بالتوقف.</h1>
+  <p class="hero-sub">منظومات مصرفية ولوجستية وحكومية وتجارية، مبنية ومُشغَّلة في ليبيا. كل نظام في هذه الصفحة حقيقي، ويمكنك فتحه وتصفّحه الآن.</p>
+  <div class="hero-cta">
+    <a href="#work" class="btn btn-gold">افتح منظومة حقيقية الآن</a>
+    <a href="#contact" class="textlink">أو اطلب عرضاً خلال 24 ساعة</a>
   </div>
-  <div class="stats container">
-    <div><b data-count="30">0</b><span>منظومة مُنفَّذة</span></div>
-    <div><b data-count="15">0</b><span>سنة خبرة</span></div>
-    <div><b>24/7</b><span>دعم فني</span></div>
-    <div><b>100%</b><span>التزام بالجودة</span></div>
+
+  <figure class="panel" style="margin:0">
+    <img src="assets/shots/usta-home.webp" width="2000" height="1250" fetchpriority="high" decoding="async"
+         alt="الصفحة الرئيسية لمنصة توّا: واجهة عربية لطلب خدمات الصيانة مع تقدير سعر بالذكاء الاصطناعي">
+  </figure>
+  <figcaption class="panel-cap">
+    <span class="live">لقطة حقيقية من النظام</span>
+    <span><b>توّا</b> — منصة خدمات الصيانة بتسعير عادل · طرابلس وبنغازي ومصراتة</span>
+  </figcaption>
+</section>
+
+<!-- ═══ شريط الإثبات قبل أي ميزة ═══ -->
+<section class="proof">
+  <div class="wrap proof-in">
+    <div><b class="lat"><bdi>16</bdi></b><span>منظومة في هذا المعرض</span></div>
+    <div><b class="lat"><bdi>30+</bdi></b><span>مستودع كود قيد التشغيل</span></div>
+    <div><b class="lat"><bdi>8</bdi></b><span>قطاعات مخدومة</span></div>
+    <div><b class="lat"><bdi>24/7</bdi></b><span>دعم تشغيلي</span></div>
   </div>
 </section>
 
-<section class="section" id="services">
-  <div class="container">
-    <h2 class="h2">ماذا نصنع لك؟</h2>
-    <p class="sub">حلول متكاملة من التصميم إلى الإطلاق والدعم</p>
-    <div class="grid4">
-      <div class="card"><i>🌐</i><h3>مواقع ومنصات ويب</h3><p>منصات تجارية، أنظمة إدارة، لوحات تحكم متقدمة.</p></div>
-      <div class="card"><i>📱</i><h3>تطبيقات الجوال</h3><p>iOS / Android / PWA بتجربة سلسة على كل الأجهزة.</p></div>
-      <div class="card"><i>🏗️</i><h3>منظومات المؤسسات</h3><p>ERP، CRM، محاسبة، لوجستيات، أتمتة العمليات.</p></div>
-      <div class="card"><i>🤖</i><h3>ذكاء اصطناعي</h3><p>وكلاء ذكيون، تحليل بيانات، أتمتة خدمة العملاء.</p></div>
-      <div class="card"><i>🎨</i><h3>هوية بصرية وجرافيكس</h3><p>شعارات، واجهات، ومواد تسويقية تُقنع من أول نظرة.</p></div>
-      <div class="card"><i>🔐</i><h3>أمان وامتثال</h3><p>تشفير، سجل تدقيق، نسخ احتياطي، استضافة محلية أو سحابية.</p></div>
-      <div class="card"><i>💳</i><h3>ربط الدفع الليبي</h3><p>mypay، إدفع لي، سداد، تداول، والبطاقات المصرفية.</p></div>
-      <div class="card"><i>🛠️</i><h3>دعم وصيانة 24/7</h3><p>فريق محلي يرد خلال دقائق، وتحديثات مستمرة.</p></div>
+<!-- ═══ التحوّل: قسم معكوس ═══ -->
+<section class="sec light">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span>لماذا نحن</span></div>
+      <h2>معظم العروض التقنية تُباع بالكلام. نحن نبيعها بالتشغيل.</h2>
+      <p class="sec-lead">لا نعرض صوراً تخيلية ولا رسوماً توضيحية. كل ما تراه هنا لقطة مُلتقَطة من نظام يعمل فعلاً، ومعظمه قابل للفتح والتجربة مباشرة. إن لم يستطع مورّدك أن يُريك نظامه يعمل خلال دقيقة، فهو يبيعك وعداً.</p>
     </div>
+    <ol class="list">
+      <li><span class="num lat">01</span><div><h3>نملّكك الكود</h3></div><p>كل مشروع يُسلَّم بمستودعه ووثائقه وقواعد بياناته. لا ارتهان لمورّد، ولا صندوق أسود.</p></li>
+      <li><span class="num lat">02</span><div><h3>نبني للعمل الحرج</h3></div><p>سجل تدقيق، صلاحيات دقيقة، نسخ احتياطي، واستعادة بعد الأعطال — لا كإضافات لاحقة بل كأساس.</p></li>
+      <li><span class="num lat">03</span><div><h3>نعرف السوق الليبي</h3></div><p>ربط وسائل الدفع المحلية، واجهات عربية أصيلة لا مترجمة، ودعم بالتوقيت المحلي.</p></li>
+    </ol>
   </div>
 </section>
 
-<section class="section alt" id="portfolio">
-  <div class="container">
-    <h2 class="h2">أعمالنا — جرّبها بنفسك</h2>
-    <p class="sub">كل منظومة هنا حقيقية ومُشغَّلة. اضغط «جرّب الديمو» وتصفّحها كأنك عميل.</p>
-    <div class="filters" id="filters">
-      <button data-f="all" class="on">الكل</button>
-      <button data-f="finance">مصرفي ومالي</button>
-      <button data-f="gov">حكومي</button>
-      <button data-f="erp">منظومات ERP</button>
-      <button data-f="auctions">مزادات</button>
-      <button data-f="commerce">متاجر وتجارة</button>
-      <button data-f="logistics">لوجستيات</button>
-      <button data-f="apps">تطبيقات جوال</button>
-      <button data-f="ai">ذكاء اصطناعي</button>
+<!-- ═══ الأعمال ═══ -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span>الأعمال</span></div>
+      <h2>أنظمة بنيناها وشغّلناها</h2>
+      <p class="sec-lead">اللقطات أدناه مُلتقَطة آلياً من الأنظمة نفسها أثناء تشغيلها، بدقة مضاعفة. البطاقات التي لم تُلتقط لقطتها بعد معروضة بصدق دون صورة بديلة.</p>
     </div>
-    <div class="grid3" id="projects"></div>
+
+    <div class="filters" id="filters" role="group" aria-label="تصفية حسب القطاع">
+      <button data-f="all" aria-pressed="true">الكل</button>
+      <button data-f="finance" aria-pressed="false">مصرفي ومالي</button>
+      <button data-f="gov" aria-pressed="false">حكومي</button>
+      <button data-f="erp" aria-pressed="false">منظومات المؤسسات</button>
+      <button data-f="auctions" aria-pressed="false">مزادات</button>
+      <button data-f="commerce" aria-pressed="false">تجارة</button>
+      <button data-f="logistics" aria-pressed="false">لوجستيات</button>
+      <button data-f="apps" aria-pressed="false">تطبيقات</button>
+      <button data-f="ai" aria-pressed="false">ذكاء اصطناعي</button>
+    </div>
+
+    <div class="work" id="work-grid"></div>
+
+    <div class="index-head" id="index-head" hidden>
+      <h3>بقية الأنظمة في السجل</h3>
+      <p>تعمل داخل بيئات عملائها أو على بنية تحتية خاصة، ولم تُلتقط لقطاتها بعد. نعرضها في جلسة مشاركة شاشة ببيانات تجريبية.</p>
+    </div>
+    <ul class="index" id="work-index"></ul>
   </div>
 </section>
 
-<section class="section" id="sectors">
-  <div class="container">
-    <h2 class="h2">حلول بحسب القطاع</h2>
-    <p class="sub">نتحدث لغة قطاعك، ونعرض ما يهمك فقط</p>
+<!-- ═══ القدرات ═══ -->
+<section class="sec light" id="capabilities">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span>القدرات</span></div>
+      <h2>ما ننفّذه فعلاً</h2>
+    </div>
+    <ol class="list">
+      <li><span class="num lat">01</span><div><h3>منظومات مؤسسية</h3></div><p>تخطيط موارد، إدارة علاقات عملاء، محاسبة، مخزون، وأتمتة عمليات بأدوار وصلاحيات متعددة.</p></li>
+      <li><span class="num lat">02</span><div><h3>منصات ويب ولوحات تحكم</h3></div><p>منصات تجارية ومزادات وأسواق إلكترونية بلوحات إدارة وتقارير لحظية.</p></li>
+      <li><span class="num lat">03</span><div><h3>تطبيقات الجوال</h3></div><p>أندرويد وiOS وتطبيقات ويب تقدمية بتجربة عربية كاملة.</p></li>
+      <li><span class="num lat">04</span><div><h3>تكامل الدفع المحلي</h3></div><p>ربط بوابات الدفع الليبية والبطاقات المصرفية وروابط التحصيل ومتاجر ووكومرس.</p></li>
+      <li><span class="num lat">05</span><div><h3>ذكاء اصطناعي تطبيقي</h3></div><p>وكلاء يخدمون العملاء، استخراج البيانات من المستندات، وتقدير وتسعير آلي داخل المنظومة.</p></li>
+      <li><span class="num lat">06</span><div><h3>هوية بصرية وواجهات</h3></div><p>أنظمة تصميم عربية كاملة: طباعة، ألوان، مكوّنات، ودليل استخدام يسلَّم مع المشروع.</p></li>
+      <li><span class="num lat">07</span><div><h3>بنية تحتية وتشغيل</h3></div><p>استضافة، حاويات، نسخ احتياطي، مراقبة، ومهام مجدولة مع تنبيهات أعطال.</p></li>
+      <li><span class="num lat">08</span><div><h3>نقل الأنظمة القديمة</h3></div><p>ترحيل البيانات من أنظمة قائمة أو ملفات إكسل إلى منظومة حديثة دون توقف العمل.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══ الأمان والامتثال ═══ -->
+<section class="sec" id="security">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span>الأمان والامتثال</span></div>
+      <h2>ما تسأل عنه إدارة المخاطر قبل أن تسأل عنه إدارة التقنية</h2>
+      <p class="sec-lead">في القطاعات المنظّمة، غياب إجابة واضحة عن الأمان سبب استبعاد مباشر. هذه إجاباتنا الجاهزة قبل أن تُسأل.</p>
+    </div>
     <div class="grid3">
-      <div class="sector"><i>🏦</i><h3>المصارف والبنوك</h3><ul><li>منظومات مالية ومحاسبية بمعايير أمان عالمية</li><li>بوابات دفع ومزادات مصرفية</li><li>سجل تدقيق كامل وصلاحيات دقيقة</li></ul><a href="#portfolio" data-goto="finance" class="link">شاهد الحلول المالية ←</a></div>
-      <div class="sector"><i>🏛️</i><h3>الجهات الحكومية</h3><ul><li>واجهات عربية كاملة RTL وسهلة للموظف</li><li>منظومات أمن وحراسة وحضور</li><li>استضافة داخل ليبيا ودعم محلي دائم</li></ul><a href="#portfolio" data-goto="gov" class="link">شاهد الحلول الحكومية ←</a></div>
-      <div class="sector"><i>🛒</i><h3>الشركات والمتاجر</h3><ul><li>متاجر ومزادات جاهزة خلال أيام</li><li>ربط وسائل الدفع الليبية</li><li>تطبيقات جوال لعملائك</li></ul><a href="#portfolio" data-goto="commerce" class="link">شاهد حلول التجارة ←</a></div>
+      <div><h3>التحكم في الوصول</h3><p>صلاحيات على مستوى الدور والحقل، جلسات محدودة المدة، وسجل تدقيق غير قابل للتعديل لكل عملية حساسة.</p></div>
+      <div><h3>حماية البيانات</h3><p>تشفير أثناء النقل والتخزين، فصل بيانات الإنتاج عن الاختبار، وإخفاء هوية البيانات في البيئات التجريبية.</p></div>
+      <div><h3>موقع الاستضافة</h3><p>خيار الاستضافة داخل مقر الجهة أو على سحابة مخصصة، مع تحديد صريح لمكان تخزين البيانات في العقد.</p></div>
+      <div><h3>الاستمرارية</h3><p>نسخ احتياطي مجدول وتجربة استعادة دورية موثّقة، لا مجرد وجود نسخة.</p></div>
+      <div><h3>تسليم المصدر</h3><p>الكود والوثائق ومخططات قاعدة البيانات ملك للجهة، مع إمكانية مراجعتها من طرف ثالث.</p></div>
+      <div><h3>الاستجابة للحوادث</h3><p>قناة تصعيد معرّفة، زمن استجابة متعاقد عليه، وتقرير سبب جذري بعد كل حادث.</p></div>
     </div>
   </div>
 </section>
 
-<section class="section alt" id="process">
-  <div class="container">
-    <h2 class="h2">كيف نعمل</h2>
-    <p class="sub">منهجية واضحة من أول اجتماع إلى ما بعد الإطلاق</p>
-    <div class="steps">
-      <div><b>01</b><h3>الفهم</h3><p>اجتماع تحليل مجاني لفهم احتياجك وأهدافك.</p></div>
-      <div><b>02</b><h3>التصميم</h3><p>نماذج واجهات تُراجعها وتعتمدها قبل البرمجة.</p></div>
-      <div><b>03</b><h3>البناء</h3><p>تطوير بمراحل قصيرة مع Demo أسبوعي تراه بنفسك.</p></div>
-      <div><b>04</b><h3>الإطلاق والدعم</h3><p>تدريب فريقك، إطلاق، ودعم 24/7 وتحديثات.</p></div>
+<!-- ═══ القطاعات ═══ -->
+<section class="sec light" id="sectors">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span>القطاعات</span></div>
+      <h2>ثلاث لغات مختلفة لثلاثة عملاء مختلفين</h2>
+    </div>
+    <div class="sectors">
+      <article class="sector-card">
+        <h3>المصارف والمؤسسات المالية</h3>
+        <ul>
+          <li>منظومات محاسبية وتسويات مالية</li>
+          <li>بوابات دفع ومزادات بضمانات</li>
+          <li>سجل تدقيق كامل وفصل مهام</li>
+          <li>تقارير رقابية قابلة للتصدير</li>
+        </ul>
+        <a href="#work" class="textlink" data-goto="finance">اعرض الأنظمة المالية</a>
+      </article>
+      <article class="sector-card">
+        <h3>الجهات الحكومية</h3>
+        <ul>
+          <li>واجهات عربية أصيلة تتبع معايير الوصولية</li>
+          <li>إدارة موظفين وحضور ومهام ميدانية</li>
+          <li>استضافة داخلية وتسليم كامل للمصدر</li>
+          <li>تدريب الفريق ودعم بالتوقيت المحلي</li>
+        </ul>
+        <a href="#work" class="textlink" data-goto="gov">اعرض الأنظمة الحكومية</a>
+      </article>
+      <article class="sector-card">
+        <h3>الشركات والمتاجر</h3>
+        <ul>
+          <li>متاجر ومزادات ومنصات تأجير</li>
+          <li>ربط وسائل الدفع الليبية</li>
+          <li>تطبيقات جوال للعملاء والمندوبين</li>
+          <li>لوحات تحكم ومخزون وتقارير</li>
+        </ul>
+        <a href="#work" class="textlink" data-goto="commerce">اعرض أنظمة التجارة</a>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="section" id="about">
-  <div class="container about">
-    <div>
-      <h2 class="h2 right">عن ليبيا برو للتقنية</h2>
-      <p>نحن الفرع الليبي لشركة <b>Egypt Pro Ospra</b> العريقة. نصنع المنصات التي تُحدث فرقاً — من التصميم الأنيق إلى الكود النظيف، ومن الأمان العالي إلى الأداء الفائق. خبرة مصرية عريقة، تنفيذ ليبي محترف.</p>
-      <ul class="checks"><li>فريق محلي يفهم السوق الليبي ووسائل دفعه</li><li>كل مشروع يُسلَّم بكوده ووثائقه — أنت تملكه بالكامل</li><li>ضمان إصلاح الأخطاء مجاناً بعد الإطلاق</li></ul>
+<!-- ═══ المنهجية ═══ -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span>المنهجية</span></div>
+      <h2>كيف يسير المشروع من أول اجتماع إلى ما بعد التسليم</h2>
     </div>
-    <div class="about-box"><span class="logo big">&lt;/&gt;</span><h3>ليبيا برو للتقنية</h3><p>Libya Pro Tech — A subsidiary of Egypt Pro Ospra</p><p>🌍 بناء المستقبل الرقمي العربي</p></div>
+    <ol class="list">
+      <li><span class="num lat">01</span><div><h3>جلسة تحليل</h3></div><p>اجتماع واحد نخرج منه بوثيقة نطاق مكتوبة: ما سيُبنى، وما لن يُبنى، ومقياس النجاح.</p></li>
+      <li><span class="num lat">02</span><div><h3>نموذج واجهات</h3></div><p>شاشات قابلة للنقر تعتمدها قبل كتابة سطر برمجي واحد.</p></li>
+      <li><span class="num lat">03</span><div><h3>تطوير بمراحل</h3></div><p>إصدار كل أسبوعين على رابط تجريبي خاص بك، تفتحه وتعلّق عليه بنفسك.</p></li>
+      <li><span class="num lat">04</span><div><h3>اختبار قبول</h3></div><p>فريقك يشغّل سيناريوهات حقيقية على بيانات حقيقية قبل الإطلاق، ونصحّح قبل التسليم.</p></li>
+      <li><span class="num lat">05</span><div><h3>إطلاق ودعم</h3></div><p>تدريب موثّق، ثم ضمان إصلاح الأعطال، ثم عقد دعم بزمن استجابة محدد.</p></li>
+    </ol>
   </div>
 </section>
 
-<section class="section quote" id="quote">
-  <div class="container narrow">
-    <h2 class="h2">احصل على عرض سعر مجاني</h2>
-    <p class="sub">املأ النموذج وسنتواصل معك خلال 24 ساعة</p>
-    <form id="quote-form" class="form">
-      <label>الاسم الكامل *<input name="name" required placeholder="مثال: أحمد محمد"></label>
-      <label>رقم الهاتف *<input name="phone" required placeholder="+218 91 xxx xxxx" dir="ltr"></label>
-      <label>البريد الإلكتروني<input name="email" type="email" placeholder="you@example.com" dir="ltr"></label>
-      <label>الشركة / الجهة<input name="company" placeholder="اختياري"></label>
-      <label>نوع المشروع<select name="type"><option value="">— اختر —</option><option>موقع / منصة ويب</option><option>تطبيق جوال</option><option>منظومة مؤسسية ERP/CRM</option><option>منظومة مصرفية / مالية</option><option>منظومة حكومية</option><option>متجر إلكتروني</option><option>ذكاء اصطناعي</option></select></label>
-      <label>الميزانية المتوقعة<select name="budget"><option value="">— اختر —</option><option>أقل من 5,000 د.ل</option><option>5,000 – 20,000 د.ل</option><option>20,000 – 100,000 د.ل</option><option>أكثر من 100,000 د.ل</option></select></label>
-      <label class="full">تفاصيل المشروع *<textarea name="details" required rows="5" placeholder="اشرح فكرتك، أهدافك، أي ميزات محددة تحتاجها..."></textarea></label>
-      <button class="btn btn-primary full" type="submit">🚀 إرسال الطلب الآن</button>
-      <p class="tiny full">🔒 معلوماتك سرية ولن تُشارك مع أي طرف ثالث</p>
+<!-- ═══ النداء الختامي ═══ -->
+<section class="sec light" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span>ابدأ</span></div>
+      <h2>أخبرنا بما تريد بناءه</h2>
+      <p class="sec-lead">نرد خلال 24 ساعة بتقدير مبدئي للنطاق والمدة، أو نقول لك صراحة إن مشروعك لا يناسبنا.</p>
+    </div>
+    <form class="form" id="quote">
+      <label>الاسم الكامل *<input name="name" required autocomplete="name" placeholder="الاسم الثلاثي"></label>
+      <label>رقم الهاتف *<input name="phone" required inputmode="tel" autocomplete="tel" dir="ltr" placeholder="+218 9x xxx xxxx"></label>
+      <label>الجهة أو الشركة<input name="company" autocomplete="organization" placeholder="اسم الجهة"></label>
+      <label>البريد الإلكتروني<input name="email" type="email" autocomplete="email" dir="ltr" placeholder="name@example.com"></label>
+      <label>نوع النظام
+        <select name="type">
+          <option value="">— اختر —</option>
+          <option>منظومة مصرفية أو مالية</option>
+          <option>منظومة حكومية</option>
+          <option>منظومة مؤسسية (ERP / CRM)</option>
+          <option>منصة ويب أو سوق إلكتروني</option>
+          <option>تطبيق جوال</option>
+          <option>متجر إلكتروني</option>
+          <option>ذكاء اصطناعي</option>
+        </select>
+      </label>
+      <label>الإطار الزمني المطلوب
+        <select name="timeline">
+          <option value="">— اختر —</option>
+          <option>خلال شهر</option>
+          <option>خلال 3 أشهر</option>
+          <option>خلال 6 أشهر</option>
+          <option>لم يتحدد بعد</option>
+        </select>
+      </label>
+      <label class="full">وصف المشروع *<textarea name="details" rows="5" required placeholder="ما المشكلة التي تريد حلها؟ من سيستخدم النظام؟ ما الأنظمة القائمة التي يجب الربط معها؟"></textarea></label>
+      <div class="full"><button class="btn btn-gold" type="submit">إرسال الطلب</button></div>
+      <p class="full mut" style="font-size:13px">لا تُشارك بياناتك مع أي طرف ثالث.</p>
     </form>
   </div>
 </section>
+</main>
 
 <footer class="footer">
-  <div class="container">
-    <p><b class="or">Libya Pro Tech</b> — A subsidiary of <b class="or">Egypt Pro Ospra</b></p>
-    <p>🌍 بناء المستقبل الرقمي العربي · © <span id="year"></span></p>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="mark" style="margin-bottom:18px"><span class="dot"></span>LIBYA PRO <small>TECH</small></a>
+        <p class="mut" style="max-width:38ch;font-size:15px">شركة ليبيا برو للتقنية — فرع من Egypt Pro Ospra. بناء وتشغيل المنظومات الرقمية للمؤسسات في ليبيا.</p>
+      </div>
+      <div>
+        <h4>الموقع</h4>
+        <a href="#work">الأعمال</a>
+        <a href="#capabilities">القدرات</a>
+        <a href="#security">الأمان والامتثال</a>
+        <a href="#process">المنهجية</a>
+      </div>
+      <div>
+        <h4>تواصل</h4>
+        <a href="#contact">طلب عرض سعر</a>
+        <a href="https://wa.me/218910000000" target="_blank" rel="noopener">واتساب</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="y" class="lat"></span> Libya Pro Tech — A subsidiary of Egypt Pro Ospra</span>
+      <span class="lat" style="font-size:11px">بناء المستقبل الرقمي العربي</span>
+    </div>
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/218910000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1" target="_blank" rel="noopener" aria-label="واتساب">💬</a>
-
-<div class="modal" id="modal" hidden>
-  <div class="modal-box">
-    <div class="modal-head">
-      <div><b id="m-title"></b><small id="m-tag"></small></div>
-      <div class="dev-toggle"><button data-dev="phone" class="on">📱 جوال</button><button data-dev="desktop">💻 حاسوب</button></div><a id="m-open" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">↗ فتح في نافذة جديدة</a>
-      <button class="close" onclick="closeModal()">✕</button>
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <div class="modal-bar">
+    <span class="sector" id="m-sector"></span>
+    <h3 id="m-title"></h3>
+    <div class="modal-tools">
+      <button class="btn btn-sm" data-view="phone" aria-pressed="true">جوال</button>
+      <button class="btn btn-sm" data-view="desktop" aria-pressed="false">حاسوب</button>
+      <a class="btn btn-sm" id="m-open" target="_blank" rel="noopener">فتح في تبويب</a>
+      <button class="btn btn-sm" id="m-close">إغلاق</button>
     </div>
-    <div class="modal-body dev-phone" id="m-body"><iframe id="m-frame" title="Demo" loading="lazy"></iframe><div class="no-demo" id="m-nodemo"><p>الديمو الحي لهذه المنظومة يُعرض بموعد مسبق.</p><a href="#quote" class="btn btn-primary" onclick="closeModal()">اطلب عرضاً حياً</a></div></div>
+  </div>
+  <div class="modal-body view-phone" id="m-body">
+    <iframe id="m-frame" title="عرض تجريبي" loading="lazy"></iframe>
+    <div class="modal-empty" id="m-empty" hidden>
+      <h4>هذا النظام يُعرض بموعد</h4>
+      <p>النسخة الحية من هذه المنظومة تعمل داخل بيئة العميل، ولا تُفتح للعامة. نعرضها في جلسة مشاركة شاشة مع بيانات تجريبية.</p>
+      <a href="#contact" class="btn btn-gold" id="m-request">اطلب عرضاً حياً</a>
+    </div>
   </div>
 </div>
+
 <script src="assets/app.js"></script>
 </body>
 </html>
