@@ -2,6 +2,9 @@
 (() => {
   "use strict";
 
+  /* ⚠️ بدّل هذا الرقم برقم الواتساب الحقيقي قبل الإطلاق — يُستخدم في النموذج وفي التذييل. */
+  const WHATSAPP = "218910000000";
+
   const SECTORS = {
     finance:"مصرفي ومالي", gov:"حكومي", erp:"منظومات المؤسسات",
     auctions:"مزادات", commerce:"تجارة", logistics:"لوجستيات",
@@ -16,6 +19,7 @@
   let projects = [], filter = "all";
 
   $("#y").textContent = new Date().getFullYear();
+  $$("[data-wa]").forEach(a => { a.href = `https://wa.me/${WHATSAPP}`; });
 
   /* ---------- قائمة الجوال ---------- */
   const burger = $("#burger");
@@ -169,7 +173,7 @@
                     type:"نوع النظام", timeline:"الإطار الزمني", details:"الوصف" };
     const lines = [...f.entries()].filter(([, v]) => String(v).trim())
       .map(([k, v]) => `${LABEL[k] || k}: ${v}`);
-    const url = "https://wa.me/218910000000?text=" +
+    const url = `https://wa.me/${WHATSAPP}?text=` +
       encodeURIComponent("طلب مشروع جديد من الموقع\n\n" + lines.join("\n"));
     window.open(url, "_blank", "noopener");
   });
