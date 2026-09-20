@@ -226,19 +226,48 @@
  {
   "id": "macchinaa",
   "name": "ماكينا MACCHINAA",
-  "tag": "منصة سيارات ومزادات إلكترونية",
+  "tag": "منصة مزادات سيارات تجمع ست مصادر أمريكية",
   "sector": "auctions",
-  "desc": "سوق سيارات متكامل مع مزادات حية، عروض، تمويل، وربط بوسائل الدفع الليبية. لوحات تحكم للإدارة والتجار والعملاء.",
+  "desc": "منصة تجمع مزادات Copart وIAAI وADESA وACV وOpenLane في واجهة عربية واحدة: تصفّح بفلاتر دقيقة (نوع العنوان، العداد، الجملة)، بحوث محفوظة، صفحة لوت بمزايدة حية ومزايدة بالوكالة، حاسبة ذكية، وأسعار صرف محدَّثة.",
   "tech": [
-   "Next.js",
-   "PostgreSQL",
-   "Realtime",
-   "Payments"
+   "Django",
+   "Channels",
+   "Realtime Bidding",
+   "Multi-source",
+   "RTL"
   ],
   "repo": "tsallabi/MACCHINAA-NEW-ERA",
   "demo": "",
   "latin": "MACCHINAA",
-  "shot": ""
+  "shot": "assets/shots/macchinaa-listings.webp",
+  "shotAlt": "متصفّح المخزون: 48 نتيجة بفلاتر المزاد ونوع العنوان والعداد وبطاقات موسومة بمصدرها",
+  "gallery": [
+   {
+    "src": "assets/shots/macchinaa-home.webp",
+    "alt": "الصفحة الرئيسية",
+    "cap": "بوابات المزادات الحية لكل مصدر مع عدّاد مباشر وشريط أسعار الصرف"
+   },
+   {
+    "src": "assets/shots/macchinaa-car-detail.webp",
+    "alt": "صفحة اللوت",
+    "cap": "صفحة اللوت: المعرض، حالة المزاد الحي، المزايدة الحالية، والمزايدة بالوكالة"
+   },
+   {
+    "src": "assets/shots/macchinaa-why.webp",
+    "alt": "لماذا ماكينا",
+    "cap": "صفحة المقارنة مع المصادر الستة"
+   },
+   {
+    "src": "assets/shots/macchinaa-how-to-buy.webp",
+    "alt": "كيف تشتري",
+    "cap": "مسار الشراء خطوة بخطوة للمشتري"
+   },
+   {
+    "src": "assets/shots/macchinaa-about.webp",
+    "alt": "عن الشركة",
+    "cap": "الرسالة والرؤية ومؤشرات التشغيل"
+   }
+  ]
  },
  {
   "id": "autopro",
