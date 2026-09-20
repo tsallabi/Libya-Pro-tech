@@ -321,47 +321,72 @@
  },
  {
   "id": "carrie",
-  "name": "Carr.ie",
-  "tag": "سوق سيارات — أيرلندا",
+  "name": "CARRPRO.ie",
+  "tag": "سوق سيارات مستعملة — أيرلندا",
   "sector": "commerce",
-  "desc": "سوق سيارات دولي بواجهة إنجليزية، دليل على قدرتنا على المنافسة عالمياً.",
+  "desc": "سوق سيارات أيرلندي يبيع الشفافية: كل إعلان يحمل فحص تاريخ المركبة، وحاسبة تكلفة ملكية شهرية، وحاسبة استيراد من بريطانيا بالتكلفة النهائية بعد الضرائب. دليل على قدرتنا على المنافسة في سوق أوروبي بالإنجليزية.",
   "tech": [
-   "Next.js",
-   "SEO",
-   "i18n"
+   "Django 5",
+   "PostgreSQL",
+   "Search",
+   "VRT / WLTP"
   ],
   "repo": "tsallabi/Carr.ie",
   "demo": "",
-  "latin": "CARR.IE",
-  "shot": ""
+  "latin": "CARRPRO",
+  "shot": "assets/shots/carrie-home.webp",
+  "shotAlt": "الصفحة الرئيسية بعنوان السوق الصادق للسيارات المستعملة في أيرلندا",
+  "gallery": [
+   {
+    "src": "assets/shots/carrie-search.webp",
+    "alt": "نتائج البحث",
+    "cap": "بحث بالمقاطعات والفلاتر مع بطاقات السيارات"
+   },
+   {
+    "src": "assets/shots/carrie-listing.webp",
+    "alt": "صفحة الإعلان",
+    "cap": "صفحة الإعلان: السعر، تكلفة الملكية الشهرية، ولوحة فحص التاريخ"
+   },
+   {
+    "src": "assets/shots/carrie-import.webp",
+    "alt": "حاسبة الاستيراد",
+    "cap": "حاسبة الاستيراد من بريطانيا بالتكلفة النهائية بعد الرسوم"
+   }
+  ]
  },
  {
   "id": "irish-castle",
   "name": "Irish Castle",
-  "tag": "ضيافة وسياحة",
+  "tag": "منصة عقارات فاخرة — أيرلندا",
   "sector": "commerce",
-  "desc": "موقع حجز وضيافة لقلعة أيرلندية مع معرض صور وحجوزات.",
+  "desc": "منصة عقارات أيرلندية: بحث بالشراء والإيجار والمشاريع الجديدة، صفحات عقار تفصيلية، وحاسبة تمويل عقاري بمعطيات السوق الأيرلندي من الدفعة الأولى إلى نسبة القرض للقيمة.",
   "tech": [
-   "Booking",
-   "Gallery"
+   "Static",
+   "Vanilla JS",
+   "Cloudflare Pages",
+   "SVG"
   ],
   "repo": "tsallabi/Irish-castle-",
   "demo": "",
   "latin": "IRISH CASTLE",
-  "shot": ""
- },
- {
-  "id": "carshipment",
-  "name": "Car Shipment",
-  "tag": "شحن السيارات الدولي",
-  "sector": "logistics",
-  "desc": "تتبع شحن السيارات من الموانئ إلى العميل.",
-  "tech": [
-   "Tracking"
-  ],
-  "repo": "Ahmed-Dakrory/carShipment",
-  "demo": "",
-  "latin": "CAR SHIPMENT",
-  "shot": ""
+  "shot": "assets/shots/irishcastle-home.webp",
+  "shotAlt": "الصفحة الرئيسية بشريط بحث ثلاثي وإحصاءات المنصة",
+  "gallery": [
+   {
+    "src": "assets/shots/irishcastle-properties.webp",
+    "alt": "تصفح العقارات",
+    "cap": "شبكة العقارات مع تصفية بالمقاطعة"
+   },
+   {
+    "src": "assets/shots/irishcastle-property.webp",
+    "alt": "صفحة العقار",
+    "cap": "صفحة عقار تفصيلية"
+   },
+   {
+    "src": "assets/shots/irishcastle-mortgage.webp",
+    "alt": "حاسبة التمويل",
+    "cap": "حاسبة تمويل عقاري بمعايير السوق الأيرلندي"
+   }
+  ]
  }
 ]
