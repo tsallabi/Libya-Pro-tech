@@ -22,6 +22,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}   /* يعلو على أي display في الأصناف أدناه */
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -301,3 +302,10 @@ p{margin:0}
 .fine{font-size:13px}
 .mark-stack{margin-bottom:18px}
 .foot-about{max-width:38ch;font-size:15px}
+
+/* ---------- معرض لقطات النظام داخل النافذة ---------- */
+.modal-body.view-gallery{align-items:flex-start;justify-content:center;overflow:auto}
+.gallery{width:min(1100px,100%);display:grid;gap:clamp(24px,3vw,40px);padding-bottom:40px}
+.gal-item{margin:0}
+.gal-item .panel img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+#m-views{display:flex;gap:10px}

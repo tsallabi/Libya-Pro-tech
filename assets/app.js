@@ -42,9 +42,8 @@
   }
 
   function card(p) {
-    const demoBtn = p.demo
-      ? `<button class="btn btn-gold btn-sm" data-demo="${esc(p.id)}">افتح الديمو</button>`
-      : `<button class="btn btn-sm" data-demo="${esc(p.id)}">تفاصيل العرض</button>`;
+    const label = p.demo ? "افتح الديمو" : (p.gallery && p.gallery.length ? "شاهد النظام" : "تفاصيل العرض");
+    const demoBtn = `<button class="btn ${p.demo ? "btn-gold " : ""}btn-sm" data-demo="${esc(p.id)}">${label}</button>`;
     return `<article class="work-item" data-sector="${esc(p.sector)}">
       ${media(p)}
       <div class="work-meta">
@@ -115,13 +114,30 @@
     $("#m-title").textContent = p.name;
     $("#m-sector").textContent = SECTORS[p.sector] || "";
     const open = $("#m-open");
+    const gal = $("#m-gallery");
+    const tools = $("#m-views");
     if (p.demo) {
-      frame.hidden = false; empty.hidden = true;
+      frame.hidden = false; empty.hidden = true; gal.hidden = true; tools.hidden = false;
       frame.src = p.demo;
       open.hidden = false; open.href = p.demo;
+      body.className = "modal-body view-phone";
+    } else if (p.gallery && p.gallery.length) {
+      frame.hidden = true; frame.removeAttribute("src");
+      empty.hidden = true; open.hidden = true; tools.hidden = true;
+      gal.hidden = false;
+      body.className = "modal-body view-gallery";
+      const shots = [{ src: p.shot, alt: p.shotAlt || p.tag, cap: p.tag }]
+        .filter(s => s.src).concat(p.gallery);
+      gal.innerHTML = shots.map(s => `<figure class="gal-item">
+        <div class="panel"><img src="${esc(s.src)}" loading="lazy" decoding="async"
+          alt="لقطة من نظام ${esc(p.name)}: ${esc(s.alt)}"></div>
+        <figcaption class="panel-cap"><span class="live">لقطة حقيقية</span><span>${esc(s.cap)}</span></figcaption>
+      </figure>`).join("");
+      gal.scrollTop = 0;
     } else {
       frame.hidden = true; frame.removeAttribute("src");
-      empty.hidden = false; open.hidden = true;
+      empty.hidden = false; open.hidden = true; gal.hidden = true; tools.hidden = true;
+      body.className = "modal-body view-phone";
     }
     modal.hidden = false;
     document.documentElement.style.overflow = "hidden";
@@ -131,6 +147,7 @@
   function closeDemo() {
     modal.hidden = true;
     frame.removeAttribute("src");
+    $("#m-gallery").innerHTML = "";
     document.documentElement.style.overflow = "";
     if (lastFocus) lastFocus.focus();
   }

@@ -34,7 +34,24 @@
   "demo": "",
   "latin": "TAYBAA",
   "shot": "assets/shots/taybaa-home.webp",
-  "shotAlt": "واجهة المكتبة الداكنة الذهبية مع عدادات الكتب والقرّاء والتحميلات"
+  "shotAlt": "واجهة المكتبة الداكنة الذهبية مع عدادات الكتب والقرّاء والتحميلات",
+  "gallery": [
+   {
+    "src": "assets/shots/taybaa-book.webp",
+    "alt": "صفحة الكتاب",
+    "cap": "تفاصيل الكتاب وخيارات القراءة والتحميل"
+   },
+   {
+    "src": "assets/shots/taybaa-reader.webp",
+    "alt": "القارئ داخل المتصفح",
+    "cap": "قراءة الكتاب دون تنزيل"
+   },
+   {
+    "src": "assets/shots/taybaa-admin.webp",
+    "alt": "لوحة التحكم",
+    "cap": "إدارة الكتب والفئات والاشتراكات"
+   }
+  ]
  },
  {
   "id": "libyapro-ai",
@@ -52,7 +69,24 @@
   "demo": "",
   "latin": "AGENTCOLLAB",
   "shot": "assets/shots/libyaproai-home.webp",
-  "shotAlt": "الصفحة الرئيسية بعنوان المقارنة مع الأدوات العالمية وصف الأرقام"
+  "shotAlt": "الصفحة الرئيسية بعنوان المقارنة مع الأدوات العالمية وصف الأرقام",
+  "gallery": [
+   {
+    "src": "assets/shots/libyaproai-comparison.webp",
+    "alt": "جدول المقارنة",
+    "cap": "مقارنة المنصة بأربع أدوات عالمية منفصلة"
+   },
+   {
+    "src": "assets/shots/libyaproai-roi.webp",
+    "alt": "حاسبة العائد",
+    "cap": "حساب التوفير الشهري مقابل الأدوات المنفصلة"
+   },
+   {
+    "src": "assets/shots/libyaproai-trust.webp",
+    "alt": "الامتثال والثقة",
+    "cap": "فواتير ZATCA واستضافة داخل المنطقة"
+   }
+  ]
  },
  {
   "id": "vidio",
@@ -88,7 +122,24 @@
   "demo": "",
   "latin": "FAIRFIX",
   "shot": "assets/shots/fairfix-home.webp",
-  "shotAlt": "الصفحة الرئيسية بالإنجليزية مع نموذج انتظار وتطبيق جوال"
+  "shotAlt": "الصفحة الرئيسية بالإنجليزية مع نموذج انتظار وتطبيق جوال",
+  "gallery": [
+   {
+    "src": "assets/shots/fairfix-estimate.webp",
+    "alt": "أداة التقدير",
+    "cap": "تقدير السعر العادل قبل أي عرض"
+   },
+   {
+    "src": "assets/shots/fairfix-newjob.webp",
+    "alt": "نشر طلب صيانة",
+    "cap": "مسار نشر الطلب خطوة بخطوة"
+   },
+   {
+    "src": "assets/shots/fairfix-join.webp",
+    "alt": "انضمام الحرفيين",
+    "cap": "مسار تسجيل مزوّدي الخدمة"
+   }
+  ]
  },
  {
   "id": "usta",
@@ -107,7 +158,24 @@
   "demo": "",
   "latin": "TAWWA",
   "shot": "assets/shots/usta-home.webp",
-  "shotAlt": "الصفحة الرئيسية بواجهة عربية وتقدير سعر ذكي"
+  "shotAlt": "الصفحة الرئيسية بواجهة عربية وتقدير سعر ذكي",
+  "gallery": [
+   {
+    "src": "assets/shots/usta-estimate.webp",
+    "alt": "شاشة تقدير السعر بالذكاء الاصطناعي",
+    "cap": "تقدير سعر عادل من وصف العطل خلال ثوانٍ"
+   },
+   {
+    "src": "assets/shots/usta-list.webp",
+    "alt": "دليل الأسطوات",
+    "cap": "قائمة الحرفيين المُتحقَّق منهم مع التقييم والتخصص"
+   },
+   {
+    "src": "assets/shots/usta-login.webp",
+    "alt": "تسجيل الدخول",
+    "cap": "واجهة دخول عربية كاملة"
+   }
+  ]
  },
  {
   "id": "macchinaa",

@@ -280,14 +280,17 @@
     <span class="sector" id="m-sector"></span>
     <h3 id="m-title"></h3>
     <div class="modal-tools">
-      <button class="btn btn-sm" data-view="phone" aria-pressed="true">جوال</button>
-      <button class="btn btn-sm" data-view="desktop" aria-pressed="false">حاسوب</button>
+      <span id="m-views">
+        <button class="btn btn-sm" data-view="phone" aria-pressed="true">جوال</button>
+        <button class="btn btn-sm" data-view="desktop" aria-pressed="false">حاسوب</button>
+      </span>
       <a class="btn btn-sm" id="m-open" target="_blank" rel="noopener">فتح في تبويب</a>
       <button class="btn btn-sm" id="m-close">إغلاق</button>
     </div>
   </div>
   <div class="modal-body view-phone" id="m-body">
     <iframe id="m-frame" title="عرض تجريبي" loading="lazy"></iframe>
+    <div class="gallery" id="m-gallery" hidden></div>
     <div class="modal-empty" id="m-empty" hidden>
       <h4>هذا النظام يُعرض بموعد</h4>
       <p>النسخة الحية من هذه المنظومة تعمل داخل بيئة العميل، ولا تُفتح للعامة. نعرضها في جلسة مشاركة شاشة مع بيانات تجريبية.</p>
