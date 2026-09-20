@@ -19,6 +19,52 @@
   "shotAlt": "لوحة المتابعة: بطاقات المستحقات والمحصّل والأرباح مع تنبيه الجرد اليومي"
  },
  {
+  "id": "amanpro-full",
+  "name": "أمان برو — منصة الحوالات",
+  "latin": "AMANPRO",
+  "tag": "منصة تحويلات ومدفوعات متعددة المكاتب",
+  "sector": "finance",
+  "desc": "منصة مالية تربط مكاتب في ليبيا ومصر وتركيا والولايات المتحدة: حوالات، سداد فواتير، خزائن ومحافظ متعددة العملات، تسوية موردين، ومحاسبة عمولات — مع تنبيهات ذكية للتأخير ومطابقة الأرصدة.",
+  "tech": [
+   "React 19",
+   "Vite",
+   "Express",
+   "Multi-currency",
+   "RBAC"
+  ],
+  "repo": "tsallabi/AMANPRO-FULL",
+  "demo": "",
+  "shot": "assets/shots/amanprofull-dashboard.webp",
+  "shotAlt": "لوحة التحكم: تنبيهات ذكية للتأخير، التقرير اليومي الحي، والمحفظة الرقمية",
+  "gallery": [
+   {
+    "src": "assets/shots/amanprofull-landing.webp",
+    "alt": "الصفحة الرئيسية ولوحة أسعار الصرف",
+    "cap": "الواجهة العامة مع لوحة أسعار صرف محدَّثة لحظياً"
+   },
+   {
+    "src": "assets/shots/amanprofull-transactions.webp",
+    "alt": "سجل الحركات",
+    "cap": "سجل الحركات بحالات دقيقة لكل مرحلة من مراحل الحوالة"
+   },
+   {
+    "src": "assets/shots/amanprofull-treasury.webp",
+    "alt": "إدارة الخزائن",
+    "cap": "خزائن رئيسية وشريكة بعملات متعددة"
+   },
+   {
+    "src": "assets/shots/amanprofull-accounting.webp",
+    "alt": "الإدارة المحاسبية",
+    "cap": "عمولات محصّلة يومياً وشهرياً وسنوياً مع أرباح العمليات"
+   },
+   {
+    "src": "assets/shots/amanprofull-wallets.webp",
+    "alt": "إدارة المحافظ",
+    "cap": "محافظ منفصلة لكل دور مع الإيداع والسحب"
+   }
+  ]
+ },
+ {
   "id": "taybaa",
   "name": "المكتبة الطيبة",
   "tag": "منصة نشر وقراءة رقمية",
@@ -209,22 +255,6 @@
   "repo": "libya-autopro/autopro-final",
   "demo": "https://autopro.ac",
   "latin": "AUTOPRO",
-  "shot": ""
- },
- {
-  "id": "autopro-logistics",
-  "name": "أوتوبرو لوجستيك",
-  "tag": "شحن وتتبع الشحنات",
-  "sector": "logistics",
-  "desc": "تتبع الشحنات لحظياً، إدارة الأساطيل، الجمارك، وإشعارات العملاء عبر واتساب.",
-  "tech": [
-   "Maps",
-   "Tracking",
-   "Notifications"
-  ],
-  "repo": "tsallabi/AUTOPRO-LOGISTICS",
-  "demo": "",
-  "latin": "AUTOPRO LOGISTICS",
   "shot": ""
  },
  {
