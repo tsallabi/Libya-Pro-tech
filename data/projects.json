@@ -259,18 +259,49 @@
  },
  {
   "id": "mazadna",
-  "name": "مزادنا Mazadna",
-  "tag": "منصة مزادات عامة",
-  "sector": "auctions",
-  "desc": "مزادات إلكترونية لأي سلعة مع مزايدة حية، ضمانات، وتسوية مالية.",
+  "name": "منصّة مجموعة المزاد الدولي",
+  "tag": "استيراد السيارات من مزادات أمريكا وتتبع الحاويات",
+  "sector": "logistics",
+  "desc": "منظومة تشغيلية كاملة لاستيراد السيارات: حاسبة تكلفة الاستيراد من Copart وIAA، شراء ومتابعة المركبة عبر عشر مراحل حتى التسليم، إدارة الحاويات والشحن البحري والبري، فواتير بمهل سماح، وخزائن نقدية متعددة الفروع والعملات.",
   "tech": [
-   "Realtime",
-   "Payments"
+   "Next.js 16",
+   "Prisma",
+   "PostgreSQL",
+   "Tracking",
+   "Multi-branch"
   ],
   "repo": "tsallabi/Mazadna",
   "demo": "",
   "latin": "MAZADNA",
-  "shot": ""
+  "shot": "assets/shots/mazadna-home.webp",
+  "shotAlt": "الصفحة الرئيسية مع شريط أسعار الصرف والذهب المحدَّث",
+  "gallery": [
+   {
+    "src": "assets/shots/mazadna-dashboard.webp",
+    "alt": "لوحة الموظفين",
+    "cap": "لوحة الموظفين: العمليات والمستحقات والأرباح والغرامات في شاشة واحدة"
+   },
+   {
+    "src": "assets/shots/mazadna-calculator.webp",
+    "alt": "حاسبة الاستيراد",
+    "cap": "حاسبة تكلفة الاستيراد من رقم اللوت حتى باب العميل"
+   },
+   {
+    "src": "assets/shots/mazadna-market.webp",
+    "alt": "أسعار السوق",
+    "cap": "189 سطر أسعار سوق بالدينار الليبي مع سعر الدولار الرسمي"
+   },
+   {
+    "src": "assets/shots/mazadna-track.webp",
+    "alt": "تتبع الحاوية",
+    "cap": "تتبع الحاوية متاح للعميل دون تسجيل دخول"
+   },
+   {
+    "src": "assets/shots/mazadna-treasury.webp",
+    "alt": "إدارة الخزائن",
+    "cap": "خزائن نقدية لكل فرع وعملة بأرصدة محسوبة"
+   }
+  ]
  },
  {
   "id": "ajrly",
