@@ -309,3 +309,22 @@ p{margin:0}
 .gal-item{margin:0}
 .gal-item .panel img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
 #m-views{display:flex;gap:10px}
+
+/* ---------- حقول النموذج داخل الأقسام الفاتحة ---------- */
+/* بدونها يكون النص الذي يكتبه الزبون أبيض على خلفية عاجية: غير مقروء إطلاقاً */
+.light .form label{color:var(--ivory-mut)}
+.light .form input,
+.light .form select,
+.light .form textarea{
+  color:var(--ivory-ink);
+  border-bottom-color:rgba(16,17,20,.28);
+}
+.light .form input::placeholder,
+.light .form textarea::placeholder{color:#8A8D94}
+.light .form select option{background:#fff;color:var(--ivory-ink)}
+.light .form input:focus,
+.light .form select:focus,
+.light .form textarea:focus{
+  border-bottom-color:#8A6A1F;
+  box-shadow:0 1px 0 0 #8A6A1F;
+}
