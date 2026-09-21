@@ -328,3 +328,6 @@ p{margin:0}
   border-bottom-color:#8A6A1F;
   box-shadow:0 1px 0 0 #8A6A1F;
 }
+
+/* الأرقام اللاتينية داخل نص عربي: بلا تحويل لحروف كبيرة، وتباعد خفيف فقط */
+.num{text-transform:none;letter-spacing:.04em;font-size:13px}
