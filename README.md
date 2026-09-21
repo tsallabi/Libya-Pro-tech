@@ -2,6 +2,8 @@
 
 موقع ثابت (HTML/CSS/JS بلا أدوات بناء) لشركة ليبيا برو للتقنية.
 
+**الموقع الحي:** https://libya-pro-tech.pages.dev — منشور من الفرع `main` تلقائياً عبر Cloudflare Pages.
+
 - **تحليل 100 موقع عالمي وعربي والهوية المقترحة:** [docs/BRAND-ANALYSIS.md](docs/BRAND-ANALYSIS.md)
 - **خطة المحتوى والعرض:** [docs/PLAN.md](docs/PLAN.md)
 
