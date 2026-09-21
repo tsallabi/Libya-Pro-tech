@@ -331,3 +331,6 @@ p{margin:0}
 
 /* الأرقام اللاتينية داخل نص عربي: بلا تحويل لحروف كبيرة، وتباعد خفيف فقط */
 .num{text-transform:none;letter-spacing:.04em;font-size:13px}
+
+.numline{display:flex;gap:10px;align-items:baseline}
+.numline .num{color:var(--text)}
