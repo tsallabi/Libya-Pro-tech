@@ -365,5 +365,132 @@
     addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(build, 200); }, { passive: true });
   })();
 
+  /* ═══ الشعار: المربّع يصنع حروف الاسم حرفاً حرفاً ═══
+     يُرسم الحرف داخل المربّع ثم يخرج ليصطف في مكانه من الكلمة،
+     حتى تكتمل LIBYA PRO، فتثبت لحظة ثم تختفي ويبدأ التصنيع من جديد.
+     بلا حركة: الكلمة كاملة ساكنة (تُرسم مرة واحدة عند الإقلاع). */
+  (function logoFactory() {
+    const NS = "http://www.w3.org/2000/svg";
+
+    /* حروف بخط هندسي أحادي السماكة، كل حرف داخل صندوق 10×16 */
+    const GLYPH = {
+      L: { d: "M1 0 V16 H9.5", adv: 13.2 },
+      I: { d: "M5 0 V16", adv: 8.4 },
+      B: { d: "M1 0 V16 M1 0 H6 C9.6 0 9.6 8 6 8 H1 M1 8 H6.4 C10 8 10 16 6.4 16 H1", adv: 13.7 },
+      Y: { d: "M0.5 0 L5 7.6 L9.5 0 M5 7.6 V16", adv: 13.2 },
+      A: { d: "M0.5 16 L5 0 L9.5 16 M2.3 10.6 H7.7", adv: 13.7 },
+      P: { d: "M1 16 V0 H6 C9.6 0 9.6 8.8 6 8.8 H1", adv: 13.2 },
+      R: { d: "M1 16 V0 H6 C9.6 0 9.6 8 6 8 H1 M5.6 8 L9.8 16", adv: 13.7 },
+      O: { d: "M5 0 C9 0 9.8 3.4 9.8 8 C9.8 12.6 9 16 5 16 C1 16 0.2 12.6 0.2 8 C0.2 3.4 1 0 5 0 Z", adv: 13.7 }
+    };
+    const WORD = ["L", "I", "B", "Y", "A", " ", "P", "R", "O"];
+    const SPACE = 7.5;
+
+    /* المربّع المصنع: مقاسه وموضعه داخل لوحة الشعار */
+    const BOX = { x: 0, y: 3, s: 26, r: 7 };
+    const WORD_Y = 8, WORD_H = 16, GAP_TO_BOX = 13;
+
+    document.querySelectorAll(".logo-word").forEach(host => {
+      /* مواضع الحروف: الكلمة على يسار المربّع */
+      const slots = []; let x = 0;
+      for (const ch of WORD) {
+        if (ch === " ") { x += SPACE; continue; }
+        slots.push({ ch, x });
+        x += GLYPH[ch].adv;
+      }
+      const wordW = x;
+      BOX.x = wordW + GAP_TO_BOX;
+      const VB_W = BOX.x + BOX.s + 1, VB_H = 32;
+
+      const svg = document.createElementNS(NS, "svg");
+      svg.setAttribute("viewBox", `0 0 ${VB_W} ${VB_H}`);
+      svg.setAttribute("width", VB_W); svg.setAttribute("height", VB_H);
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label", "LIBYA PRO");
+
+      const frame = document.createElementNS(NS, "rect");
+      frame.setAttribute("class", "lg-frame");
+      frame.setAttribute("x", BOX.x); frame.setAttribute("y", BOX.y);
+      frame.setAttribute("width", BOX.s); frame.setAttribute("height", BOX.s);
+      frame.setAttribute("rx", BOX.r);
+      const lit = frame.cloneNode(); lit.setAttribute("class", "lg-lit");
+      svg.append(frame, lit);
+
+      /* حرف لكل موضع: يبدأ داخل المربّع ثم ينتقل إلى مكانه */
+      const letters = slots.map(sl => {
+        const p = document.createElementNS(NS, "path");
+        p.setAttribute("class", "lg-glyph");
+        p.setAttribute("d", GLYPH[sl.ch].d);
+        svg.appendChild(p);
+        return { el: p, sl, len: 0 };
+      });
+      host.innerHTML = "";
+      host.appendChild(svg);
+
+      /* مقاس الحرف داخل المربّع وخارجه */
+      const IN = { s: (BOX.s - 9) / WORD_H, cx: BOX.x + BOX.s / 2, cy: BOX.y + BOX.s / 2 };
+      const place = (l, t) => {
+        /* t=0 داخل المربّع، t=1 في مكانه من الكلمة */
+        const s = IN.s + (1 - IN.s) * t;
+        const x0 = IN.cx - 5 * IN.s, y0 = IN.cy - WORD_H * IN.s / 2;
+        const x1 = l.sl.x, y1 = WORD_Y;
+        const x = x0 + (x1 - x0) * t, y = y0 + (y1 - y0) * t;
+        l.el.setAttribute("transform", `translate(${x.toFixed(2)} ${y.toFixed(2)}) scale(${s.toFixed(3)})`);
+      };
+
+      for (const l of letters) {
+        l.len = Math.ceil(l.el.getTotalLength()) + 1;
+        l.el.style.strokeDasharray = l.len;
+        l.el.style.strokeDashoffset = 0;
+        place(l, 1);
+        l.el.style.opacity = 1;
+      }
+      if (STILL) return;            /* بلا حركة: الكلمة كاملة ساكنة */
+
+      /* خط زمني: رسم داخل المربّع ← خروج إلى المكان ← ثبات ← اختفاء */
+      const DRAW = 360, EJECT = 240, PAUSE = 70;
+      const STEP = DRAW + EJECT + PAUSE;
+      const BUILD = STEP * letters.length;
+      const HOLD = 1700, FADE = 420, REST = 360;
+      const CYCLE = BUILD + HOLD + FADE + REST;
+      const ease = t => 1 - Math.pow(1 - t, 3);
+
+      let t0 = 0, raf = 0, alive = true;
+      function tick(now) {
+        raf = requestAnimationFrame(tick);
+        if (!alive) { t0 = now; return; }
+        if (!t0) t0 = now;
+        const t = (now - t0) % CYCLE;
+
+        letters.forEach((l, i) => {
+          const start = i * STEP;
+          if (t < start) {                                  /* لم يُصنع بعد */
+            l.el.style.opacity = 0; l.el.style.strokeDashoffset = l.len; place(l, 0);
+          } else if (t < start + DRAW) {                    /* يُرسم داخل المربّع */
+            const k = (t - start) / DRAW;
+            l.el.style.opacity = 1;
+            l.el.style.strokeDashoffset = (l.len * (1 - k)).toFixed(2);
+            place(l, 0);
+          } else if (t < start + DRAW + EJECT) {            /* يخرج إلى مكانه */
+            const k = ease((t - start - DRAW) / EJECT);
+            l.el.style.opacity = 1; l.el.style.strokeDashoffset = 0;
+            place(l, k);
+          } else if (t < BUILD + HOLD) {                    /* ثابت في الكلمة */
+            l.el.style.opacity = 1; l.el.style.strokeDashoffset = 0; place(l, 1);
+          } else if (t < BUILD + HOLD + FADE) {             /* تختفي الكلمة */
+            l.el.style.opacity = (1 - (t - BUILD - HOLD) / FADE).toFixed(3);
+          } else {                                          /* راحة قبل دورة جديدة */
+            l.el.style.opacity = 0;
+          }
+        });
+      }
+      raf = requestAnimationFrame(tick);
+      document.addEventListener("visibilitychange", () => { alive = !document.hidden; });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(es => { alive = es[0].isIntersecting; }, { threshold: 0 }).observe(host);
+      }
+    });
+  })();
+
   markReveals();
 })();
