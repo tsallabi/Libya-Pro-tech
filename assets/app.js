@@ -87,6 +87,7 @@
 
     $("#work-index").innerHTML = rest.map(row).join("");
     $("#index-head").hidden = rest.length === 0;
+    if (typeof markReveals === "function") markReveals($("#work"));
   }
 
   $("#filters").addEventListener("click", e => {
@@ -177,4 +178,151 @@
       encodeURIComponent("طلب مشروع جديد من الموقع\n\n" + lines.join("\n"));
     window.open(url, "_blank", "noopener");
   });
+
+  /* ═══════════════════════════════════════════════════════
+     طبقة الحركة — تُشغَّل فقط إذا لم يطلب المستخدم تقليل الحركة
+     ═══════════════════════════════════════════════════════ */
+  const STILL = document.documentElement.classList.contains("still");
+
+  /* خط تقدّم القراءة */
+  const line = $("#scroll-line");
+  const nav  = $(".nav");
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      if (line) line.style.transform = `scaleX(${p})`;
+      if (nav) nav.classList.toggle("is-stuck", window.scrollY > 24);
+      ticking = false;
+    });
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* كشف العناصر عند دخولها الشاشة */
+  const REVEAL = ".sec-head, .list li, .work-item, .index li, .grid3 > div, .sector-card, .proof-in div, .form label, .form .full, .footer-grid > div";
+  let io = null;
+  function markReveals(scope = document) {
+    if (STILL || !("IntersectionObserver" in window)) return;
+    if (!io) {
+      io = new IntersectionObserver(es => {
+        es.forEach(e => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    }
+    $$(REVEAL, scope).forEach((el, i) => {
+      if (el.classList.contains("reveal")) return;
+      el.classList.add("reveal");
+      el.style.setProperty("--d", (i % 6) * 70 + "ms");
+      /* ما هو ظاهر أصلاً في أول شاشة يُكشف فوراً، بلا انتظار تمرير */
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        requestAnimationFrame(() => el.classList.add("in"));
+      } else {
+        io.observe(el);
+      }
+    });
+  }
+
+  /* عدّادات شريط الإثبات */
+  function countUp(el) {
+    const raw = el.textContent.trim();
+    const m = raw.match(/^(\d+)(\D*)$/);
+    if (!m) return;
+    const target = +m[1], suffix = m[2];
+    const dur = 1100, t0 = performance.now();
+    function step(now) {
+      const k = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (!STILL && "IntersectionObserver" in window) {
+    const pio = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (!e.isIntersecting) return;
+        $$("bdi", e.target).forEach(countUp);
+        pio.unobserve(e.target);
+      });
+    }, { threshold: 0.4 });
+    const proof = $(".proof-in");
+    if (proof) pio.observe(proof);
+  }
+
+  /* التوقيع البصري: شبكة هندسية يمسحها شعاع ذهبي بطيء */
+  (function lattice() {
+    const cv = $("#lattice"), hero = $("#hero");
+    if (!cv || !hero || STILL) return;
+    const ctx = cv.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    const GAP = 46;
+    let dots = [], w = 0, h = 0, dpr = 1, raf = 0, visible = true;
+
+    function build() {
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      w = hero.clientWidth; h = hero.clientHeight;
+      cv.width = w * dpr; cv.height = h * dpr;
+      cv.style.width = w + "px"; cv.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      dots = [];
+      for (let y = GAP / 2; y < h; y += GAP)
+        for (let x = GAP / 2; x < w; x += GAP)
+          dots.push({ x, y });
+    }
+
+    /* الشعاع يعبر الشاشة قطرياً كل 9 ثوانٍ */
+    const PERIOD = 6500, BAND = 240;
+    function draw(now) {
+      raf = requestAnimationFrame(draw);
+      if (!visible) return;
+      ctx.clearRect(0, 0, w, h);
+      const span = w + h;
+      const head = ((now % PERIOD) / PERIOD) * (span + BAND * 2) - BAND;
+      for (const d of dots) {
+        const dist = Math.abs(d.x + d.y - head);
+        if (dist > BAND) {
+          ctx.fillStyle = "rgba(255,255,255,.085)";
+          ctx.fillRect(d.x, d.y, 1.4, 1.4);
+        } else {
+          const k = 1 - dist / BAND;              /* 0..1 */
+          const a = 0.085 + k * 0.55;
+          ctx.fillStyle = `rgba(200,169,81,${a})`;
+          const s = 1.4 + k * 1.9;
+          ctx.fillRect(d.x - (s - 1.4) / 2, d.y - (s - 1.4) / 2, s, s);
+          if (k > 0.6) {
+            ctx.strokeStyle = `rgba(200,169,81,${(k - 0.6) * 0.55})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(d.x, d.y);
+            ctx.lineTo(d.x + GAP, d.y);
+            ctx.moveTo(d.x, d.y);
+            ctx.lineTo(d.x, d.y + GAP);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    build();
+    raf = requestAnimationFrame(draw);
+
+    /* يتوقف تماماً حين يغادر البطل الشاشة أو يُخفى التبويب */
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0 }).observe(hero);
+    }
+    document.addEventListener("visibilitychange", () => { visible = !document.hidden; });
+
+    let rt;
+    addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(build, 200); }, { passive: true });
+  })();
+
+  markReveals();
 })();
