@@ -289,16 +289,16 @@
       for (const d of dots) {
         const dist = Math.abs(d.x + d.y - head);
         if (dist > BAND) {
-          ctx.fillStyle = "rgba(255,255,255,.085)";
+          ctx.fillStyle = "rgba(11,11,12,.10)";
           ctx.fillRect(d.x, d.y, 1.4, 1.4);
         } else {
           const k = 1 - dist / BAND;              /* 0..1 */
-          const a = 0.085 + k * 0.55;
-          ctx.fillStyle = `rgba(200,169,81,${a})`;
+          const a = 0.10 + k * 0.62;
+          ctx.fillStyle = `rgba(11,11,12,${a})`;
           const s = 1.4 + k * 1.9;
           ctx.fillRect(d.x - (s - 1.4) / 2, d.y - (s - 1.4) / 2, s, s);
           if (k > 0.6) {
-            ctx.strokeStyle = `rgba(200,169,81,${(k - 0.6) * 0.55})`;
+            ctx.strokeStyle = `rgba(11,11,12,${(k - 0.6) * 0.42})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(d.x, d.y);
