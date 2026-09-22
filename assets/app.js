@@ -291,159 +291,78 @@
     if (proof) pio.observe(proof);
   }
 
-  /* التوقيع البصري: شبكة مربّعات ثابتة تعبرها موجة — ما تلمسه يتموّج ويومض ثم يعود مربّعات */
-  (function squareWave() {
+  /* التوقيع البصري: شبكة هندسية يمسحها شعاع ذهبي بطيء */
+  (function lattice() {
     const cv = $("#lattice"), hero = $("#hero");
     if (!cv || !hero) return;
     const ctx = cv.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    const GAP = 46;          /* ضلع المربّع */
-    const PERIOD = 7600;     /* زمن عبور الموجة الواحدة */
-    const BAND = 300;        /* عرض جبهة الموجة */
-    const AMP = 7.5;         /* أقصى تموّج داخل الموجة */
-    const WAVES = 2;         /* موجتان متعاقبتان فلا تخلو الشاشة أبداً */
-
-    let cols = 0, rows = 0, pts = [], w = 0, h = 0, dpr = 1, raf = 0, visible = true;
+    const GAP = 46;
+    let dots = [], w = 0, h = 0, dpr = 1, raf = 0, visible = true;
 
     function build() {
       dpr = Math.min(2, window.devicePixelRatio || 1);
       w = hero.clientWidth; h = hero.clientHeight;
-      if (!w || !h) return;
       cv.width = w * dpr; cv.height = h * dpr;
       cv.style.width = w + "px"; cv.style.height = h + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      cols = Math.ceil(w / GAP) + 2;
-      rows = Math.ceil(h / GAP) + 2;
-      pts = new Array(cols * rows);
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const bx = c * GAP - GAP * 0.5, by = r * GAP - GAP * 0.5;
-          pts[r * cols + c] = { bx, by, x: bx, y: by, k: 0 };
-        }
-      }
+      dots = [];
+      for (let y = GAP / 2; y < h; y += GAP)
+        for (let x = GAP / 2; x < w; x += GAP)
+          dots.push({ x, y });
     }
 
-    /* شدّة الموجة عند قطر النقطة: 0 خارجها، وتتصاعد نحو مركز الجبهة */
-    function intensity(sum, now) {
-      const span = w + h;
-      let k = 0;
-      for (let i = 0; i < WAVES; i++) {
-        const t = ((now / PERIOD) + i / WAVES) % 1;
-        const head = t * (span + BAND * 2) - BAND;
-        const d = Math.abs(sum - head);
-        if (d < BAND) {
-          const u = 1 - d / BAND;
-          k = Math.max(k, u * u * (3 - 2 * u));   /* منحنى ناعم بلا حواف حادة */
-        }
-      }
-      return k;
-    }
-
-    function paint(now) {
-      ctx.clearRect(0, 0, w, h);
-
-      /* 1) تموّج النقاط: تنزاح عمودياً على اتجاه الموجة، فتلتوي أضلاع المربّعات */
-      for (let i = 0; i < pts.length; i++) {
-        const p = pts[i], sum = p.bx + p.by;
-        const k = intensity(sum, now);
-        p.k = k;
-        if (k > 0.001) {
-          const off = Math.sin(sum / 34 - now / 420) * AMP * k;
-          p.x = p.bx + off * 0.7071;
-          p.y = p.by - off * 0.7071;
-        } else { p.x = p.bx; p.y = p.by; }
-      }
-
-      /* 2) أضلاع المربّعات: الشبكة باقية دائماً، وتشتدّ حيث تمرّ الموجة */
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = "rgba(11,11,12,.065)";
-      ctx.beginPath();
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const p = pts[r * cols + c];
-          if (c + 1 < cols) {
-            const q = pts[r * cols + c + 1];
-            if ((p.k + q.k) * 0.5 <= 0.04) { ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); }
-          }
-          if (r + 1 < rows) {
-            const q = pts[(r + 1) * cols + c];
-            if ((p.k + q.k) * 0.5 <= 0.04) { ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); }
-          }
-        }
-      }
-      ctx.stroke();                               /* كل الأضلاع الهادئة بأمر رسم واحد */
-
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const p = pts[r * cols + c];
-          if (c + 1 < cols) {
-            const q = pts[r * cols + c + 1], k = (p.k + q.k) * 0.5;
-            if (k > 0.04) {
-              ctx.strokeStyle = "rgba(11,11,12," + (0.065 + k * 0.28).toFixed(3) + ")";
-              ctx.lineWidth = 1 + k * 0.35;
-              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
-            }
-          }
-          if (r + 1 < rows) {
-            const q = pts[(r + 1) * cols + c], k = (p.k + q.k) * 0.5;
-            if (k > 0.04) {
-              ctx.strokeStyle = "rgba(11,11,12," + (0.065 + k * 0.28).toFixed(3) + ")";
-              ctx.lineWidth = 1 + k * 0.35;
-              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
-            }
-          }
-        }
-      }
-
-      /* 3) عُقد الشبكة الهادئة: مربّعات صغيرة بأمر تعبئة واحد */
-      ctx.fillStyle = "rgba(11,11,12,.13)";
-      ctx.beginPath();
-      for (let i = 0; i < pts.length; i++) {
-        const p = pts[i];
-        if (p.k > 0.04) continue;
-        ctx.rect(p.x - 0.7, p.y - 0.7, 1.4, 1.4);
-      }
-      ctx.fill();
-
-      /* 4) العُقد داخل الموجة: ومضة بهالة تتبع نبض التموّج */
-      for (let i = 0; i < pts.length; i++) {
-        const p = pts[i], k = p.k;
-        if (k <= 0.04) continue;
-        const pulse = 0.55 + 0.45 * Math.sin((p.bx + p.by) / 34 - now / 420);
-        const g = k * (0.5 + 0.5 * pulse);
-        if (g > 0.25) {
-          ctx.fillStyle = "rgba(11,11,12," + (g * 0.055).toFixed(3) + ")";
-          ctx.beginPath(); ctx.arc(p.x, p.y, 3 + g * 6, 0, 6.2832); ctx.fill();
-        }
-        const s = 1.4 + g * 2.1;
-        ctx.fillStyle = "rgba(11,11,12," + (0.13 + g * 0.50).toFixed(3) + ")";
-        ctx.fillRect(p.x - s / 2, p.y - s / 2, s, s);
-      }
-    }
-
-    function frame(now) {
-      raf = requestAnimationFrame(frame);
+    /* الشعاع يعبر الشاشة قطرياً كل 9 ثوانٍ */
+    const PERIOD = 6500, BAND = 240;
+    function draw(now) {
+      raf = requestAnimationFrame(draw);
       if (!visible) return;
-      paint(now);
+      ctx.clearRect(0, 0, w, h);
+      const span = w + h;
+      const head = ((now % PERIOD) / PERIOD) * (span + BAND * 2) - BAND;
+      for (const d of dots) {
+        const dist = Math.abs(d.x + d.y - head);
+        if (dist > BAND) {
+          ctx.fillStyle = "rgba(11,11,12,.10)";
+          ctx.fillRect(d.x, d.y, 1.4, 1.4);
+        } else {
+          const k = 1 - dist / BAND;              /* 0..1 */
+          const a = 0.10 + k * 0.62;
+          ctx.fillStyle = `rgba(11,11,12,${a})`;
+          const s = 1.4 + k * 1.9;
+          ctx.fillRect(d.x - (s - 1.4) / 2, d.y - (s - 1.4) / 2, s, s);
+          if (k > 0.6) {
+            ctx.strokeStyle = `rgba(11,11,12,${(k - 0.6) * 0.42})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(d.x, d.y);
+            ctx.lineTo(d.x + GAP, d.y);
+            ctx.moveTo(d.x, d.y);
+            ctx.lineTo(d.x, d.y + GAP);
+            ctx.stroke();
+          }
+        }
+      }
     }
 
     build();
-    if (STILL) { paint(0); return; }   /* بلا حركة: شبكة مربّعات ساكنة تُرسم مرة واحدة */
-    raf = requestAnimationFrame(frame);
+    /* بلا حركة: تُرسم شبكة النقاط مرة واحدة ساكنة بلا موجة */
+    if (STILL) {
+      ctx.fillStyle = "rgba(11,11,12,.10)";
+      for (const d of dots) ctx.fillRect(d.x, d.y, 1.4, 1.4);
+      return;
+    }
+    raf = requestAnimationFrame(draw);
 
-    /* تتوقف تماماً حين يغادر البطل الشاشة أو يُخفى التبويب */
+    /* يتوقف تماماً حين يغادر البطل الشاشة أو يُخفى التبويب */
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0 }).observe(hero);
     }
     document.addEventListener("visibilitychange", () => { visible = !document.hidden; });
 
     let rt;
-    addEventListener("resize", () => {
-      clearTimeout(rt);
-      rt = setTimeout(() => { build(); if (STILL) paint(0); }, 200);
-    }, { passive: true });
+    addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(build, 200); }, { passive: true });
   })();
 
   markReveals();
