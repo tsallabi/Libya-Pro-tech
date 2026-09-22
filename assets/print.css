@@ -1,0 +1,108 @@
+/* ===========================================================
+   الملف التعريفي — تنسيق طباعة A4
+   يرث ألوان وخط الموقع، ويعيد بناء التخطيط لصفحة ورقية.
+   =========================================================== */
+
+@page{ size:A4; margin:0; }
+
+html,body{margin:0;padding:0;background:#fff}
+body{
+  font-family:"Cairo",system-ui,sans-serif;
+  color:var(--ink);
+  font-size:11pt;
+  line-height:1.8;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+.page{
+  position:relative;
+  width:210mm;height:297mm;
+  padding:18mm 16mm 16mm;
+  background:var(--bg);
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+  display:flex;flex-direction:column;
+}
+.page:last-child{page-break-after:auto;break-after:auto}
+.page.white{background:#fff}
+
+/* ترويسة وتذييل الصفحة */
+.p-head{display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:1px solid var(--hair);padding-bottom:6mm;margin-bottom:8mm}
+.p-head .mk{font-weight:800;font-size:11pt;letter-spacing:.04em}
+.p-head .mk i{display:inline-block;width:7px;height:7px;background:var(--ink);border-radius:2px;margin-inline-end:6px}
+.p-head .sec-name{color:var(--mut);font-size:9pt;font-weight:600}
+.p-foot{margin-top:auto;padding-top:5mm;border-top:1px solid var(--hair);
+  display:flex;justify-content:space-between;color:var(--mut-2);font-size:8.5pt}
+
+h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.35}
+p{margin:0}
+
+/* الغلاف */
+.cover{justify-content:center;background:var(--ink);color:#fff}
+.cover .mk{font-size:13pt;font-weight:800;letter-spacing:.06em;margin-bottom:auto;display:flex;align-items:center;gap:8px}
+.cover .mk i{width:9px;height:9px;background:#fff;border-radius:2px;display:inline-block}
+.cover h1{font-size:34pt;line-height:1.3;max-width:15ch;margin-bottom:8mm}
+.cover .kicker{font-size:10pt;letter-spacing:.2em;color:rgba(255,255,255,.55);margin-bottom:6mm;font-weight:600}
+.cover .lead{font-size:12pt;color:rgba(255,255,255,.78);max-width:52ch;margin-bottom:12mm}
+.cover .meta{display:flex;gap:10mm;flex-wrap:wrap;color:rgba(255,255,255,.7);font-size:9.5pt;
+  border-top:1px solid rgba(255,255,255,.18);padding-top:6mm;margin-top:auto}
+.cover .meta b{display:block;color:#fff;font-weight:700;font-size:11pt}
+
+/* عناوين الأقسام */
+.kick{font-size:8.5pt;font-weight:700;letter-spacing:.16em;color:var(--mut-2);margin-bottom:3mm}
+.h-lg{font-size:20pt;margin-bottom:5mm;max-width:28ch}
+.lead{color:var(--mut);font-size:11pt;max-width:62ch;margin-bottom:8mm}
+
+/* أرقام */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:10px;overflow:hidden;margin-bottom:8mm}
+.nums div{background:#fff;padding:5mm 4mm}
+.nums b{display:block;font-size:19pt;font-weight:800;line-height:1.1}
+.nums span{color:var(--mut);font-size:8.5pt}
+
+/* بطاقات */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.cards.three{grid-template-columns:repeat(3,1fr)}
+.card{background:#fff;border:1px solid var(--hair);border-radius:10px;padding:5mm}
+.page.white .card{background:var(--bg)}
+.card h3{font-size:11.5pt;margin-bottom:2mm}
+.card p{color:var(--mut);font-size:9.5pt;line-height:1.7}
+
+/* قوائم مرقّمة */
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:grid;grid-template-columns:12mm 1fr;gap:4mm;padding:4mm 0;border-bottom:1px solid var(--hair)}
+.steps li:first-child{border-top:1px solid var(--hair)}
+.steps .n{font-weight:700;color:var(--mut-2);font-size:9.5pt}
+.steps h3{font-size:11pt;margin-bottom:1mm}
+.steps p{color:var(--mut);font-size:9.5pt;line-height:1.7}
+
+/* أعمال */
+.works{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.work{break-inside:avoid}
+.work .shot{border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:#fff;padding:2mm;
+  box-shadow:0 1px 2px rgba(16,24,40,.05),0 8px 18px -8px rgba(16,24,40,.16)}
+.work .shot img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top center;border-radius:5px;display:block}
+.work .tt{display:flex;justify-content:space-between;align-items:baseline;gap:3mm;margin-top:3mm}
+.work h3{font-size:11.5pt}
+.work .sc{font-size:7.5pt;font-weight:700;letter-spacing:.1em;color:var(--mut-2);white-space:nowrap}
+.work p{color:var(--mut);font-size:9pt;line-height:1.65;margin-top:1.5mm}
+.work .tech{margin-top:2mm;color:var(--mut-2);font-size:8pt}
+
+/* تواصل */
+.contact{background:var(--ink);color:#fff;border-radius:12px;padding:8mm;margin-top:6mm}
+.contact h2{font-size:16pt;margin-bottom:4mm}
+.contact p{color:rgba(255,255,255,.75);font-size:10.5pt;max-width:56ch;margin-bottom:6mm}
+.contact .rows{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;border-top:1px solid rgba(255,255,255,.18);padding-top:5mm}
+.contact .rows span{display:block;color:rgba(255,255,255,.55);font-size:8.5pt;margin-bottom:1mm}
+.contact .rows b{font-size:11pt;font-weight:700}
+
+.note{color:var(--mut-2);font-size:8.5pt;margin-top:5mm}
+
+/* تصحيحات الطباعة: لا تباعد حروف للنصوص اللاتينية داخل الفقرات */
+.lat{letter-spacing:normal !important}
+.p-head .mk,.cover .mk,.kicker,.kick,.work .sc,.work .tech{letter-spacing:.12em}
+.cover .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:6mm}
+.contact .rows b{white-space:nowrap}
