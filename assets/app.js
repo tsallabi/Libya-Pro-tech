@@ -18,25 +18,30 @@
 
   let projects = [], filter = "all";
 
-  $("#y").textContent = new Date().getFullYear();
+  const yEl = $("#y"); if (yEl) yEl.textContent = new Date().getFullYear();
   $$("[data-wa]").forEach(a => { a.href = `https://wa.me/${WHATSAPP}`; });
 
   /* ---------- قائمة الجوال ---------- */
   const burger = $("#burger");
-  burger.addEventListener("click", () => {
+  if (burger) burger.addEventListener("click", () => {
     const open = document.body.classList.toggle("open");
     burger.setAttribute("aria-expanded", String(open));
   });
   $$(".nav-links a").forEach(a => a.addEventListener("click", () => {
     document.body.classList.remove("open");
-    burger.setAttribute("aria-expanded", "false");
+    if (burger) burger.setAttribute("aria-expanded", "false");
   }));
 
   /* ---------- شبكة الأعمال ---------- */
-  fetch("data/projects.json")
+  const grid = $("#work-grid");
+  const ONLY = grid ? grid.dataset.only || "" : "";   /* صفحة قطاعية: قطاع واحد فقط */
+  const IDS  = grid && grid.dataset.ids ? grid.dataset.ids.split(",").map(s => s.trim()) : null;
+  if (ONLY) filter = ONLY;
+
+  if (grid) fetch(grid.dataset.src || "data/projects.json")
     .then(r => r.json())
     .then(d => { projects = d; render(); })
-    .catch(() => { $("#work-grid").innerHTML = '<p class="mut">تعذّر تحميل قائمة الأنظمة.</p>'; });
+    .catch(() => { grid.innerHTML = '<p class="mut">تعذّر تحميل قائمة الأنظمة.</p>'; });
 
   function media(p) {
     {
@@ -77,20 +82,25 @@
   }
 
   function render() {
-    const list  = projects.filter(p => filter === "all" || p.sector === filter);
+    if (!grid) return;
+    const list = IDS
+      ? IDS.map(id => projects.find(p => p.id === id)).filter(Boolean)
+      : projects.filter(p => filter === "all" || p.sector === filter);
     const shots = list.filter(p => p.shot);
     const rest  = list.filter(p => !p.shot);
 
-    $("#work-grid").innerHTML = shots.length
+    grid.innerHTML = shots.length
       ? shots.map(card).join("")
       : '<p class="mut">لا توجد لقطات في هذا القطاع بعد — انظر السجل أدناه.</p>';
 
-    $("#work-index").innerHTML = rest.map(row).join("");
-    $("#index-head").hidden = rest.length === 0;
+    const idx = $("#work-index"), idxHead = $("#index-head");
+    if (idx) idx.innerHTML = rest.map(row).join("");
+    if (idxHead) idxHead.hidden = rest.length === 0;
     if (typeof markReveals === "function") markReveals($("#work"));
   }
 
-  $("#filters").addEventListener("click", e => {
+  const filterBar = $("#filters");
+  if (filterBar) filterBar.addEventListener("click", e => {
     const b = e.target.closest("button");
     if (!b) return;
     filter = b.dataset.f;
@@ -115,6 +125,7 @@
   });
 
   function openDemo(p, trigger) {
+    if (!modal) return;
     lastFocus = trigger || null;
     $("#m-title").textContent = p.name;
     $("#m-sector").textContent = SECTORS[p.sector] || "";
@@ -146,20 +157,22 @@
     }
     modal.hidden = false;
     document.documentElement.style.overflow = "hidden";
-    $("#m-close").focus();
+    if (closeBtn) closeBtn.focus();
   }
 
   function closeDemo() {
+    if (!modal) return;
     modal.hidden = true;
     frame.removeAttribute("src");
-    $("#m-gallery").innerHTML = "";
+    const g = $("#m-gallery"); if (g) g.innerHTML = "";
     document.documentElement.style.overflow = "";
     if (lastFocus) lastFocus.focus();
   }
 
-  $("#m-close").addEventListener("click", closeDemo);
-  $("#m-request").addEventListener("click", closeDemo);
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeDemo(); });
+  const closeBtn = $("#m-close"), reqBtn = $("#m-request");
+  if (closeBtn) closeBtn.addEventListener("click", closeDemo);
+  if (reqBtn) reqBtn.addEventListener("click", closeDemo);
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && modal && !modal.hidden) closeDemo(); });
 
   $$("[data-view]").forEach(b => b.addEventListener("click", () => {
     body.className = "modal-body view-" + b.dataset.view;
@@ -167,10 +180,11 @@
   }));
 
   /* ---------- النموذج ---------- */
-  $("#quote").addEventListener("submit", e => {
+  const quote = $("#quote");
+  if (quote) quote.addEventListener("submit", e => {
     e.preventDefault();
     const f = new FormData(e.target);
-    const LABEL = { name:"الاسم", phone:"الهاتف", company:"الجهة", email:"البريد",
+    const LABEL = { sector:"القطاع", name:"الاسم", phone:"الهاتف", company:"الجهة", email:"البريد",
                     type:"نوع النظام", timeline:"الإطار الزمني", details:"الوصف" };
     const lines = [...f.entries()].filter(([, v]) => String(v).trim())
       .map(([k, v]) => `${LABEL[k] || k}: ${v}`);
@@ -196,24 +210,44 @@
       const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
       if (line) line.style.transform = `scaleX(${p})`;
       if (nav) nav.classList.toggle("is-stuck", window.scrollY > 24);
+      if (typeof sweep === "function") sweep();
       ticking = false;
     });
   }
   addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll, { passive: true });
+  /* مسحة أخيرة بعد توقّف التمرير: الحلقة المخنوقة قد تفوّت آخر إطار */
+  let settle;
+  addEventListener("scroll", () => {
+    clearTimeout(settle);
+    settle = setTimeout(() => { if (typeof sweep === "function") sweep(); }, 140);
+  }, { passive: true });
   onScroll();
 
   /* كشف العناصر عند دخولها الشاشة */
   const REVEAL = ".sec-head, .list li, .work-item, .index li, .grid3 > div, .sector-card, .proof-in div, .form label, .form .full, .footer-grid > div";
+  const pending = new Set();   /* عناصر تنتظر الكشف */
   let io = null;
+
+  function show(el) {
+    el.classList.add("in");
+    pending.delete(el);
+    if (io) io.unobserve(el);
+  }
+
+  /* شبكة أمان: أي عنصر بلغ أسفل الشاشة يُكشف، حتى لو تجاوزه تمرير سريع
+     ولم يُبلِّغ عنه المراقب. بدونها يبقى محتوى مخفياً على من يمرّر بسرعة. */
+  function sweep() {
+    if (!pending.size) return;
+    const limit = window.innerHeight * 0.98;
+    pending.forEach(el => { if (el.getBoundingClientRect().top < limit) show(el); });
+  }
+
   function markReveals(scope = document) {
     if (STILL || !("IntersectionObserver" in window)) return;
     if (!io) {
       io = new IntersectionObserver(es => {
-        es.forEach(e => {
-          if (!e.isIntersecting) return;
-          e.target.classList.add("in");
-          io.unobserve(e.target);
-        });
+        es.forEach(e => { if (e.isIntersecting) show(e.target); });
       }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     }
     $$(REVEAL, scope).forEach((el, i) => {
@@ -222,8 +256,9 @@
       el.style.setProperty("--d", (i % 6) * 70 + "ms");
       /* ما هو ظاهر أصلاً في أول شاشة يُكشف فوراً، بلا انتظار تمرير */
       if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
-        requestAnimationFrame(() => el.classList.add("in"));
+        requestAnimationFrame(() => show(el));
       } else {
+        pending.add(el);
         io.observe(el);
       }
     });
