@@ -291,23 +291,20 @@
     if (proof) pio.observe(proof);
   }
 
-  /* التوقيع البصري: شبكة عصبية ثابتة تعبرها موجة — ما تلمسه يتموّج ويومض ثم يعود شبكة */
-  (function neuralWave() {
+  /* التوقيع البصري: شبكة مربّعات ثابتة تعبرها موجة — ما تلمسه يتموّج ويومض ثم يعود مربّعات */
+  (function squareWave() {
     const cv = $("#lattice"), hero = $("#hero");
     if (!cv || !hero) return;
     const ctx = cv.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    const GAP = 92;          /* المسافة بين العقد قبل الإزاحة */
-    const JIT = 26;          /* إزاحة عشوائية حتى لا تبدو الشبكة مسطرة */
-    const LINK = 3;          /* أقصى عدد وصلات لكل عقدة */
-    const MAXD = 158;        /* أقصى طول وصلة */
+    const GAP = 46;          /* ضلع المربّع */
     const PERIOD = 7600;     /* زمن عبور الموجة الواحدة */
     const BAND = 300;        /* عرض جبهة الموجة */
-    const AMP = 13;          /* أقصى تموّج للعقدة داخل الموجة */
+    const AMP = 7.5;         /* أقصى تموّج داخل الموجة */
     const WAVES = 2;         /* موجتان متعاقبتان فلا تخلو الشاشة أبداً */
 
-    let nodes = [], edges = [], w = 0, h = 0, dpr = 1, raf = 0, visible = true;
+    let cols = 0, rows = 0, pts = [], w = 0, h = 0, dpr = 1, raf = 0, visible = true;
 
     function build() {
       dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -317,34 +314,18 @@
       cv.style.width = w + "px"; cv.style.height = h + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      nodes = []; edges = [];
-      for (let y = GAP * 0.5; y < h + GAP * 0.5; y += GAP) {
-        for (let x = GAP * 0.5; x < w + GAP * 0.5; x += GAP) {
-          const bx = x + (Math.random() * 2 - 1) * JIT;
-          const by = y + (Math.random() * 2 - 1) * JIT;
-          nodes.push({ bx, by, x: bx, y: by, k: 0, ph: Math.random() * 6.2832 });
-        }
-      }
-
-      const seen = new Set();
-      for (let i = 0; i < nodes.length; i++) {
-        const a = nodes[i], near = [];
-        for (let j = 0; j < nodes.length; j++) {
-          if (i === j) continue;
-          const b = nodes[j], d = Math.hypot(b.bx - a.bx, b.by - a.by);
-          if (d < MAXD) near.push({ j, d });
-        }
-        near.sort((p, q) => p.d - q.d);
-        for (const n of near.slice(0, LINK)) {
-          const key = i < n.j ? i + ":" + n.j : n.j + ":" + i;
-          if (seen.has(key)) continue;
-          seen.add(key);
-          edges.push({ a: i, b: n.j });
+      cols = Math.ceil(w / GAP) + 2;
+      rows = Math.ceil(h / GAP) + 2;
+      pts = new Array(cols * rows);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const bx = c * GAP - GAP * 0.5, by = r * GAP - GAP * 0.5;
+          pts[r * cols + c] = { bx, by, x: bx, y: by, k: 0 };
         }
       }
     }
 
-    /* شدّة الموجة عند نقطة: 0 خارجها، وتتصاعد نحو مركز الجبهة */
+    /* شدّة الموجة عند قطر النقطة: 0 خارجها، وتتصاعد نحو مركز الجبهة */
     function intensity(sum, now) {
       const span = w + h;
       let k = 0;
@@ -363,56 +344,82 @@
     function paint(now) {
       ctx.clearRect(0, 0, w, h);
 
-      /* 1) تموّج العقد: تنزاح عمودياً على اتجاه الموجة بقدر شدّتها */
-      for (const n of nodes) {
-        const k = intensity(n.bx + n.by, now);
-        n.k = k;
+      /* 1) تموّج النقاط: تنزاح عمودياً على اتجاه الموجة، فتلتوي أضلاع المربّعات */
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i], sum = p.bx + p.by;
+        const k = intensity(sum, now);
+        p.k = k;
         if (k > 0.001) {
-          const ph = (n.bx + n.by) / 46 - now / 420 + n.ph;
-          const off = Math.sin(ph) * AMP * k;
-          n.x = n.bx + off * 0.7071;            /* عمودي على محور المسح */
-          n.y = n.by - off * 0.7071;
-        } else { n.x = n.bx; n.y = n.by; }
+          const off = Math.sin(sum / 34 - now / 420) * AMP * k;
+          p.x = p.bx + off * 0.7071;
+          p.y = p.by - off * 0.7071;
+        } else { p.x = p.bx; p.y = p.by; }
       }
 
-      /* 2) الوصلات: الشبكة باقية دائماً، وتشتدّ حيث تمرّ الموجة */
+      /* 2) أضلاع المربّعات: الشبكة باقية دائماً، وتشتدّ حيث تمرّ الموجة */
       ctx.lineWidth = 1;
-      ctx.strokeStyle = "rgba(11,11,12,.07)";
+      ctx.strokeStyle = "rgba(11,11,12,.065)";
       ctx.beginPath();
-      for (const e of edges) {
-        const a = nodes[e.a], b = nodes[e.b];
-        if ((a.k + b.k) * 0.5 > 0.04) continue;
-        ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const p = pts[r * cols + c];
+          if (c + 1 < cols) {
+            const q = pts[r * cols + c + 1];
+            if ((p.k + q.k) * 0.5 <= 0.04) { ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); }
+          }
+          if (r + 1 < rows) {
+            const q = pts[(r + 1) * cols + c];
+            if ((p.k + q.k) * 0.5 <= 0.04) { ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); }
+          }
+        }
       }
-      ctx.stroke();                              /* كل الوصلات الهادئة بأمر واحد */
-      for (const e of edges) {
-        const a = nodes[e.a], b = nodes[e.b], k = (a.k + b.k) * 0.5;
-        if (k <= 0.04) continue;
-        ctx.strokeStyle = "rgba(11,11,12," + (0.07 + k * 0.42).toFixed(3) + ")";
-        ctx.lineWidth = 1 + k * 0.5;
-        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      ctx.stroke();                               /* كل الأضلاع الهادئة بأمر رسم واحد */
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const p = pts[r * cols + c];
+          if (c + 1 < cols) {
+            const q = pts[r * cols + c + 1], k = (p.k + q.k) * 0.5;
+            if (k > 0.04) {
+              ctx.strokeStyle = "rgba(11,11,12," + (0.065 + k * 0.28).toFixed(3) + ")";
+              ctx.lineWidth = 1 + k * 0.35;
+              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+            }
+          }
+          if (r + 1 < rows) {
+            const q = pts[(r + 1) * cols + c], k = (p.k + q.k) * 0.5;
+            if (k > 0.04) {
+              ctx.strokeStyle = "rgba(11,11,12," + (0.065 + k * 0.28).toFixed(3) + ")";
+              ctx.lineWidth = 1 + k * 0.35;
+              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+            }
+          }
+        }
       }
 
-      /* 3) العقد الهادئة: مسار واحد وتعبئة واحدة */
-      ctx.fillStyle = "rgba(11,11,12,.14)";
+      /* 3) عُقد الشبكة الهادئة: مربّعات صغيرة بأمر تعبئة واحد */
+      ctx.fillStyle = "rgba(11,11,12,.13)";
       ctx.beginPath();
-      for (const n of nodes) {
-        if (n.k > 0.04) continue;
-        ctx.moveTo(n.x + 1.5, n.y);
-        ctx.arc(n.x, n.y, 1.5, 0, 6.2832);
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        if (p.k > 0.04) continue;
+        ctx.rect(p.x - 0.7, p.y - 0.7, 1.4, 1.4);
       }
       ctx.fill();
 
-      /* 4) العقد داخل الموجة: ومضة بهالة تتبع نبض التموّج */
-      for (const n of nodes) {
-        const k = n.k;
+      /* 4) العُقد داخل الموجة: ومضة بهالة تتبع نبض التموّج */
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i], k = p.k;
         if (k <= 0.04) continue;
-        const pulse = 0.55 + 0.45 * Math.sin((n.bx + n.by) / 46 - now / 420 + n.ph);
-        const g = k * (0.55 + 0.45 * pulse);
-        ctx.fillStyle = "rgba(11,11,12," + (g * 0.10).toFixed(3) + ")";
-        ctx.beginPath(); ctx.arc(n.x, n.y, 4 + g * 9, 0, 6.2832); ctx.fill();
-        ctx.fillStyle = "rgba(11,11,12," + (0.14 + g * 0.66).toFixed(3) + ")";
-        ctx.beginPath(); ctx.arc(n.x, n.y, 1.5 + g * 1.7, 0, 6.2832); ctx.fill();
+        const pulse = 0.55 + 0.45 * Math.sin((p.bx + p.by) / 34 - now / 420);
+        const g = k * (0.5 + 0.5 * pulse);
+        if (g > 0.25) {
+          ctx.fillStyle = "rgba(11,11,12," + (g * 0.055).toFixed(3) + ")";
+          ctx.beginPath(); ctx.arc(p.x, p.y, 3 + g * 6, 0, 6.2832); ctx.fill();
+        }
+        const s = 1.4 + g * 2.1;
+        ctx.fillStyle = "rgba(11,11,12," + (0.13 + g * 0.50).toFixed(3) + ")";
+        ctx.fillRect(p.x - s / 2, p.y - s / 2, s, s);
       }
     }
 
@@ -423,7 +430,7 @@
     }
 
     build();
-    if (STILL) { paint(0); return; }   /* بلا حركة: شبكة ساكنة تُرسم مرة واحدة */
+    if (STILL) { paint(0); return; }   /* بلا حركة: شبكة مربّعات ساكنة تُرسم مرة واحدة */
     raf = requestAnimationFrame(frame);
 
     /* تتوقف تماماً حين يغادر البطل الشاشة أو يُخفى التبويب */
