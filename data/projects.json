@@ -239,9 +239,10 @@
     "repo": "tsallabi/MACCHINAA-NEW-ERA",
     "demo": "",
     "latin": "MACCHINAA",
-    "shot": "assets/shots/macchinaa-listings.webp",
-    "shotAlt": "متصفّح المخزون: 48 نتيجة بفلاتر المزاد ونوع العنوان والعداد وبطاقات موسومة بمصدرها",
+    "shot": "assets/shots/macchinaa-light.webp",
+    "shotAlt": "تصفح السيارات بالوضع الفاتح في منصة ماكينا — بطاقات مزادات Copart وIAAI",
     "gallery": [
+      "assets/shots/macchinaa-listings.webp",
       {
         "src": "assets/shots/macchinaa-home.webp",
         "alt": "الصفحة الرئيسية",
