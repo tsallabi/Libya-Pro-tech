@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://libya-pro-tech.pages.dev/sitemap.xml
+Sitemap: https://libyaprotech.com/sitemap.xml
