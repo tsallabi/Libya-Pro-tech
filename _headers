@@ -28,6 +28,19 @@
 /assets/print.css
   Cache-Control: public, max-age=0, must-revalidate
 
+/assets/track.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/admin.js
+  Cache-Control: no-store
+
+/assets/admin.css
+  Cache-Control: no-store
+
+/admin*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+
 /assets/*
   Cache-Control: public, max-age=86400
 

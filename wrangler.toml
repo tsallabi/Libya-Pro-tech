@@ -1,0 +1,9 @@
+# إعداد Cloudflare Pages — موقع ثابت + دوال (functions/) + قاعدة D1 للتحليلات
+name = "libya-pro-tech"
+pages_build_output_dir = "."
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "libyapro-analytics"
+database_id = "923c91b6-c005-41c4-a11d-ee6aa89a93cb"

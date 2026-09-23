@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>لوحة التحكم — ليبيا برو للتقنية</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css?v=202609231745">
+<link rel="stylesheet" href="/assets/admin.css?v=202609231745">
+</head>
+<body class="adm">
+
+<!-- تسجيل الدخول -->
+<section id="login" class="adm-login" hidden>
+  <form id="login-form" class="adm-card adm-login-card">
+    <div class="adm-brand"><span class="adm-mark"></span> لوحة التحكم</div>
+    <p class="mut">ليبيا برو للتقنية — إحصاءات الموقع والعملاء المحتملون</p>
+    <label>كلمة المرور<input name="password" type="password" required autocomplete="current-password" dir="ltr"></label>
+    <button class="btn btn-gold" type="submit">دخول</button>
+    <p class="adm-err" id="login-err" hidden>كلمة المرور غير صحيحة.</p>
+  </form>
+</section>
+
+<!-- اللوحة -->
+<div id="app" class="adm-app" hidden>
+  <aside class="adm-side">
+    <div class="adm-brand"><span class="adm-mark"></span> ليبيا برو</div>
+    <nav id="tabs">
+      <button data-tab="overview" class="on">نظرة عامة</button>
+      <button data-tab="live">الآن على الموقع <b id="live-badge">0</b></button>
+      <button data-tab="visitors">الزوار</button>
+      <button data-tab="sources">المصادر والحملات</button>
+      <button data-tab="leads">العملاء المحتملون <b id="leads-badge">0</b></button>
+      <button data-tab="settings">الإعدادات</button>
+    </nav>
+    <button id="logout" class="adm-ghost">خروج</button>
+  </aside>
+
+  <main class="adm-main">
+    <header class="adm-top">
+      <h1 id="page-title">نظرة عامة</h1>
+      <div class="adm-range">
+        <label>الفترة
+          <select id="days">
+            <option value="1">اليوم</option><option value="7" selected>٧ أيام</option>
+            <option value="30">٣٠ يوماً</option><option value="90">٩٠ يوماً</option><option value="365">سنة</option>
+          </select>
+        </label>
+        <button id="refresh" class="adm-ghost">تحديث</button>
+      </div>
+    </header>
+
+    <!-- نظرة عامة -->
+    <section data-view="overview">
+      <div class="adm-kpis" id="kpis"></div>
+      <div class="adm-card"><h2>الزوار يومياً</h2><div id="chart" class="adm-chart"></div></div>
+      <div class="adm-grid2">
+        <div class="adm-card"><h2>الصفحات الأكثر زيارة</h2><div id="t-pages"></div></div>
+        <div class="adm-card"><h2>أين ذهبوا — النقرات المهمة</h2><div id="t-clicks"></div></div>
+        <div class="adm-card"><h2>الدول</h2><div id="t-countries"></div></div>
+        <div class="adm-card"><h2>المدن</h2><div id="t-cities"></div></div>
+        <div class="adm-card"><h2>الأجهزة</h2><div id="t-devices"></div></div>
+        <div class="adm-card"><h2>أنظمة التشغيل والمتصفحات</h2><div id="t-os"></div></div>
+      </div>
+    </section>
+
+    <!-- الآن -->
+    <section data-view="live" hidden>
+      <p class="mut">يتحدّث تلقائياً كل ١٠ ثوانٍ. «الآن» = نشاط خلال آخر ٧٥ ثانية.</p>
+      <div class="adm-card"><div id="live-table"></div></div>
+    </section>
+
+    <!-- الزوار -->
+    <section data-view="visitors" hidden>
+      <div class="adm-card adm-filters">
+        <label>الدولة<input id="f-country" placeholder="LY" dir="ltr" maxlength="2"></label>
+        <label>المدينة<input id="f-city" placeholder="Tripoli" dir="ltr"></label>
+        <label>الجهاز<select id="f-device"><option value="">الكل</option><option>mobile</option><option>desktop</option><option>tablet</option></select></label>
+        <label>المصدر<input id="f-source" placeholder="facebook.com" dir="ltr"></label>
+        <label>زار صفحة<input id="f-page" placeholder="/banks.html" dir="ltr"></label>
+        <button id="f-apply" class="btn btn-gold btn-sm">تطبيق</button>
+        <a id="exp-visitors" class="adm-ghost" href="#">تصدير CSV</a>
+      </div>
+      <div class="adm-card"><div id="visitors-table"></div></div>
+    </section>
+
+    <!-- المصادر -->
+    <section data-view="sources" hidden>
+      <div class="adm-grid2">
+        <div class="adm-card"><h2>من أين جاؤوا</h2><div id="t-refs"></div></div>
+        <div class="adm-card"><h2>الحملات (UTM)</h2><div id="t-utm"></div></div>
+      </div>
+      <div class="adm-card">
+        <h2>منشئ روابط الحملات</h2>
+        <p class="mut">أضف هذه المعاملات لأي رابط تنشره في إعلان أو رسالة، فتظهر الزيارات القادمة منه باسم الحملة هنا.</p>
+        <div class="adm-filters">
+          <label>الصفحة<select id="u-page"><option value="/">الرئيسية</option><option value="/banks.html">المصارف</option>
+            <option value="/government.html">الحكومة</option><option value="/business.html">الشركات</option></select></label>
+          <label>المصدر<input id="u-src" placeholder="facebook" dir="ltr"></label>
+          <label>الوسيلة<input id="u-med" placeholder="paid" dir="ltr"></label>
+          <label>اسم الحملة<input id="u-camp" placeholder="banks-oct" dir="ltr"></label>
+        </div>
+        <div class="adm-url"><code id="u-out" dir="ltr"></code><button id="u-copy" class="adm-ghost">نسخ</button></div>
+      </div>
+    </section>
+
+    <!-- العملاء -->
+    <section data-view="leads" hidden>
+      <div class="adm-filters"><a id="exp-leads" class="adm-ghost" href="#">تصدير CSV</a></div>
+      <div class="adm-card"><div id="leads-table"></div></div>
+    </section>
+
+    <!-- الإعدادات -->
+    <section data-view="settings" hidden>
+      <form id="contact-form" class="adm-card adm-form">
+        <h2>معلومات الاتصال في الموقع</h2>
+        <p class="mut">تظهر في تذييل كل الصفحات، ويُرسل نموذج طلب العرض إلى رقم الواتساب هذا.</p>
+        <label>واتساب (أرقام فقط مع رمز الدولة)<input name="whatsapp" dir="ltr" placeholder="353894435368"></label>
+        <label>هاتف ليبيا<input name="phone_ly" dir="ltr" placeholder="+218 92 922 2122"></label>
+        <label>هاتف أيرلندا<input name="phone_ie" dir="ltr" placeholder="+353 89 443 5368"></label>
+        <label>البريد الإلكتروني<input name="email" type="email" dir="ltr" placeholder="info@libyaprotech.com"></label>
+        <label>العنوان<input name="address" placeholder="طرابلس، ليبيا"></label>
+        <button class="btn btn-gold" type="submit">حفظ</button>
+        <span class="adm-ok" id="contact-ok" hidden>حُفظ ✓ — يظهر في الموقع خلال دقيقة</span>
+      </form>
+      <form id="pw-form" class="adm-card adm-form">
+        <h2>تغيير كلمة المرور</h2>
+        <label>الحالية<input name="current" type="password" required dir="ltr" autocomplete="current-password"></label>
+        <label>الجديدة (١٠ أحرف على الأقل)<input name="next" type="password" required minlength="10" dir="ltr" autocomplete="new-password"></label>
+        <button class="btn btn-gold" type="submit">تغيير</button>
+        <span class="adm-ok" id="pw-ok" hidden></span>
+      </form>
+    </section>
+  </main>
+</div>
+
+<!-- رحلة زائر -->
+<div class="adm-drawer" id="drawer" hidden>
+  <div class="adm-drawer-in">
+    <button class="adm-ghost adm-close" id="drawer-close">إغلاق</button>
+    <div id="drawer-body"></div>
+  </div>
+</div>
+
+<script src="/assets/admin.js?v=202609231745"></script>
+</body>
+</html>

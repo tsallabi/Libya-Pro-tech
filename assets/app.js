@@ -3,7 +3,7 @@
   "use strict";
 
   /* رقم الواتساب بصيغة دولية بلا علامة زائد وبلا أصفار بادئة — يُستخدم في النموذج وفي التذييل. */
-  const WHATSAPP = "353894435368";
+  let WHATSAPP = "353894435368";
 
   const SECTORS = {
     finance:"مصرفي ومالي", gov:"حكومي", erp:"منظومات المؤسسات",
@@ -20,6 +20,23 @@
 
   const yEl = $("#y"); if (yEl) yEl.textContent = new Date().getFullYear();
   $$("[data-wa]").forEach(a => { a.href = `https://wa.me/${WHATSAPP}`; });
+
+  /* معلومات الاتصال من لوحة التحكم (/api/settings) — تبقى القيم المكتوبة في الصفحة إن تعذّر الجلب */
+  fetch("/api/settings").then(r => r.ok ? r.json() : null).then(c => {
+    if (!c) return;
+    if (c.whatsapp) {
+      WHATSAPP = String(c.whatsapp).replace(/\D/g, "");
+      $$("[data-wa]").forEach(a => { a.href = `https://wa.me/${WHATSAPP}`; });
+    }
+    $$("[data-contact]").forEach(a => {
+      const v = c[a.dataset.contact];
+      if (!v) { if (a.dataset.contact === "email") a.hidden = true; return; }
+      const num = a.querySelector(".num");
+      if (a.dataset.contact === "email") { a.href = "mailto:" + v; a.hidden = false; if (num) num.textContent = v; return; }
+      a.href = "tel:" + String(v).replace(/[^\d+]/g, "");
+      if (num) num.textContent = v;
+    });
+  }).catch(() => {});
 
   /* ---------- قائمة الجوال ---------- */
   const burger = $("#burger");
@@ -191,6 +208,13 @@
     const url = `https://wa.me/${WHATSAPP}?text=` +
       encodeURIComponent("طلب مشروع جديد من الموقع\n\n" + lines.join("\n"));
     window.open(url, "_blank", "noopener");
+    /* يُحفظ الطلب في لوحة التحكم أيضاً، مربوطاً بزيارة صاحبه (بلا انتظار حتى لا يُحجب فتح واتساب) */
+    const data = Object.fromEntries(f.entries());
+    const t = window.LP_TRACK || {};
+    try {
+      fetch("/api/lead", { method: "POST", keepalive: true, headers: { "content-type": "application/json" },
+        body: JSON.stringify({ ...data, vid: t.vid, sid: t.sid, page: location.pathname }) });
+    } catch (_) {}
   });
 
   /* ═══════════════════════════════════════════════════════
