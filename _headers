@@ -4,7 +4,7 @@
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src https:; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; frame-ancestors 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self'; font-src 'self'; img-src 'self' data: https://www.facebook.com https://www.google.com https://www.google.com.ly https://*.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com; connect-src 'self' https://www.facebook.com https://connect.facebook.net https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com; frame-src https:; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; frame-ancestors 'self'
 
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable

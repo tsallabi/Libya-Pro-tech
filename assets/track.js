@@ -56,20 +56,71 @@
       a.type === "submit";
     if (!important) return;
     send({ type: "click", target: href || (a.type === "submit" ? "form:submit" : ""), label: label, dur: spent() });
+    if (/wa\.me|^tel:|^mailto:/.test(href) && window.LP_ADS) window.LP_ADS.contact(/wa\.me/.test(href) ? "whatsapp" : /^tel:/.test(href) ? "phone" : "email");
   }, true);
 
-  /* تنبيه الخصوصية مرة واحدة */
-  if (!get(LS, "lp_notice")) {
+  /* ═══ إعادة الاستهداف: بكسل فيسبوك ووسم جوجل — لا يُحمَّلان إلا بموافقة الزائر ═══
+     المعرّفات تُدار من لوحة التحكم (الإعدادات)، فلا حاجة لتعديل الكود عند تغييرها. */
+  var ADS_OK = get(LS, "lp_ads") === "1";
+  var queue = [], ads = { meta: false, google: false };
+  function sector() {
+    var m = location.pathname.match(/(banks|government|business)/);
+    return m ? m[1] : "home";
+  }
+  function inject(src) { var sc = document.createElement("script"); sc.async = true; sc.src = src; document.head.appendChild(sc); }
+  function loadAds() {
+    fetch("/api/settings").then(function (r) { return r.ok ? r.json() : null; }).then(function (c) {
+      if (!c) return;
+      if (c.meta_pixel && /^\d{10,20}$/.test(c.meta_pixel)) {
+        /* نسخة من مُحمِّل فيسبوك الرسمي داخل ملفنا (سياسة الأمان تمنع السكربت المضمّن) */
+        var n = window.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        if (!window._fbq) window._fbq = n;
+        n.push = n; n.loaded = true; n.version = "2.0"; n.queue = [];
+        inject("https://connect.facebook.net/en_US/fbevents.js");
+        window.fbq("init", c.meta_pixel);
+        window.fbq("track", "PageView");
+        window.fbq("trackCustom", "SectorView", { sector: sector() });
+        if (sector() !== "home") window.fbq("track", "ViewContent", { content_category: sector() });
+        ads.meta = true;
+      }
+      if (c.google_tag && /^(G|AW|GT)-[A-Z0-9]{4,20}$/.test(c.google_tag)) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag("consent", "default", { ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted" });
+        window.gtag("js", new Date());
+        window.gtag("config", c.google_tag, { page_path: location.pathname, sector: sector() });
+        inject("https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(c.google_tag));
+        ads.google = true;
+      }
+      queue.forEach(function (f) { f(); }); queue = [];
+    }).catch(function () {});
+  }
+  function whenReady(f) { if (ads.meta || ads.google) f(); else queue.push(f); }
+  window.LP_ADS = {
+    lead: function () { whenReady(function () {
+      if (ads.meta) window.fbq("track", "Lead", { content_category: sector() });
+      if (ads.google) window.gtag("event", "generate_lead", { sector: sector() });
+    }); },
+    contact: function (via) { whenReady(function () {
+      if (ads.meta) window.fbq("track", "Contact", { method: via });
+      if (ads.google) window.gtag("event", "contact", { method: via });
+    }); }
+  };
+  if (ADS_OK) loadAds();
+
+  /* تنبيه الخصوصية: الإحصاءات الداخلية المجهولة دائماً (يمكن رفضها)، وأدوات الإعلانات بموافقة صريحة فقط */
+  if (!get(LS, "lp_notice2")) {
     var bar = document.createElement("div");
     bar.className = "privacy-note";
     bar.setAttribute("role", "region");
     bar.setAttribute("aria-label", "الخصوصية");
-    bar.innerHTML = '<p>نحسب زيارات الموقع بإحصاءات داخلية مجهولة الهوية لنحسّنه — بلا إعلانات ولا مشاركة مع أي طرف.</p>' +
-      '<div><button type="button" data-ok>حسناً</button><button type="button" data-no>لا أوافق</button></div>';
+    bar.innerHTML = '<p>نحسب زيارات الموقع بإحصاءات داخلية مجهولة الهوية. وبموافقتك نستخدم أدوات فيسبوك وجوجل لنعرض لك إعلاناتنا لاحقاً.</p>' +
+      '<div><button type="button" data-ok>موافق</button><button type="button" data-no>رفض</button></div>';
     document.body.appendChild(bar);
     bar.addEventListener("click", function (e) {
-      if (e.target.hasAttribute("data-no")) set(LS, "lp_optout", "1");
-      if (e.target.hasAttribute("data-ok") || e.target.hasAttribute("data-no")) { set(LS, "lp_notice", "1"); bar.remove(); }
+      if (e.target.hasAttribute("data-ok")) { set(LS, "lp_ads", "1"); loadAds(); }
+      if (e.target.hasAttribute("data-no")) { set(LS, "lp_optout", "1"); set(LS, "lp_ads", "0"); }
+      if (e.target.hasAttribute("data-ok") || e.target.hasAttribute("data-no")) { set(LS, "lp_notice2", "1"); bar.remove(); }
     });
   }
 })();

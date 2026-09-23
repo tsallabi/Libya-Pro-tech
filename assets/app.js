@@ -215,6 +215,7 @@
       fetch("/api/lead", { method: "POST", keepalive: true, headers: { "content-type": "application/json" },
         body: JSON.stringify({ ...data, vid: t.vid, sid: t.sid, page: location.pathname }) });
     } catch (_) {}
+    if (window.LP_ADS) window.LP_ADS.lead();      /* يُبلغ فيسبوك وجوجل بطلب جديد — فقط إن وافق الزائر */
   });
 
   /* ═══════════════════════════════════════════════════════

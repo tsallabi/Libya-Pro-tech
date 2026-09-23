@@ -186,9 +186,20 @@
 
   async function loadSettings() {
     const d = await api("settings");
-    const f = $("#contact-form");
-    Object.entries(d).forEach(([k, v]) => { if (f[k]) f[k].value = v || ""; });
+    ["#contact-form", "#ads-form"].forEach(s => { const f = $(s);
+      Object.entries(d).forEach(([k, v]) => { if (f[k]) f[k].value = v || ""; }); });
   }
+  $("#ads-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    const r = await fetch("/api/admin/settings", { method: "PUT", headers: { "content-type": "application/json" },
+      body: JSON.stringify(Object.fromEntries(new FormData(e.target))) });
+    const d = await r.json().catch(() => ({}));
+    const ok = $("#ads-ok"); ok.hidden = false;
+    ok.textContent = r.ok ? "حُفظ ✓ — يعمل في الموقع خلال دقيقة"
+      : d.error === "meta_pixel" ? "معرّف فيسبوك يجب أن يكون أرقاماً فقط (10–20 رقماً)"
+      : d.error === "google_tag" ? "معرّف جوجل يبدأ بـ AW- أو G- أو GT-" : "تعذّر الحفظ";
+    ok.style.color = r.ok ? "" : "#B42318";
+  });
   $("#contact-form").addEventListener("submit", async e => {
     e.preventDefault();
     await api("settings", { method: "PUT", body: JSON.stringify(Object.fromEntries(new FormData(e.target))) });

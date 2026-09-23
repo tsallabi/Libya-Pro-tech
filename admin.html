@@ -6,8 +6,8 @@
 <title>لوحة التحكم — ليبيا برو للتقنية</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css?v=202609231745">
-<link rel="stylesheet" href="/assets/admin.css?v=202609231745">
+<link rel="stylesheet" href="/assets/style.css?v=202609231749">
+<link rel="stylesheet" href="/assets/admin.css?v=202609231749">
 </head>
 <body class="adm">
 
@@ -124,6 +124,21 @@
         <button class="btn btn-gold" type="submit">حفظ</button>
         <span class="adm-ok" id="contact-ok" hidden>حُفظ ✓ — يظهر في الموقع خلال دقيقة</span>
       </form>
+      <form id="ads-form" class="adm-card adm-form">
+        <h2>إعادة الاستهداف — فيسبوك وجوجل</h2>
+        <p class="mut">ضع المعرّفين هنا فيعملان في كل صفحات الموقع خلال دقيقة، بلا تعديل في الكود.
+          لا يُحمَّلان إلا لمن ضغط «موافق» في تنبيه الخصوصية.</p>
+        <label>Meta Pixel ID (أرقام فقط)
+          <input name="meta_pixel" dir="ltr" inputmode="numeric" placeholder="123456789012345"></label>
+        <p class="mut adm-hint">من <b>Meta Events Manager ← Data sources ← Pixel</b> — الرقم أسفل اسم البكسل.</p>
+        <label>Google tag ID
+          <input name="google_tag" dir="ltr" placeholder="AW-123456789 أو G-XXXXXXX"></label>
+        <p class="mut adm-hint"><b>AW-</b> من Google Ads ← Tools ← Data manager ← Google tag، أو <b>G-</b> من Google Analytics ← Admin ← Data streams.</p>
+        <p class="mut adm-hint">الأحداث التي تُرسل تلقائياً: <b>PageView</b> لكل صفحة · <b>ViewContent</b> مع القطاع (المصارف/الحكومة/الشركات) ·
+          <b>Contact</b> عند نقر واتساب أو الهاتف · <b>Lead</b> عند إرسال طلب عرض. يمكنك بناء جمهور مثل «زار صفحة المصارف ولم يرسل طلباً».</p>
+        <button class="btn btn-gold" type="submit">حفظ</button>
+        <span class="adm-ok" id="ads-ok" hidden></span>
+      </form>
       <form id="pw-form" class="adm-card adm-form">
         <h2>تغيير كلمة المرور</h2>
         <label>الحالية<input name="current" type="password" required dir="ltr" autocomplete="current-password"></label>
@@ -143,6 +158,6 @@
   </div>
 </div>
 
-<script src="/assets/admin.js?v=202609231745"></script>
+<script src="/assets/admin.js?v=202609231749"></script>
 </body>
 </html>

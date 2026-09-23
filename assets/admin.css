@@ -88,3 +88,4 @@ body.adm{background:var(--bg);min-height:100vh}
 .adm-pre{white-space:pre-line}
 .adm-lead-card{margin:12px 0}
 .adm-sess{margin-top:18px}
+.adm-hint{margin:-4px 0 0;font-size:12.5px;line-height:1.7}
