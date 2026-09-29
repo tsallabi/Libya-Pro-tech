@@ -24,7 +24,10 @@ CREATE TABLE IF NOT EXISTS leads (
   id INTEGER PRIMARY KEY AUTOINCREMENT, ts INTEGER NOT NULL,
   vid TEXT, sid TEXT, name TEXT, phone TEXT, email TEXT, company TEXT,
   sector TEXT, message TEXT, page TEXT, country TEXT, city TEXT,
-  utm_source TEXT, utm_campaign TEXT, status TEXT DEFAULT 'new', note TEXT
+  utm_source TEXT, utm_campaign TEXT, status TEXT DEFAULT 'new', note TEXT,
+  kind TEXT DEFAULT 'quote',   -- quote: طلب عرض سعر · demo: تسجيل لفتح الأنظمة · estimate: الحاسبة
+  project TEXT,                -- المنظومة التي كان يشاهدها عند التسجيل
+  answers TEXT                 -- إجابات الحاسبة (JSON)
 );
 CREATE INDEX IF NOT EXISTS idx_l_ts ON leads(ts);
 CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);

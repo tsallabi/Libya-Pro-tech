@@ -4,7 +4,7 @@ import fs from "fs";
 
 const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
 const pages = ["index.html", "banks.html", "government.html", "business.html", "profile.html", "404.html", "admin.html"];
-const assets = ["app.js", "style.css", "boot.js", "print.css", "track.js", "admin.js", "admin.css"];
+const assets = ["app.js", "style.css", "boot.js", "print.css", "track.js", "engage.js", "admin.js", "admin.css"];
 
 for (const f of pages) {
   if (!fs.existsSync(f)) continue;

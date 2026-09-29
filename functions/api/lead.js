@@ -14,11 +14,16 @@ export async function onRequestPost({ request, env }) {
   const message = [d.type && `نوع النظام: ${d.type}`, d.timeline && `الإطار الزمني: ${d.timeline}`, d.details]
     .filter(Boolean).join("\n");
 
+  const KINDS = new Set(["quote", "demo", "estimate"]);
+  const kind = KINDS.has(d.kind) ? d.kind : "quote";
+  let answers = null;
+  if (d.answers && typeof d.answers === "object") answers = clip(JSON.stringify(d.answers), 2000);
+
   const r = await env.DB.prepare(`INSERT INTO leads (ts, vid, sid, name, phone, email, company, sector, message, page,
-      country, city, utm_source, utm_campaign) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`)
+      country, city, utm_source, utm_campaign, kind, project, answers) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`)
     .bind(Date.now(), clip(d.vid, 40), clip(d.sid, 40), name, phone, clip(d.email, 160), clip(d.company, 160),
           clip(d.sector, 60), clip(message, 4000), clip(d.page, 300), cf.country || null, cf.city || null,
-          sess?.utm_source || null, sess?.utm_campaign || null)
+          sess?.utm_source || null, sess?.utm_campaign || null, kind, clip(d.project, 60), answers)
     .run();
   return json({ ok: true, id: r.meta?.last_row_id });
 }

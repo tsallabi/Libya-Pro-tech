@@ -57,14 +57,16 @@
 
   if (grid) fetch(grid.dataset.src || "data/projects.json")
     .then(r => r.json())
-    .then(d => { projects = d; render(); })
+    .then(d => { projects = d; window.LP_PROJECTS = d; render();
+      document.dispatchEvent(new CustomEvent("lp:projects", { detail: d })); })
     .catch(() => { grid.innerHTML = '<p class="mut">تعذّر تحميل قائمة الأنظمة.</p>'; });
 
   function media(p) {
-    {
-      return `<div class="panel"><img src="${esc(p.shot)}" width="2000" height="1250" loading="lazy" decoding="async"
-        alt="لقطة حقيقية من نظام ${esc(p.name)}: ${esc(p.shotAlt || p.tag)}"></div>`;
-    }
+    /* كل لقطات النظام في سمة واحدة؛ engage.js يقلّبها عند المرور على البطاقة */
+    const all = [p.shot].concat((p.gallery || []).map(g => typeof g === "string" ? g : g.src)).filter(Boolean);
+    const count = all.length > 1 ? `<span class="shot-count" aria-hidden="true"><b>1</b>/${all.length}</span>` : "";
+    return `<div class="panel" data-shots="${esc(all.join("|"))}"><img src="${esc(p.shot)}" width="2000" height="1250" loading="lazy" decoding="async"
+      alt="لقطة حقيقية من نظام ${esc(p.name)}: ${esc(p.shotAlt || p.tag)}">${count}</div>`;
   }
 
   function card(p) {
@@ -81,7 +83,7 @@
         <div class="tech">${(p.tech || []).map(t => `<span>${esc(t)}</span>`).join("")}</div>
         <div class="work-actions">
           ${demoBtn}
-          <a class="btn btn-sm" href="#contact">اطلب مثله</a>
+          <a class="btn btn-sm" href="#contact" data-want="${esc(p.id)}">اطلب مثله</a>
         </div>
       </div>
     </article>`;

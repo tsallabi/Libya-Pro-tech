@@ -163,21 +163,32 @@
     ], d.rows, r => journey(r.vid));
   }
 
+  const KIND = { quote: "نموذج عرض", demo: "فتح الأنظمة", estimate: "حاسبة النظام" };
+  const pname = id => String(id).replace(/[-_]/g, " ");
+  function answers(a) {
+    if (!a) return "";
+    try { const o = JSON.parse(a); return "<br>" + Object.entries(o).map(([k, v]) => `${esc(k)}: ${esc(Array.isArray(v) ? v.join("، ") : String(v))}`).join("<br>"); }
+    catch { return ""; }
+  }
   const STATUS = { new: "جديد", contacted: "تم التواصل", meeting: "اجتماع", proposal: "عرض سعر", won: "تم التعاقد", lost: "لم يتم" };
   async function loadLeads() {
     const d = await api("leads");
+    const kf = $("#lead-kind");
+    if (!kf.dataset.b) { kf.dataset.b = 1; kf.addEventListener("change", loadLeads); }
+    const rows = d.rows.filter(r => !kf.value || (r.kind || "quote") === kf.value);
     $("#exp-leads").href = "/api/admin/export?type=leads&days=365";
     table($("#leads-table"), [
       ["الوقت", r => ago(r.ts)],
       ["الاسم", r => `<b>${esc(r.name)}</b><br><span class="mut">${esc(r.company || "")}</span>`],
       ["التواصل", r => `<a href="tel:${esc(r.phone)}" dir="ltr">${esc(r.phone)}</a>${r.email ? `<br><a href="mailto:${esc(r.email)}" dir="ltr">${esc(r.email)}</a>` : ""}
         <br><a href="https://wa.me/${esc(String(r.phone).replace(/\D/g, ""))}" target="_blank" rel="noopener">واتساب ↗</a>`],
-      ["الطلب", r => `${esc(r.sector || "")}<div class="mut adm-msg">${esc(r.message || "")}</div>`],
+      ["المصدر", r => `<span class="adm-pill ${r.kind === "quote" || !r.kind ? "lead" : ""}">${KIND[r.kind] || KIND.quote}</span>${r.project ? `<br><span class="mut">${esc(pname(r.project))}</span>` : ""}`],
+      ["الطلب", r => `${esc(r.sector || "")}<div class="mut adm-msg">${esc(r.message || "")}${r.message ? "" : answers(r.answers)}</div>`],
       ["المكان", r => `${esc(country(r.country))}<br><span class="mut">${esc(r.city || "")}</span>`],
       ["قبل الطلب", r => `${r.visits || 0} زيارة · ${r.pages || 0} صفحة`],
       ["الحالة", r => `<select data-id="${r.id}" class="lead-st">${Object.entries(STATUS).map(([k, v]) =>
         `<option value="${k}" ${r.status === k ? "selected" : ""}>${v}</option>`).join("")}</select>`]
-    ], d.rows, r => r.vid && journey(r.vid));
+    ], rows, r => r.vid && journey(r.vid));
     $$(".lead-st").forEach(s => {
       s.addEventListener("click", e => e.stopPropagation());
       s.addEventListener("change", () => api("leads", { method: "PATCH", body: JSON.stringify({ id: +s.dataset.id, status: s.value }) }).then(badges));
