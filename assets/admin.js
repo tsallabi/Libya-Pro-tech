@@ -96,6 +96,7 @@
       if (tab === "visitors") await loadVisitors();
       if (tab === "leads") await loadLeads();
       if (tab === "wa") await loadWa();
+      if (tab === "nl") await loadNl();
       if (tab === "settings") await loadSettings();
       badges();
     } catch (e) { if (e.message !== "auth") console.error(e); }
@@ -228,6 +229,91 @@
     m.textContent = r.ok ? `سُجّلت محادثة ${body.name} على الرمز ${body.code} ✓ — تظهر أيضاً في «العملاء المحتملون»` : "تعذّر الحفظ: تأكد من الاسم والرقم";
     if (r.ok) { f.reset(); loadWa(); badges(); }
   });
+
+  /* ─── الرسالة الشهرية للمسجّلين ─── */
+  const NL_GROUPS = { finance: "المصارف والمالية", gov: "الجهات الحكومية", business: "الشركات والمتاجر", cars: "السيارات والمزادات", general: "عام" };
+  const NL_DEFAULT = { finance: ["amanpro-full", "accounting"], gov: ["mazadna", "ajrly"], business: ["talin", "ajrly"],
+                       cars: ["autopro", "mazadna"], general: ["mushaf", "talin"] };
+  const NL_MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+  let NL = null;   /* { projects, picks:{grp:[ids]}, texts:{grp:text}, rows } */
+  function nlGroup(s, P) {
+    for (const h of s.hints) {
+      const c = String(h.campaign || "").slice(0, 3);
+      if (c === "BNK") return "finance"; if (c === "GOV") return "gov"; if (c === "BIZ") return "business"; if (c === "CAR") return "cars";
+      try { const a = JSON.parse(h.answers || "null"); if (a && a.sector) return { finance: "finance", gov: "gov", company: "business", commerce: "business" }[a.sector] || "business"; } catch (_) {}
+      const p = h.project && P.find(x => x.id === h.project);
+      if (p) return { finance: "finance", auctions: "cars", logistics: "cars", gov: "gov" }[p.sector] || "business";
+      const t = String(h.sector || "");
+      if (/مصرف|مال|صراف/.test(t)) return "finance"; if (/حكوم|وزار|بلدي/.test(t)) return "gov";
+      if (/سيار|مزاد|شحن/.test(t)) return "cars"; if (t) return "business";
+    }
+    return "general";
+  }
+  const nlIssue = () => $("#nl-issue").value || new Date().toISOString().slice(0, 7);
+  function nlText(g) {
+    const [y, m] = nlIssue().split("-"), tag = `NL-${nlIssue()}-${g}`;
+    const items = (NL.picks[g] || []).map(id => NL.projects.find(p => p.id === id)).filter(Boolean);
+    return `مرحباً {الاسم} 👋\nهذا جديد ليبيا برو لشهر ${NL_MONTHS[+m - 1]} ${y} في ${NL_GROUPS[g] === "عام" ? "أنظمتنا" : "قطاع " + NL_GROUPS[g]}:\n\n` +
+      items.map(p => `• ${p.name} — ${p.tag}\n${location.origin}/cases/${p.id}.html?utm_source=whatsapp&utm_medium=newsletter&utm_campaign=${tag}`).join("\n\n") +
+      `\n\nتريد عرضاً حياً لأيّ منها؟ ردّ على هذه الرسالة بكلمة «عرض».\n\nلإيقاف هذه الرسائل أرسل «إيقاف».`;
+  }
+  function nlCompose() {
+    const used = [...new Set(NL.rows.map(r => r.grp))];
+    $("#nl-compose").innerHTML = Object.keys(NL_GROUPS).filter(g => used.includes(g)).map(g => `<div class="adm-card nl-box" data-g="${g}">
+      <h2>رسالة ${NL_GROUPS[g]} <span class="adm-pill">${NL.rows.filter(r => r.grp === g && !r.optout).length} مشترك</span></h2>
+      <p class="mut">الأنظمة التي تُعرض في رسالة هذا الشهر:</p>
+      <div class="nl-picks">${NL.projects.map(p => `<label><input type="checkbox" value="${p.id}" ${(NL.picks[g] || []).includes(p.id) ? "checked" : ""}> ${esc(p.name)}</label>`).join("")}</div>
+      <p class="mut">نص الرسالة — يمكنك تعديله. {الاسم} يُستبدل باسم كل مشترك.</p>
+      <textarea class="nl-text" rows="12">${esc(NL.texts[g] || nlText(g))}</textarea>
+    </div>`).join("");
+    $$(".nl-box").forEach(box => {
+      const g = box.dataset.g, ta = box.querySelector(".nl-text");
+      box.querySelectorAll(".nl-picks input").forEach(i => i.addEventListener("change", () => {
+        NL.picks[g] = [...box.querySelectorAll(".nl-picks input:checked")].map(x => x.value); ta.value = NL.texts[g] = nlText(g);
+      }));
+      ta.addEventListener("input", () => { NL.texts[g] = ta.value; });
+    });
+  }
+  function nlTable() {
+    const gf = $("#nl-grp").value, rows = NL.rows.filter(r => !gf || r.grp === gf);
+    const act = NL.rows.filter(r => !r.optout), done = act.filter(r => r.sent).length;
+    $("#nl-progress").textContent = `أُرسلت رسالة ${nlIssue()} إلى ${done} من ${act.length} مشترك` + (NL.rows.length - act.length ? ` · ${NL.rows.length - act.length} أوقفوا الاشتراك` : "");
+    table($("#nl-table"), [
+      ["المشترك", r => `<b>${esc(r.name)}</b>${r.company ? `<br><span class="mut">${esc(r.company)}</span>` : ""}`],
+      ["الرقم", r => `<span dir="ltr">+${esc(r.phone)}</span>`],
+      ["القطاع", r => NL_GROUPS[r.grp]],
+      ["المكان", r => `${esc(country(r.country))}<br><span class="mut">${esc(r.city || "")}</span>`],
+      ["منذ", r => ago(r.first)],
+      ["الإرسال", r => r.optout ? `<span class="mut">أوقف الاشتراك</span>` : r.sent ? `<span class="adm-pill lead">أُرسل ✓ ${ago(r.sent)}</span>`
+        : `<a class="btn btn-gold btn-sm nl-send" data-p="${r.phone}" target="_blank" rel="noopener" href="#">أرسل</a>`],
+      ["", r => `<button class="adm-ghost nl-opt" data-p="${r.phone}" data-on="${r.optout ? 0 : 1}">${r.optout ? "أعد الاشتراك" : "أوقف"}</button>`]
+    ], rows);
+    $$(".nl-send").forEach(a => {
+      const r = NL.rows.find(x => x.phone === a.dataset.p);
+      const fill = () => { const first = String(r.name || "").trim().split(/\s+/)[0] || "";
+        a.href = `https://wa.me/${r.phone}?text=` + encodeURIComponent((NL.texts[r.grp] || nlText(r.grp)).replace(/\{الاسم\}/g, first)); };
+      fill(); a.addEventListener("pointerdown", fill); a.addEventListener("focus", fill);
+      a.addEventListener("click", () => {
+        fill();
+        api("newsletter", { method: "POST", body: JSON.stringify({ action: "sent", phone: r.phone, issue: nlIssue(), grp: r.grp }) })
+          .then(() => { r.sent = Date.now(); nlTable(); });
+      });
+    });
+    $$(".nl-opt").forEach(b => b.addEventListener("click", () =>
+      api("newsletter", { method: "POST", body: JSON.stringify({ action: "optout", phone: b.dataset.p, on: b.dataset.on === "1" }) }).then(loadNl)));
+  }
+  async function loadNl() {
+    if (!NL) {
+      NL = { projects: await fetch("/data/projects.json").then(r => r.json()), picks: JSON.parse(JSON.stringify(NL_DEFAULT)), texts: {}, rows: [] };
+      if (!$("#nl-issue").value) $("#nl-issue").value = new Date().toISOString().slice(0, 7);
+      $("#nl-grp").innerHTML += Object.entries(NL_GROUPS).map(([k, v]) => `<option value="${k}">${v}</option>`).join("");
+      $("#nl-issue").addEventListener("change", () => { NL.texts = {}; loadNl(); });
+      $("#nl-grp").addEventListener("change", nlTable);
+    }
+    const d = await api("newsletter?issue=" + nlIssue());
+    NL.rows = d.rows.map(r => ({ ...r, grp: nlGroup(r, NL.projects) }));
+    nlCompose(); nlTable();
+  }
 
   const STATUS = { new: "جديد", contacted: "تم التواصل", meeting: "اجتماع", proposal: "عرض سعر", won: "تم التعاقد", lost: "لم يتم" };
   async function loadLeads() {

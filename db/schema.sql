@@ -31,3 +31,8 @@ CREATE TABLE IF NOT EXISTS leads (
 );
 CREATE INDEX IF NOT EXISTS idx_l_ts ON leads(ts);
 CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+
+-- الرسالة الشهرية للمسجّلين على واتساب
+CREATE TABLE IF NOT EXISTS wa_optout (phone TEXT PRIMARY KEY, ts INTEGER);
+CREATE TABLE IF NOT EXISTS wa_sends (id INTEGER PRIMARY KEY AUTOINCREMENT, ts INTEGER, phone TEXT, issue TEXT, grp TEXT);
+CREATE INDEX IF NOT EXISTS wa_sends_issue ON wa_sends(issue, phone);

@@ -60,7 +60,7 @@
       <button type="button" class="reg-x" data-skip aria-label="إغلاق">×</button>
       <div class="eyebrow"><span>تذكرة العرض</span></div>
       <h3 id="reg-t">سجّل مرة واحدة وافتح كل الأنظمة</h3>
-      <p class="mut">نرسل لك على واتساب رابط عرض حي مع مهندس، ونخبرك حين نضيف نظاماً جديداً في قطاعك.</p>
+      <p class="mut">نرسل لك على واتساب رابط عرض حي مع مهندس، ونرسل لك جديد قطاعك مرة في الشهر — توقفه متى شئت بكلمة «إيقاف».</p>
       <label>الاسم<input name="name" required autocomplete="name" placeholder="الاسم الثلاثي"></label>
       <label>رقم الواتساب<input name="phone" required inputmode="tel" autocomplete="tel" dir="ltr" placeholder="+218 9x xxx xxxx"></label>
       <label>الجهة أو الشركة <small>(اختياري)</small><input name="company" autocomplete="organization"></label>

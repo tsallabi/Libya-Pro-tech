@@ -6,8 +6,8 @@
 <title>لوحة التحكم — ليبيا برو للتقنية</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css?v=202609292005">
-<link rel="stylesheet" href="/assets/admin.css?v=202609292005">
+<link rel="stylesheet" href="/assets/style.css?v=202609292010">
+<link rel="stylesheet" href="/assets/admin.css?v=202609292010">
 </head>
 <body class="adm">
 
@@ -32,6 +32,7 @@
       <button data-tab="visitors">الزوار</button>
       <button data-tab="sources">المصادر والحملات</button>
       <button data-tab="wa">حملات واتساب</button>
+      <button data-tab="nl">رسائل المشتركين</button>
       <button data-tab="leads">العملاء المحتملون <b id="leads-badge">0</b></button>
       <button data-tab="settings">الإعدادات</button>
     </nav>
@@ -128,6 +129,21 @@
       <div id="wa-kits"></div>
     </section>
 
+    <!-- الرسالة الشهرية -->
+    <section data-view="nl" hidden>
+      <div class="adm-card">
+        <h2>الرسالة الشهرية على واتساب</h2>
+        <p class="mut">كل من ترك رقمه في الموقع أو في إعلان مشترك تلقائياً. اختر الشهر والأنظمة التي تريد تقديمها لكل قطاع، ثم اضغط «أرسل» بجانب كل مشترك: يفتح واتساب برسالة باسمه جاهزة، فتضغط إرسال. من يرد بكلمة «إيقاف» اضغط «أوقف» بجانب اسمه فلا يظهر زر الإرسال له بعدها.</p>
+        <div class="adm-filters">
+          <label>عدد شهر<input type="month" id="nl-issue"></label>
+          <label>القطاع<select id="nl-grp"><option value="">كل القطاعات</option></select></label>
+        </div>
+        <p class="nl-progress" id="nl-progress"></p>
+      </div>
+      <div id="nl-compose"></div>
+      <div class="adm-card"><h2>المشتركون</h2><div id="nl-table"></div></div>
+    </section>
+
     <!-- العملاء -->
     <section data-view="leads" hidden>
       <div class="adm-filters"><select id="lead-kind"><option value="">كل المصادر</option><option value="quote">نموذج عرض السعر</option><option value="demo">تسجيل لفتح الأنظمة</option><option value="estimate">حاسبة النظام</option><option value="case">صفحة دراسة حالة</option><option value="wa_ad">إعلان واتساب</option></select><a id="exp-leads" class="adm-ghost" href="#">تصدير CSV</a></div>
@@ -181,6 +197,6 @@
   </div>
 </div>
 
-<script src="/assets/admin.js?v=202609292005"></script>
+<script src="/assets/admin.js?v=202609292010"></script>
 </body>
 </html>

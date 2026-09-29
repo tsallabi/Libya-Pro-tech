@@ -98,3 +98,8 @@ body.adm{background:var(--bg);min-height:100vh}
 .wa-var .adm-pre{background:#F3F5F9;border-radius:10px;padding:12px;margin:4px 0 8px;font-family:inherit;font-size:14px}
 .wa-var .adm-ghost{margin:0 0 10px 8px;display:inline-block}
 .wa-var ul{margin:6px 0;padding-inline-start:20px;line-height:1.9}
+.nl-progress{font-weight:700;margin:10px 0 0}
+.nl-picks{display:flex;flex-wrap:wrap;gap:6px 16px;margin:6px 0 14px;font-size:14px}
+.nl-picks label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.nl-text{width:100%;font:inherit;font-size:14px;line-height:1.8;padding:12px;border:1px solid rgba(11,11,12,.2);border-radius:10px;background:#F9FAFC;resize:vertical}
+.nl-box h2 .adm-pill{margin-inline-start:8px}
