@@ -83,7 +83,7 @@
         <div class="tech">${(p.tech || []).map(t => `<span>${esc(t)}</span>`).join("")}</div>
         <div class="work-actions">
           ${demoBtn}
-          <a class="btn btn-sm" href="#contact" data-want="${esc(p.id)}">اطلب مثله</a>
+          <a class="btn btn-sm" href="/cases/${esc(p.id)}.html">دراسة الحالة</a>
         </div>
       </div>
     </article>`;
@@ -95,7 +95,7 @@
       <span class="ds">${esc(p.tag)}</span>
       <span class="ac">
         <button class="btn btn-sm" data-demo="${esc(p.id)}">تفاصيل</button>
-        <a class="btn btn-sm" href="#contact">اطلب مثله</a>
+        <a class="btn btn-sm" href="/cases/${esc(p.id)}.html">دراسة الحالة</a>
       </span>
     </li>`;
   }

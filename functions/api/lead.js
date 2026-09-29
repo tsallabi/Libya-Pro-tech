@@ -14,7 +14,7 @@ export async function onRequestPost({ request, env }) {
   const message = [d.type && `نوع النظام: ${d.type}`, d.timeline && `الإطار الزمني: ${d.timeline}`, d.details]
     .filter(Boolean).join("\n");
 
-  const KINDS = new Set(["quote", "demo", "estimate"]);
+  const KINDS = new Set(["quote", "demo", "estimate", "case"]);
   const kind = KINDS.has(d.kind) ? d.kind : "quote";
   let answers = null;
   if (d.answers && typeof d.answers === "object") answers = clip(JSON.stringify(d.answers), 2000);
