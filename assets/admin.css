@@ -89,3 +89,12 @@ body.adm{background:var(--bg);min-height:100vh}
 .adm-lead-card{margin:12px 0}
 .adm-sess{margin-top:18px}
 .adm-hint{margin:-4px 0 0;font-size:12.5px;line-height:1.7}
+.wa-kit h2 .adm-pill{margin-inline-start:8px;vertical-align:middle}
+.wa-imgs{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 18px}
+.wa-imgs a{display:grid;gap:6px;text-decoration:none;color:inherit;font-size:13px;font-weight:600}
+.wa-imgs img{height:220px;border-radius:10px;border:1px solid rgba(11,11,12,.12)}
+.wa-var{border-top:1px solid rgba(11,11,12,.08);padding-top:14px;margin-top:14px}
+.wa-var h3{margin:0 0 8px;font-size:16px}
+.wa-var .adm-pre{background:#F3F5F9;border-radius:10px;padding:12px;margin:4px 0 8px;font-family:inherit;font-size:14px}
+.wa-var .adm-ghost{margin:0 0 10px 8px;display:inline-block}
+.wa-var ul{margin:6px 0;padding-inline-start:20px;line-height:1.9}

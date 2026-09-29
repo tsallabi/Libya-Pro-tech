@@ -250,6 +250,10 @@
     $$("#case-cards .case-card").forEach(c => { c.hidden = !!b.dataset.f && c.dataset.sector !== b.dataset.f; });
   });
 
+  /* زائر جاء من إعلان برمز (utm_campaign=BNK-A): نحفظ الرمز ونضيفه لرسالة واتساب فتُنسب المحادثة للإعلان */
+  try { const c = new URLSearchParams(location.search).get("utm_campaign");
+    if (c && /^(BNK|GOV|BIZ|CAR)-[A-Z0-9]{1,3}$/i.test(c)) sessionStorage.setItem("lp_ref", c.toUpperCase()); } catch (_) {}
+
   /* ═══ ٤) زر واتساب عائم برسالة تناسب الصفحة ═══ */
   if (location.pathname.indexOf("/admin") !== 0) {
     const TOPIC = { banks: "أنظمة المصارف", government: "منظومات الجهات الحكومية", business: "أنظمة الشركات والمتاجر" };
@@ -261,8 +265,9 @@
     const refresh = () => {
       const m = member();
       const cs = document.body.dataset.caseName;
+      let ref = ""; try { ref = sessionStorage.getItem("lp_ref") || ""; } catch (_) {}
       const msg = `مرحباً ليبيا برو${m ? "، أنا " + m.name : ""}.\n` + (cs ? `قرأت دراسة حالة «${cs}» وأريد نظاماً مثله لجهتنا.` :
-        `أتصفح موقعكم${k ? " — صفحة " + TOPIC[k] : ""} وأريد الاستفسار عن نظام لجهتنا.`);
+        `أتصفح موقعكم${k ? " — صفحة " + TOPIC[k] : ""} وأريد الاستفسار عن نظام لجهتنا.`) + (ref ? ` (رمز: ${ref})` : "");
       wa.href = `https://wa.me/${WA}?text=` + encodeURIComponent(msg);
     };
     wa.addEventListener("pointerenter", refresh); wa.addEventListener("focus", refresh); wa.addEventListener("click", refresh, true);

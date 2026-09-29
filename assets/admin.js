@@ -95,6 +95,7 @@
       if (tab === "live") await loadLive();
       if (tab === "visitors") await loadVisitors();
       if (tab === "leads") await loadLeads();
+      if (tab === "wa") await loadWa();
       if (tab === "settings") await loadSettings();
       badges();
     } catch (e) { if (e.message !== "auth") console.error(e); }
@@ -163,13 +164,71 @@
     ], d.rows, r => journey(r.vid));
   }
 
-  const KIND = { quote: "نموذج عرض", demo: "فتح الأنظمة", estimate: "حاسبة النظام", case: "دراسة حالة" };
+  const KIND = { quote: "نموذج عرض", demo: "فتح الأنظمة", estimate: "حاسبة النظام", case: "دراسة حالة", wa_ad: "إعلان واتساب" };
   const pname = id => String(id).replace(/[-_]/g, " ");
   function answers(a) {
     if (!a) return "";
     try { const o = JSON.parse(a); return "<br>" + Object.entries(o).map(([k, v]) => `${esc(k)}: ${esc(Array.isArray(v) ? v.join("، ") : String(v))}`).join("<br>"); }
     catch { return ""; }
   }
+  /* ─── حملات واتساب: عدّة جاهزة لكل قطاع + تسجيل المحادثات بالرمز ─── */
+  let KITS = null, WA_NUM = "";
+  async function loadWa() {
+    if (!KITS) {
+      KITS = await fetch("/data/campaigns.json", { cache: "no-store" }).then(r => r.json());
+      WA_NUM = ((await api("settings")).whatsapp || "").replace(/\D/g, "");
+      $("#wa-code").innerHTML = KITS.map(k => ["A", "B"].map(v => `<option value="${k.code}-${v}">${k.code}-${v} · ${esc(k.name)}</option>`).join("")).join("");
+      renderKits();
+    }
+    const d = await api("campaigns");
+    const by = Object.fromEntries(d.rows.map(r => [r.code, r]));
+    const codes = KITS.flatMap(k => ["A", "B"].map(v => ({ code: `${k.code}-${v}`, name: k.name })));
+    table($("#wa-results"), [
+      ["الرمز", r => `<b dir="ltr">${r.code}</b><br><span class="mut">${esc(r.name)}</span>`],
+      ["زيارات الموقع", r => (by[r.code] || {}).visits || 0],
+      ["محادثات واتساب", r => (by[r.code] || {}).chats || 0],
+      ["كل الطلبات", r => (by[r.code] || {}).leads || 0],
+      ["اجتماع/عرض/تعاقد", r => (by[r.code] || {}).hot || 0],
+      ["تعاقد", r => `<b>${(by[r.code] || {}).won || 0}</b>`]
+    ], codes);
+  }
+  function renderKits() {
+    const cp = (t, label = "نسخ") => `<button type="button" class="adm-ghost wa-copy" data-t="${esc(t)}">${label}</button>`;
+    $("#wa-kits").innerHTML = KITS.map(k => `<div class="adm-card wa-kit">
+      <h2>${esc(k.name)} <span class="adm-pill" dir="ltr">${k.code}</span></h2>
+      <div class="wa-imgs">
+        <a href="/brand/ads/${k.id}-feed-1080x1080.png" download><img src="/brand/ads/${k.id}-feed-1080x1080.png" alt=""><span>مربعة للمنشورات ↓</span></a>
+        <a href="/brand/ads/${k.id}-story-1080x1920.png" download><img src="/brand/ads/${k.id}-story-1080x1920.png" alt=""><span>طولية للقصص ↓</span></a>
+      </div>
+      ${k.primary.map((t, i) => { const v = "AB"[i], code = `${k.code}-${v}`, pre = `${k.prefill} (رمز: ${code})`; return `
+      <div class="wa-var"><h3>الإعلان ${v} <span class="adm-pill" dir="ltr">${code}</span></h3>
+        <p class="mut">النص الأساسي</p><pre class="adm-pre">${esc(t)}</pre>${cp(t)}
+        <p class="mut">العنوان</p><pre class="adm-pre">${esc(k.headline)}</pre>${cp(k.headline)}
+        <p class="mut">الرسالة الجاهزة التي يرسلها العميل (فيها رمز الإعلان — لا تحذفه)</p><pre class="adm-pre">${esc(pre)}</pre>${cp(pre)}
+        <a class="adm-ghost" target="_blank" rel="noopener" href="https://wa.me/${WA_NUM}?text=${encodeURIComponent(pre)}">جرّب الرسالة على واتساب ↗</a>
+      </div>`; }).join("")}
+      <div class="wa-var"><h3>رسالة الترحيب والأسئلة السريعة</h3>
+        <pre class="adm-pre">${esc(k.greeting)}</pre>${cp(k.greeting)}
+        <ul>${k.faq.map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+      </div>
+      <div class="wa-var"><h3>الجمهور المستهدف</h3>
+        <ul><li><b>الأماكن:</b> ${esc(k.audience.locations)}</li><li><b>العمر:</b> ${esc(k.audience.age)}</li>
+        <li><b>الاهتمامات (ابحث عنها واحدة واحدة في خانة «الاستهداف التفصيلي»):</b> ${esc(k.audience.interests)}</li><li>${esc(k.audience.extra)}</li></ul>
+        <p class="mut">رابط الموقع لنفس الحملة (إن اخترت وجهة «موقع إلكتروني» بدل واتساب):</p>
+        <pre class="adm-pre" dir="ltr">${esc(`${location.origin}${k.page}?utm_source=facebook&utm_medium=paid&utm_campaign=${k.code}-A`)}</pre>
+      </div></div>`).join("");
+    $$(".wa-copy").forEach(b => b.addEventListener("click", () => navigator.clipboard.writeText(b.dataset.t).then(() => {
+      b.textContent = "نُسخ ✓"; setTimeout(() => { b.textContent = "نسخ"; }, 1500); })));
+  }
+  $("#wa-log").addEventListener("submit", async e => {
+    e.preventDefault();
+    const f = e.target, body = Object.fromEntries(new FormData(f));
+    const r = await api("campaigns", { method: "POST", body: JSON.stringify(body) });
+    const m = $("#wa-log-msg"); m.hidden = false;
+    m.textContent = r.ok ? `سُجّلت محادثة ${body.name} على الرمز ${body.code} ✓ — تظهر أيضاً في «العملاء المحتملون»` : "تعذّر الحفظ: تأكد من الاسم والرقم";
+    if (r.ok) { f.reset(); loadWa(); badges(); }
+  });
+
   const STATUS = { new: "جديد", contacted: "تم التواصل", meeting: "اجتماع", proposal: "عرض سعر", won: "تم التعاقد", lost: "لم يتم" };
   async function loadLeads() {
     const d = await api("leads");
