@@ -18,10 +18,10 @@
 <meta property="og:title" content="ليبيا برو للتقنية">
 <meta property="og:description" content="نبني الأنظمة التي لا يُسمح لها بالتوقف.">
 <meta property="og:type" content="website">
-<meta name="build" content="202609292010">
+<meta name="build" content="202610022057">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/style.css?v=202609292010">
-<script src="assets/boot.js?v=202609292010"></script>
+<link rel="stylesheet" href="assets/style.css?v=202610022057">
+<script src="assets/boot.js?v=202610022057"></script>
 </head>
 <body>
 <div class="scroll-line" id="scroll-line" aria-hidden="true"></div>
@@ -31,12 +31,11 @@
   <nav class="nav-links">
     <a href="#work">الأعمال</a>
     <a href="/cases/">دراسات الحالة</a>
-    <a href="#capabilities">القدرات</a>
     <a href="banks.html">المصارف</a>
     <a href="government.html">الحكومة</a>
     <a href="business.html">الشركات</a>
     <a href="#estimate">احسب نظامك</a>
-    <a href="#process">المنهجية</a>
+    <a href="#consult">استشارة مجانية</a>
   </nav>
   <a href="/assets/libya-pro-tech-profile.pdf" class="pdf-link" download>الملف التعريفي <bdi dir="ltr" class="lat">PDF</bdi></a>
   <a href="#contact" class="btn btn-gold btn-sm">اطلب عرضاً</a>
@@ -53,25 +52,54 @@
   <p class="hero-sub">منظومات مصرفية ولوجستية وحكومية وتجارية، مبنية ومُشغَّلة في ليبيا. كل نظام في هذه الصفحة حقيقي، ويمكنك فتحه وتصفّحه الآن.</p>
   <div class="hero-cta">
     <a href="#work" class="btn btn-gold">افتح منظومة حقيقية الآن</a>
-    <a href="#contact" class="textlink">أو اطلب عرضاً خلال 24 ساعة</a>
+    <a href="#consult" class="textlink">أو احجز جلسة تحليل مجانية — 30 دقيقة</a>
   </div>
 
-  <figure class="panel hero-figure">
-    <img src="assets/shots/amanpro-dashboard.webp" width="2000" height="1250" fetchpriority="high" decoding="async"
-         alt="لوحة متابعة أمان برو: المستحقات والمحصّل والأرباح وأرصدة الموردين بالدينار والدولار">
-  </figure>
-  <figcaption class="panel-cap">
-    <span class="live">لقطة حقيقية من النظام</span>
-    <span><b>أمان برو</b> — لوحة متابعة التحصيل والمستحقات بالدينار والدولار · بيانات تجريبية</span>
-  </figcaption>
+  <!-- عيّنة من عملنا: مصحف ليبيا — تطبيق منشور ومجاني يمكن لأي زائر تحميله الآن -->
+  <div class="showcase" id="showcase">
+    <div class="sc-phone">
+      <video class="sc-video" autoplay muted loop playsinline preload="metadata"
+             poster="https://mushaf-libya.com/promo/poster.jpg" aria-label="فيديو تعريفي بتطبيق مصحف ليبيا">
+        <source src="https://mushaf-libya.com/promo/mushaf-libya-promo.webm" type="video/webm">
+        <source src="https://mushaf-libya.com/promo/mushaf-libya-promo.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="sc-sound" id="sc-sound" aria-pressed="false">تشغيل الصوت</button>
+    </div>
+    <div class="sc-body">
+      <span class="live">عيّنة من عملنا · منشور ومجاني</span>
+      <h2>مصحف ليبيا</h2>
+      <p>تطبيق مصحف برواية قالون عن نافع — الرواية التي يقرأ بها أهل ليبيا. صمّمناه وبنيناه ونشغّله بأنفسنا.</p>
+      <ul class="sc-points">
+        <li><b>٦٢١٤</b><span>آية قابلة للبحث</span></li>
+        <li><b>٦</b><span>تفاسير</span></li>
+        <li><b>بلا إنترنت</b><span>بعد أول فتح</span></li>
+      </ul>
+      <p class="sc-feat">صفحات المصحف المصوّرة، مواقيت مدن ليبيا والأذان، أذكار، تقويم رمضان، مكتبة كتب، واتجاه القبلة.</p>
+      <div class="sc-cta">
+        <a href="https://mushaf-libya.com" class="btn btn-gold" target="_blank" rel="noopener" data-track="mushaf:download">حمّل التطبيق مجاناً ↗</a>
+        <a href="/cases/mushaf.html" class="btn">كيف بنيناه</a>
+      </div>
+      <p class="sc-note">يعمل على الجوال والحاسوب: افتح الرابط ثم اختر «إضافة إلى الشاشة الرئيسية».</p>
+    </div>
+    <div class="sc-strip" aria-label="شاشات من التطبيق">
+        <figure><img src="https://mushaf-libya.com/promo/screens/home.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="مصحف ليبيا — الرئيسية"><figcaption>الرئيسية</figcaption></figure>
+        <figure><img src="https://mushaf-libya.com/promo/screens/mushaf_106.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="مصحف ليبيا — صفحة المصحف"><figcaption>صفحة المصحف</figcaption></figure>
+        <figure><img src="https://mushaf-libya.com/promo/screens/adhan_fired.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="مصحف ليبيا — تنبيه الأذان"><figcaption>تنبيه الأذان</figcaption></figure>
+        <figure><img src="https://mushaf-libya.com/promo/screens/books.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="مصحف ليبيا — المكتبة"><figcaption>المكتبة</figcaption></figure>
+        <figure><img src="https://mushaf-libya.com/promo/screens/book_omar.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="مصحف ليبيا — قراءة كتاب"><figcaption>قراءة كتاب</figcaption></figure>
+        <figure><img src="https://mushaf-libya.com/promo/screens/calendar_ramadan.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="مصحف ليبيا — تقويم رمضان"><figcaption>تقويم رمضان</figcaption></figure>
+        <figure><img src="https://mushaf-libya.com/promo/screens/tafsir_surah.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="مصحف ليبيا — التفسير"><figcaption>التفسير</figcaption></figure>
+        <figure><img src="https://mushaf-libya.com/promo/screens/adhkar_morning.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="مصحف ليبيا — أذكار الصباح"><figcaption>أذكار الصباح</figcaption></figure>
+    </div>
+  </div>
   </div>
 </section>
 
 <!-- ═══ شريط الإثبات قبل أي ميزة ═══ -->
 <section class="proof">
   <div class="wrap proof-in">
-    <div><b class="lat"><bdi>13</bdi></b><span>منظومة في السجل</span></div>
-    <div><b class="lat"><bdi>11</bdi></b><span>أنظمة بلقطات حية</span></div>
+    <div><b class="lat"><bdi>16</bdi></b><span>منظومة في السجل</span></div>
+    <div><b class="lat"><bdi>16</bdi></b><span>دراسة حالة بلقطات حقيقية</span></div>
     <div><b class="lat"><bdi>8</bdi></b><span>قطاعات مخدومة</span></div>
     <div><b class="lat"><bdi>24/7</bdi></b><span>دعم تشغيلي</span></div>
   </div>
@@ -223,6 +251,39 @@
 </section>
 
 <!-- ═══ حاسبة المشروع ═══ -->
+<section class="sec light" id="consult">
+  <div class="wrap consult">
+    <div class="consult-pitch">
+      <div class="eyebrow"><span>جلسة تحليل مجانية</span></div>
+      <h2>30 دقيقة مع مهندس، <span class="thin">وتخرج بخطة واضحة لنظامك.</span></h2>
+      <p class="sec-lead">بلا التزام وبلا عرض مبيعات. نسمع كيف يعمل فريقك اليوم، ثم نعطيك:</p>
+      <ol class="consult-gets">
+        <li><b>خريطة المكوّنات</b><span>ما يحتاجه نظامك فعلاً، وما يمكن تأجيله.</span></li>
+        <li><b>المدة والتكلفة التقريبية</b><span>نطاق واقعي مبني على أنظمة بنيناها.</span></li>
+        <li><b>عرض حي لنظام يشبه عملك</b><span>من أنظمتنا العاملة اليوم.</span></li>
+      </ol>
+      <p class="mut consult-how">عبر واتساب أو Google Meet أو زيارة في طرابلس — كما تفضّل.</p>
+    </div>
+    <form class="consult-form" id="consult-form">
+      <h3>احجز موعدك</h3>
+      <label>الاسم<input name="name" required autocomplete="name"></label>
+      <label>رقم الواتساب<input name="phone" required inputmode="tel" autocomplete="tel" dir="ltr" placeholder="+218 9x xxx xxxx"></label>
+      <label>الجهة أو الشركة<input name="company" autocomplete="organization"></label>
+      <fieldset><legend>اليوم</legend><div class="chips" id="c-days"></div></fieldset>
+      <fieldset><legend>الوقت <small>(بتوقيت ليبيا)</small></legend><div class="chips" id="c-times">
+        <button type="button" data-v="10:00">10:00 صباحاً</button><button type="button" data-v="12:00">12:00 ظهراً</button>
+        <button type="button" data-v="14:00">2:00 بعد الظهر</button><button type="button" data-v="18:00">6:00 مساءً</button>
+      </div></fieldset>
+      <fieldset><legend>طريقة الجلسة</legend><div class="chips" id="c-via">
+        <button type="button" data-v="واتساب" class="on">مكالمة واتساب</button><button type="button" data-v="Google Meet">Google Meet</button><button type="button" data-v="زيارة">زيارة في طرابلس</button>
+      </div></fieldset>
+      <label>ما الذي تريد حلّه؟ <small>(اختياري)</small><textarea name="topic" rows="2" placeholder="مثال: نتابع المخزون في Excel ونريد نظاماً للفروع"></textarea></label>
+      <button class="btn btn-gold" type="submit">احجز الجلسة المجانية</button>
+      <p class="mut consult-note">نؤكد الموعد على واتساب خلال ساعات العمل. الأماكن محدودة: 5 جلسات أسبوعياً.</p>
+    </form>
+  </div>
+</section>
+
 <section class="sec" id="estimate">
   <div class="wrap">
     <div class="sec-head">
@@ -393,8 +454,8 @@
   </div>
 </div>
 
-<script src="assets/app.js?v=202609292010"></script>
-<script src="/assets/engage.js?v=202609292010" defer></script>
-<script src="/assets/track.js?v=202609292010" defer></script>
+<script src="assets/app.js?v=202610022057"></script>
+<script src="/assets/engage.js?v=202610022057" defer></script>
+<script src="/assets/track.js?v=202610022057" defer></script>
 </body>
 </html>

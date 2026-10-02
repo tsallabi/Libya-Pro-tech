@@ -202,7 +202,7 @@
             <input name="phone" required inputmode="tel" autocomplete="tel" dir="ltr" placeholder="رقم الواتساب">
             <button class="btn btn-gold" type="submit">أرسل لي التقدير</button>
           </div>
-          <p class="mut est-note">تقدير أولي مبني على إجاباتك؛ الرقم النهائي بعد جلسة تحليل مجانية.</p>
+          <p class="mut est-note">تقدير أولي مبني على إجاباتك؛ الرقم النهائي بعد <a href="#consult">جلسة تحليل مجانية</a>.</p>
         </form>`;
       const m = member(), f = $("#est-form", r);
       if (m) { f.name.value = m.name || ""; f.phone.value = m.phone || ""; }
@@ -253,6 +253,63 @@
   /* زائر جاء من إعلان برمز (utm_campaign=BNK-A): نحفظ الرمز ونضيفه لرسالة واتساب فتُنسب المحادثة للإعلان */
   try { const c = new URLSearchParams(location.search).get("utm_campaign");
     if (c && /^(BNK|GOV|BIZ|CAR)-[A-Z0-9]{1,3}$/i.test(c)) sessionStorage.setItem("lp_ref", c.toUpperCase()); } catch (_) {}
+
+  /* ═══ ٦) عيّنة مصحف ليبيا في البطل: صوت عند الطلب، وإيقاف الفيديو خارج الشاشة توفيراً للبطارية ═══ */
+  const vid = $(".sc-video");
+  if (vid) {
+    if (REDUCED) { vid.removeAttribute("autoplay"); vid.pause(); }
+    const snd = $("#sc-sound");
+    snd && snd.addEventListener("click", () => {
+      vid.muted = !vid.muted; if (!vid.muted) vid.play().catch(() => {});
+      snd.setAttribute("aria-pressed", String(!vid.muted)); snd.textContent = vid.muted ? "تشغيل الصوت" : "كتم الصوت";
+      if (!vid.muted) track("mushaf:sound", "شغّل صوت فيديو مصحف ليبيا");
+    });
+    if ("IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { if (!REDUCED) vid.play().catch(() => {}); } else vid.pause();
+    }), { threshold: 0.2 }).observe(vid);
+  }
+
+  /* ═══ ٧) حجز جلسة التحليل المجانية: أيام العمل القادمة (الأحد–الخميس) ═══ */
+  const cfm = $("#consult-form");
+  if (cfm) {
+    const DAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+    const MON = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+    const box = $("#c-days"), out = [];
+    for (let d = new Date(Date.now() + 864e5); out.length < 5; d = new Date(d.getTime() + 864e5)) {
+      if (d.getDay() === 5 || d.getDay() === 6) continue;   /* الجمعة والسبت عطلة */
+      out.push(d);
+    }
+    box.innerHTML = out.map(d => { const iso = d.toISOString().slice(0, 10);
+      return `<button type="button" data-v="${iso}">${DAYS[d.getDay()]} ${d.getDate()} ${MON[d.getMonth()]}</button>`; }).join("");
+    $$(".chips", cfm).forEach(g => g.addEventListener("click", e => {
+      const b = e.target.closest("button[data-v]"); if (!b) return;
+      $$("button", g).forEach(x => x.classList.toggle("on", x === b));
+      const w = $(".consult-warn", cfm); if (w && $("#c-days button.on", cfm) && $("#c-times button.on", cfm)) w.remove();
+    }));
+    const m1 = member(); if (m1) { cfm.name.value = m1.name || ""; cfm.phone.value = m1.phone || ""; cfm.company.value = m1.company || ""; }
+    cfm.addEventListener("submit", e => {
+      e.preventDefault();
+      const pick = id => $(`#${id} button.on`, cfm);
+      const day = pick("c-days"), time = pick("c-times"), via = pick("c-via");
+      if (!day || !time) {
+        let w = $(".consult-warn", cfm);
+        if (!w) { w = document.createElement("p"); w.className = "est-warn consult-warn"; cfm.insertBefore(w, $("button[type=submit]", cfm)); }
+        w.textContent = "اختر اليوم والوقت المناسبين لك."; return;
+      }
+      const d = Object.fromEntries(new FormData(cfm));
+      const when = `${day.textContent} — ${time.textContent}`;
+      const text = `مرحباً ليبيا برو، أنا ${d.name}${d.company ? " من " + d.company : ""}.\nأريد حجز جلسة التحليل المجانية:\n` +
+        `الموعد: ${when} (بتوقيت ليبيا)\nالطريقة: ${via ? via.textContent : "مكالمة واتساب"}` + (d.topic ? `\nالموضوع: ${d.topic}` : "");
+      window.open(`https://wa.me/${WA}?text=` + encodeURIComponent(text), "_blank", "noopener");
+      saveLead({ kind: "consult", name: d.name, phone: d.phone, company: d.company,
+                 details: `حجز جلسة تحليل مجانية: ${when} · ${via ? via.textContent : "واتساب"}` + (d.topic ? `\n${d.topic}` : ""),
+                 answers: { day: day.dataset.v, time: time.dataset.v, via: via ? via.dataset.v : "واتساب", topic: d.topic || "" } });
+      set("lp_member", JSON.stringify({ name: d.name, phone: d.phone, company: d.company || "" }));
+      if (window.LP_ADS) window.LP_ADS.lead();
+      track("consult:booked", "حجز جلسة: " + when);
+      cfm.innerHTML = `<p class="est-done">تم طلب موعدك يا ${esc(String(d.name).split(" ")[0])} ✓<br>${esc(when)} بتوقيت ليبيا. نؤكد معك على واتساب.</p>`;
+    });
+  }
 
   /* ═══ ٤) زر واتساب عائم برسالة تناسب الصفحة ═══ */
   if (location.pathname.indexOf("/admin") !== 0) {

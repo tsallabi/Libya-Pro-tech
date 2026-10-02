@@ -165,7 +165,7 @@
     ], d.rows, r => journey(r.vid));
   }
 
-  const KIND = { quote: "نموذج عرض", demo: "فتح الأنظمة", estimate: "حاسبة النظام", case: "دراسة حالة", wa_ad: "إعلان واتساب" };
+  const KIND = { quote: "نموذج عرض", demo: "فتح الأنظمة", estimate: "حاسبة النظام", case: "دراسة حالة", wa_ad: "إعلان واتساب", consult: "جلسة مجانية" };
   const pname = id => String(id).replace(/[-_]/g, " ");
   function answers(a) {
     if (!a) return "";

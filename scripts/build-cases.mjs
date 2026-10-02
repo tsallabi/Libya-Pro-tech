@@ -103,6 +103,7 @@ const contact = (p) => `<section class="sec" id="contact">
       <label>الجهة أو الشركة <small>(اختياري)</small><input name="company" autocomplete="organization"></label>
       <label>ما الذي تريد تغييره عن هذا النظام؟ <small>(اختياري)</small><textarea name="details" rows="3"></textarea></label>
       <button class="btn btn-gold" type="submit">أريد نظاماً مثله</button>
+      <a class="textlink" href="/#consult">أو احجز جلسة تحليل مجانية — 30 دقيقة</a>
       <p class="mut case-form-note">لا نشارك رقمك مع أي جهة. نرسل لك جديد قطاعك مرة في الشهر على واتساب، وتوقفه بكلمة «إيقاف».</p>
     </form>
   </div>
