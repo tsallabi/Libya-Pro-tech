@@ -141,7 +141,7 @@
     const INTEG = { 0: 0, 1: 2, 2: 5 };
     const SECTOR_MAP = { finance: ["finance"], gov: ["logistics", "auctions", "erp"], company: ["erp", "finance", "logistics"],
       commerce: ["commerce", "apps"], other: ["apps", "ai", "commerce"] };
-    const MOD_MAP = { accounting: ["amanpro", "accounting", "amanpro-full"], payments: ["amanpro-full", "talin"], inventory: ["talin", "ajrly"],
+    const MOD_MAP = { accounting: ["amanpro", "accounting", "amanpro-full"], payments: ["amanpro-full", "hudhud"], inventory: ["hudhud", "ajrly"],
       tracking: ["mazadna"], mobile: ["mushaf", "usta"], ai: ["libyapro-ai", "vidio", "usta"], portal: ["fairfix", "carrie", "macchinaa"], dashboard: ["ajrly", "amanpro"] };
     const ans = { modules: [] };
     const qs = $$(".est-q", est), dots = $$(".est-steps li", est);
@@ -310,6 +310,20 @@
       cfm.innerHTML = `<p class="est-done">تم طلب موعدك يا ${esc(String(d.name).split(" ")[0])} ✓<br>${esc(when)} بتوقيت ليبيا. نؤكد معك على واتساب.</p>`;
     });
   }
+
+  /* ═══ ٨) الفيديو التوضيحي: تبديل العربية/الإنجليزية، وتسجيل المشاهدة في لوحة التحكم ═══ */
+  document.addEventListener("click", e => {
+    const t = e.target.closest(".vtabs button[data-l]"); if (!t) return;
+    const box = t.closest(".vbox"), v = box.querySelector("video"), l = t.dataset.l;
+    box.querySelectorAll(".vtabs button").forEach(x => x.classList.toggle("on", x === t));
+    v.pause(); v.src = "/" + box.dataset[l]; v.poster = "/" + (l === "ar" ? box.dataset.par : box.dataset.pen);
+    v.dataset.trackId = box.dataset.id + ":" + l; v.load();
+  });
+  const seenV = new Set();
+  document.addEventListener("play", e => {
+    const v = e.target; if (!(v instanceof HTMLVideoElement) || !v.dataset.trackId || seenV.has(v.dataset.trackId)) return;
+    seenV.add(v.dataset.trackId); track("video:" + v.dataset.trackId, "شاهد فيديو: " + v.dataset.trackId);
+  }, true);
 
   /* ═══ ٤) زر واتساب عائم برسالة تناسب الصفحة ═══ */
   if (location.pathname.indexOf("/admin") !== 0) {

@@ -1,555 +1,632 @@
 [
-  {
-    "id": "amanpro",
-    "name": "أمان برو للتحويلات",
-    "tag": "منظومة تحصيل ومحاسبة تشغيلية",
-    "sector": "finance",
-    "desc": "منظومة مالية تشغيلية لشركة تحويلات: لوحة متابعة بالمستحقات والمحصّل والأرباح، سندات قبض، جرد يومي، موردون، تقارير شهرية قابلة للطباعة، وإنذارات تأخير آلية تُرسل عبر واتساب.",
-    "tech": [
-      "Next.js 16",
-      "Prisma",
-      "SQLite",
-      "RBAC",
-      "PDF"
-    ],
-    "repo": "tsallabi/MINI-AMAN-PRO",
-    "demo": "",
-    "latin": "AMANPRO",
-    "shot": "assets/shots/amanpro-dashboard.webp",
-    "shotAlt": "لوحة المتابعة: بطاقات المستحقات والمحصّل والأرباح مع تنبيه الجرد اليومي"
+ {
+  "id": "amanpro",
+  "name": "أمان برو للتحويلات",
+  "tag": "منظومة تحصيل ومحاسبة تشغيلية",
+  "sector": "finance",
+  "desc": "منظومة مالية تشغيلية لشركة تحويلات: لوحة متابعة بالمستحقات والمحصّل والأرباح، سندات قبض، جرد يومي، موردون، تقارير شهرية قابلة للطباعة، وإنذارات تأخير آلية تُرسل عبر واتساب.",
+  "tech": [
+   "Next.js 16",
+   "Prisma",
+   "SQLite",
+   "RBAC",
+   "PDF"
+  ],
+  "repo": "tsallabi/MINI-AMAN-PRO",
+  "demo": "",
+  "latin": "AMANPRO",
+  "shot": "assets/shots/amanpro-dashboard.webp",
+  "shotAlt": "لوحة المتابعة: بطاقات المستحقات والمحصّل والأرباح مع تنبيه الجرد اليومي"
+ },
+ {
+  "id": "amanpro-full",
+  "name": "أمان برو — منصة الحوالات",
+  "latin": "AMANPRO",
+  "tag": "منصة تحويلات ومدفوعات متعددة المكاتب",
+  "sector": "finance",
+  "desc": "منصة مالية تربط مكاتب في ليبيا ومصر وتركيا والولايات المتحدة: حوالات، سداد فواتير، خزائن ومحافظ متعددة العملات، تسوية موردين، ومحاسبة عمولات — مع تنبيهات ذكية للتأخير ومطابقة الأرصدة.",
+  "tech": [
+   "React 19",
+   "Vite",
+   "Express",
+   "Multi-currency",
+   "RBAC"
+  ],
+  "repo": "tsallabi/AMANPRO-FULL",
+  "demo": "",
+  "shot": "assets/shots/amanprofull-dashboard.webp",
+  "shotAlt": "لوحة التحكم: تنبيهات ذكية للتأخير، التقرير اليومي الحي، والمحفظة الرقمية",
+  "gallery": [
+   {
+    "src": "assets/shots/amanprofull-landing.webp",
+    "alt": "الصفحة الرئيسية ولوحة أسعار الصرف",
+    "cap": "الواجهة العامة مع لوحة أسعار صرف محدَّثة لحظياً"
+   },
+   {
+    "src": "assets/shots/amanprofull-transactions.webp",
+    "alt": "سجل الحركات",
+    "cap": "سجل الحركات بحالات دقيقة لكل مرحلة من مراحل الحوالة"
+   },
+   {
+    "src": "assets/shots/amanprofull-treasury.webp",
+    "alt": "إدارة الخزائن",
+    "cap": "خزائن رئيسية وشريكة بعملات متعددة"
+   },
+   {
+    "src": "assets/shots/amanprofull-accounting.webp",
+    "alt": "الإدارة المحاسبية",
+    "cap": "عمولات محصّلة يومياً وشهرياً وسنوياً مع أرباح العمليات"
+   },
+   {
+    "src": "assets/shots/amanprofull-wallets.webp",
+    "alt": "إدارة المحافظ",
+    "cap": "محافظ منفصلة لكل دور مع الإيداع والسحب"
+   }
+  ]
+ },
+ {
+  "id": "accounting",
+  "name": "منظومة حسابات المجموعة الدولية",
+  "latin": "GROUP ACCOUNTING",
+  "tag": "منصة محاسبية موحّدة متعددة الشركات",
+  "sector": "finance",
+  "desc": "منصّة محاسبية تجمع أرباح ومصاريف وكاش كل شركات المجموعة في لوحة واحدة: قائمة دخل وميزانية عامة وتدفقات نقدية وميزان مراجعة وتقرير ضريبي ليبي جاهز للطباعة، بعملتين منفصلتين (د.ل/$)، وصلاحيات دقيقة لكل موظف، واستيراد من Excel وGoogle Sheets، وقراءة الفواتير آلياً بالذكاء الاصطناعي من صورة بالجوال.",
+  "tech": [
+   "Cloudflare Workers",
+   "D1",
+   "Pages Functions",
+   "RTL"
+  ],
+  "repo": "tsallabi/LibyaPro-AI",
+  "demo": "",
+  "shot": "assets/shots/accounting-home.webp",
+  "shotAlt": "واجهة منظومة حسابات المجموعة الدولية الأولى",
+  "gallery": [
+   {
+    "src": "assets/shots/accounting-features.webp",
+    "alt": "قدرات المنظومة",
+    "cap": "القوائم المالية والصلاحيات والاستيراد من Excel وقراءة الفواتير بالذكاء الاصطناعي"
+   }
+  ]
+ },
+ {
+  "id": "taybaa",
+  "name": "المكتبة الطيبة",
+  "tag": "منصة نشر وقراءة رقمية",
+  "sector": "commerce",
+  "desc": "مكتبة عربية رقمية: فهرس كتب، صفحة كتاب، قارئ داخل المتصفح، اشتراك مميز، ولوحة تحكم للنشر. الأرقام الظاهرة في اللقطة من المنصة نفسها: 196 كتاباً و422.9 ألف قارئ و227.9 ألف تحميل.",
+  "tech": [
+   "Static",
+   "Reader",
+   "Subscriptions",
+   "Admin"
+  ],
+  "repo": "tsallabi/TAYBAA-LIBRARY",
+  "demo": "",
+  "latin": "TAYBAA",
+  "shot": "assets/shots/taybaa-home.webp",
+  "shotAlt": "واجهة المكتبة الداكنة الذهبية مع عدادات الكتب والقرّاء والتحميلات",
+  "gallery": [
+   {
+    "src": "assets/shots/taybaa-book.webp",
+    "alt": "صفحة الكتاب",
+    "cap": "تفاصيل الكتاب وخيارات القراءة والتحميل"
+   },
+   {
+    "src": "assets/shots/taybaa-reader.webp",
+    "alt": "القارئ داخل المتصفح",
+    "cap": "قراءة الكتاب دون تنزيل"
+   },
+   {
+    "src": "assets/shots/taybaa-admin.webp",
+    "alt": "لوحة التحكم",
+    "cap": "إدارة الكتب والفئات والاشتراكات"
+   }
+  ]
+ },
+ {
+  "id": "libyapro-ai",
+  "name": "AgentCollab",
+  "tag": "مساحة عمل عربية بوكلاء ذكاء اصطناعي",
+  "sector": "ai",
+  "desc": "بديل موحّد عن أربع أدوات منفصلة داخل منصة واحدة عربية أولاً: محادثة، مهام، علاقات عملاء، ووكلاء ذكاء اصطناعي — مع فواتير ZATCA ودعم بالعربية.",
+  "tech": [
+   "AI Agents",
+   "RTL",
+   "ZATCA",
+   "Multi-tenant"
+  ],
+  "repo": "tsallabi/LibyaPro-AI",
+  "demo": "",
+  "latin": "AGENTCOLLAB",
+  "shot": "assets/shots/libyaproai-home.webp",
+  "shotAlt": "الصفحة الرئيسية بعنوان المقارنة مع الأدوات العالمية وصف الأرقام",
+  "gallery": [
+   {
+    "src": "assets/shots/libyaproai-comparison.webp",
+    "alt": "جدول المقارنة",
+    "cap": "مقارنة المنصة بأربع أدوات عالمية منفصلة"
+   },
+   {
+    "src": "assets/shots/libyaproai-roi.webp",
+    "alt": "حاسبة العائد",
+    "cap": "حساب التوفير الشهري مقابل الأدوات المنفصلة"
+   },
+   {
+    "src": "assets/shots/libyaproai-trust.webp",
+    "alt": "الامتثال والثقة",
+    "cap": "فواتير ZATCA واستضافة داخل المنطقة"
+   }
+  ]
+ },
+ {
+  "id": "vidio",
+  "name": "استوديو الإعلانات",
+  "tag": "إنتاج إعلانات فيديو بالذكاء الاصطناعي",
+  "sector": "ai",
+  "desc": "من فكرة مكتوبة وصور منتج إلى ستوري بورد كامل ثم إعلان فيديو جاهز للنشر، عبر مسار عمل من تسع مراحل داخل المنصة.",
+  "tech": [
+   "Next.js 15",
+   "FastAPI",
+   "Generative AI",
+   "Storyboard"
+  ],
+  "repo": "tsallabi/vidio",
+  "demo": "",
+  "latin": "VIDIO",
+  "shot": "assets/shots/vidio-home.webp",
+  "shotAlt": "مسار إنتاج الإعلان المكوّن من تسع مراحل"
+ },
+ {
+  "id": "fairfix",
+  "name": "FairFix.ie",
+  "tag": "منصة تسعير عادل لخدمات الصيانة — أيرلندا",
+  "sector": "apps",
+  "desc": "نسخة أيرلندية بالإنجليزية من نموذج التسعير العادل: تقدير سعر بالذكاء الاصطناعي قبل أي عرض، ثم حرفيون مُتحقَّق منهم يتقدمون بعروضهم. دليل على قدرتنا على المنافسة في سوق أوروبي.",
+  "tech": [
+   "Next.js 14",
+   "AI Estimation",
+   "Marketplace",
+   "i18n"
+  ],
+  "repo": "tsallabi/fairfix",
+  "demo": "",
+  "latin": "FAIRFIX",
+  "shot": "assets/shots/fairfix-home.webp",
+  "shotAlt": "الصفحة الرئيسية بالإنجليزية مع نموذج انتظار وتطبيق جوال",
+  "gallery": [
+   {
+    "src": "assets/shots/fairfix-estimate.webp",
+    "alt": "أداة التقدير",
+    "cap": "تقدير السعر العادل قبل أي عرض"
+   },
+   {
+    "src": "assets/shots/fairfix-newjob.webp",
+    "alt": "نشر طلب صيانة",
+    "cap": "مسار نشر الطلب خطوة بخطوة"
+   },
+   {
+    "src": "assets/shots/fairfix-join.webp",
+    "alt": "انضمام الحرفيين",
+    "cap": "مسار تسجيل مزوّدي الخدمة"
+   }
+  ]
+ },
+ {
+  "id": "usta",
+  "name": "توّا — Tawwa",
+  "tag": "منصة خدمات الصيانة بتسعير عادل",
+  "sector": "apps",
+  "desc": "سوق خدمات منزلية: العميل يصف العطل بجملة أو صورة، فيصله تقدير سعر عادل بالذكاء الاصطناعي خلال ثوانٍ، ثم عروض من أسطوات مُتحقَّق منهم يدوياً.",
+  "tech": [
+   "Next.js 14",
+   "TypeScript",
+   "Tailwind",
+   "AI Estimation",
+   "RTL"
+  ],
+  "repo": "tsallabi/Usta",
+  "demo": "",
+  "latin": "TAWWA",
+  "shot": "assets/shots/usta-home.webp",
+  "shotAlt": "الصفحة الرئيسية بواجهة عربية وتقدير سعر ذكي",
+  "gallery": [
+   {
+    "src": "assets/shots/usta-estimate.webp",
+    "alt": "شاشة تقدير السعر بالذكاء الاصطناعي",
+    "cap": "تقدير سعر عادل من وصف العطل خلال ثوانٍ"
+   },
+   {
+    "src": "assets/shots/usta-list.webp",
+    "alt": "دليل الأسطوات",
+    "cap": "قائمة الحرفيين المُتحقَّق منهم مع التقييم والتخصص"
+   },
+   {
+    "src": "assets/shots/usta-login.webp",
+    "alt": "تسجيل الدخول",
+    "cap": "واجهة دخول عربية كاملة"
+   }
+  ]
+ },
+ {
+  "id": "macchinaa",
+  "name": "ماكينا MACCHINAA",
+  "latin": "MACCHINAA",
+  "tag": "الإصدار الجديد: اشترِ سيارتك من مزادات أمريكا وتصلك إلى بلدك",
+  "sector": "auctions",
+  "desc": "منصة استيراد سيارات بالعربية والإنجليزية تجمع Copart وIAAI وADESA وManheim وACV وOpenLane — أكثر من 670 ألف سيارة محدَّثة من المزادات نفسها. فلاتر تفهم الشحن (الوثيقة وصلاحية الشحن)، صفحة سيارة بـ25 صورة وعدّ تنازلي ومزايدة تلقائية حتى سقف يحدده الزبون، تقرير تاريخ السيارة بدولار، حاسبة التكلفة حتى الميناء، نتائج المزادات اليومية، تقويم المزادات، تتبّع الشحنة، وغرفة مزاد حيّ داخل الموقع.",
+  "tech": [
+   "Django",
+   "Channels / WebSockets",
+   "PostgreSQL",
+   "Meilisearch",
+   "Docker",
+   "PWA"
+  ],
+  "repo": "tsallabi/macchina-private",
+  "demo": "",
+  "site": "https://macchinaa.net/new/",
+  "shot": "assets/shots/macnew-home.webp",
+  "shotAlt": "الواجهة الجديدة لماكينا: اشترِ سيارتك من مزادات أمريكا — 673 ألف سيارة في المزادات الآن",
+  "video": {
+   "ar": "assets/video/macchina-ar.mp4",
+   "en": "assets/video/macchina-en.mp4",
+   "poster_ar": "assets/video/macchina-ar.webp",
+   "poster_en": "assets/video/macchina-en.webp"
   },
-  {
-    "id": "amanpro-full",
-    "name": "أمان برو — منصة الحوالات",
-    "latin": "AMANPRO",
-    "tag": "منصة تحويلات ومدفوعات متعددة المكاتب",
-    "sector": "finance",
-    "desc": "منصة مالية تربط مكاتب في ليبيا ومصر وتركيا والولايات المتحدة: حوالات، سداد فواتير، خزائن ومحافظ متعددة العملات، تسوية موردين، ومحاسبة عمولات — مع تنبيهات ذكية للتأخير ومطابقة الأرصدة.",
-    "tech": [
-      "React 19",
-      "Vite",
-      "Express",
-      "Multi-currency",
-      "RBAC"
-    ],
-    "repo": "tsallabi/AMANPRO-FULL",
-    "demo": "",
-    "shot": "assets/shots/amanprofull-dashboard.webp",
-    "shotAlt": "لوحة التحكم: تنبيهات ذكية للتأخير، التقرير اليومي الحي، والمحفظة الرقمية",
-    "gallery": [
-      {
-        "src": "assets/shots/amanprofull-landing.webp",
-        "alt": "الصفحة الرئيسية ولوحة أسعار الصرف",
-        "cap": "الواجهة العامة مع لوحة أسعار صرف محدَّثة لحظياً"
-      },
-      {
-        "src": "assets/shots/amanprofull-transactions.webp",
-        "alt": "سجل الحركات",
-        "cap": "سجل الحركات بحالات دقيقة لكل مرحلة من مراحل الحوالة"
-      },
-      {
-        "src": "assets/shots/amanprofull-treasury.webp",
-        "alt": "إدارة الخزائن",
-        "cap": "خزائن رئيسية وشريكة بعملات متعددة"
-      },
-      {
-        "src": "assets/shots/amanprofull-accounting.webp",
-        "alt": "الإدارة المحاسبية",
-        "cap": "عمولات محصّلة يومياً وشهرياً وسنوياً مع أرباح العمليات"
-      },
-      {
-        "src": "assets/shots/amanprofull-wallets.webp",
-        "alt": "إدارة المحافظ",
-        "cap": "محافظ منفصلة لكل دور مع الإيداع والسحب"
-      }
-    ]
+  "gallery": [
+   {
+    "src": "assets/shots/macnew-cars.webp",
+    "alt": "سيارات المزادات",
+    "cap": "سيارات المزادات: فلاتر المزاد والسعر والوثيقة وصلاحية الشحن"
+   },
+   {
+    "src": "assets/shots/macnew-car.webp",
+    "alt": "صفحة السيارة",
+    "cap": "صفحة السيارة: 25 صورة، عدّ تنازلي، ومزايدة تلقائية حتى السقف"
+   },
+   {
+    "src": "assets/shots/macnew-car2.webp",
+    "alt": "تفاصيل السيارة",
+    "cap": "تقرير تاريخ السيارة بدولار، وتفاصيل الحالة والبيع"
+   },
+   {
+    "src": "assets/shots/macnew-calc.webp",
+    "alt": "حاسبة التكلفة",
+    "cap": "كم تكلّفني السيارة حتى الميناء؟"
+   },
+   {
+    "src": "assets/shots/macnew-results.webp",
+    "alt": "نتائج المزادات",
+    "cap": "نتائج المزادات اليومية بأسعار البيع الحقيقية"
+   },
+   {
+    "src": "assets/shots/macnew-calendar.webp",
+    "alt": "تقويم المزادات",
+    "cap": "تقويم المزادات: كل بيع وموعده بتوقيت ليبيا"
+   },
+   {
+    "src": "assets/shots/macnew-why.webp",
+    "alt": "لماذا ماكينا",
+    "cap": "عمولة ثابتة، قوة شراء ×10، وتسع مراحل تتبّع"
+   },
+   {
+    "src": "assets/shots/macnew-mobile.webp",
+    "alt": "الجوال",
+    "cap": "صفحة السيارة على الجوال"
+   }
+  ]
+ },
+ {
+  "id": "autopro",
+  "name": "أوتوبرو AutoPro",
+  "tag": "منصة مزادات سيارات وشحن دولي",
+  "sector": "auctions",
+  "desc": "منصة مزادات سيارات بالعربية: مزايدة مباشرة بعدّاد حي على لوتات Copart وIAAI، سوق عروض، محفظة وتمويل، حاسبة تكلفة محلية تُظهر صافي التكلفة النهائية بالرسوم كلها، وخدمة شحن من أمريكا وأوروبا إلى ليبيا بتتبّع كامل.",
+  "tech": [
+   "React 19",
+   "Vite",
+   "NestJS",
+   "Socket.IO",
+   "Prisma",
+   "PWA"
+  ],
+  "repo": "libya-autopro/autopro-final",
+  "demo": "https://autopro.ac",
+  "latin": "AUTOPRO",
+  "shot": "assets/shots/autopro-calc.webp",
+  "shotAlt": "حاسبة التكلفة المحلية في أوتو برو: صافي التكلفة النهائية مفصّلة بكل رسم",
+  "gallery": [
+   {
+    "src": "assets/shots/autopro-live.webp",
+    "alt": "المزادات المباشرة",
+    "cap": "المزادات المباشرة: عدّاد حي لكل لوت، مزايدة فورية، وفلاتر Copart والخليج"
+   },
+   {
+    "src": "assets/shots/autopro-shipping.webp",
+    "alt": "خدمات الشحن",
+    "cap": "الشحن الدولي: من الميناء الأمريكي حتى باب المنزل — أربعة موانئ ومتوسط تسليم 52 يوماً"
+   },
+   {
+    "src": "assets/shots/autopro-home.webp",
+    "alt": "الواجهة الرئيسية",
+    "cap": "الواجهة الرئيسية: مزاد حي فوق الطية بسعر المزايدة الحالي"
+   }
+  ]
+ },
+ {
+  "id": "mazadna",
+  "name": "منصّة مجموعة المزاد الدولي",
+  "tag": "استيراد السيارات من مزادات أمريكا وتتبع الحاويات",
+  "sector": "logistics",
+  "desc": "منظومة تشغيلية كاملة لاستيراد السيارات: حاسبة تكلفة الاستيراد من Copart وIAA، شراء ومتابعة المركبة عبر عشر مراحل حتى التسليم، إدارة الحاويات والشحن البحري والبري، فواتير بمهل سماح، وخزائن نقدية متعددة الفروع والعملات.",
+  "tech": [
+   "Next.js 16",
+   "Prisma",
+   "PostgreSQL",
+   "Tracking",
+   "Multi-branch"
+  ],
+  "repo": "tsallabi/Mazadna",
+  "demo": "",
+  "latin": "MAZADNA",
+  "shot": "assets/shots/mazadna-calc.webp",
+  "shotAlt": "حاسبة الاستيراد بالوضع الفاتح في منصة مجموعة المزاد الدولي",
+  "gallery": [
+   "assets/shots/mazadna-home.webp",
+   {
+    "src": "assets/shots/mazadna-dashboard.webp",
+    "alt": "لوحة الموظفين",
+    "cap": "لوحة الموظفين: العمليات والمستحقات والأرباح والغرامات في شاشة واحدة"
+   },
+   {
+    "src": "assets/shots/mazadna-calculator.webp",
+    "alt": "حاسبة الاستيراد",
+    "cap": "حاسبة تكلفة الاستيراد من رقم اللوت حتى باب العميل"
+   },
+   {
+    "src": "assets/shots/mazadna-market.webp",
+    "alt": "أسعار السوق",
+    "cap": "189 سطر أسعار سوق بالدينار الليبي مع سعر الدولار الرسمي"
+   },
+   {
+    "src": "assets/shots/mazadna-track.webp",
+    "alt": "تتبع الحاوية",
+    "cap": "تتبع الحاوية متاح للعميل دون تسجيل دخول"
+   },
+   {
+    "src": "assets/shots/mazadna-treasury.webp",
+    "alt": "إدارة الخزائن",
+    "cap": "خزائن نقدية لكل فرع وعملة بأرصدة محسوبة"
+   }
+  ]
+ },
+ {
+  "id": "ajrly",
+  "name": "أجّرلي Ajrly OS",
+  "tag": "منظومة تشغيل متكاملة لتأجير العقارات",
+  "sector": "erp",
+  "desc": "منظومة تشغيل تحوّل ملف Google Sheets متناثراً إلى تطبيق واحد: لوحة تحكم بمؤشرات حية، مهام بلوحة كانبان ومؤقّت عمل، مسار ملاك العقارات بأربع مراحل، مالية بالمصروفات والإيرادات والميزانيات وتقرير قابل للطباعة، أصول الشركة، ولوحة أداء الموظفين — عربية/إنجليزية بوضع ليلي. اللقطات من نسخة محلية ببيانات عرض.",
+  "tech": [
+   "Cloudflare Pages",
+   "D1",
+   "KV",
+   "Vanilla JS",
+   "RTL"
+  ],
+  "repo": "tsallabi/Ajrly-",
+  "demo": "",
+  "latin": "AJRLY",
+  "shot": "assets/shots/ajrly-dashboard.webp",
+  "shotAlt": "لوحة تحكم أجّرلي: إجمالي المهام ونسبة الإنجاز والتوزيع حسب الفريق",
+  "gallery": [
+   {
+    "src": "assets/shots/ajrly-finance.webp",
+    "alt": "المالية",
+    "cap": "المالية: ملخص سنوي بالإيرادات والمصروفات والصافي بالدينار، مع الميزانيات وتقرير للطباعة"
+   },
+   {
+    "src": "assets/shots/ajrly-tasks.webp",
+    "alt": "المهام",
+    "cap": "المهام: فلاتر بالحالة والفريق، أولويات، ومؤقّت عمل لكل مهمة"
+   },
+   {
+    "src": "assets/shots/ajrly-owners.webp",
+    "alt": "ملاك العقارات",
+    "cap": "ملاك العقارات: مسار بأربع مراحل مع متابعة المحادثات المتأخرة"
+   }
+  ]
+ },
+ {
+  "id": "carrie",
+  "name": "CARRPRO.ie",
+  "tag": "سوق سيارات مستعملة — أيرلندا",
+  "sector": "commerce",
+  "desc": "سوق سيارات أيرلندي يبيع الشفافية: كل إعلان يحمل فحص تاريخ المركبة، وحاسبة تكلفة ملكية شهرية، وحاسبة استيراد من بريطانيا بالتكلفة النهائية بعد الضرائب. دليل على قدرتنا على المنافسة في سوق أوروبي بالإنجليزية.",
+  "tech": [
+   "Django 5",
+   "PostgreSQL",
+   "Search",
+   "VRT / WLTP"
+  ],
+  "repo": "tsallabi/Carr.ie",
+  "demo": "",
+  "latin": "CARRPRO",
+  "shot": "assets/shots/carrie-home.webp",
+  "shotAlt": "الصفحة الرئيسية بعنوان السوق الصادق للسيارات المستعملة في أيرلندا",
+  "gallery": [
+   {
+    "src": "assets/shots/carrie-search.webp",
+    "alt": "نتائج البحث",
+    "cap": "بحث بالمقاطعات والفلاتر مع بطاقات السيارات"
+   },
+   {
+    "src": "assets/shots/carrie-listing.webp",
+    "alt": "صفحة الإعلان",
+    "cap": "صفحة الإعلان: السعر، تكلفة الملكية الشهرية، ولوحة فحص التاريخ"
+   },
+   {
+    "src": "assets/shots/carrie-import.webp",
+    "alt": "حاسبة الاستيراد",
+    "cap": "حاسبة الاستيراد من بريطانيا بالتكلفة النهائية بعد الرسوم"
+   }
+  ]
+ },
+ {
+  "id": "irish-castle",
+  "name": "Irish Castle",
+  "tag": "منصة عقارات فاخرة — أيرلندا",
+  "sector": "commerce",
+  "desc": "منصة عقارات أيرلندية: بحث بالشراء والإيجار والمشاريع الجديدة، صفحات عقار تفصيلية، وحاسبة تمويل عقاري بمعطيات السوق الأيرلندي من الدفعة الأولى إلى نسبة القرض للقيمة.",
+  "tech": [
+   "Static",
+   "Vanilla JS",
+   "Cloudflare Pages",
+   "SVG"
+  ],
+  "repo": "tsallabi/Irish-castle-",
+  "demo": "",
+  "latin": "IRISH CASTLE",
+  "shot": "assets/shots/irishcastle-home.webp",
+  "shotAlt": "الصفحة الرئيسية بشريط بحث ثلاثي وإحصاءات المنصة",
+  "gallery": [
+   {
+    "src": "assets/shots/irishcastle-properties.webp",
+    "alt": "تصفح العقارات",
+    "cap": "شبكة العقارات مع تصفية بالمقاطعة"
+   },
+   {
+    "src": "assets/shots/irishcastle-property.webp",
+    "alt": "صفحة العقار",
+    "cap": "صفحة عقار تفصيلية"
+   },
+   {
+    "src": "assets/shots/irishcastle-mortgage.webp",
+    "alt": "حاسبة التمويل",
+    "cap": "حاسبة تمويل عقاري بمعايير السوق الأيرلندي"
+   }
+  ]
+ },
+ {
+  "id": "hudhud",
+  "name": "هدهد HUDHUDE",
+  "latin": "HUDHUDE",
+  "tag": "متجر إلكتروني للسوق الليبي ببضاعة من مصانع الصين",
+  "sector": "commerce",
+  "desc": "متجر عربي بتجربة تشبه شي إن، ببضاعة من 1688 وأكثر من 11 ألف منتج نشط، وسعر نهائي بالدينار الليبي شامل الشحن والجمارك. شحن جوي أو بحري بسعر ومدة واضحين، «اطلب برابط» من أي موقع صيني، استلام من مستودع طرابلس أو بنغازي أو توصيل للباب، شروحات فيديو للزبائن، ولوحة إدارة ولوحة لشريك الشحن في الصين. الواجهات في اللقطات ببيانات عرض.",
+  "tech": [
+   "Cloudflare Workers",
+   "D1",
+   "R2",
+   "Hono",
+   "MyPay",
+   "RTL"
+  ],
+  "repo": "tsallabi/Dlal",
+  "demo": "",
+  "site": "https://hudhude.com",
+  "shot": "assets/shots/hudhud-home.webp",
+  "shotAlt": "الواجهة الرئيسية لمتجر هدهد: أقسام وعروض بأسعار نهائية بالدينار الليبي",
+  "video": {
+   "ar": "assets/video/hudhud-ar.mp4",
+   "en": "assets/video/hudhud-en.mp4",
+   "poster_ar": "assets/video/hudhud-ar.webp",
+   "poster_en": "assets/video/hudhud-en.webp"
   },
-  {
-    "id": "accounting",
-    "name": "منظومة حسابات المجموعة الدولية",
-    "latin": "GROUP ACCOUNTING",
-    "tag": "منصة محاسبية موحّدة متعددة الشركات",
-    "sector": "finance",
-    "desc": "منصّة محاسبية تجمع أرباح ومصاريف وكاش كل شركات المجموعة في لوحة واحدة: قائمة دخل وميزانية عامة وتدفقات نقدية وميزان مراجعة وتقرير ضريبي ليبي جاهز للطباعة، بعملتين منفصلتين (د.ل/$)، وصلاحيات دقيقة لكل موظف، واستيراد من Excel وGoogle Sheets، وقراءة الفواتير آلياً بالذكاء الاصطناعي من صورة بالجوال.",
-    "tech": [
-      "Cloudflare Workers",
-      "D1",
-      "Pages Functions",
-      "RTL"
-    ],
-    "repo": "tsallabi/LibyaPro-AI",
-    "demo": "",
-    "shot": "assets/shots/accounting-home.webp",
-    "shotAlt": "واجهة منظومة حسابات المجموعة الدولية الأولى",
-    "gallery": [
-      {
-        "src": "assets/shots/accounting-features.webp",
-        "alt": "قدرات المنظومة",
-        "cap": "القوائم المالية والصلاحيات والاستيراد من Excel وقراءة الفواتير بالذكاء الاصطناعي"
-      }
-    ]
-  },
-  {
-    "id": "taybaa",
-    "name": "المكتبة الطيبة",
-    "tag": "منصة نشر وقراءة رقمية",
-    "sector": "commerce",
-    "desc": "مكتبة عربية رقمية: فهرس كتب، صفحة كتاب، قارئ داخل المتصفح، اشتراك مميز، ولوحة تحكم للنشر. الأرقام الظاهرة في اللقطة من المنصة نفسها: 196 كتاباً و422.9 ألف قارئ و227.9 ألف تحميل.",
-    "tech": [
-      "Static",
-      "Reader",
-      "Subscriptions",
-      "Admin"
-    ],
-    "repo": "tsallabi/TAYBAA-LIBRARY",
-    "demo": "",
-    "latin": "TAYBAA",
-    "shot": "assets/shots/taybaa-home.webp",
-    "shotAlt": "واجهة المكتبة الداكنة الذهبية مع عدادات الكتب والقرّاء والتحميلات",
-    "gallery": [
-      {
-        "src": "assets/shots/taybaa-book.webp",
-        "alt": "صفحة الكتاب",
-        "cap": "تفاصيل الكتاب وخيارات القراءة والتحميل"
-      },
-      {
-        "src": "assets/shots/taybaa-reader.webp",
-        "alt": "القارئ داخل المتصفح",
-        "cap": "قراءة الكتاب دون تنزيل"
-      },
-      {
-        "src": "assets/shots/taybaa-admin.webp",
-        "alt": "لوحة التحكم",
-        "cap": "إدارة الكتب والفئات والاشتراكات"
-      }
-    ]
-  },
-  {
-    "id": "libyapro-ai",
-    "name": "AgentCollab",
-    "tag": "مساحة عمل عربية بوكلاء ذكاء اصطناعي",
-    "sector": "ai",
-    "desc": "بديل موحّد عن أربع أدوات منفصلة داخل منصة واحدة عربية أولاً: محادثة، مهام، علاقات عملاء، ووكلاء ذكاء اصطناعي — مع فواتير ZATCA ودعم بالعربية.",
-    "tech": [
-      "AI Agents",
-      "RTL",
-      "ZATCA",
-      "Multi-tenant"
-    ],
-    "repo": "tsallabi/LibyaPro-AI",
-    "demo": "",
-    "latin": "AGENTCOLLAB",
-    "shot": "assets/shots/libyaproai-home.webp",
-    "shotAlt": "الصفحة الرئيسية بعنوان المقارنة مع الأدوات العالمية وصف الأرقام",
-    "gallery": [
-      {
-        "src": "assets/shots/libyaproai-comparison.webp",
-        "alt": "جدول المقارنة",
-        "cap": "مقارنة المنصة بأربع أدوات عالمية منفصلة"
-      },
-      {
-        "src": "assets/shots/libyaproai-roi.webp",
-        "alt": "حاسبة العائد",
-        "cap": "حساب التوفير الشهري مقابل الأدوات المنفصلة"
-      },
-      {
-        "src": "assets/shots/libyaproai-trust.webp",
-        "alt": "الامتثال والثقة",
-        "cap": "فواتير ZATCA واستضافة داخل المنطقة"
-      }
-    ]
-  },
-  {
-    "id": "vidio",
-    "name": "استوديو الإعلانات",
-    "tag": "إنتاج إعلانات فيديو بالذكاء الاصطناعي",
-    "sector": "ai",
-    "desc": "من فكرة مكتوبة وصور منتج إلى ستوري بورد كامل ثم إعلان فيديو جاهز للنشر، عبر مسار عمل من تسع مراحل داخل المنصة.",
-    "tech": [
-      "Next.js 15",
-      "FastAPI",
-      "Generative AI",
-      "Storyboard"
-    ],
-    "repo": "tsallabi/vidio",
-    "demo": "",
-    "latin": "VIDIO",
-    "shot": "assets/shots/vidio-home.webp",
-    "shotAlt": "مسار إنتاج الإعلان المكوّن من تسع مراحل"
-  },
-  {
-    "id": "fairfix",
-    "name": "FairFix.ie",
-    "tag": "منصة تسعير عادل لخدمات الصيانة — أيرلندا",
-    "sector": "apps",
-    "desc": "نسخة أيرلندية بالإنجليزية من نموذج التسعير العادل: تقدير سعر بالذكاء الاصطناعي قبل أي عرض، ثم حرفيون مُتحقَّق منهم يتقدمون بعروضهم. دليل على قدرتنا على المنافسة في سوق أوروبي.",
-    "tech": [
-      "Next.js 14",
-      "AI Estimation",
-      "Marketplace",
-      "i18n"
-    ],
-    "repo": "tsallabi/fairfix",
-    "demo": "",
-    "latin": "FAIRFIX",
-    "shot": "assets/shots/fairfix-home.webp",
-    "shotAlt": "الصفحة الرئيسية بالإنجليزية مع نموذج انتظار وتطبيق جوال",
-    "gallery": [
-      {
-        "src": "assets/shots/fairfix-estimate.webp",
-        "alt": "أداة التقدير",
-        "cap": "تقدير السعر العادل قبل أي عرض"
-      },
-      {
-        "src": "assets/shots/fairfix-newjob.webp",
-        "alt": "نشر طلب صيانة",
-        "cap": "مسار نشر الطلب خطوة بخطوة"
-      },
-      {
-        "src": "assets/shots/fairfix-join.webp",
-        "alt": "انضمام الحرفيين",
-        "cap": "مسار تسجيل مزوّدي الخدمة"
-      }
-    ]
-  },
-  {
-    "id": "usta",
-    "name": "توّا — Tawwa",
-    "tag": "منصة خدمات الصيانة بتسعير عادل",
-    "sector": "apps",
-    "desc": "سوق خدمات منزلية: العميل يصف العطل بجملة أو صورة، فيصله تقدير سعر عادل بالذكاء الاصطناعي خلال ثوانٍ، ثم عروض من أسطوات مُتحقَّق منهم يدوياً.",
-    "tech": [
-      "Next.js 14",
-      "TypeScript",
-      "Tailwind",
-      "AI Estimation",
-      "RTL"
-    ],
-    "repo": "tsallabi/Usta",
-    "demo": "",
-    "latin": "TAWWA",
-    "shot": "assets/shots/usta-home.webp",
-    "shotAlt": "الصفحة الرئيسية بواجهة عربية وتقدير سعر ذكي",
-    "gallery": [
-      {
-        "src": "assets/shots/usta-estimate.webp",
-        "alt": "شاشة تقدير السعر بالذكاء الاصطناعي",
-        "cap": "تقدير سعر عادل من وصف العطل خلال ثوانٍ"
-      },
-      {
-        "src": "assets/shots/usta-list.webp",
-        "alt": "دليل الأسطوات",
-        "cap": "قائمة الحرفيين المُتحقَّق منهم مع التقييم والتخصص"
-      },
-      {
-        "src": "assets/shots/usta-login.webp",
-        "alt": "تسجيل الدخول",
-        "cap": "واجهة دخول عربية كاملة"
-      }
-    ]
-  },
-  {
-    "id": "macchinaa",
-    "name": "ماكينا MACCHINAA",
-    "tag": "منصة مزادات سيارات تجمع ست مصادر أمريكية",
-    "sector": "auctions",
-    "desc": "منصة تجمع مزادات Copart وIAAI وADESA وACV وOpenLane في واجهة عربية واحدة: تصفّح بفلاتر دقيقة (نوع العنوان، العداد، الجملة)، بحوث محفوظة، صفحة لوت بمزايدة حية ومزايدة بالوكالة، حاسبة ذكية، وأسعار صرف محدَّثة.",
-    "tech": [
-      "Django",
-      "Channels",
-      "Realtime Bidding",
-      "Multi-source",
-      "RTL"
-    ],
-    "repo": "tsallabi/MACCHINAA-NEW-ERA",
-    "demo": "",
-    "latin": "MACCHINAA",
-    "shot": "assets/shots/macchinaa-light.webp",
-    "shotAlt": "تصفح السيارات بالوضع الفاتح في منصة ماكينا — بطاقات مزادات Copart وIAAI",
-    "gallery": [
-      "assets/shots/macchinaa-listings.webp",
-      {
-        "src": "assets/shots/macchinaa-home.webp",
-        "alt": "الصفحة الرئيسية",
-        "cap": "بوابات المزادات الحية لكل مصدر مع عدّاد مباشر وشريط أسعار الصرف"
-      },
-      {
-        "src": "assets/shots/macchinaa-car-detail.webp",
-        "alt": "صفحة اللوت",
-        "cap": "صفحة اللوت: المعرض، حالة المزاد الحي، المزايدة الحالية، والمزايدة بالوكالة"
-      },
-      {
-        "src": "assets/shots/macchinaa-why.webp",
-        "alt": "لماذا ماكينا",
-        "cap": "صفحة المقارنة مع المصادر الستة"
-      },
-      {
-        "src": "assets/shots/macchinaa-how-to-buy.webp",
-        "alt": "كيف تشتري",
-        "cap": "مسار الشراء خطوة بخطوة للمشتري"
-      },
-      {
-        "src": "assets/shots/macchinaa-about.webp",
-        "alt": "عن الشركة",
-        "cap": "الرسالة والرؤية ومؤشرات التشغيل"
-      }
-    ]
-  },
-  {
-    "id": "autopro",
-    "name": "أوتوبرو AutoPro",
-    "tag": "منصة مزادات سيارات وشحن دولي",
-    "sector": "auctions",
-    "desc": "منصة مزادات سيارات بالعربية: مزايدة مباشرة بعدّاد حي على لوتات Copart وIAAI، سوق عروض، محفظة وتمويل، حاسبة تكلفة محلية تُظهر صافي التكلفة النهائية بالرسوم كلها، وخدمة شحن من أمريكا وأوروبا إلى ليبيا بتتبّع كامل.",
-    "tech": [
-      "React 19",
-      "Vite",
-      "NestJS",
-      "Socket.IO",
-      "Prisma",
-      "PWA"
-    ],
-    "repo": "libya-autopro/autopro-final",
-    "demo": "https://autopro.ac",
-    "latin": "AUTOPRO",
-    "shot": "assets/shots/autopro-calc.webp",
-    "shotAlt": "حاسبة التكلفة المحلية في أوتو برو: صافي التكلفة النهائية مفصّلة بكل رسم",
-    "gallery": [
-      {
-        "src": "assets/shots/autopro-live.webp",
-        "alt": "المزادات المباشرة",
-        "cap": "المزادات المباشرة: عدّاد حي لكل لوت، مزايدة فورية، وفلاتر Copart والخليج"
-      },
-      {
-        "src": "assets/shots/autopro-shipping.webp",
-        "alt": "خدمات الشحن",
-        "cap": "الشحن الدولي: من الميناء الأمريكي حتى باب المنزل — أربعة موانئ ومتوسط تسليم 52 يوماً"
-      },
-      {
-        "src": "assets/shots/autopro-home.webp",
-        "alt": "الواجهة الرئيسية",
-        "cap": "الواجهة الرئيسية: مزاد حي فوق الطية بسعر المزايدة الحالي"
-      }
-    ]
-  },
-  {
-    "id": "mazadna",
-    "name": "منصّة مجموعة المزاد الدولي",
-    "tag": "استيراد السيارات من مزادات أمريكا وتتبع الحاويات",
-    "sector": "logistics",
-    "desc": "منظومة تشغيلية كاملة لاستيراد السيارات: حاسبة تكلفة الاستيراد من Copart وIAA، شراء ومتابعة المركبة عبر عشر مراحل حتى التسليم، إدارة الحاويات والشحن البحري والبري، فواتير بمهل سماح، وخزائن نقدية متعددة الفروع والعملات.",
-    "tech": [
-      "Next.js 16",
-      "Prisma",
-      "PostgreSQL",
-      "Tracking",
-      "Multi-branch"
-    ],
-    "repo": "tsallabi/Mazadna",
-    "demo": "",
-    "latin": "MAZADNA",
-    "shot": "assets/shots/mazadna-calc.webp",
-    "shotAlt": "حاسبة الاستيراد بالوضع الفاتح في منصة مجموعة المزاد الدولي",
-    "gallery": [
-      "assets/shots/mazadna-home.webp",
-      {
-        "src": "assets/shots/mazadna-dashboard.webp",
-        "alt": "لوحة الموظفين",
-        "cap": "لوحة الموظفين: العمليات والمستحقات والأرباح والغرامات في شاشة واحدة"
-      },
-      {
-        "src": "assets/shots/mazadna-calculator.webp",
-        "alt": "حاسبة الاستيراد",
-        "cap": "حاسبة تكلفة الاستيراد من رقم اللوت حتى باب العميل"
-      },
-      {
-        "src": "assets/shots/mazadna-market.webp",
-        "alt": "أسعار السوق",
-        "cap": "189 سطر أسعار سوق بالدينار الليبي مع سعر الدولار الرسمي"
-      },
-      {
-        "src": "assets/shots/mazadna-track.webp",
-        "alt": "تتبع الحاوية",
-        "cap": "تتبع الحاوية متاح للعميل دون تسجيل دخول"
-      },
-      {
-        "src": "assets/shots/mazadna-treasury.webp",
-        "alt": "إدارة الخزائن",
-        "cap": "خزائن نقدية لكل فرع وعملة بأرصدة محسوبة"
-      }
-    ]
-  },
-  {
-    "id": "ajrly",
-    "name": "أجّرلي Ajrly OS",
-    "tag": "منظومة تشغيل متكاملة لتأجير العقارات",
-    "sector": "erp",
-    "desc": "منظومة تشغيل تحوّل ملف Google Sheets متناثراً إلى تطبيق واحد: لوحة تحكم بمؤشرات حية، مهام بلوحة كانبان ومؤقّت عمل، مسار ملاك العقارات بأربع مراحل، مالية بالمصروفات والإيرادات والميزانيات وتقرير قابل للطباعة، أصول الشركة، ولوحة أداء الموظفين — عربية/إنجليزية بوضع ليلي. اللقطات من نسخة محلية ببيانات عرض.",
-    "tech": [
-      "Cloudflare Pages",
-      "D1",
-      "KV",
-      "Vanilla JS",
-      "RTL"
-    ],
-    "repo": "tsallabi/Ajrly-",
-    "demo": "",
-    "latin": "AJRLY",
-    "shot": "assets/shots/ajrly-dashboard.webp",
-    "shotAlt": "لوحة تحكم أجّرلي: إجمالي المهام ونسبة الإنجاز والتوزيع حسب الفريق",
-    "gallery": [
-      {
-        "src": "assets/shots/ajrly-finance.webp",
-        "alt": "المالية",
-        "cap": "المالية: ملخص سنوي بالإيرادات والمصروفات والصافي بالدينار، مع الميزانيات وتقرير للطباعة"
-      },
-      {
-        "src": "assets/shots/ajrly-tasks.webp",
-        "alt": "المهام",
-        "cap": "المهام: فلاتر بالحالة والفريق، أولويات، ومؤقّت عمل لكل مهمة"
-      },
-      {
-        "src": "assets/shots/ajrly-owners.webp",
-        "alt": "ملاك العقارات",
-        "cap": "ملاك العقارات: مسار بأربع مراحل مع متابعة المحادثات المتأخرة"
-      }
-    ]
-  },
-  {
-    "id": "carrie",
-    "name": "CARRPRO.ie",
-    "tag": "سوق سيارات مستعملة — أيرلندا",
-    "sector": "commerce",
-    "desc": "سوق سيارات أيرلندي يبيع الشفافية: كل إعلان يحمل فحص تاريخ المركبة، وحاسبة تكلفة ملكية شهرية، وحاسبة استيراد من بريطانيا بالتكلفة النهائية بعد الضرائب. دليل على قدرتنا على المنافسة في سوق أوروبي بالإنجليزية.",
-    "tech": [
-      "Django 5",
-      "PostgreSQL",
-      "Search",
-      "VRT / WLTP"
-    ],
-    "repo": "tsallabi/Carr.ie",
-    "demo": "",
-    "latin": "CARRPRO",
-    "shot": "assets/shots/carrie-home.webp",
-    "shotAlt": "الصفحة الرئيسية بعنوان السوق الصادق للسيارات المستعملة في أيرلندا",
-    "gallery": [
-      {
-        "src": "assets/shots/carrie-search.webp",
-        "alt": "نتائج البحث",
-        "cap": "بحث بالمقاطعات والفلاتر مع بطاقات السيارات"
-      },
-      {
-        "src": "assets/shots/carrie-listing.webp",
-        "alt": "صفحة الإعلان",
-        "cap": "صفحة الإعلان: السعر، تكلفة الملكية الشهرية، ولوحة فحص التاريخ"
-      },
-      {
-        "src": "assets/shots/carrie-import.webp",
-        "alt": "حاسبة الاستيراد",
-        "cap": "حاسبة الاستيراد من بريطانيا بالتكلفة النهائية بعد الرسوم"
-      }
-    ]
-  },
-  {
-    "id": "irish-castle",
-    "name": "Irish Castle",
-    "tag": "منصة عقارات فاخرة — أيرلندا",
-    "sector": "commerce",
-    "desc": "منصة عقارات أيرلندية: بحث بالشراء والإيجار والمشاريع الجديدة، صفحات عقار تفصيلية، وحاسبة تمويل عقاري بمعطيات السوق الأيرلندي من الدفعة الأولى إلى نسبة القرض للقيمة.",
-    "tech": [
-      "Static",
-      "Vanilla JS",
-      "Cloudflare Pages",
-      "SVG"
-    ],
-    "repo": "tsallabi/Irish-castle-",
-    "demo": "",
-    "latin": "IRISH CASTLE",
-    "shot": "assets/shots/irishcastle-home.webp",
-    "shotAlt": "الصفحة الرئيسية بشريط بحث ثلاثي وإحصاءات المنصة",
-    "gallery": [
-      {
-        "src": "assets/shots/irishcastle-properties.webp",
-        "alt": "تصفح العقارات",
-        "cap": "شبكة العقارات مع تصفية بالمقاطعة"
-      },
-      {
-        "src": "assets/shots/irishcastle-property.webp",
-        "alt": "صفحة العقار",
-        "cap": "صفحة عقار تفصيلية"
-      },
-      {
-        "src": "assets/shots/irishcastle-mortgage.webp",
-        "alt": "حاسبة التمويل",
-        "cap": "حاسبة تمويل عقاري بمعايير السوق الأيرلندي"
-      }
-    ]
-  },
-  {
-    "id": "talin",
-    "name": "تالين TALIN",
-    "latin": "TALIN",
-    "tag": "متجر إلكتروني بتجربة شي إن للسوق الليبي",
-    "sector": "commerce",
-    "desc": "متجر عربي كامل ببضاعة من 1688 وسعر نهائي بالدينار الليبي شامل الشحن والجمارك — لا مفاجآت عند الاستلام. كتالوج بأقسام وبحث، صفحة منتج بالخيارات والنقاط والضمانات، سلة ودفع عبر ماي باي (سداد وإدفعلي وموبي كاش) بويبهوك موقّع، لوحة إدارة بالكوبونات والتذاكر والتقارير، ولوحة لشريك الشحن في الصين. اللقطات من نسخة محلية ببيانات عرض وصور توضيحية.",
-    "tech": [
-      "Cloudflare Workers",
-      "D1",
-      "R2",
-      "MyPay",
-      "RTL"
-    ],
-    "repo": "tsallabi/Dlal",
-    "demo": "",
-    "shot": "assets/shots/talin-product.webp",
-    "shotAlt": "صفحة منتج في تالين: السعر النهائي بالدينار شامل الشحن والجمارك مع الضمانات وطرق الدفع",
-    "gallery": [
-      {
-        "src": "assets/shots/talin-home.webp",
-        "alt": "الواجهة الرئيسية",
-        "cap": "الواجهة الرئيسية: أقسام، عروض بعدّاد، وأسعار نهائية بالدينار"
-      },
-      {
-        "src": "assets/shots/talin-category.webp",
-        "alt": "صفحة الأقسام",
-        "cap": "تصفّح الأقسام مع الفلاتر"
-      }
-    ]
-  },
-  {
-    "id": "mushaf",
-    "name": "مصحف ليبيا",
-    "latin": "MUSHAF LIBYA",
-    "tag": "تطبيق مصحف برواية قالون عن نافع",
-    "sector": "apps",
-    "desc": "مصحف رقمي بالرواية التي يقرأ بها أهل ليبيا: صفحات المصحف المصوّرة بخط مجمع الملك فهد مع تحديد الآيات باللمس، ستة تفاسير، بحث في نص المصحف كاملاً، فهرس بالسور والأجزاء، مصحف مرتّل يتصدّر قائمته القرّاء الليبيون، خطة ختمة بورد يومي، مواقيت مدن ليبيا فلكياً، واتجاه القبلة — بثلاثة مظاهر (فاتح/ورقي/ليلي) وأرقام عربية، ويعمل بلا اتصال بعد أول فتح.",
-    "tech": [
-      "Next.js 15",
-      "React 19",
-      "Cloudflare",
-      "PWA",
-      "Offline-first"
-    ],
-    "repo": "tsallabi/vidio",
-    "demo": "https://mushaf-libya.com",
-    "shot": "assets/shots/mushaf-main.webp",
-    "shotAlt": "مصحف ليبيا: الإعدادات وصفحة المصحف والواجهة الرئيسية",
-    "gallery": [
-      {
-        "src": "assets/shots/mushaf-reading.webp",
-        "alt": "القراءة والبحث",
-        "cap": "مكتبة التفسير بستة تفاسير، فهرس السور والأجزاء، وبحث في ٦٢١٤ آية برواية قالون"
-      },
-      {
-        "src": "assets/shots/mushaf-tools.webp",
-        "alt": "أدوات العبادة",
-        "cap": "مواقيت الصلاة لمدن ليبيا بحساب فلكي، خطة الختمة بورد يومي، واتجاه القبلة"
-      },
-      {
-        "src": "assets/shots/mushaf-more.webp",
-        "alt": "المصحف والمصادر",
-        "cap": "صفحات المصحف المصوّرة، ومصادر النص والرواية موثّقة داخل التطبيق"
-      }
-    ]
-  }
+  "gallery": [
+   {
+    "src": "assets/shots/hudhud-product.webp",
+    "alt": "صفحة المنتج",
+    "cap": "صفحة المنتج: اللون والمقاس، ومقارنة الشحن الجوي والبحري بالسعر والمدة"
+   },
+   {
+    "src": "assets/shots/hudhud-mobile.webp",
+    "alt": "الجوال",
+    "cap": "تجربة الجوال: أقسام وتصفية وفرز وسلة"
+   },
+   {
+    "src": "assets/shots/hudhud-link.webp",
+    "alt": "اطلب برابط",
+    "cap": "«اطلب برابط»: أي منتج من 1688 أو تاوباو أو شي إن بسعر نهائي قبل الدفع"
+   },
+   {
+    "src": "assets/shots/hudhud-admin.webp",
+    "alt": "لوحة الإدارة",
+    "cap": "لوحة الإدارة: استيراد المنتجات وإكمال بياناتها آلياً"
+   }
+  ]
+ },
+ {
+  "id": "mushaf",
+  "name": "مصحف ليبيا",
+  "latin": "MUSHAF LIBYA",
+  "tag": "تطبيق مصحف برواية قالون عن نافع",
+  "sector": "apps",
+  "desc": "مصحف رقمي بالرواية التي يقرأ بها أهل ليبيا: صفحات المصحف المصوّرة بخط مجمع الملك فهد مع تحديد الآيات باللمس، ستة تفاسير، بحث في نص المصحف كاملاً، فهرس بالسور والأجزاء، مصحف مرتّل يتصدّر قائمته القرّاء الليبيون، خطة ختمة بورد يومي، مواقيت مدن ليبيا فلكياً، واتجاه القبلة — بثلاثة مظاهر (فاتح/ورقي/ليلي) وأرقام عربية، ويعمل بلا اتصال بعد أول فتح.",
+  "tech": [
+   "Next.js 15",
+   "React 19",
+   "Cloudflare",
+   "PWA",
+   "Offline-first"
+  ],
+  "repo": "tsallabi/vidio",
+  "demo": "https://mushaf-libya.com",
+  "shot": "assets/shots/mushaf-main.webp",
+  "shotAlt": "مصحف ليبيا: الإعدادات وصفحة المصحف والواجهة الرئيسية",
+  "gallery": [
+   {
+    "src": "assets/shots/mushaf-reading.webp",
+    "alt": "القراءة والبحث",
+    "cap": "مكتبة التفسير بستة تفاسير، فهرس السور والأجزاء، وبحث في ٦٢١٤ آية برواية قالون"
+   },
+   {
+    "src": "assets/shots/mushaf-tools.webp",
+    "alt": "أدوات العبادة",
+    "cap": "مواقيت الصلاة لمدن ليبيا بحساب فلكي، خطة الختمة بورد يومي، واتجاه القبلة"
+   },
+   {
+    "src": "assets/shots/mushaf-more.webp",
+    "alt": "المصحف والمصادر",
+    "cap": "صفحات المصحف المصوّرة، ومصادر النص والرواية موثّقة داخل التطبيق"
+   }
+  ]
+ },
+ {
+  "id": "autopro-ads",
+  "name": "سلسلة «الحاج خليفة» لأوتوبرو",
+  "latin": "AUTOPRO REELS",
+  "tag": "سلسلة إعلانات فيديو بالذكاء الاصطناعي باللهجة الليبية",
+  "sector": "ai",
+  "desc": "سلسلة إعلانات قصيرة (9:16) لمزادات أوتوبرو، بشخصيتين ليبيتين ثابتتين «الحاج خليفة» و«سالم»: سيناريو باللهجة الليبية، مشاهد مولّدة بالذكاء الاصطناعي، رسوم متحركة لعدّاد المزاد، ترجمة عربية مدمجة، وصوت مضبوط لمعايير المنصات. ست حلقات منشورة، منها إعلان بيع لسيارة حقيقية.",
+  "tech": [
+   "Generative video",
+   "FFmpeg",
+   "Motion graphics",
+   "Arabic subtitles",
+   "-14 LUFS"
+  ],
+  "repo": "tsallabi/Carme.ie",
+  "demo": "",
+  "site": "https://autopro.ac",
+  "shot": "assets/video/autopro-episode-3.webp",
+  "shotAlt": "لقطة من حلقة «زايد ولا تخاف»: الحاج خليفة وسالم يعرضان مزادات أوتوبرو",
+  "reels": [
+   {
+    "src": "assets/video/autopro-episode-3.mp4",
+    "poster": "assets/video/autopro-episode-3.webp",
+    "cap": "الحلقة 3 — «زايد ولا تخاف»"
+   },
+   {
+    "src": "assets/video/autopro-episode-6.mp4",
+    "poster": "assets/video/autopro-episode-6.webp",
+    "cap": "الحلقة 6 — «شوف.. دبّرتها!»"
+   },
+   {
+    "src": "assets/video/autopro-genesis-fathi.mp4",
+    "poster": "assets/video/autopro-genesis-fathi.webp",
+    "cap": "إعلان بيع — هيونداي جينيسيس 2016"
+   }
+  ]
+ }
 ]

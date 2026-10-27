@@ -52,3 +52,6 @@
 
 /
   Cache-Control: public, max-age=0, must-revalidate
+
+/assets/video/*
+  Cache-Control: public, max-age=604800

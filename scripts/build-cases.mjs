@@ -109,6 +109,16 @@ const contact = (p) => `<section class="sec" id="contact">
   </div>
 </section>`;
 
+/* الفيديو التوضيحي (عربي/إنجليزي بصوت Charon) أو سلسلة فيديوهات طولية — يحلّ محل اللقطة في رأس الصفحة */
+function vblock(p) {
+  if (p.video) return `<div class="vbox case-video" data-id="${esc(p.id)}" data-ar="${esc(p.video.ar)}" data-en="${esc(p.video.en)}" data-par="${esc(p.video.poster_ar)}" data-pen="${esc(p.video.poster_en)}">
+      <div class="vtabs" role="group" aria-label="لغة الفيديو"><button type="button" data-l="ar" class="on">العربية</button><button type="button" data-l="en" lang="en">English</button></div>
+      <video controls playsinline preload="metadata" poster="/${esc(p.video.poster_ar)}" src="/${esc(p.video.ar)}" data-track-id="${esc(p.id)}:ar"></video>
+      <p class="panel-cap"><span class="live">فيديو توضيحي</span><span>جولة في النظام بلقطاته الحقيقية — بالعربية والإنجليزية</span></p></div>`;
+  if (p.reels) return `<div class="reels case-reels">${p.reels.map(r => `<figure><video controls playsinline preload="none" poster="/${esc(r.poster)}" src="/${esc(r.src)}" data-track-id="${esc(p.id)}:${esc(r.src.split("/").pop())}"></video><figcaption>${esc(r.cap)}</figcaption></figure>`).join("")}</div>`;
+  return "";
+}
+
 function page(p, i) {
   const c = cases[p.id];
   const all = shots(p);
@@ -141,10 +151,10 @@ ${nav}
     <p class="hero-sub">${esc(p.tag)}. <span class="mut">لـ${esc(c.client)}.</span></p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-gold">أريد نظاماً مثله</a>
-      ${p.demo ? `<a href="${esc(p.demo)}" class="btn" target="_blank" rel="noopener" data-track="demo-live:${esc(p.id)}">جرّب النسخة الحية ↗</a>` : `<a href="#screens" class="textlink">شاهد لقطات النظام</a>`}
+      ${p.demo ? `<a href="${esc(p.demo)}" class="btn" target="_blank" rel="noopener" data-track="demo-live:${esc(p.id)}">جرّب النسخة الحية ↗</a>` : p.site ? `<a href="${esc(p.site)}" class="btn" target="_blank" rel="noopener" data-track="site:${esc(p.id)}">زيارة الموقع ↗</a>` : `<a href="#screens" class="textlink">شاهد لقطات النظام</a>`}
     </div>
-    <figure class="panel case-shot"><img src="/${esc(p.shot)}" width="2000" height="1250" fetchpriority="high" decoding="async" alt="${esc(p.shotAlt || p.tag)}"></figure>
-    <p class="panel-cap"><span class="live">لقطة حقيقية من النظام</span><span>${esc(p.shotAlt || p.tag)}</span></p>
+    ${vblock(p) || `<figure class="panel case-shot"><img src="/${esc(p.shot)}" width="2000" height="1250" fetchpriority="high" decoding="async" alt="${esc(p.shotAlt || p.tag)}"></figure>
+    <p class="panel-cap"><span class="live">لقطة حقيقية من النظام</span><span>${esc(p.shotAlt || p.tag)}</span></p>`}
   </div>
 </section>
 

@@ -65,12 +65,24 @@
     /* كل لقطات النظام في سمة واحدة؛ engage.js يقلّبها عند المرور على البطاقة */
     const all = [p.shot].concat((p.gallery || []).map(g => typeof g === "string" ? g : g.src)).filter(Boolean);
     const count = all.length > 1 ? `<span class="shot-count" aria-hidden="true"><b>1</b>/${all.length}</span>` : "";
+    const vb = (p.video || p.reels) ? `<span class="vid-badge" aria-hidden="true">▶ فيديو${p.video ? " · عربي / English" : ""}</span>` : "";
     return `<div class="panel" data-shots="${esc(all.join("|"))}"><img src="${esc(p.shot)}" width="2000" height="1250" loading="lazy" decoding="async"
-      alt="لقطة حقيقية من نظام ${esc(p.name)}: ${esc(p.shotAlt || p.tag)}">${count}</div>`;
+      alt="لقطة حقيقية من نظام ${esc(p.name)}: ${esc(p.shotAlt || p.tag)}">${count}${vb}</div>`;
   }
 
+  /* فيديو توضيحي بنسختين (عربي/إنجليزي) أو سلسلة فيديوهات طولية — يُعرض في النافذة وفي صفحة دراسة الحالة */
+  function videoBlock(p) {
+    if (p.video) return `<div class="vbox" data-id="${esc(p.id)}" data-ar="${esc(p.video.ar)}" data-en="${esc(p.video.en)}"
+        data-par="${esc(p.video.poster_ar || "")}" data-pen="${esc(p.video.poster_en || "")}">
+      <div class="vtabs" role="group" aria-label="لغة الفيديو"><button type="button" data-l="ar" class="on">العربية</button><button type="button" data-l="en" lang="en">English</button></div>
+      <video controls playsinline preload="metadata" poster="/${esc(p.video.poster_ar || "")}" src="/${esc(p.video.ar)}" data-track-id="${esc(p.id)}:ar"></video></div>`;
+    if (p.reels) return `<div class="reels">${p.reels.map(r => `<figure><video controls playsinline preload="none" poster="/${esc(r.poster)}" src="/${esc(r.src)}" data-track-id="${esc(p.id)}:${esc(r.src.split("/").pop())}"></video><figcaption>${esc(r.cap)}</figcaption></figure>`).join("")}</div>`;
+    return "";
+  }
+  window.LP_VIDEO = videoBlock;
+
   function card(p) {
-    const label = p.demo ? "افتح الديمو" : (p.gallery && p.gallery.length ? "شاهد النظام" : "تفاصيل العرض");
+    const label = (p.video || p.reels) ? "▶ شاهد الفيديو" : p.demo ? "افتح الديمو" : (p.gallery && p.gallery.length ? "شاهد النظام" : "تفاصيل العرض");
     const demoBtn = `<button class="btn ${p.demo ? "btn-gold " : ""}btn-sm" data-demo="${esc(p.id)}">${label}</button>`;
     return `<article class="work-item" data-sector="${esc(p.sector)}">
       ${media(p)}
@@ -151,7 +163,17 @@
     const open = $("#m-open");
     const gal = $("#m-gallery");
     const tools = $("#m-views");
-    if (p.demo) {
+    if (p.video || p.reels) {
+      frame.hidden = true; frame.removeAttribute("src");
+      empty.hidden = true; tools.hidden = true; gal.hidden = false;
+      open.hidden = !p.site; if (p.site) open.href = p.site;
+      body.className = "modal-body view-gallery";
+      const shots = [{ src: p.shot, alt: p.shotAlt || p.tag, cap: p.tag }].filter(s => s.src && !/\/video\//.test(s.src)).concat(p.gallery || []);
+      gal.innerHTML = videoBlock(p) + shots.map(s => `<figure class="gal-item">
+        <div class="panel"><img src="${esc(s.src)}" loading="lazy" decoding="async" alt="لقطة من نظام ${esc(p.name)}: ${esc(s.alt)}"></div>
+        <figcaption class="panel-cap"><span class="live">لقطة حقيقية</span><span>${esc(s.cap)}</span></figcaption></figure>`).join("");
+      gal.scrollTop = 0;
+    } else if (p.demo) {
       frame.hidden = false; empty.hidden = true; gal.hidden = true; tools.hidden = false;
       frame.src = p.demo;
       open.hidden = false; open.href = p.demo;

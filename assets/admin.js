@@ -232,8 +232,8 @@
 
   /* ─── الرسالة الشهرية للمسجّلين ─── */
   const NL_GROUPS = { finance: "المصارف والمالية", gov: "الجهات الحكومية", business: "الشركات والمتاجر", cars: "السيارات والمزادات", general: "عام" };
-  const NL_DEFAULT = { finance: ["amanpro-full", "accounting"], gov: ["mazadna", "ajrly"], business: ["talin", "ajrly"],
-                       cars: ["autopro", "mazadna"], general: ["mushaf", "talin"] };
+  const NL_DEFAULT = { finance: ["amanpro-full", "accounting"], gov: ["mazadna", "ajrly"], business: ["hudhud", "ajrly"],
+                       cars: ["autopro", "mazadna"], general: ["mushaf", "hudhud"] };
   const NL_MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
   let NL = null;   /* { projects, picks:{grp:[ids]}, texts:{grp:text}, rows } */
   function nlGroup(s, P) {
