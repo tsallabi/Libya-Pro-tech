@@ -651,3 +651,25 @@ html.reg-open{overflow:hidden}
 @media (max-width:900px){.lang-sw{padding:6px 10px;font-size:12.5px}}
 .nav-links a,.nav .pdf-link,.nav .btn,.lang-sw{white-space:nowrap}
 @media (max-width:1400px){.nav .pdf-link{display:none}}
+
+/* ===== التسويق على الرئيسية ===== */
+.mkt-home{background:#0B0B0C;color:#fff}
+.mkt-home .sec-head h2{color:#fff}.mkt-home .sec-head h2 .thin{color:#8A909C;font-weight:400}
+.mkt-home .sec-lead{color:rgba(255,255,255,.75)}
+.mkt-home .eyebrow span{background:rgba(255,255,255,.08);color:#2FE47E;border-color:rgba(47,228,126,.35)}
+.mh-grid{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:22px;align-items:end}
+.mh-grid figure{margin:0}
+.mh-grid video{display:block;width:100%;aspect-ratio:9/16;max-height:520px;object-fit:cover;border-radius:18px;background:#1b1d22;box-shadow:0 30px 60px -24px rgba(0,0,0,.8)}
+.mh-posters{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mh-posters img{display:block;width:100%;height:auto;border-radius:14px}
+.mh-posters figcaption{grid-column:1/-1}
+.mh-grid figcaption{display:grid;padding-top:12px}
+.mh-grid figcaption b{font-size:16px}.mh-grid figcaption span{font-size:13.5px;color:rgba(255,255,255,.65)}
+.mh-services{list-style:none;padding:0;margin:clamp(30px,4vw,48px) 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mh-services li{display:grid;gap:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 18px}
+.mh-services b{font-size:16px}.mh-services span{font-size:13.5px;color:rgba(255,255,255,.65)}
+.mh-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.mkt-home .mh-cta .btn-gold{background:#fff;color:#0B0B0C;border-color:#fff}
+.mkt-home .mh-cta .btn:not(.btn-gold){background:#25D366;color:#fff;border-color:#25D366}
+@media (max-width:900px){.mh-grid{grid-template-columns:1fr 1fr}.mh-posters{grid-column:1/-1}.mh-services{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.mh-services{grid-template-columns:1fr}}
