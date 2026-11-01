@@ -8,8 +8,9 @@
   const set = (k, v) => { try { LS.setItem(k, v); } catch (e) {} };
   const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let WA = "353894435368";
-  fetch("/api/settings").then(r => r.ok ? r.json() : null).then(c => { if (c && c.whatsapp) WA = String(c.whatsapp).replace(/\D/g, ""); }).catch(() => {});
+  const MKT = document.body.dataset.dept === "mkt";
+  let WA = MKT ? "353873414360" : "353894435368";
+  fetch("/api/settings").then(r => r.ok ? r.json() : null).then(c => { const w = c && (MKT ? c.whatsapp_mkt : c.whatsapp); if (w) WA = String(w).replace(/\D/g, ""); }).catch(() => {});
 
   function member() { try { return JSON.parse(get("lp_member") || "null"); } catch (e) { return null; } }
   function saveLead(body) {
@@ -324,6 +325,15 @@
     const v = e.target; if (!(v instanceof HTMLVideoElement) || !v.dataset.trackId || seenV.has(v.dataset.trackId)) return;
     seenV.add(v.dataset.trackId); track("video:" + v.dataset.trackId, "شاهد فيديو: " + v.dataset.trackId);
   }, true);
+
+  /* ═══ ٩) صفحة التسويق: كل الفيديوهات التوضيحية من قائمة المشاريع ═══ */
+  const exg = $("#mkt-videos");
+  if (exg) fetch("/data/projects.json").then(r => r.json()).then(ps => {
+    const vs = ps.filter(p => p.video);
+    exg.innerHTML = vs.map(p => `<article class="ex-card">${window.LP_VIDEO ? window.LP_VIDEO(p) : ""}
+      <h3>${esc(p.name)}</h3><p class="mut">${esc(p.tag)}</p><a class="textlink" href="/cases/${esc(p.id)}.html">دراسة الحالة</a></article>`).join("");
+    exg.querySelectorAll("video").forEach(v => { v.preload = "none"; });
+  }).catch(() => { exg.innerHTML = ""; });
 
   /* ═══ ٤) زر واتساب عائم برسالة تناسب الصفحة ═══ */
   if (location.pathname.indexOf("/admin") !== 0) {

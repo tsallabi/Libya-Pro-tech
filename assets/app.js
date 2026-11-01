@@ -3,7 +3,8 @@
   "use strict";
 
   /* رقم الواتساب بصيغة دولية بلا علامة زائد وبلا أصفار بادئة — يُستخدم في النموذج وفي التذييل. */
-  let WHATSAPP = "353894435368";
+  const MKT = document.body.dataset.dept === "mkt";   /* صفحة التسويق: يرد موظف التسويق */
+  let WHATSAPP = MKT ? "353873414360" : "353894435368";
 
   const SECTORS = {
     finance:"مصرفي ومالي", gov:"حكومي", erp:"منظومات المؤسسات",
@@ -24,10 +25,12 @@
   /* معلومات الاتصال من لوحة التحكم (/api/settings) — تبقى القيم المكتوبة في الصفحة إن تعذّر الجلب */
   fetch("/api/settings").then(r => r.ok ? r.json() : null).then(c => {
     if (!c) return;
-    if (c.whatsapp) {
-      WHATSAPP = String(c.whatsapp).replace(/\D/g, "");
+    const w = MKT ? c.whatsapp_mkt : c.whatsapp;
+    if (w) {
+      WHATSAPP = String(w).replace(/\D/g, "");
       $$("[data-wa]").forEach(a => { a.href = `https://wa.me/${WHATSAPP}`; });
     }
+    $$("[data-wa-mkt]").forEach(a => { if (c.whatsapp_mkt) a.href = `https://wa.me/${String(c.whatsapp_mkt).replace(/\D/g, "")}`; });
     $$("[data-contact]").forEach(a => {
       const v = c[a.dataset.contact];
       if (!v) { if (a.dataset.contact === "email") a.hidden = true; return; }

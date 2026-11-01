@@ -82,11 +82,14 @@ export const isBot = ua => /bot|crawler|spider|crawling|headless|lighthouse|prev
 export const clip = (v, n = 300) => (v == null ? null : String(v).slice(0, n));
 
 /* الإعدادات العامة لمعلومات الاتصال (تظهر في الموقع ويعدّلها المدير) */
-export const CONTACT_KEYS = ["whatsapp", "phone_ly", "phone_ie", "email", "address", "meta_pixel", "google_tag"];
+export const CONTACT_KEYS = ["whatsapp", "phone_ly", "phone_ie", "whatsapp_mkt", "phone_mkt1", "phone_mkt2", "email", "address", "meta_pixel", "google_tag"];
 export const CONTACT_DEFAULTS = {
   whatsapp: "353894435368",
   phone_ly: "+218 92 922 2122",
   phone_ie: "+353 89 443 5368",
+  whatsapp_mkt: "353873414360",     // واتساب قسم التسويق (يرد موظف التسويق)
+  phone_mkt1: "+353 87 341 4360",
+  phone_mkt2: "+353 89 252 2727",
   email: "",
   address: "",
   meta_pixel: "",     // Meta (Facebook) Pixel ID — أرقام فقط

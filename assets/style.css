@@ -631,3 +631,9 @@ html.reg-open{overflow:hidden}
 .mkt-explainer h3{font-size:clamp(22px,2.4vw,28px);margin:10px 0}
 @media (max-width:860px){.mkt-hero-reels,.mkt-grid{grid-template-columns:1fr 1fr}.mkt-explainer{grid-template-columns:1fr}}
 @media (max-width:520px){.mkt-hero-reels{grid-template-columns:1fr}}
+.ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:26px}
+.ex-card{display:flex;flex-direction:column;gap:6px}
+.ex-card .vbox{margin-bottom:6px}
+.ex-card .vtabs{margin-bottom:8px}
+.ex-card h3{font-size:18px;margin:0}
+.ex-card p{margin:0;font-size:14px}
