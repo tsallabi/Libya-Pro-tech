@@ -120,7 +120,8 @@ function vblock(p) {
       <div class="vtabs" role="group" aria-label="لغة الفيديو"><button type="button" data-l="ar" class="on">العربية</button><button type="button" data-l="en" lang="en">English</button></div>
       <video controls playsinline preload="metadata" poster="/${esc(p.video.poster_ar)}" src="/${esc(p.video.ar)}" data-track-id="${esc(p.id)}:ar"></video>
       <p class="panel-cap"><span class="live">فيديو توضيحي</span><span>جولة في النظام بلقطاته الحقيقية — بالعربية والإنجليزية</span></p></div>`;
-  if (p.reels) return `<div class="reels case-reels">${p.reels.map(r => `<figure><video controls playsinline preload="none" poster="/${esc(r.poster)}" src="/${esc(r.src)}" data-track-id="${esc(p.id)}:${esc(r.src.split("/").pop())}"></video><figcaption>${esc(r.cap)}</figcaption></figure>`).join("")}</div>`;
+  const u = s => /^https?:/.test(s) ? s : "/" + s;
+  if (p.reels) return `<div class="reels case-reels">${p.reels.map(r => `<figure><video controls playsinline preload="none" poster="${esc(u(r.poster))}" src="${esc(u(r.src))}" data-track-id="${esc(p.id)}:${esc(r.src.split("/").pop())}"></video><figcaption>${esc(r.cap)}</figcaption></figure>`).join("")}</div>`;
   return "";
 }
 

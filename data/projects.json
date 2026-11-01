@@ -352,6 +352,13 @@
     "alt": "الواجهة الرئيسية",
     "cap": "الواجهة الرئيسية: مزاد حي فوق الطية بسعر المزايدة الحالي"
    }
+  ],
+  "reels": [
+   {
+    "src": "assets/video/autopro-episode-6.mp4",
+    "poster": "assets/video/autopro-episode-6.webp",
+    "cap": "حلقة «شوف.. دبّرتها!» — بصوت شارون"
+   }
   ]
  },
  {
@@ -589,6 +596,13 @@
     "src": "assets/shots/mushaf-more.webp",
     "alt": "المصحف والمصادر",
     "cap": "صفحات المصحف المصوّرة، ومصادر النص والرواية موثّقة داخل التطبيق"
+   }
+  ],
+  "reels": [
+   {
+    "src": "https://mushaf-libya.com/promo/mushaf-libya-promo.mp4",
+    "poster": "https://mushaf-libya.com/promo/poster.jpg",
+    "cap": "الفيديو التعريفي لتطبيق مصحف ليبيا"
    }
   ]
  },

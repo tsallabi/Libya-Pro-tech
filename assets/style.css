@@ -637,3 +637,8 @@ html.reg-open{overflow:hidden}
 .ex-card .vtabs{margin-bottom:8px}
 .ex-card h3{font-size:18px;margin:0}
 .ex-card p{margin:0;font-size:14px}
+.ex-card .reels{grid-template-columns:1fr;margin-bottom:6px}
+.ex-card .reels video{max-height:400px;object-fit:contain}
+.ex-card .reels figcaption{display:none}
+.case-reels{grid-template-columns:repeat(auto-fit,minmax(220px,300px))}
+.ex-grid{align-items:start}

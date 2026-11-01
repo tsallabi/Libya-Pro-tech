@@ -329,7 +329,7 @@
   /* ═══ ٩) صفحة التسويق: كل الفيديوهات التوضيحية من قائمة المشاريع ═══ */
   const exg = $("#mkt-videos");
   if (exg) fetch("/data/projects.json").then(r => r.json()).then(ps => {
-    const vs = ps.filter(p => p.video);
+    const vs = ps.filter(p => (p.video || p.reels) && p.id !== "autopro-ads");
     exg.innerHTML = vs.map(p => `<article class="ex-card">${window.LP_VIDEO ? window.LP_VIDEO(p) : ""}
       <h3>${esc(p.name)}</h3><p class="mut">${esc(p.tag)}</p><a class="textlink" href="/cases/${esc(p.id)}.html">دراسة الحالة</a></article>`).join("");
     exg.querySelectorAll("video").forEach(v => { v.preload = "none"; });

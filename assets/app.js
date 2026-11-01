@@ -79,7 +79,8 @@
         data-par="${esc(p.video.poster_ar || "")}" data-pen="${esc(p.video.poster_en || "")}">
       <div class="vtabs" role="group" aria-label="لغة الفيديو"><button type="button" data-l="ar" class="on">العربية</button><button type="button" data-l="en" lang="en">English</button></div>
       <video controls playsinline preload="metadata" poster="/${esc(p.video.poster_ar || "")}" src="/${esc(p.video.ar)}" data-track-id="${esc(p.id)}:ar"></video></div>`;
-    if (p.reels) return `<div class="reels">${p.reels.map(r => `<figure><video controls playsinline preload="none" poster="/${esc(r.poster)}" src="/${esc(r.src)}" data-track-id="${esc(p.id)}:${esc(r.src.split("/").pop())}"></video><figcaption>${esc(r.cap)}</figcaption></figure>`).join("")}</div>`;
+    const u = s => /^https?:/.test(s) ? s : "/" + s;
+    if (p.reels) return `<div class="reels">${p.reels.map(r => `<figure><video controls playsinline preload="none" poster="${esc(u(r.poster))}" src="${esc(u(r.src))}" data-track-id="${esc(p.id)}:${esc(r.src.split("/").pop())}"></video><figcaption>${esc(r.cap)}</figcaption></figure>`).join("")}</div>`;
     return "";
   }
   window.LP_VIDEO = videoBlock;
