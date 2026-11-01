@@ -13,7 +13,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const MAP_FILE = path.join(ROOT, 'data/i18n-en.json');
 const map = fs.existsSync(MAP_FILE) ? JSON.parse(fs.readFileSync(MAP_FILE, 'utf8')) : {};
 const AR = /[؀-ۿ]/;
-const PAGES = ['index.html', 'banks.html', 'government.html', 'business.html', 'marketing.html', '404.html']
+const PAGES = ['index.html', 'banks.html', 'government.html', 'business.html', 'marketing.html', '404.html', 'profile.html']
   .concat(fs.readdirSync(path.join(ROOT, 'cases')).filter(f => f.endsWith('.html')).map(f => 'cases/' + f));
 
 /* ── الترجمة ── */
@@ -174,6 +174,7 @@ for (const f of PAGES) {
     .replace(/(<meta property="og:url" content="https:\/\/libyaprotech\.com)(\/[^"]*)"/, (m, a, p) => a + '/en' + p + '"')
     .replace('content="ar_LY"', 'content="en_US"')
     .replace(/assets\/(share(?:-[a-z]+)?)\.png/g, 'assets/$1-en.png')
+    .replace(/\/assets\/libya-pro-tech-profile\.pdf/g, '/assets/libya-pro-tech-profile-en.pdf')
     .replace(/<head>/, '<head>\n<script src="/assets/i18n-en.js"></script>');
   /* زر اللغة يشير إلى النسخة العربية */
   const arPath = '/' + f.replace(/^index\.html$/, '').replace(/(^|\/)index\.html$/, '$1');
