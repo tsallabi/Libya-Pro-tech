@@ -173,6 +173,7 @@ for (const f of PAGES) {
     .replace(/(<link rel="canonical" href="https:\/\/libyaprotech\.com)(\/[^"]*)"/, (m, a, p) => a + '/en' + p + '"')
     .replace(/(<meta property="og:url" content="https:\/\/libyaprotech\.com)(\/[^"]*)"/, (m, a, p) => a + '/en' + p + '"')
     .replace('content="ar_LY"', 'content="en_US"')
+    .replace(/assets\/(share(?:-[a-z]+)?)\.png/g, 'assets/$1-en.png')
     .replace(/<head>/, '<head>\n<script src="/assets/i18n-en.js"></script>');
   /* زر اللغة يشير إلى النسخة العربية */
   const arPath = '/' + f.replace(/^index\.html$/, '').replace(/(^|\/)index\.html$/, '$1');
