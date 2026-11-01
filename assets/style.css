@@ -606,3 +606,28 @@ html.reg-open{overflow:hidden}
 .reels video{display:block;width:100%;aspect-ratio:9/16;border-radius:18px;background:#0B0B0C;box-shadow:var(--shadow-l)}
 .reels figcaption{font-size:14px;color:var(--mut);text-align:center;padding-top:8px;font-weight:600}
 .case-reels{max-width:900px}
+
+/* ===== نبني ونسوّق ===== */
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pillar{display:flex;flex-direction:column;gap:10px;padding:clamp(24px,3.4vw,40px);border-radius:var(--r-panel);background:var(--surface);border:1px solid var(--hair);color:var(--ink);text-decoration:none;box-shadow:var(--shadow-s);transition:transform .25s ease,box-shadow .25s ease}
+.pillar:hover{transform:translateY(-4px);box-shadow:var(--shadow-s),var(--shadow-l)}
+.pillar-dark{background:#0B0B0C;color:#fff;border-color:#0B0B0C}
+.pl-k{font-size:clamp(44px,6vw,72px);font-weight:800;line-height:1}
+.pillar-dark .pl-k{color:#2FE47E}
+.pillar h3{font-size:22px;margin:4px 0 6px}
+.pillar ul{margin:0;padding-inline-start:20px;display:grid;gap:6px;font-size:16px;color:var(--mut)}
+.pillar-dark ul{color:rgba(255,255,255,.75)}
+.pl-go{margin-top:auto;padding-top:14px;font-weight:700}
+@media (max-width:760px){.pillars{grid-template-columns:1fr}}
+
+/* ===== صفحة التسويق ===== */
+.mkt-hero-reels{grid-template-columns:repeat(3,minmax(0,1fr));max-width:980px;margin-inline:auto;align-items:center}
+.mkt-poster img{display:block;width:100%;border-radius:18px;box-shadow:var(--shadow-l)}
+.mkt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
+.mkt-grid figure{margin:0}
+.mkt-grid img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:var(--shadow-s),var(--shadow-l);background:var(--surface)}
+.mkt-grid figcaption{font-size:14px;color:var(--mut);padding-top:10px;font-weight:600}
+.mkt-explainer{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(40px,6vw,80px)}
+.mkt-explainer h3{font-size:clamp(22px,2.4vw,28px);margin:10px 0}
+@media (max-width:860px){.mkt-hero-reels,.mkt-grid{grid-template-columns:1fr 1fr}.mkt-explainer{grid-template-columns:1fr}}
+@media (max-width:520px){.mkt-hero-reels{grid-template-columns:1fr}}

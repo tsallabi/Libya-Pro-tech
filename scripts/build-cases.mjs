@@ -9,7 +9,7 @@ const projects = JSON.parse(fs.readFileSync("data/projects.json", "utf8"));
 const cases = JSON.parse(fs.readFileSync("data/cases.json", "utf8"));
 const SECTORS = {
   finance: "مصرفي ومالي", gov: "حكومي", erp: "منظومات المؤسسات", auctions: "مزادات",
-  commerce: "تجارة", logistics: "لوجستيات", apps: "تطبيقات", ai: "ذكاء اصطناعي"
+  commerce: "تجارة", logistics: "لوجستيات", apps: "تطبيقات", ai: "ذكاء اصطناعي", marketing: "تسويق وإعلان"
 };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const shots = p => [{ src: p.shot, cap: p.shotAlt || p.tag }]
@@ -46,6 +46,7 @@ const nav = `<header class="nav">
     <a href="/banks.html">المصارف</a>
     <a href="/government.html">الحكومة</a>
     <a href="/business.html">الشركات</a>
+    <a href="/marketing.html">التسويق الرقمي</a>
     <a href="/#estimate">احسب نظامك</a>
   </nav>
   <a href="/assets/libya-pro-tech-profile.pdf" class="pdf-link" download>الملف التعريفي <bdi dir="ltr" class="lat">PDF</bdi></a>
@@ -65,6 +66,7 @@ const footer = `<footer class="footer">
         <a href="/banks.html">المصارف والمؤسسات المالية</a>
         <a href="/government.html">الجهات الحكومية</a>
         <a href="/business.html">الشركات والمتاجر</a>
+        <a href="/marketing.html">التسويق الرقمي</a>
         <a href="/cases/">كل دراسات الحالة</a>
       </div>
       <div>
@@ -281,7 +283,7 @@ projects.forEach((p, i) => fs.writeFileSync(`cases/${p.id}.html`, page(p, i)));
 fs.writeFileSync("cases/index.html", index());
 
 /* خريطة الموقع */
-const urls = ["/", "/banks.html", "/government.html", "/business.html", "/cases/"].concat(projects.map(p => `/cases/${p.id}.html`));
+const urls = ["/", "/banks.html", "/government.html", "/business.html", "/marketing.html", "/cases/"].concat(projects.map(p => `/cases/${p.id}.html`));
 fs.writeFileSync("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${SITE}${u}</loc><changefreq>${u === "/" ? "weekly" : "monthly"}</changefreq><priority>${u === "/" ? "1.0" : u.startsWith("/cases/") && u !== "/cases/" ? "0.7" : "0.8"}</priority></url>`).join("\n")}

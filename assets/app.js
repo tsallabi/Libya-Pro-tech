@@ -8,7 +8,7 @@
   const SECTORS = {
     finance:"مصرفي ومالي", gov:"حكومي", erp:"منظومات المؤسسات",
     auctions:"مزادات", commerce:"تجارة", logistics:"لوجستيات",
-    apps:"تطبيقات", ai:"ذكاء اصطناعي"
+    apps:"تطبيقات", ai:"ذكاء اصطناعي", marketing:"تسويق وإعلان"
   };
 
   const $  = (s, r = document) => r.querySelector(s);
