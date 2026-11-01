@@ -8,6 +8,8 @@
   const set = (k, v) => { try { LS.setItem(k, v); } catch (e) {} };
   const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const EN = window.LP_LANG === "en", L = EN ? "/en" : "";
+  const T = s => (window.LP_T ? window.LP_T(s) : s);
   const MKT = document.body.dataset.dept === "mkt";
   let WA = MKT ? "353873414360" : "353894435368";
   fetch("/api/settings").then(r => r.ok ? r.json() : null).then(c => { const w = c && (MKT ? c.whatsapp_mkt : c.whatsapp); if (w) WA = String(w).replace(/\D/g, ""); }).catch(() => {});
@@ -195,7 +197,7 @@
           ${ans.integrations !== "0" ? `<li>ربط مع ${ans.integrations === "1" ? "نظامك القائم" : "أنظمتك القائمة"}</li>` : ""}
           <li>صلاحيات بالأدوار وسجل تدقيق</li><li>تدريب فريقك ودعم بعد الإطلاق</li></ul>
         ${pick.length ? `<h3>أنظمة بنيناها تشبه طلبك</h3><div class="est-sim">${pick.map(p => `
-          <button type="button" class="est-p" data-demo="${esc(p.id)}"><img src="${esc(p.shot)}" alt="" loading="lazy"><span>${esc(p.name)}</span></button>`).join("")}</div>` : ""}
+          <button type="button" class="est-p" data-demo="${esc(p.id)}"><img src="/${esc(String(p.shot).replace(/^\//, ""))}" alt="" loading="lazy"><span>${esc(p.name)}</span></button>`).join("")}</div>` : ""}
         <form class="est-form" id="est-form">
           <p><b>السعر التفصيلي وخطة المراحل تصلك على واتساب خلال 24 ساعة.</b></p>
           <div class="est-fields">
@@ -215,7 +217,7 @@
           `المكوّنات: ${ans.modules.map(x => NAMES[x]).join("، ")}\nالمستخدمون: ${$(`[data-q=users] button.on`, est)?.textContent || ""}\n` +
           `الربط: ${$(`[data-q=integrations] button.on`, est)?.textContent || ""}\nالموعد: ${$(`[data-q=timeline] button.on`, est)?.textContent || ""}\n` +
           `التقدير: ${lo}–${hi} أسبوعاً، فريق ${team}`;
-        window.open(`https://wa.me/${WA}?text=` + encodeURIComponent(`مرحباً، أنا ${d.name}.\n\n${summary}`), "_blank", "noopener");
+        window.open(`https://wa.me/${WA}?text=` + encodeURIComponent(T(`مرحباً، أنا ${d.name}.\n\n${summary}`)), "_blank", "noopener");
         saveLead({ kind: "estimate", name: d.name, phone: d.phone, details: summary, answers: Object.assign({ weeks: [lo, hi], team }, ans) });
         if (!member()) set("lp_member", JSON.stringify({ name: d.name, phone: d.phone, company: "" }));
         if (window.LP_ADS) window.LP_ADS.lead();
@@ -235,7 +237,7 @@
       const sys = cf.dataset.name;
       const text = `مرحباً ليبيا برو، أنا ${d.name}${d.company ? " من " + d.company : ""}.\nقرأت دراسة حالة «${sys}» وأريد نظاماً مثله لجهتنا.` +
         (d.details ? `\nما نريد تغييره: ${d.details}` : "");
-      window.open(`https://wa.me/${WA}?text=` + encodeURIComponent(text), "_blank", "noopener");
+      window.open(`https://wa.me/${WA}?text=` + encodeURIComponent(T(text)), "_blank", "noopener");
       saveLead({ kind: "case", name: d.name, phone: d.phone, company: d.company, project: cf.dataset.project,
                  details: `من صفحة دراسة الحالة: ${sys}` + (d.details ? `\n${d.details}` : "") });
       set("lp_member", JSON.stringify({ name: d.name, phone: d.phone, company: d.company || "" }));
@@ -301,7 +303,7 @@
       const when = `${day.textContent} — ${time.textContent}`;
       const text = `مرحباً ليبيا برو، أنا ${d.name}${d.company ? " من " + d.company : ""}.\nأريد حجز جلسة التحليل المجانية:\n` +
         `الموعد: ${when} (بتوقيت ليبيا)\nالطريقة: ${via ? via.textContent : "مكالمة واتساب"}` + (d.topic ? `\nالموضوع: ${d.topic}` : "");
-      window.open(`https://wa.me/${WA}?text=` + encodeURIComponent(text), "_blank", "noopener");
+      window.open(`https://wa.me/${WA}?text=` + encodeURIComponent(T(text)), "_blank", "noopener");
       saveLead({ kind: "consult", name: d.name, phone: d.phone, company: d.company,
                  details: `حجز جلسة تحليل مجانية: ${when} · ${via ? via.textContent : "واتساب"}` + (d.topic ? `\n${d.topic}` : ""),
                  answers: { day: day.dataset.v, time: time.dataset.v, via: via ? via.dataset.v : "واتساب", topic: d.topic || "" } });
@@ -328,12 +330,18 @@
 
   /* ═══ ٩) صفحة التسويق: كل الفيديوهات التوضيحية من قائمة المشاريع ═══ */
   const exg = $("#mkt-videos");
-  if (exg) fetch("/data/projects.json").then(r => r.json()).then(ps => {
+  if (exg) fetch(EN ? "/data/projects.en.json" : "/data/projects.json").then(r => r.json()).then(ps => {
     const vs = ps.filter(p => (p.video || p.reels) && p.id !== "autopro-ads");
     exg.innerHTML = vs.map(p => `<article class="ex-card">${window.LP_VIDEO ? window.LP_VIDEO(p) : ""}
-      <h3>${esc(p.name)}</h3><p class="mut">${esc(p.tag)}</p><a class="textlink" href="/cases/${esc(p.id)}.html">دراسة الحالة</a></article>`).join("");
+      <h3>${esc(p.name)}</h3><p class="mut">${esc(p.tag)}</p><a class="textlink" href="${L}/cases/${esc(p.id)}.html">دراسة الحالة</a></article>`).join("");
     exg.querySelectorAll("video").forEach(v => { v.preload = "none"; });
   }).catch(() => { exg.innerHTML = ""; });
+
+  /* ═══ ١٠) زر اللغة: يحفظ اختيار الزائر فلا يُعاد توجيهه حسب دولته ═══ */
+  document.addEventListener("click", e => {
+    const a = e.target.closest && e.target.closest(".lang-sw"); if (!a) return;
+    document.cookie = "lp_lang=" + a.dataset.lang + "; path=/; max-age=31536000; SameSite=Lax";
+  });
 
   /* ═══ ٤) زر واتساب عائم برسالة تناسب الصفحة ═══ */
   if (location.pathname.indexOf("/admin") !== 0) {
@@ -349,7 +357,7 @@
       let ref = ""; try { ref = sessionStorage.getItem("lp_ref") || ""; } catch (_) {}
       const msg = `مرحباً ليبيا برو${m ? "، أنا " + m.name : ""}.\n` + (cs ? `قرأت دراسة حالة «${cs}» وأريد نظاماً مثله لجهتنا.` :
         `أتصفح موقعكم${k ? " — صفحة " + TOPIC[k] : ""} وأريد الاستفسار عن نظام لجهتنا.`) + (ref ? ` (رمز: ${ref})` : "");
-      wa.href = `https://wa.me/${WA}?text=` + encodeURIComponent(msg);
+      wa.href = `https://wa.me/${WA}?text=` + encodeURIComponent(T(msg));
     };
     wa.addEventListener("pointerenter", refresh); wa.addEventListener("focus", refresh); wa.addEventListener("click", refresh, true);
     refresh(); document.body.appendChild(wa);

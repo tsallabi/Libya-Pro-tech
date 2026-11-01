@@ -1,0 +1,664 @@
+[
+ {
+  "id": "amanpro",
+  "name": "AmanPro for Transfers",
+  "tag": "Operational Collection and Accounting System",
+  "sector": "finance",
+  "desc": "Operational financial system for a remittance company: dashboard with receivables, collected amounts, and profits; payment vouchers; daily inventory; suppliers; printable monthly reports; and automated delay alerts sent via WhatsApp.",
+  "tech": [
+   "Next.js 16",
+   "Prisma",
+   "SQLite",
+   "RBAC",
+   "PDF"
+  ],
+  "repo": "tsallabi/MINI-AMAN-PRO",
+  "demo": "",
+  "latin": "AMANPRO",
+  "shot": "assets/shots/amanpro-dashboard.webp",
+  "shotAlt": "Monitoring Dashboard: Receivables, Collections, and Profits cards with daily inventory alerts.",
+  "video": {
+   "ar": "assets/video/amanpro-ar.mp4",
+   "poster_ar": "assets/video/amanpro-ar.webp",
+   "en": "assets/video/amanpro-en.mp4",
+   "poster_en": "assets/video/amanpro-en.webp"
+  }
+ },
+ {
+  "id": "amanpro-full",
+  "name": "AmanPro — Transfers Platform",
+  "latin": "AMANPRO",
+  "tag": "Multi-Office Remittance and Payment Platform",
+  "sector": "finance",
+  "desc": "Financial platform connecting offices in Libya, Egypt, Turkey, and the United States: remittances, bill payments, multi-currency treasuries and wallets, supplier settlements, and commission accounting — with smart alerts for delays and balance reconciliation.",
+  "tech": [
+   "React 19",
+   "Vite",
+   "Express",
+   "Multi-currency",
+   "RBAC"
+  ],
+  "repo": "tsallabi/AMANPRO-FULL",
+  "demo": "",
+  "shot": "assets/shots/amanprofull-dashboard.webp",
+  "shotAlt": "Control Panel: Smart delay alerts, live daily report, and digital wallet.",
+  "gallery": [
+   {
+    "src": "assets/shots/amanprofull-landing.webp",
+    "alt": "Home Page and Exchange Rate Dashboard",
+    "cap": "General interface with a real-time updated exchange rate dashboard"
+   },
+   {
+    "src": "assets/shots/amanprofull-transactions.webp",
+    "alt": "Transaction Log",
+    "cap": "Transaction log with precise statuses for each stage of the transfer"
+   },
+   {
+    "src": "assets/shots/amanprofull-treasury.webp",
+    "alt": "Treasury Management",
+    "cap": "Head and partner vaults with multiple currencies"
+   },
+   {
+    "src": "assets/shots/amanprofull-accounting.webp",
+    "alt": "Accounting Management",
+    "cap": "Commissions collected daily, monthly, and annually with operational profits"
+   },
+   {
+    "src": "assets/shots/amanprofull-wallets.webp",
+    "alt": "Wallet Management",
+    "cap": "Separate wallets for each role with deposits and withdrawals"
+   }
+  ]
+ },
+ {
+  "id": "accounting",
+  "name": "International Group Accounting System",
+  "latin": "GROUP ACCOUNTING",
+  "tag": "Unified Multi-Company Accounting Platform",
+  "sector": "finance",
+  "desc": "An accounting platform consolidating profits, expenses, and cash for all group companies into a single dashboard: income statement, balance sheet, cash flow, trial balance, and a ready-to-print Libyan tax report, in two separate currencies (LYD/$), with precise permissions for each employee, import from Excel and Google Sheets, and automated invoice reading via AI from a mobile photo.",
+  "tech": [
+   "Cloudflare Workers",
+   "D1",
+   "Pages Functions",
+   "RTL"
+  ],
+  "repo": "tsallabi/LibyaPro-AI",
+  "demo": "",
+  "shot": "assets/shots/accounting-home.webp",
+  "shotAlt": "International Group Accounting System First Interface",
+  "gallery": [
+   {
+    "src": "assets/shots/accounting-features.webp",
+    "alt": "System Capabilities",
+    "cap": "Financial Statements, Permissions, Excel Import, and AI-powered Invoice Reading"
+   }
+  ]
+ },
+ {
+  "id": "taybaa",
+  "name": "Taybaa Library",
+  "tag": "Digital Publishing and Reading Platform",
+  "sector": "commerce",
+  "desc": "Arabic digital library: book catalog, book page, in-browser reader, premium subscription, and publishing control panel. Numbers shown in the screenshot are from the platform itself: 196 books, 422.9K readers, and 227.9K downloads.",
+  "tech": [
+   "Static",
+   "Reader",
+   "Subscriptions",
+   "Admin"
+  ],
+  "repo": "tsallabi/TAYBAA-LIBRARY",
+  "demo": "",
+  "latin": "TAYBAA",
+  "shot": "assets/shots/taybaa-home.webp",
+  "shotAlt": "Dark gold library interface with book, reader, and download counters.",
+  "gallery": [
+   {
+    "src": "assets/shots/taybaa-book.webp",
+    "alt": "Book Page",
+    "cap": "Book Details, Reading, and Download Options"
+   },
+   {
+    "src": "assets/shots/taybaa-reader.webp",
+    "alt": "In-Browser Reader",
+    "cap": "Read Books Without Downloading"
+   },
+   {
+    "src": "assets/shots/taybaa-admin.webp",
+    "alt": "Control Panel",
+    "cap": "Manage Books, Categories, and Subscriptions"
+   }
+  ]
+ },
+ {
+  "id": "libyapro-ai",
+  "name": "AgentCollab",
+  "tag": "Arabic Workspace with AI Agents",
+  "sector": "ai",
+  "desc": "A unified alternative to four separate tools within a single, Arabic-first platform: chat, tasks, CRM, and AI agents — with ZATCA invoices and Arabic support.",
+  "tech": [
+   "AI Agents",
+   "RTL",
+   "ZATCA",
+   "Multi-tenant"
+  ],
+  "repo": "tsallabi/LibyaPro-AI",
+  "demo": "",
+  "latin": "AGENTCOLLAB",
+  "shot": "assets/shots/libyaproai-home.webp",
+  "shotAlt": "Homepage with a title comparing with global tools and describing the numbers",
+  "gallery": [
+   {
+    "src": "assets/shots/libyaproai-comparison.webp",
+    "alt": "Comparison Table",
+    "cap": "Platform comparison with four separate global tools"
+   },
+   {
+    "src": "assets/shots/libyaproai-roi.webp",
+    "alt": "ROI Calculator",
+    "cap": "Monthly savings calculation compared to separate tools"
+   },
+   {
+    "src": "assets/shots/libyaproai-trust.webp",
+    "alt": "Compliance and Trust",
+    "cap": "ZATCA Invoices and In-Region Hosting"
+   }
+  ]
+ },
+ {
+  "id": "vidio",
+  "name": "Ad Studio",
+  "tag": "AI-Powered Video Ad Production",
+  "sector": "ai",
+  "desc": "From a written idea and product images to a complete storyboard, then a ready-to-publish video ad, through a nine-stage workflow within the platform.",
+  "tech": [
+   "Next.js 15",
+   "FastAPI",
+   "Generative AI",
+   "Storyboard"
+  ],
+  "repo": "tsallabi/vidio",
+  "demo": "",
+  "latin": "VIDIO",
+  "shot": "assets/shots/vidio-home.webp",
+  "shotAlt": "The ad production workflow consisting of nine stages"
+ },
+ {
+  "id": "fairfix",
+  "name": "FairFix.ie",
+  "tag": "Fair Pricing Platform for Maintenance Services — Ireland",
+  "sector": "apps",
+  "desc": "Irish English version of the fair pricing model: AI-powered price estimation before any quote, followed by verified professionals submitting their offers. Proof of our ability to compete in a European market.",
+  "tech": [
+   "Next.js 14",
+   "AI Estimation",
+   "Marketplace",
+   "i18n"
+  ],
+  "repo": "tsallabi/fairfix",
+  "demo": "",
+  "latin": "FAIRFIX",
+  "shot": "assets/shots/fairfix-home.webp",
+  "shotAlt": "Homepage in English with a waiting list form and a mobile app",
+  "gallery": [
+   {
+    "src": "assets/shots/fairfix-estimate.webp",
+    "alt": "Estimation Tool",
+    "cap": "Fair Price Estimation before any offer"
+   },
+   {
+    "src": "assets/shots/fairfix-newjob.webp",
+    "alt": "Post a Maintenance Request",
+    "cap": "Post Request Path Step-by-Step"
+   },
+   {
+    "src": "assets/shots/fairfix-join.webp",
+    "alt": "Artisan Onboarding",
+    "cap": "Registration Path for Service Providers"
+   }
+  ]
+ },
+ {
+  "id": "usta",
+  "name": "Tawwa",
+  "tag": "Fair-Priced Maintenance Services Platform",
+  "sector": "apps",
+  "desc": "Home services marketplace: The customer describes the issue with a sentence or photo, receives a fair AI-powered price estimate in seconds, then gets offers from manually verified professionals.",
+  "tech": [
+   "Next.js 14",
+   "TypeScript",
+   "Tailwind",
+   "AI Estimation",
+   "RTL"
+  ],
+  "repo": "tsallabi/Usta",
+  "demo": "",
+  "latin": "TAWWA",
+  "shot": "assets/shots/usta-home.webp",
+  "shotAlt": "Homepage with an Arabic interface and smart price estimation",
+  "gallery": [
+   {
+    "src": "assets/shots/usta-estimate.webp",
+    "alt": "AI Price Estimation Screen",
+    "cap": "Fair Price Estimation from Fault Description in Seconds"
+   },
+   {
+    "src": "assets/shots/usta-list.webp",
+    "alt": "Professionals Directory",
+    "cap": "List of Verified Artisans with Ratings and Specializations"
+   },
+   {
+    "src": "assets/shots/usta-login.webp",
+    "alt": "Login",
+    "cap": "Full Arabic Login Interface"
+   }
+  ]
+ },
+ {
+  "id": "macchinaa",
+  "name": "Macchina",
+  "latin": "MACCHINAA",
+  "tag": "New Release: Buy Your Car from US Auctions and Have It Delivered to Your Country",
+  "sector": "auctions",
+  "desc": "Bilingual (Arabic and English) car import platform integrating Copart, IAAI, ADESA, Manheim, ACV, and OpenLane — over 670K updated vehicles directly from the auctions. Shipping-aware filters (document and shipping validity), car page with 25 photos, countdown, and automatic bidding up to a customer-defined limit, car history report in USD, cost calculator to port, daily auction results, auction calendar, shipment tracking, and a live auction room on-site.",
+  "tech": [
+   "Django",
+   "Channels / WebSockets",
+   "PostgreSQL",
+   "Meilisearch",
+   "Docker",
+   "PWA"
+  ],
+  "repo": "tsallabi/macchina-private",
+  "demo": "",
+  "site": "https://macchinaa.net/new/",
+  "shot": "assets/shots/macnew-home.webp",
+  "shotAlt": "Macchina's New Interface: Buy your car from American auctions — 673,000 cars in auctions now.",
+  "video": {
+   "ar": "assets/video/macchina-ar.mp4",
+   "en": "assets/video/macchina-en.mp4",
+   "poster_ar": "assets/video/macchina-ar.webp",
+   "poster_en": "assets/video/macchina-en.webp"
+  },
+  "gallery": [
+   {
+    "src": "assets/shots/macnew-cars.webp",
+    "alt": "Auction Cars",
+    "cap": "Auction Cars: Auction, price, document, and shipping suitability filters"
+   },
+   {
+    "src": "assets/shots/macnew-car.webp",
+    "alt": "Car Page",
+    "cap": "Car Page: 25 photos, countdown, and automatic bidding up to the ceiling"
+   },
+   {
+    "src": "assets/shots/macnew-car2.webp",
+    "alt": "Car Details",
+    "cap": "Car history report in USD, and condition and sale details"
+   },
+   {
+    "src": "assets/shots/macnew-calc.webp",
+    "alt": "Cost Calculator",
+    "cap": "How much does the car cost me to the port?"
+   },
+   {
+    "src": "assets/shots/macnew-results.webp",
+    "alt": "Auction Results",
+    "cap": "Daily auction results with real selling prices"
+   },
+   {
+    "src": "assets/shots/macnew-calendar.webp",
+    "alt": "Auction Calendar",
+    "cap": "Auction Calendar: Every sale and its date in Libya time"
+   },
+   {
+    "src": "assets/shots/macnew-why.webp",
+    "alt": "Why Macchina",
+    "cap": "Fixed commission, 10x buying power, and nine tracking stages"
+   },
+   {
+    "src": "assets/shots/macnew-mobile.webp",
+    "alt": "Mobile",
+    "cap": "Mobile Car Page"
+   }
+  ]
+ },
+ {
+  "id": "autopro",
+  "name": "AutoPro",
+  "tag": "Car Auction and International Shipping Platform",
+  "sector": "auctions",
+  "desc": "Arabic car auction platform: live bidding with a real-time counter on Copart and IAAI lots, offers marketplace, wallet and financing, a local cost calculator showing the final net cost with all fees, and full-tracking shipping service from America and Europe to Libya.",
+  "tech": [
+   "React 19",
+   "Vite",
+   "NestJS",
+   "Socket.IO",
+   "Prisma",
+   "PWA"
+  ],
+  "repo": "libya-autopro/autopro-final",
+  "demo": "https://autopro.ac",
+  "latin": "AUTOPRO",
+  "shot": "assets/shots/autopro-calc.webp",
+  "shotAlt": "Local Cost Calculator in AutoPro: Net final cost detailed with every fee",
+  "gallery": [
+   {
+    "src": "assets/shots/autopro-live.webp",
+    "alt": "Live Auctions",
+    "cap": "Live Auctions: Live counter for each lot, instant bidding, and Copart and Gulf filters."
+   },
+   {
+    "src": "assets/shots/autopro-shipping.webp",
+    "alt": "Shipping Services",
+    "cap": "International Shipping: From the American port to the doorstep — four ports and an average delivery of 52 days."
+   },
+   {
+    "src": "assets/shots/autopro-home.webp",
+    "alt": "Home Interface",
+    "cap": "Main Interface: Live auction above the fold with current bidding price."
+   }
+  ],
+  "reels": [
+   {
+    "src": "assets/video/autopro-episode-6.mp4",
+    "poster": "assets/video/autopro-episode-6.webp",
+    "cap": "Episode «Look... I Got It Done!» — with Sharon's voice"
+   }
+  ]
+ },
+ {
+  "id": "mazadna",
+  "name": "International Auction Group Platform",
+  "tag": "Importing Cars from US Auctions and Container Tracking",
+  "sector": "logistics",
+  "desc": "A complete operational system for car imports: import cost calculator from Copart and IAA, vehicle purchase and tracking through ten stages until delivery, container management, sea and land shipping, invoices with grace periods, and multi-branch, multi-currency cash vaults.",
+  "tech": [
+   "Next.js 16",
+   "Prisma",
+   "PostgreSQL",
+   "Tracking",
+   "Multi-branch"
+  ],
+  "repo": "tsallabi/Mazadna",
+  "demo": "",
+  "latin": "MAZADNA",
+  "shot": "assets/shots/mazadna-calc.webp",
+  "shotAlt": "Import calculator in light mode on the International Auction Group platform",
+  "gallery": [
+   "assets/shots/mazadna-home.webp",
+   {
+    "src": "assets/shots/mazadna-dashboard.webp",
+    "alt": "Employee Dashboard",
+    "cap": "Employee Dashboard: Operations, Receivables, Profits, and Penalties on One Screen"
+   },
+   {
+    "src": "assets/shots/mazadna-calculator.webp",
+    "alt": "Import Calculator",
+    "cap": "Import Cost Calculator from Lot Number to Client's Door"
+   },
+   {
+    "src": "assets/shots/mazadna-market.webp",
+    "alt": "Market Prices",
+    "cap": "189 Market Price Lines in LYD with Official USD Exchange Rate"
+   },
+   {
+    "src": "assets/shots/mazadna-track.webp",
+    "alt": "Container Tracking",
+    "cap": "Container Tracking Available to Client Without Login"
+   },
+   {
+    "src": "assets/shots/mazadna-treasury.webp",
+    "alt": "Treasury Management",
+    "cap": "Cash Treasuries for Each Branch and Currency with Calculated Balances"
+   }
+  ]
+ },
+ {
+  "id": "ajrly",
+  "name": "Ajrly OS",
+  "tag": "Integrated Operational System for Property Rentals",
+  "sector": "erp",
+  "desc": "An operational system that transforms scattered Google Sheets into a single application: a dashboard with live indicators, tasks with a Kanban board and work timer, a four-stage property owner journey, finances with expenses, revenues, budgets, and a printable report, company assets, and an employee performance dashboard — Arabic/English with dark mode. Includes a motion graphic ad «Your Booking is Documented» that we created for the app.",
+  "tech": [
+   "Cloudflare Pages",
+   "D1",
+   "KV",
+   "Vanilla JS",
+   "RTL"
+  ],
+  "repo": "tsallabi/Ajrly-",
+  "demo": "",
+  "latin": "AJRLY",
+  "shot": "assets/shots/ajrly-dashboard.webp",
+  "shotAlt": "Ajrly Control Panel: Total tasks, completion rate, and distribution by team.",
+  "gallery": [
+   {
+    "src": "assets/shots/ajrly-my-dashboard.webp",
+    "alt": "My Dashboard",
+    "cap": "\"My Dashboard\" for the employee: Overdue items, open tasks, owners to contact, today's visits, and real-time attendance recording."
+   },
+   {
+    "src": "assets/shots/ajrly-finance.webp",
+    "alt": "Finance",
+    "cap": "Finance: Annual summary of revenues, expenses, and net profit in LYD, with budgets and a printable report."
+   },
+   {
+    "src": "assets/shots/ajrly-tasks.webp",
+    "alt": "Tasks",
+    "cap": "Tasks: Filters by status and team, priorities, and a work timer for each task."
+   },
+   {
+    "src": "assets/shots/ajrly-owners.webp",
+    "alt": "Property Owners",
+    "cap": "Real Estate Owners: A four-stage journey with tracking of delayed conversations."
+   }
+  ],
+  "reels": [
+   {
+    "src": "assets/video/ajrly-ad.mp4",
+    "poster": "assets/video/ajrly-ad.webp",
+    "cap": "\"Your Booking is Confirmed\" Ad — Motion Graphic in Libyan Dialect"
+   }
+  ]
+ },
+ {
+  "id": "carrie",
+  "name": "CARRPRO.ie",
+  "tag": "Used Car Marketplace — Ireland",
+  "sector": "commerce",
+  "desc": "An Irish car marketplace that sells transparency: every listing includes a vehicle history check, a monthly ownership cost calculator, and an import calculator from Britain with the final cost after taxes. Proof of our ability to compete in a European market in English.",
+  "tech": [
+   "Django 5",
+   "PostgreSQL",
+   "Search",
+   "VRT / WLTP"
+  ],
+  "repo": "tsallabi/Carr.ie",
+  "demo": "",
+  "latin": "CARRPRO",
+  "shot": "assets/shots/carrie-home.webp",
+  "shotAlt": "Homepage titled The Honest Used Car Market in Ireland",
+  "gallery": [
+   {
+    "src": "assets/shots/carrie-search.webp",
+    "alt": "Search Results",
+    "cap": "Search by Counties and Filters with Car Cards"
+   },
+   {
+    "src": "assets/shots/carrie-listing.webp",
+    "alt": "Listing Page",
+    "cap": "Listing Page: Price, Monthly Cost of Ownership, and History Check Panel"
+   },
+   {
+    "src": "assets/shots/carrie-import.webp",
+    "alt": "Import Calculator",
+    "cap": "Import Calculator from Britain with Final Cost after Fees"
+   }
+  ]
+ },
+ {
+  "id": "irish-castle",
+  "name": "Irish Castle",
+  "tag": "Luxury Property Platform — Ireland",
+  "sector": "commerce",
+  "desc": "An Irish property platform: search by purchase, rent, and new projects, detailed property pages, and a mortgage calculator with Irish market data from down payment to loan-to-value ratio.",
+  "tech": [
+   "Static",
+   "Vanilla JS",
+   "Cloudflare Pages",
+   "SVG"
+  ],
+  "repo": "tsallabi/Irish-castle-",
+  "demo": "",
+  "latin": "IRISH CASTLE",
+  "shot": "assets/shots/irishcastle-home.webp",
+  "shotAlt": "Homepage with a triple search bar and platform statistics",
+  "gallery": [
+   {
+    "src": "assets/shots/irishcastle-properties.webp",
+    "alt": "Browse Properties",
+    "cap": "Property Network with County Filtering"
+   },
+   {
+    "src": "assets/shots/irishcastle-property.webp",
+    "alt": "Property Page",
+    "cap": "Detailed Property Page"
+   },
+   {
+    "src": "assets/shots/irishcastle-mortgage.webp",
+    "alt": "Financing Calculator",
+    "cap": "Mortgage Calculator with Irish Market Standards"
+   }
+  ]
+ },
+ {
+  "id": "hudhud",
+  "name": "HUDHUDE",
+  "latin": "HUDHUDE",
+  "tag": "E-commerce Store for the Libyan Market with Goods from Chinese Factories",
+  "sector": "commerce",
+  "desc": "An Arabic store with a Shein-like experience, featuring goods from 1688 and over 11,000 active products, with a final price in LYD including shipping and customs. Air or sea shipping with clear pricing and duration, «Order by Link» from any Chinese website, pickup from Tripoli or Benghazi warehouse or door delivery, video tutorials for customers, an admin dashboard, and a dashboard for the shipping partner in China. Interfaces in screenshots show demo data.",
+  "tech": [
+   "Cloudflare Workers",
+   "D1",
+   "R2",
+   "Hono",
+   "MyPay",
+   "RTL"
+  ],
+  "repo": "tsallabi/Dlal",
+  "demo": "",
+  "site": "https://hudhude.com",
+  "shot": "assets/shots/hudhud-home.webp",
+  "shotAlt": "Main interface for HUDHUDE store: Sections and offers with final prices in LYD",
+  "video": {
+   "ar": "assets/video/hudhud-ar.mp4",
+   "en": "assets/video/hudhud-en.mp4",
+   "poster_ar": "assets/video/hudhud-ar.webp",
+   "poster_en": "assets/video/hudhud-en.webp"
+  },
+  "gallery": [
+   {
+    "src": "assets/shots/hudhud-product.webp",
+    "alt": "Product Page",
+    "cap": "Product page: Color and size, and air vs. sea shipping comparison by price and duration"
+   },
+   {
+    "src": "assets/shots/hudhud-mobile.webp",
+    "alt": "Mobile",
+    "cap": "Mobile experience: sections, filtering, sorting, and cart"
+   },
+   {
+    "src": "assets/shots/hudhud-link.webp",
+    "alt": "Order by link",
+    "cap": "“Order by link”: Any product from 1688, Taobao, or Shein with a final price before payment"
+   },
+   {
+    "src": "assets/shots/hudhud-admin.webp",
+    "alt": "Admin Dashboard",
+    "cap": "Admin dashboard: importing products and automatically completing their data"
+   }
+  ]
+ },
+ {
+  "id": "mushaf",
+  "name": "Mushaf Libya",
+  "latin": "MUSHAF LIBYA",
+  "tag": "Mushaf App with Qalun recitation from Nafi'",
+  "sector": "apps",
+  "desc": "A digital Mushaf with the recitation read by the people of Libya: photographed Mushaf pages in King Fahd Complex script with touch-based verse selection, six interpretations, full text search of the Mushaf, index of Surahs and Juz', a recited Mushaf topped by Libyan reciters, a daily completion plan, astronomical prayer times for Libyan cities, and Qibla direction — with three appearances (light/paper/dark) and Arabic numerals, and works offline after the first opening.",
+  "tech": [
+   "Next.js 15",
+   "React 19",
+   "Cloudflare",
+   "PWA",
+   "Offline-first"
+  ],
+  "repo": "tsallabi/vidio",
+  "demo": "https://mushaf-libya.com",
+  "shot": "assets/shots/mushaf-main.webp",
+  "shotAlt": "Mushaf Libya: Settings, the Mushaf page, and the main interface",
+  "gallery": [
+   {
+    "src": "assets/shots/mushaf-reading.webp",
+    "alt": "Reading and Search",
+    "cap": "Tafsir Library with Six Commentaries, Index of Surahs and Juz', and Search in 6214 Verses with Qalun Recitation"
+   },
+   {
+    "src": "assets/shots/mushaf-tools.webp",
+    "alt": "Worship Tools",
+    "cap": "Prayer Times for Libyan Cities with Astronomical Calculation, Khatmah Plan with Daily Recitation, and Qibla Direction"
+   },
+   {
+    "src": "assets/shots/mushaf-more.webp",
+    "alt": "Mushaf and Resources",
+    "cap": "Scanned Quran Pages, and Text and Recitation Sources Documented Within the App"
+   }
+  ],
+  "reels": [
+   {
+    "src": "https://mushaf-libya.com/promo/mushaf-libya-promo.mp4",
+    "poster": "https://mushaf-libya.com/promo/poster.jpg",
+    "cap": "Introductory Video for Mushaf Libya App"
+   }
+  ]
+ },
+ {
+  "id": "autopro-ads",
+  "name": "Hajj Khalifa Series for AutoPro",
+  "latin": "AUTOPRO REELS",
+  "tag": "AI Video Ad Series in Libyan Dialect",
+  "sector": "marketing",
+  "desc": "A series of short (9:16) ads for AutoPro auctions, featuring two consistent Libyan characters, «Hajj Khalifa» and «Salem»: a script in Libyan dialect, AI-generated scenes, animated auction counter, embedded Arabic translation, and audio adjusted to platform standards. Six episodes published, including a real car sale ad.",
+  "tech": [
+   "Generative video",
+   "FFmpeg",
+   "Motion graphics",
+   "Arabic subtitles",
+   "-14 LUFS"
+  ],
+  "repo": "tsallabi/Carme.ie",
+  "demo": "",
+  "site": "https://autopro.ac",
+  "shot": "assets/video/autopro-episode-3.webp",
+  "shotAlt": "A screenshot from the episode “Bid and Don't Be Afraid”: Hajj Khalifa and Salem showcasing AutoPro auctions",
+  "reels": [
+   {
+    "src": "assets/video/autopro-episode-3.mp4",
+    "poster": "assets/video/autopro-episode-3.webp",
+    "cap": "Episode 3 — «Zayed, Don't Be Afraid»"
+   },
+   {
+    "src": "assets/video/autopro-episode-6.mp4",
+    "poster": "assets/video/autopro-episode-6.webp",
+    "cap": "Episode 6 — «Look... I Got It Done!»"
+   },
+   {
+    "src": "assets/video/autopro-genesis-fathi.mp4",
+    "poster": "assets/video/autopro-genesis-fathi.webp",
+    "cap": "Sale Ad — Hyundai Genesis 2016"
+   }
+  ]
+ }
+]

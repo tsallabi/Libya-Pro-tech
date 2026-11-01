@@ -3,6 +3,9 @@
   "use strict";
 
   /* رقم الواتساب بصيغة دولية بلا علامة زائد وبلا أصفار بادئة — يُستخدم في النموذج وفي التذييل. */
+  const EN = window.LP_LANG === "en", L = EN ? "/en" : "";   /* النسخة الإنجليزية */
+  const T = s => (window.LP_T ? window.LP_T(s) : s);
+  const U = s => (!s || /^(https?:|\/|data:)/.test(s)) ? s : "/" + s;   /* مسارات مطلقة تعمل تحت /en/ أيضاً */
   const MKT = document.body.dataset.dept === "mkt";   /* صفحة التسويق: يرد موظف التسويق */
   let WHATSAPP = MKT ? "353873414360" : "353894435368";
 
@@ -58,7 +61,7 @@
   const IDS  = grid && grid.dataset.ids ? grid.dataset.ids.split(",").map(s => s.trim()) : null;
   if (ONLY) filter = ONLY;
 
-  if (grid) fetch(grid.dataset.src || "data/projects.json")
+  if (grid) fetch(grid.dataset.src || (EN ? "/data/projects.en.json" : "/data/projects.json"))
     .then(r => r.json())
     .then(d => { projects = d; window.LP_PROJECTS = d; render();
       document.dispatchEvent(new CustomEvent("lp:projects", { detail: d })); })
@@ -69,7 +72,7 @@
     const all = [p.shot].concat((p.gallery || []).map(g => typeof g === "string" ? g : g.src)).filter(Boolean);
     const count = all.length > 1 ? `<span class="shot-count" aria-hidden="true"><b>1</b>/${all.length}</span>` : "";
     const vb = (p.video || p.reels) ? `<span class="vid-badge" aria-hidden="true">▶ فيديو${p.video ? " · عربي / English" : ""}</span>` : "";
-    return `<div class="panel" data-shots="${esc(all.join("|"))}"><img src="${esc(p.shot)}" width="2000" height="1250" loading="lazy" decoding="async"
+    return `<div class="panel" data-shots="${esc(all.map(U).join("|"))}"><img src="${esc(U(p.shot))}" width="2000" height="1250" loading="lazy" decoding="async"
       alt="لقطة حقيقية من نظام ${esc(p.name)}: ${esc(p.shotAlt || p.tag)}">${count}${vb}</div>`;
   }
 
@@ -77,8 +80,8 @@
   function videoBlock(p) {
     if (p.video) return `<div class="vbox" data-id="${esc(p.id)}" data-ar="${esc(p.video.ar)}" data-en="${esc(p.video.en)}"
         data-par="${esc(p.video.poster_ar || "")}" data-pen="${esc(p.video.poster_en || "")}">
-      <div class="vtabs" role="group" aria-label="لغة الفيديو"><button type="button" data-l="ar" class="on">العربية</button><button type="button" data-l="en" lang="en">English</button></div>
-      <video controls playsinline preload="metadata" poster="/${esc(p.video.poster_ar || "")}" src="/${esc(p.video.ar)}" data-track-id="${esc(p.id)}:ar"></video></div>`;
+      <div class="vtabs" role="group" aria-label="لغة الفيديو"><button type="button" data-l="ar" lang="ar" class="${EN ? "" : "on"}">العربية</button><button type="button" data-l="en" lang="en" class="${EN ? "on" : ""}">English</button></div>
+      <video controls playsinline preload="metadata" poster="/${esc(EN ? p.video.poster_en : (p.video.poster_ar || ""))}" src="/${esc(EN ? p.video.en : p.video.ar)}" data-track-id="${esc(p.id)}:${EN ? "en" : "ar"}"></video></div>`;
     const u = s => /^https?:/.test(s) ? s : "/" + s;
     if (p.reels) return `<div class="reels">${p.reels.map(r => `<figure><video controls playsinline preload="none" poster="${esc(u(r.poster))}" src="${esc(u(r.src))}" data-track-id="${esc(p.id)}:${esc(r.src.split("/").pop())}"></video><figcaption>${esc(r.cap)}</figcaption></figure>`).join("")}</div>`;
     return "";
@@ -99,7 +102,7 @@
         <div class="tech">${(p.tech || []).map(t => `<span>${esc(t)}</span>`).join("")}</div>
         <div class="work-actions">
           ${demoBtn}
-          <a class="btn btn-sm" href="/cases/${esc(p.id)}.html">دراسة الحالة</a>
+          <a class="btn btn-sm" href="${L}/cases/${esc(p.id)}.html">دراسة الحالة</a>
         </div>
       </div>
     </article>`;
@@ -111,7 +114,7 @@
       <span class="ds">${esc(p.tag)}</span>
       <span class="ac">
         <button class="btn btn-sm" data-demo="${esc(p.id)}">تفاصيل</button>
-        <a class="btn btn-sm" href="/cases/${esc(p.id)}.html">دراسة الحالة</a>
+        <a class="btn btn-sm" href="${L}/cases/${esc(p.id)}.html">دراسة الحالة</a>
       </span>
     </li>`;
   }
@@ -174,7 +177,7 @@
       body.className = "modal-body view-gallery";
       const shots = [{ src: p.shot, alt: p.shotAlt || p.tag, cap: p.tag }].filter(s => s.src && !/\/video\//.test(s.src)).concat(p.gallery || []);
       gal.innerHTML = videoBlock(p) + shots.map(s => `<figure class="gal-item">
-        <div class="panel"><img src="${esc(s.src)}" loading="lazy" decoding="async" alt="لقطة من نظام ${esc(p.name)}: ${esc(s.alt)}"></div>
+        <div class="panel"><img src="${esc(U(s.src))}" loading="lazy" decoding="async" alt="لقطة من نظام ${esc(p.name)}: ${esc(s.alt)}"></div>
         <figcaption class="panel-cap"><span class="live">لقطة حقيقية</span><span>${esc(s.cap)}</span></figcaption></figure>`).join("");
       gal.scrollTop = 0;
     } else if (p.demo) {
@@ -190,7 +193,7 @@
       const shots = [{ src: p.shot, alt: p.shotAlt || p.tag, cap: p.tag }]
         .filter(s => s.src).concat(p.gallery);
       gal.innerHTML = shots.map(s => `<figure class="gal-item">
-        <div class="panel"><img src="${esc(s.src)}" loading="lazy" decoding="async"
+        <div class="panel"><img src="${esc(U(s.src))}" loading="lazy" decoding="async"
           alt="لقطة من نظام ${esc(p.name)}: ${esc(s.alt)}"></div>
         <figcaption class="panel-cap"><span class="live">لقطة حقيقية</span><span>${esc(s.cap)}</span></figcaption>
       </figure>`).join("");
@@ -234,7 +237,7 @@
     const lines = [...f.entries()].filter(([, v]) => String(v).trim())
       .map(([k, v]) => `${LABEL[k] || k}: ${v}`);
     const url = `https://wa.me/${WHATSAPP}?text=` +
-      encodeURIComponent("طلب مشروع جديد من الموقع\n\n" + lines.join("\n"));
+      encodeURIComponent(T("طلب مشروع جديد من الموقع\n\n" + lines.join("\n")));
     window.open(url, "_blank", "noopener");
     /* يُحفظ الطلب في لوحة التحكم أيضاً، مربوطاً بزيارة صاحبه (بلا انتظار حتى لا يُحجب فتح واتساب) */
     const data = Object.fromEntries(f.entries());

@@ -24,6 +24,8 @@ const head = ({ title, desc, path, image }) => `<!doctype html>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${SITE}${path}">
+<link rel="alternate" hreflang="ar" href="${SITE}${path}">
+<link rel="alternate" hreflang="en" href="${SITE}/en${path}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="ليبيا برو للتقنية">
 <meta property="og:locale" content="ar_LY">
@@ -38,7 +40,7 @@ const head = ({ title, desc, path, image }) => `<!doctype html>
 <link rel="stylesheet" href="/assets/style.css">
 <script src="/assets/boot.js"></script>`;
 
-const nav = `<header class="nav">
+const nav = (en) => `<header class="nav">
   <a href="/" class="mark" aria-label="LIBYA PRO TECH"><span class="logo logo-word" aria-hidden="true"></span><small>TECH</small></a>
   <nav class="nav-links">
     <a href="/#work">الأعمال</a>
@@ -49,6 +51,7 @@ const nav = `<header class="nav">
     <a href="/marketing.html">التسويق الرقمي</a>
     <a href="/#estimate">احسب نظامك</a>
   </nav>
+  <a class="lang-sw" href="${en}" hreflang="en" lang="en" data-lang="en">English</a>
   <a href="/assets/libya-pro-tech-profile.pdf" class="pdf-link" download>الملف التعريفي <bdi dir="ltr" class="lat">PDF</bdi></a>
   <a href="#contact" class="btn btn-gold btn-sm">اطلب عرضاً</a>
   <button class="burger" id="burger" aria-expanded="false">القائمة</button>
@@ -117,7 +120,7 @@ const contact = (p) => `<section class="sec" id="contact">
 /* الفيديو التوضيحي (عربي/إنجليزي بصوت Charon) أو سلسلة فيديوهات طولية — يحلّ محل اللقطة في رأس الصفحة */
 function vblock(p) {
   if (p.video) return `<div class="vbox case-video" data-id="${esc(p.id)}" data-ar="${esc(p.video.ar)}" data-en="${esc(p.video.en)}" data-par="${esc(p.video.poster_ar)}" data-pen="${esc(p.video.poster_en)}">
-      <div class="vtabs" role="group" aria-label="لغة الفيديو"><button type="button" data-l="ar" class="on">العربية</button><button type="button" data-l="en" lang="en">English</button></div>
+      <div class="vtabs" role="group" aria-label="لغة الفيديو"><button type="button" data-l="ar" lang="ar" class="on">العربية</button><button type="button" data-l="en" lang="en">English</button></div>
       <video controls playsinline preload="metadata" poster="/${esc(p.video.poster_ar)}" src="/${esc(p.video.ar)}" data-track-id="${esc(p.id)}:ar"></video>
       <p class="panel-cap"><span class="live">فيديو توضيحي</span><span>جولة في النظام بلقطاته الحقيقية — بالعربية والإنجليزية</span></p></div>`;
   const u = s => /^https?:/.test(s) ? s : "/" + s;
@@ -147,7 +150,7 @@ function page(p, i) {
 </head>
 <body data-case="${esc(p.id)}" data-case-name="${esc(p.name)}">
 <div class="scroll-line" id="scroll-line" aria-hidden="true"></div>
-${nav}
+${nav(`/en/cases/${p.id}.html`)}
 <main id="top">
 <section class="case-hero">
   <div class="wrap">
@@ -254,7 +257,7 @@ function index() {
 </head>
 <body>
 <div class="scroll-line" id="scroll-line" aria-hidden="true"></div>
-${nav}
+${nav("/en/cases/")}
 <main id="top">
 <section class="case-hero">
   <div class="wrap">
@@ -294,7 +297,8 @@ projects.forEach((p, i) => fs.writeFileSync(`cases/${p.id}.html`, page(p, i)));
 fs.writeFileSync("cases/index.html", index());
 
 /* خريطة الموقع */
-const urls = ["/", "/banks.html", "/government.html", "/business.html", "/marketing.html", "/cases/"].concat(projects.map(p => `/cases/${p.id}.html`));
+const urlsAr = ["/", "/banks.html", "/government.html", "/business.html", "/marketing.html", "/cases/"].concat(projects.map(p => `/cases/${p.id}.html`));
+const urls = urlsAr.concat(urlsAr.map(u => "/en" + u));
 fs.writeFileSync("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${SITE}${u}</loc><changefreq>${u === "/" ? "weekly" : "monthly"}</changefreq><priority>${u === "/" ? "1.0" : u.startsWith("/cases/") && u !== "/cases/" ? "0.7" : "0.8"}</priority></url>`).join("\n")}

@@ -4,8 +4,9 @@ import fs from "fs";
 
 const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
 const pages = ["index.html", "banks.html", "government.html", "business.html", "marketing.html", "profile.html", "404.html", "admin.html"]
-  .concat(fs.existsSync("cases") ? fs.readdirSync("cases").filter(f => f.endsWith(".html")).map(f => "cases/" + f) : []);
-const assets = ["app.js", "style.css", "boot.js", "print.css", "track.js", "engage.js", "admin.js", "admin.css"];
+  .concat(fs.existsSync("cases") ? fs.readdirSync("cases").filter(f => f.endsWith(".html")).map(f => "cases/" + f) : [])
+  .concat(fs.existsSync("en") ? fs.readdirSync("en", { recursive: true }).filter(f => f.endsWith(".html")).map(f => "en/" + f) : []);
+const assets = ["app.js", "style.css", "boot.js", "print.css", "track.js", "engage.js", "i18n-en.js", "admin.js", "admin.css"];
 
 for (const f of pages) {
   if (!fs.existsSync(f)) continue;

@@ -643,3 +643,11 @@ html.reg-open{overflow:hidden}
 .case-reels{grid-template-columns:repeat(auto-fit,minmax(220px,300px))}
 .ex-grid{align-items:start}
 .mkt-vid video{display:block;width:100%;aspect-ratio:9/16;border-radius:16px;background:#0B0B0C;box-shadow:var(--shadow-l)}
+
+/* ===== زر اللغة ===== */
+.lang-sw{font-size:13.5px;font-weight:700;color:var(--ink);text-decoration:none;border:1px solid var(--hair-2);border-radius:999px;padding:7px 14px;white-space:nowrap}
+.lang-sw:hover{border-color:var(--ink)}
+.lang-sw[lang=ar]{font-family:var(--font)}
+@media (max-width:900px){.lang-sw{padding:6px 10px;font-size:12.5px}}
+.nav-links a,.nav .pdf-link,.nav .btn,.lang-sw{white-space:nowrap}
+@media (max-width:1400px){.nav .pdf-link{display:none}}
