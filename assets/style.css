@@ -494,9 +494,15 @@ html.reg-open{overflow:hidden}
 .est-done{background:#E8F7EE;border-radius:12px;padding:14px;margin:0;font-weight:600}
 @media (max-width:640px){.est-grid{grid-template-columns:1fr}.est-fields{grid-template-columns:1fr}}
 
-.wa-float{position:fixed;bottom:18px;left:18px;z-index:150;display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 16px;border-radius:999px;box-shadow:0 10px 24px -6px rgba(37,211,102,.55)}
-.wa-float:hover{background:#1ebe5a}
-@media (max-width:640px){.wa-float span{display:none}.wa-float{padding:13px}}
+.wa-float{position:fixed;bottom:18px;left:18px;z-index:150;display:flex;align-items:center;gap:10px;background:#0B0B0C;color:#fff;text-decoration:none;padding:6px 18px 6px 6px;border-radius:24px;box-shadow:0 14px 30px -10px rgba(11,11,12,.55);transition:transform .2s ease,box-shadow .2s ease}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 18px 34px -10px rgba(17,156,79,.55)}
+.wa-float .wa-ic{display:block;width:44px;height:44px;flex:none}
+.wa-tx{display:grid;line-height:1.25}
+.wa-tx b{font-size:14.5px;font-weight:700}
+.wa-tx small{font-size:11.5px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:6px}
+.wa-tx i{width:7px;height:7px;border-radius:50%;background:#2FE47E;box-shadow:0 0 0 0 rgba(47,228,126,.7);animation:waPulse 2s infinite}
+@keyframes waPulse{70%{box-shadow:0 0 0 6px rgba(47,228,126,0)}100%{box-shadow:0 0 0 0 rgba(47,228,126,0)}}
+@media (max-width:640px){.wa-float{padding:0;background:none;box-shadow:none;border-radius:18px}.wa-tx{display:none}.wa-float .wa-ic{width:56px;height:56px;filter:drop-shadow(0 10px 18px rgba(17,156,79,.45))}}
 .reg-card .eyebrow{justify-self:start}
 
 /* ===== دراسات الحالة ===== */
