@@ -642,3 +642,4 @@ html.reg-open{overflow:hidden}
 .ex-card .reels figcaption{display:none}
 .case-reels{grid-template-columns:repeat(auto-fit,minmax(220px,300px))}
 .ex-grid{align-items:start}
+.mkt-vid video{display:block;width:100%;aspect-ratio:9/16;border-radius:16px;background:#0B0B0C;box-shadow:var(--shadow-l)}

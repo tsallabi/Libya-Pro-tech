@@ -159,7 +159,7 @@ ${nav}
       <a href="#contact" class="btn btn-gold">أريد نظاماً مثله</a>
       ${p.demo ? `<a href="${esc(p.demo)}" class="btn" target="_blank" rel="noopener" data-track="demo-live:${esc(p.id)}">جرّب النسخة الحية ↗</a>` : p.site ? `<a href="${esc(p.site)}" class="btn" target="_blank" rel="noopener" data-track="site:${esc(p.id)}">زيارة الموقع ↗</a>` : `<a href="#screens" class="textlink">شاهد لقطات النظام</a>`}
     </div>
-    ${vblock(p) || `<figure class="panel case-shot"><img src="/${esc(p.shot)}" width="2000" height="1250" fetchpriority="high" decoding="async" alt="${esc(p.shotAlt || p.tag)}"></figure>
+    ${(p.video || (p.reels && !(p.gallery || []).length) ? vblock(p) : '') || `<figure class="panel case-shot"><img src="/${esc(p.shot)}" width="2000" height="1250" fetchpriority="high" decoding="async" alt="${esc(p.shotAlt || p.tag)}"></figure>
     <p class="panel-cap"><span class="live">لقطة حقيقية من النظام</span><span>${esc(p.shotAlt || p.tag)}</span></p>`}
   </div>
 </section>
@@ -199,6 +199,13 @@ ${all.length > 1 ? `<section class="sec light" id="screens">
     </div>
   </div>
 </section>` : `<span id="screens"></span>`}
+
+${p.reels && (p.gallery || []).length ? `<section class="sec light" id="videos">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow"><span>فيديو</span></div><h2>فيديو ${esc(p.name)}</h2></div>
+    ${vblock(p)}
+  </div>
+</section>` : ""}
 
 <section class="sec">
   <div class="wrap case-grid">
