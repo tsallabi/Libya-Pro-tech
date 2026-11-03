@@ -62,7 +62,7 @@ const footer = `<footer class="footer">
     <div class="footer-grid">
       <div>
         <a href="/" class="mark mark-stack" aria-label="LIBYA PRO TECH"><span class="logo logo-word" aria-hidden="true"></span><small>TECH</small></a>
-        <p class="mut foot-about">شركة ليبيا برو للتقنية — فرع من Egypt Pro Orspra. بناء وتشغيل المنظومات الرقمية للمؤسسات في ليبيا.</p>
+        <p class="mut foot-about">شركة ليبيا برو للتقنية. بناء وتشغيل المنظومات الرقمية للمؤسسات في ليبيا.</p>
       </div>
       <div>
         <h4>القطاعات</h4>
@@ -86,7 +86,8 @@ const footer = `<footer class="footer">
       </div>
     </div>
     <div class="bottom">
-      <span>© <span id="y"></span> Libya Pro Tech — A subsidiary of Egypt Pro Orspra</span>
+      <span>© <span id="y"></span> Libya Pro Tech</span>
+      <span class="branch">فرع شركة أورسبرا مصر · <bdi dir="ltr">Orspra Egypt</bdi></span>
       <span class="num">بناء المستقبل الرقمي العربي</span>
     </div>
   </div>

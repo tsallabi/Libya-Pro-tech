@@ -691,3 +691,4 @@ html.reg-open{overflow:hidden}
 .grp-foot{margin-top:24px;padding-top:18px;border-top:1px solid var(--hair);font-size:14.5px;color:var(--mut)}
 @media (max-width:900px){.grp-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.grp-grid{grid-template-columns:1fr}.gp-big{grid-column:auto;grid-row:auto}}
+.footer .branch{font-size:12px;opacity:.75}

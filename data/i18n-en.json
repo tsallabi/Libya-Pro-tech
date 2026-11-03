@@ -1730,5 +1730,11 @@
  "html:مواقع ومنصات<em>مصر</em>": "html:Websites & Platforms<em>Egypt</em>",
  "html:عملاء المجموعة: جامعة زويل · <bdi dir=\"ltr\" class=\"lat\">Caromoto · Advanced Biotech · Genomics · Milano · Trace</bdi>": "html:Group Clients: Zewail City University · <bdi dir=\"ltr\" class=\"lat\">Caromoto · Advanced Biotech · Genomics · Milano · Trace</bdi>",
  "html:<span>ليبيا برو للتقنية — الملف التعريفي</span><span><bdi dir=\"ltr\" class=\"lat\">09</bdi></span>": "html:<span>Libya Pro Tech — Profile</span><span><bdi dir=\"ltr\" class=\"lat\">09</bdi></span>",
- "أعمال المجموعة · مصر والدول العربية": "Group's Work · Egypt and Arab Countries"
+ "أعمال المجموعة · مصر والدول العربية": "Group's Work · Egypt and Arab Countries",
+ "html:<span>ليبيا برو للتقنية · برمجة وتسويق رقمي</span>": "html:<span>Libya Pro Tech · Programming and Digital Marketing</span>",
+ "html:خبرة أنظمة وطنية <span class=\"grp-hl\">في مصر والدول العربية</span>.": "html:National systems expertise <span class=\"grp-hl\">in Egypt and Arab countries</span>.",
+ "html:<span>© <span id=\"y\" class=\"lat\"></span> Libya Pro Tech</span> <span class=\"branch\">فرع شركة أورسبرا مصر · <bdi dir=\"ltr\">Orspra Egypt</bdi></span> <span class=\"lat fine\">بناء المستقبل الرقمي العربي</span>": "html:<span>© <span id=\"y\" class=\"lat\"></span> Libya Pro Tech</span> <span class=\"branch\">Branch of Orspra Egypt · <bdi dir=\"ltr\">Orspra Egypt</bdi></span> <span class=\"lat fine\">Building the Arab Digital Future</span>",
+ "أنظمة بنتها مجموعتنا لجهات حكومية وشركات في مصر والمنطقة، ونقدّم الخبرة نفسها لعملائنا في ليبيا.": "Our group has developed systems for government entities and companies in Egypt and the region, and we offer the same expertise to our clients in Libya.",
+ "شركة ليبيا برو للتقنية. بناء وتشغيل المنظومات الرقمية للمؤسسات في ليبيا.": "Libya Pro Tech company. Building and operating digital systems for institutions in Libya.",
+ "html:<span>© <span id=\"y\"></span> Libya Pro Tech</span> <span class=\"branch\">فرع شركة أورسبرا مصر · <bdi dir=\"ltr\">Orspra Egypt</bdi></span> <span class=\"num\">بناء المستقبل الرقمي العربي</span>": "html:<span>© <span id=\"y\"></span> Libya Pro Tech</span> <span class=\"branch\">Branch of Orspra Egypt · <bdi dir=\"ltr\">Orspra Egypt</bdi></span> <span class=\"num\">Building the Arab Digital Future</span>"
 }
