@@ -1749,5 +1749,9 @@
  "html:مواقع ومنصات رقمية <span class=\"grp-hl\">لعلامات في مصر</span>.": "html:Digital websites and platforms <span class=\"grp-hl\">for brands in Egypt</span>.",
  "هويات رقمية ومواقع لشركات تقنية وطبية وتجارية — من أعمال مجموعتنا.": "Digital identities and websites for tech, medical, and commercial companies — from our group's work.",
  "لا يمكن عرض تفاصيل المشاريع الحكومية": "Government project details cannot be displayed.",
- "html:حكومة وبنية تحتية<em>مصر</em><span class=\"gov-note\">لا يمكن عرض تفاصيل المشاريع الحكومية</span>": "html:Government and Infrastructure<em>Egypt</em><span class=\"gov-note\">Government project details cannot be displayed</span>"
+ "html:حكومة وبنية تحتية<em>مصر</em><span class=\"gov-note\">لا يمكن عرض تفاصيل المشاريع الحكومية</span>": "html:Government and Infrastructure<em>Egypt</em><span class=\"gov-note\">Government project details cannot be displayed</span>",
+ "html:<em>جهة حكومية · مصر</em><b>مشروع حكومي</b><span>منظومة وطنية لجهة حكومية — التفاصيل غير قابلة للعرض.</span>": "html:<em>Government Entity · Egypt</em><b>Government Project</b><span>National system for a government entity — Details are not available for viewing.</span>",
+ "مشروع حكومي": "Government Project",
+ "html:<span class=\"live\">لقطة حقيقية من النظام</span> <span><b>مشروع حكومي</b> — منظومة وطنية لجهة حكومية · لا يمكن عرض تفاصيل المشاريع الحكومية</span>": "html:<span class=\"live\">Live system view</span> <span><b>Government Project</b> — National system for a government entity · Details of government projects cannot be displayed.</span>",
+ "أنظمة وطنية بنتها مجموعتنا لجهات حكومية في مصر. تفاصيل هذه المشاريع وأسماؤها سرية ولا يمكن عرضها.": "National systems built by our group for government entities in Egypt. The details and names of these projects are confidential and cannot be displayed."
 }
