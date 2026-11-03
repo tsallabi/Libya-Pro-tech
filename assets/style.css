@@ -697,3 +697,4 @@ html.reg-open{overflow:hidden}
 .gov-blur{position:relative}
 .gov-blur::after{content:attr(data-note);position:absolute;top:24%;left:50%;transform:translateX(-50%);background:rgba(11,11,12,.82);color:#fff;font-size:12.5px;font-weight:700;border-radius:999px;padding:6px 14px;white-space:nowrap;pointer-events:none}
 .gp-big.gov-blur::after,.hero-figure.gov-blur::after{top:40%;font-size:15px;padding:9px 20px}
+.gov-more{display:block;margin-top:4px;color:#1E8FE1;font-weight:700;text-decoration:underline;font-size:12.5px}
