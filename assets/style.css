@@ -674,22 +674,20 @@ html.reg-open{overflow:hidden}
 @media (max-width:900px){.mh-grid{grid-template-columns:1fr 1fr}.mh-posters{grid-column:1/-1}.mh-services{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.mh-services{grid-template-columns:1fr}}
 
-/* ===== أعمال المجموعة (Orspra) — لمسة كحلي وأزرق سماوي ===== */
-.grp{background:linear-gradient(180deg,#06132E,#0A2350);color:#fff;position:relative;overflow:hidden}
-.grp:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 0,rgba(46,168,255,.22),transparent 45%);pointer-events:none}
-.grp .wrap{position:relative}
-.grp .sec-head h2{color:#fff}.grp-hl{color:#5CC2FF}.grp .sec-lead{color:rgba(255,255,255,.75)}
-.grp .eyebrow span{background:transparent;color:#5CC2FF;border-color:rgba(46,168,255,.5)}
+/* ===== أعمال المجموعة (Orspra) — ألوان الموقع، وتطعيم بأزرق Orspra في التفاصيل فقط ===== */
+.grp{background:var(--surface)}
+.grp-hl{color:#1E8FE1}
+.grp .eyebrow span{color:#1E8FE1;border-color:rgba(30,143,225,.35)}
 .grp-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.grp-tabs button{font:inherit;font-size:14px;font-weight:700;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 16px;cursor:pointer}
-.grp-tabs button.on{background:#2EA8FF;border-color:#2EA8FF}
+.grp-tabs button{font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--hair-2);border-radius:999px;padding:8px 16px;cursor:pointer}
+.grp-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .grp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.gp{margin:0;background:rgba(255,255,255,.05);border:1px solid rgba(46,168,255,.25);border-radius:14px;padding:10px}
+.gp{margin:0;background:var(--bg);border:1px solid var(--hair);border-radius:14px;padding:10px}
 .gp img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px}
 .gp figcaption{display:grid;gap:2px;padding:8px 2px 2px}
-.gp em{font-style:normal;font-size:11.5px;color:#5CC2FF;font-weight:700}
-.gp b{font-size:15px}.gp span{font-size:13px;color:rgba(255,255,255,.65)}
+.gp em{font-style:normal;font-size:11.5px;color:#1E8FE1;font-weight:700}
+.gp b{font-size:15px}.gp span{font-size:13px;color:var(--mut)}
 .gp-big{grid-column:span 2;grid-row:span 2}.gp-big img{aspect-ratio:16/9.5}.gp-big b{font-size:19px}.gp-big span{font-size:14px}
-.grp-foot{margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:14.5px;color:rgba(255,255,255,.7)}
+.grp-foot{margin-top:24px;padding-top:18px;border-top:1px solid var(--hair);font-size:14.5px;color:var(--mut)}
 @media (max-width:900px){.grp-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.grp-grid{grid-template-columns:1fr}.gp-big{grid-column:auto;grid-row:auto}}
