@@ -106,3 +106,10 @@ p{margin:0}
 .p-head .mk,.cover .mk,.kicker,.kick,.work .sc,.work .tech{letter-spacing:.12em}
 .cover .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:6mm}
 .contact .rows b{white-space:nowrap}
+
+.grp-p{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:5mm}
+.gpb{border:1px solid #e3e6ec;border-top:2.5px solid #2EA8FF;border-radius:3mm;padding:3mm}
+.gpb h3{font-size:10.5pt;margin:0 0 2mm}.gpb h3 em{font-style:normal;color:#2EA8FF;font-size:7.5pt;margin-inline-start:2mm}
+.gpr{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}
+.gpr img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:1.5mm}
+.gpr b{display:block;font-size:7pt;margin-top:1mm}

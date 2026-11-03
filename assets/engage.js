@@ -343,6 +343,14 @@
     document.cookie = "lp_lang=" + a.dataset.lang + "; path=/; max-age=31536000; SameSite=Lax";
   });
 
+  /* ═══ ١١) أعمال المجموعة: تصفية حسب القسم ═══ */
+  const gt = $(".grp-tabs");
+  if (gt) gt.addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-f]"); if (!b) return;
+    $$("button", gt).forEach(x => x.classList.toggle("on", x === b));
+    $$(".grp-grid .gp").forEach(c => { c.hidden = !!b.dataset.f && c.dataset.g !== b.dataset.f; });
+  });
+
   /* ═══ ٤) زر واتساب عائم برسالة تناسب الصفحة ═══ */
   if (location.pathname.indexOf("/admin") !== 0) {
     const TOPIC = { banks: "أنظمة المصارف", government: "منظومات الجهات الحكومية", business: "أنظمة الشركات والمتاجر" };

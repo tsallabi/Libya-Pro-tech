@@ -459,6 +459,11 @@
     "src": "assets/video/ajrly-ad.mp4",
     "poster": "assets/video/ajrly-ad.webp",
     "cap": "إعلان «حجزك موثق» — موشن جرافيك باللهجة الليبية"
+   },
+   {
+    "src": "assets/video/ajrly-logo.mp4",
+    "poster": "assets/video/ajrly-logo.webp",
+    "cap": "موشن جرافيك لشعار أجّرلي — لشركة أجياد العقارية"
    }
   ]
  },
