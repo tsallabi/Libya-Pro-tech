@@ -55,7 +55,7 @@ async function translateAll(strings) {
 const browser = await pw.chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 const ctx = await browser.newContext({ javaScriptEnabled: false });
 const page = await ctx.newPage();
-const ATTRS = ['alt', 'placeholder', 'title', 'aria-label', 'content', 'data-name', 'data-case-name'];
+const ATTRS = ['alt', 'placeholder', 'title', 'aria-label', 'content', 'data-name', 'data-case-name', 'data-note'];
 
 async function collect(file) {
   await page.goto('file://' + path.join(ROOT, file), { waitUntil: 'domcontentloaded' });

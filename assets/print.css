@@ -113,3 +113,4 @@ p{margin:0}
 .gpr{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}
 .gpr img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:1.5mm}
 .gpr b{display:block;font-size:7pt;margin-top:1mm}
+.gov-note{display:block;font-size:7pt;font-weight:600;color:#868C99;margin-top:.5mm}

@@ -692,3 +692,8 @@ html.reg-open{overflow:hidden}
 @media (max-width:900px){.grp-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.grp-grid{grid-template-columns:1fr}.gp-big{grid-column:auto;grid-row:auto}}
 .footer .branch{font-size:12px;opacity:.75}
+.grp-foot a{color:var(--ink);font-weight:700;text-decoration:none}.grp-page .grp-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))}
+/* المشاريع الحكومية: صور مموّهة وتنبيه */
+.gov-blur{position:relative}
+.gov-blur::after{content:attr(data-note);position:absolute;top:24%;left:50%;transform:translateX(-50%);background:rgba(11,11,12,.82);color:#fff;font-size:12.5px;font-weight:700;border-radius:999px;padding:6px 14px;white-space:nowrap;pointer-events:none}
+.gp-big.gov-blur::after,.hero-figure.gov-blur::after{top:40%;font-size:15px;padding:9px 20px}
