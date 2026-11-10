@@ -49,6 +49,7 @@ const nav = (en) => `<header class="nav">
     <a href="/government.html">الحكومة</a>
     <a href="/business.html">الشركات</a>
     <a href="/marketing.html">التسويق الرقمي</a>
+    <a href="/academy.html">الأكاديمية</a>
     <a href="/#estimate">احسب نظامك</a>
   </nav>
   <a class="lang-sw" href="${en}" hreflang="en" lang="en" data-lang="en">English</a>
@@ -71,6 +72,7 @@ const footer = `<footer class="footer">
         <a href="/business.html">الشركات والمتاجر</a>
         <a href="/marketing.html">التسويق الرقمي</a>
         <a href="/cases/">كل دراسات الحالة</a>
+        <a href="/academy.html">الأكاديمية</a>
       </div>
       <div>
         <h4>تواصل</h4>
@@ -298,7 +300,7 @@ projects.forEach((p, i) => fs.writeFileSync(`cases/${p.id}.html`, page(p, i)));
 fs.writeFileSync("cases/index.html", index());
 
 /* خريطة الموقع */
-const urlsAr = ["/", "/banks.html", "/government.html", "/business.html", "/marketing.html", "/cases/"].concat(projects.map(p => `/cases/${p.id}.html`));
+const urlsAr = ["/", "/banks.html", "/government.html", "/business.html", "/marketing.html", "/academy.html", "/cases/"].concat(projects.map(p => `/cases/${p.id}.html`));
 const urls = urlsAr.concat(urlsAr.map(u => "/en" + u));
 fs.writeFileSync("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

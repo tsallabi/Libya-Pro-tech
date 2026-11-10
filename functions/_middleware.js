@@ -7,7 +7,7 @@ const BOT = /bot|crawl|spider|slurp|facebookexternalhit|whatsapp|telegram|previe
 export async function onRequest({ request, next }) {
   const url = new URL(request.url);
   const p = url.pathname;
-  const isPage = request.method === "GET" && (p === "/" || p.endsWith(".html") || p.startsWith("/cases") || /^\/(banks|government|business|marketing)$/.test(p));
+  const isPage = request.method === "GET" && (p === "/" || p.endsWith(".html") || p.startsWith("/cases") || /^\/(banks|government|business|marketing|academy)$/.test(p));
   if (!isPage || p.startsWith("/en") || p.startsWith("/admin") || p.startsWith("/profile")) return next();
   const cookie = request.headers.get("cookie") || "";
   if (/(?:^|;\s*)lp_lang=/.test(cookie)) return next();

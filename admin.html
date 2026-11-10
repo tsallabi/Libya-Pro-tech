@@ -6,8 +6,8 @@
 <title>لوحة التحكم — ليبيا برو للتقنية</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css?v=202611032148">
-<link rel="stylesheet" href="/assets/admin.css?v=202611032148">
+<link rel="stylesheet" href="/assets/style.css?v=202611102148">
+<link rel="stylesheet" href="/assets/admin.css?v=202611102148">
 </head>
 <body class="adm">
 
@@ -34,6 +34,7 @@
       <button data-tab="wa">حملات واتساب</button>
       <button data-tab="nl">رسائل المشتركين</button>
       <button data-tab="leads">العملاء المحتملون <b id="leads-badge">0</b></button>
+      <button data-tab="academy">الأكاديمية <b id="ac-badge">0</b></button>
       <button data-tab="settings">الإعدادات</button>
     </nav>
     <button id="logout" class="adm-ghost">خروج</button>
@@ -150,6 +151,67 @@
       <div class="adm-card"><div id="leads-table"></div></div>
     </section>
 
+    <!-- الأكاديمية -->
+    <section data-view="academy" hidden>
+      <div class="adm-card">
+        <h2>التسجيلات <small class="mut">— المدفوعة عبر ماي باي تتأكد تلقائياً · الدفع اليدوي تؤكده أنت فيصدر رمز الدخول</small></h2>
+        <div class="adm-filters"><label>الحالة<select id="ac-f"><option value="">الكل</option><option value="pending">بانتظار الدفع</option><option value="paid">مدفوع</option><option value="interest">اهتمام (دورة بلا سعر)</option><option value="failed">فشل/إلغاء</option></select></label></div>
+        <div class="adm-scroll" id="ac-enr"></div>
+      </div>
+      <div class="adm-card">
+        <h2>الدورات <button class="btn btn-gold btn-sm" id="ac-new" type="button">+ دورة جديدة</button></h2>
+        <p class="mut">الدورة لا تظهر في الموقع حتى تختار «منشورة». دورة بلا سعر تظهر «السعر يُعلن قريباً» ويسجّل الزائر اهتمامه فقط.</p>
+        <div id="ac-courses"></div>
+      </div>
+      <form class="adm-card adm-form" id="ac-course-form" hidden>
+        <h2 id="ac-form-title">دورة جديدة</h2>
+        <input type="hidden" name="id">
+        <label>المسار<select name="track"><option value="content">صناعة المحتوى بالذكاء الاصطناعي</option><option value="marketing">التسويق الرقمي</option><option value="code">البرمجة بالذكاء الاصطناعي</option><option value="english">الإنجليزية للمبتدئين</option></select></label>
+        <label>اسم الدورة (عربي)<input name="title" required maxlength="200"></label>
+        <label>اسم الدورة (إنجليزي)<input name="title_en" dir="ltr" maxlength="200"></label>
+        <label>وصف قصير (عربي)<textarea name="summary" rows="3" maxlength="1200"></textarea></label>
+        <label>وصف قصير (إنجليزي)<textarea name="summary_en" rows="3" dir="ltr" maxlength="1200"></textarea></label>
+        <label>النوع<select name="mode"><option value="live">مباشرة أونلاين (Zoom / Meet)</option><option value="recorded">مسجّلة (فيديوهات)</option></select></label>
+        <label>المنصة<select name="platform"><option value="">—</option><option value="zoom">Zoom</option><option value="meet">Google Meet</option></select></label>
+        <label>رابط الجلسة المباشرة <small class="mut">(سرّي — يظهر للمشترك بعد الدفع فقط)</small><input name="join_url" dir="ltr" placeholder="https://zoom.us/j/... أو https://meet.google.com/..."></label>
+        <label>تاريخ البدء<input name="starts_at" placeholder="الأحد 23 نوفمبر"></label>
+        <label>المواعيد (عربي)<input name="schedule" placeholder="4 جلسات · مساءً 8:00 بتوقيت ليبيا"></label>
+        <label>المواعيد (إنجليزي)<input name="schedule_en" dir="ltr" placeholder="4 sessions · 8:00 PM Libya time"></label>
+        <label>المستوى (عربي)<input name="level" placeholder="مبتدئ"></label>
+        <label>المستوى (إنجليزي)<input name="level_en" dir="ltr" placeholder="Beginner"></label>
+        <label>السعر بالدينار (0 = يُعلن قريباً)<input name="price" type="number" min="0" step="1" dir="ltr"></label>
+        <label>عدد المقاعد (0 = بلا حد)<input name="seats" type="number" min="0" step="1" dir="ltr"></label>
+        <label>الترتيب<input name="sort" type="number" step="1" dir="ltr" value="0"></label>
+        <label class="adm-check"><input type="checkbox" name="published"> منشورة في الموقع</label>
+        <div id="ac-media" hidden>
+          <h3>صورة الغلاف</h3>
+          <input type="file" id="ac-cover" accept="image/webp,image/jpeg,image/png">
+          <h3>الدروس المسجّلة (فيديو MP4 — حتى 100 ميغابايت للملف)</h3>
+          <div id="ac-lessons"></div>
+          <input type="file" id="ac-video" accept="video/mp4,video/webm,video/quicktime" multiple>
+          <div class="nl-progress" id="ac-prog" hidden></div>
+        </div>
+        <button class="btn btn-gold" type="submit">حفظ الدورة</button>
+        <button class="adm-ghost" type="button" id="ac-cancel">إغلاق</button>
+        <button class="adm-ghost" type="button" id="ac-del" hidden>حذف الدورة</button>
+        <span class="adm-ok" id="ac-ok" hidden></span>
+      </form>
+      <form class="adm-card adm-form" id="mypay-form">
+        <h2>الدفع الإلكتروني — ماي باي <span class="adm-pill" id="mp-state"></span></h2>
+        <p class="mut">من لوحة تاجر ماي باي ← المطوّرين: <b>Client ID</b> و<b>Client Secret</b> و<b>Webhook Secret</b>. الحقل الفارغ يُبقي القيمة المحفوظة، ولا تُعرض المفاتيح بعد حفظها.</p>
+        <label>Client ID<input name="client_id" dir="ltr" autocomplete="off"></label>
+        <label>Client Secret<input name="client_secret" type="password" dir="ltr" autocomplete="new-password"></label>
+        <label>Webhook Secret<input name="webhook_secret" type="password" dir="ltr" autocomplete="new-password"></label>
+        <label class="adm-check"><input type="checkbox" name="sandbox"> وضع التجربة (Sandbox)</label>
+        <p class="mut adm-hint">رابط الإشعار (Webhook) يُرسل تلقائياً مع كل دفعة: <bdi dir="ltr" id="mp-hook"></bdi></p>
+        <button class="btn btn-gold" type="submit">حفظ</button>
+        <button class="adm-ghost" type="button" id="mp-test">اختبار الاتصال</button>
+        <span class="adm-ok" id="mp-ok" hidden></span>
+        <h3>آخر إشعارات ماي باي</h3>
+        <div class="adm-scroll" id="mp-events"></div>
+      </form>
+    </section>
+
     <!-- الإعدادات -->
     <section data-view="settings" hidden>
       <form id="contact-form" class="adm-card adm-form">
@@ -161,6 +223,7 @@
         <label>واتساب قسم التسويق (أرقام فقط)<input name="whatsapp_mkt" dir="ltr" placeholder="353873414360"></label>
         <label>هاتف التسويق 1<input name="phone_mkt1" dir="ltr" placeholder="+353 87 341 4360"></label>
         <label>هاتف التسويق 2<input name="phone_mkt2" dir="ltr" placeholder="+353 89 252 2727"></label>
+        <label>واتساب الأكاديمية (أرقام فقط)<input name="whatsapp_academy" dir="ltr" placeholder="353870511344"></label>
         <label>البريد الإلكتروني<input name="email" type="email" dir="ltr" placeholder="info@libyaprotech.com"></label>
         <label>العنوان<input name="address" placeholder="طرابلس، ليبيا"></label>
         <button class="btn btn-gold" type="submit">حفظ</button>
@@ -200,6 +263,7 @@
   </div>
 </div>
 
-<script src="/assets/admin.js?v=202611032148"></script>
+<script src="/assets/admin.js?v=202611102148"></script>
+<script src="/assets/admin-academy.js?v=202611102148"></script>
 </body>
 </html>

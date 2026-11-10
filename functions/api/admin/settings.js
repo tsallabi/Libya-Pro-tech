@@ -12,7 +12,7 @@ export async function onRequestPut({ request, env }) {
   for (const k of CONTACT_KEYS) {
     if (d[k] == null) continue;
     let v = clip(String(d[k]).trim(), 200);
-    if (k === "whatsapp" || k === "whatsapp_mkt") v = v.replace(/[^\d]/g, "");             // wa.me يقبل الأرقام فقط
+    if (k === "whatsapp" || k === "whatsapp_mkt" || k === "whatsapp_academy") v = v.replace(/[^\d]/g, "");             // wa.me يقبل الأرقام فقط
     if (k === "meta_pixel" && v && !/^\d{10,20}$/.test(v)) return bad("meta_pixel");
     if (k === "google_tag") { v = v.toUpperCase(); if (v && !/^(G|AW|GT)-[A-Z0-9]{4,20}$/.test(v)) return bad("google_tag"); }
     await setSetting(env, k, v);

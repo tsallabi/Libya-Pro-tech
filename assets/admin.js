@@ -98,6 +98,7 @@
       if (tab === "wa") await loadWa();
       if (tab === "nl") await loadNl();
       if (tab === "settings") await loadSettings();
+      if (tab === "academy" && window.loadAcademy) await window.loadAcademy();
       badges();
     } catch (e) { if (e.message !== "auth") console.error(e); }
   }

@@ -13,7 +13,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const MAP_FILE = path.join(ROOT, 'data/i18n-en.json');
 const map = fs.existsSync(MAP_FILE) ? JSON.parse(fs.readFileSync(MAP_FILE, 'utf8')) : {};
 const AR = /[؀-ۿ]/;
-const PAGES = ['index.html', 'banks.html', 'government.html', 'business.html', 'marketing.html', '404.html', 'profile.html']
+const PAGES = ['index.html', 'banks.html', 'government.html', 'business.html', 'marketing.html', 'academy.html', '404.html', 'profile.html']
   .concat(fs.readdirSync(path.join(ROOT, 'cases')).filter(f => f.endsWith('.html')).map(f => 'cases/' + f));
 
 /* ── الترجمة ── */
@@ -41,6 +41,7 @@ async function gemini(list) {
 }
 async function translateAll(strings) {
   const todo = [...new Set(strings)].filter(s => s && AR.test(s) && !(s in map));
+  if (process.env.DUMP_TODO) { fs.writeFileSync(process.env.DUMP_TODO, JSON.stringify(todo, null, 1)); process.exit(0); }
   for (let i = 0; i < todo.length; i += 60) {
     const chunk = todo.slice(i, i + 60);
     const out = await gemini(chunk);

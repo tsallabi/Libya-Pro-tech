@@ -103,3 +103,6 @@ body.adm{background:var(--bg);min-height:100vh}
 .nl-picks label{display:flex;gap:6px;align-items:center;cursor:pointer}
 .nl-text{width:100%;font:inherit;font-size:14px;line-height:1.8;padding:12px;border:1px solid rgba(11,11,12,.2);border-radius:10px;background:#F9FAFC;resize:vertical}
 .nl-box h2 .adm-pill{margin-inline-start:8px}
+.adm-check{display:flex!important;flex-direction:row!important;align-items:center;gap:8px}.adm-check input{width:auto!important}
+#ac-media h3,#mypay-form h3{font-size:15px;margin:14px 0 8px}#ac-lessons input{width:100%;font:inherit;padding:6px 8px;border:1px solid #ddd;border-radius:6px}
+.adm-form textarea{font:inherit;padding:10px;border:1px solid rgba(11,11,12,.2);border-radius:10px}
