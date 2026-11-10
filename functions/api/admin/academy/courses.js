@@ -12,11 +12,12 @@ export async function onRequestGet({ env }) {
   return json({ courses: c.results.map(x => ({ ...x, lessons: l.results.filter(y => y.course_id === x.id), counts: cnt[x.id] || {} })) });
 }
 
-const F = ["title", "title_en", "summary", "summary_en", "level", "level_en", "platform", "starts_at", "schedule", "schedule_en", "join_url"];
+const F = ["title", "title_en", "summary", "summary_en", "level", "level_en", "platform", "starts_at", "schedule", "schedule_en", "join_url",
+  "duration", "duration_en", "audience", "audience_en", "curriculum", "curriculum_en", "outcomes", "outcomes_en"];
 export async function onRequestPost({ request, env }) {
   let d; try { d = await request.json(); } catch { return bad("json"); }
   const v = {};
-  for (const k of F) v[k] = clip((d[k] ?? "").toString().trim(), k.startsWith("summary") ? 1200 : 300) || null;
+  for (const k of F) v[k] = clip((d[k] ?? "").toString().trim(), /^(summary|audience|curriculum|outcomes)/.test(k) ? 3000 : 300) || null;
   if (!v.title) return bad("title");
   if (v.join_url && !/^https:\/\//.test(v.join_url)) return bad("join_url");
   v.track = TRACKS.includes(d.track) ? d.track : "content";

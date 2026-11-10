@@ -51,3 +51,5 @@ CREATE TABLE IF NOT EXISTS mypay_events (id INTEGER PRIMARY KEY AUTOINCREMENT, t
   status TEXT, event TEXT, sig_ok INTEGER, outcome TEXT, amount TEXT);
 CREATE INDEX IF NOT EXISTS ix_enr_course ON enrollments(course_id);
 CREATE INDEX IF NOT EXISTS ix_les_course ON lessons(course_id);
+-- تفاصيل الدورة (أضيفت 2026-11-10): المدة، لمن هي، المحاور، وما يخرج به المتدرب — سطر لكل بند
+-- ALTER TABLE courses ADD COLUMN duration TEXT; duration_en, audience, audience_en, curriculum, curriculum_en, outcomes, outcomes_en

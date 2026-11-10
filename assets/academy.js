@@ -16,7 +16,7 @@
     unconfirmed: "We have not received the payment confirmation yet. If you paid, contact us on WhatsApp with your name.",
     paid: "Payment confirmed. Your access code:", copy: "Save this code — you will use it to enter your course.", enter: "Enter my course",
     hello: n => `Welcome, ${n}`, join: "Join the live session", joinSoon: "The live session link will appear here before the first session.",
-    rec: "Recorded lessons", noRec: "No recorded lessons yet.", platform: { zoom: "Zoom", meet: "Google Meet" }
+    rec: "Recorded lessons", noRec: "No recorded lessons yet.", details: "Course details", dur: "Duration", aud: "Who is it for?", cur: "What you will learn", out: "What you will walk away with", close: "Close", sched: "Schedule", lvl: "Level", platform: { zoom: "Zoom", meet: "Google Meet" }
   } : {
     tracks: { content: "صناعة المحتوى", marketing: "التسويق الرقمي", code: "البرمجة بالذكاء الاصطناعي", english: "الإنجليزية" },
     live: "مباشرة أونلاين", recorded: "مسجّلة", soon: "السعر يُعلن قريباً", lyd: "د.ل", seats: n => `بقي ${n} مقعداً`, full: "اكتمل العدد",
@@ -30,7 +30,7 @@
     unconfirmed: "لم يصلنا تأكيد الدفع بعد. إن كنت دفعت فراسلنا على واتساب باسمك.",
     paid: "تم تأكيد الدفع. رمز دخولك:", copy: "احتفظ بهذا الرمز — تدخل به إلى دورتك.", enter: "ادخل إلى دورتي",
     hello: n => `أهلاً ${n}`, join: "انضم إلى الجلسة المباشرة", joinSoon: "يظهر رابط الجلسة المباشرة هنا قبل الجلسة الأولى.",
-    rec: "الدروس المسجّلة", noRec: "لا توجد دروس مسجّلة بعد.", platform: { zoom: "Zoom", meet: "Google Meet" }
+    rec: "الدروس المسجّلة", noRec: "لا توجد دروس مسجّلة بعد.", details: "التفاصيل", dur: "المدة", aud: "لمن هذه الدورة؟", cur: "ماذا ستتعلم", out: "ماذا ستخرج به", close: "إغلاق", sched: "المواعيد", lvl: "المستوى", platform: { zoom: "Zoom", meet: "Google Meet" }
   };
   const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const L = (c, k) => (EN && c[k + "_en"]) || c[k] || "";
@@ -45,12 +45,13 @@
     const price = c.price > 0 ? `<span class="pr">${c.price} <small>${T.lyd}</small></span>` : `<span class="pr soon">${T.soon}</span>`;
     const left = c.left == null ? "" : c.left === 0 ? `<span class="seats">${T.full}</span>` : `<span class="seats">${T.seats(c.left)}</span>`;
     const badge = c.mode === "live" ? `<span class="badge live">● ${T.live}${c.platform ? " · " + (T.platform[c.platform] || c.platform) : ""}</span>` : `<span class="badge">${T.recorded}</span>`;
-    const meta = [c.starts_at && `${T.starts} ${esc(c.starts_at)}`, L(c, "schedule") && esc(L(c, "schedule")), c.lessons && T.lessons(c.lessons), L(c, "level") && esc(L(c, "level"))].filter(Boolean);
+    const meta = [c.starts_at && `${T.starts} ${esc(c.starts_at)}`, L(c, "duration") ? "⏱ " + esc(L(c, "duration")) : L(c, "schedule") && esc(L(c, "schedule")), c.lessons && T.lessons(c.lessons), L(c, "level") && esc(L(c, "level"))].filter(Boolean);
     const cover = c.cover ? ` style="background-image:linear-gradient(180deg,rgba(11,11,12,.05),rgba(11,11,12,.75)),url('${esc(c.cover)}')"` : "";
     return `<article class="ac-card" data-track="${esc(c.track)}" data-mode="${esc(c.mode)}">
       <div class="cv t-${esc(c.track)}"${cover}>${badge}<span class="trk">${esc(T.tracks[c.track] || "")}</span><strong>${esc(L(c, "title"))}</strong></div>
       <div class="bd"><div class="meta">${meta.map(m => `<span>${m}</span>`).join("")}</div>
         <p>${esc(L(c, "summary"))}</p>${left}
+        <button type="button" class="ac-more" data-details="${c.id}">${T.details} ←</button>
         <div class="row">${price}<button type="button" class="btn btn-sm btn-gold" data-enroll="${c.id}" ${c.left === 0 ? "disabled" : ""}>${c.price > 0 ? T.enroll : T.interest}</button></div></div></article>`;
   }
   function render() {
@@ -68,8 +69,27 @@
     if (b.dataset.m != null) { fMode = fMode === b.dataset.m ? "" : b.dataset.m; $$(".ac-filters [data-m]").forEach(x => x.classList.toggle("on", x.dataset.m === fMode)); }
     render();
   }));
+  /* نافذة تفاصيل الدورة */
+  const lines = v => String(v || "").split(/\n+/).map(x => x.trim()).filter(Boolean);
+  const dlg = document.createElement("dialog"); dlg.className = "ac-dlg"; document.body.appendChild(dlg);
+  function details(c) {
+    const price = c.price > 0 ? `${c.price} ${T.lyd}` : T.soon;
+    const facts = [[T.dur, L(c, "duration")], [T.sched, L(c, "schedule")], [T.starts, c.starts_at], [T.lvl, L(c, "level")]].filter(x => x[1]);
+    const list = (h, arr, cls) => arr.length ? `<h4>${h}</h4><ul class="${cls}">${arr.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
+    dlg.innerHTML = `<div class="ac-dlg-in"><button type="button" class="ac-x" data-close aria-label="${T.close}">×</button>
+      <span class="trk">${esc(T.tracks[c.track] || "")} · ${c.mode === "live" ? T.live + (c.platform ? " · " + (T.platform[c.platform] || "") : "") : T.recorded}</span>
+      <h3>${esc(L(c, "title"))}</h3><p>${esc(L(c, "summary"))}</p>
+      ${facts.length ? `<dl class="ac-facts">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : ""}
+      ${L(c, "audience") ? `<h4>${T.aud}</h4><p>${esc(L(c, "audience"))}</p>` : ""}
+      ${list(T.cur, lines(L(c, "curriculum")), "ac-cur")}${list(T.out, lines(L(c, "outcomes")), "ac-out")}
+      <div class="ac-dlg-foot"><b>${price}</b><button type="button" class="btn btn-gold" data-enroll="${c.id}" ${c.left === 0 ? "disabled" : ""}>${c.price > 0 ? T.enroll : T.interest}</button></div></div>`;
+    dlg.showModal();
+  }
+  dlg.addEventListener("click", e => { if (e.target === dlg || e.target.closest("[data-close]")) dlg.close(); });
   document.addEventListener("click", e => {
+    const d = e.target.closest("[data-details]"); if (d) { const c = courses.find(x => String(x.id) === d.dataset.details); if (c) details(c); return; }
     const b = e.target.closest("[data-enroll]"); if (!b) return;
+    if (dlg.open) dlg.close();
     sel.value = b.dataset.enroll; priceLine();
     $("#enroll").scrollIntoView({ behavior: "smooth" }); setTimeout(() => $("#ac-form [name=name]").focus(), 500);
   });

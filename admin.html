@@ -6,8 +6,8 @@
 <title>لوحة التحكم — ليبيا برو للتقنية</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css?v=202611102148">
-<link rel="stylesheet" href="/assets/admin.css?v=202611102148">
+<link rel="stylesheet" href="/assets/style.css?v=202611102155">
+<link rel="stylesheet" href="/assets/admin.css?v=202611102155">
 </head>
 <body class="adm">
 
@@ -171,6 +171,14 @@
         <label>اسم الدورة (إنجليزي)<input name="title_en" dir="ltr" maxlength="200"></label>
         <label>وصف قصير (عربي)<textarea name="summary" rows="3" maxlength="1200"></textarea></label>
         <label>وصف قصير (إنجليزي)<textarea name="summary_en" rows="3" dir="ltr" maxlength="1200"></textarea></label>
+        <label>المدة (عربي)<input name="duration" placeholder="4 جلسات × ساعتان (8 ساعات)"></label>
+        <label>المدة (إنجليزي)<input name="duration_en" dir="ltr" placeholder="4 sessions × 2 hours (8 hours)"></label>
+        <label>لمن هذه الدورة؟ (عربي)<textarea name="audience" rows="2"></textarea></label>
+        <label>لمن هذه الدورة؟ (إنجليزي)<textarea name="audience_en" rows="2" dir="ltr"></textarea></label>
+        <label>ماذا ستتعلم — المحاور (عربي) <small class="mut">سطر لكل محور</small><textarea name="curriculum" rows="6"></textarea></label>
+        <label>ماذا ستتعلم — المحاور (إنجليزي) <small class="mut">one per line</small><textarea name="curriculum_en" rows="6" dir="ltr"></textarea></label>
+        <label>ماذا ستخرج به — الفائدة (عربي) <small class="mut">سطر لكل فائدة</small><textarea name="outcomes" rows="5"></textarea></label>
+        <label>ماذا ستخرج به — الفائدة (إنجليزي) <small class="mut">one per line</small><textarea name="outcomes_en" rows="5" dir="ltr"></textarea></label>
         <label>النوع<select name="mode"><option value="live">مباشرة أونلاين (Zoom / Meet)</option><option value="recorded">مسجّلة (فيديوهات)</option></select></label>
         <label>المنصة<select name="platform"><option value="">—</option><option value="zoom">Zoom</option><option value="meet">Google Meet</option></select></label>
         <label>رابط الجلسة المباشرة <small class="mut">(سرّي — يظهر للمشترك بعد الدفع فقط)</small><input name="join_url" dir="ltr" placeholder="https://zoom.us/j/... أو https://meet.google.com/..."></label>
@@ -263,7 +271,7 @@
   </div>
 </div>
 
-<script src="/assets/admin.js?v=202611102148"></script>
-<script src="/assets/admin-academy.js?v=202611102148"></script>
+<script src="/assets/admin.js?v=202611102155"></script>
+<script src="/assets/admin-academy.js?v=202611102155"></script>
 </body>
 </html>

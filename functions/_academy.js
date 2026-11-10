@@ -25,7 +25,9 @@ export async function markPaid(env, id, by) {
 export function publicCourse(c, taken, lessons) {
   return { id: c.id, track: c.track, title: c.title, title_en: c.title_en, summary: c.summary, summary_en: c.summary_en,
     level: c.level, level_en: c.level_en, mode: c.mode, platform: c.platform, starts_at: c.starts_at,
-    schedule: c.schedule, schedule_en: c.schedule_en, price: c.price, seats: c.seats,
+    schedule: c.schedule, schedule_en: c.schedule_en, duration: c.duration, duration_en: c.duration_en,
+    audience: c.audience, audience_en: c.audience_en, curriculum: c.curriculum, curriculum_en: c.curriculum_en,
+    outcomes: c.outcomes, outcomes_en: c.outcomes_en, price: c.price, seats: c.seats,
     left: c.seats ? Math.max(0, c.seats - (taken || 0)) : null, lessons: lessons || 0,
     cover: c.cover ? `/api/academy/cover/${c.cover}` : null };
 }
