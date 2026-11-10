@@ -1,7 +1,7 @@
 /* POST /api/academy/enroll { course_id, name, phone, email, gateway, vid }
    دورة بسعر → إنشاء دفعة ماي باي وإرجاع رابط الدفع. دورة بلا سعر بعد (قريباً) → تسجيل اهتمام فقط.
    ماي باي غير مفعّل → يُحفظ التسجيل وينتقل الطالب إلى واتساب لإتمام الدفع يدوياً. */
-import { json, bad, clip } from "../../_lib.js";
+import { json, bad, clip, getSetting } from "../../_lib.js";
 import { newRef } from "../../_academy.js";
 import { config, createPayment, libyanPhone } from "../../_mypay.js";
 
@@ -9,6 +9,7 @@ export async function onRequestPost({ request, env }) {
   let d; try { d = await request.json(); } catch { return bad("json"); }
   const name = clip((d.name || "").trim(), 120), phone = clip((d.phone || "").trim(), 40);
   if (!name || !phone) return bad("missing");
+  if (((await getSetting(env, "academy_women_only")) ?? "1") === "1" && d.female !== true) return json({ error: "women" }, 400);
   const c = await env.DB.prepare("SELECT * FROM courses WHERE id = ? AND published = 1").bind(Number(d.course_id) || 0).first();
   if (!c) return bad("course", 404);
   if (c.seats) {

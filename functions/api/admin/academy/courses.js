@@ -39,7 +39,7 @@ export async function onRequestDelete({ request, env }) {
   if (paid.n) return json({ error: "has_paid", n: paid.n }, 409);   // دورة فيها مشتركون دفعوا لا تُحذف — تُخفى بإلغاء النشر
   const { results } = await env.DB.prepare("SELECT r2_key FROM lessons WHERE course_id = ?").bind(id).all();
   const c = await env.DB.prepare("SELECT cover FROM courses WHERE id = ?").bind(id).first();
-  const keys = results.map(r => r.r2_key).concat(c?.cover || []).filter(Boolean);
+  const keys = results.map(r => r.r2_key).concat(c?.cover && !c.cover.startsWith("/") ? c.cover : []).filter(Boolean);
   if (keys.length) await env.ACADEMY.delete(keys);
   await env.DB.batch([env.DB.prepare("DELETE FROM lessons WHERE course_id = ?").bind(id), env.DB.prepare("DELETE FROM courses WHERE id = ?").bind(id)]);
   return json({ ok: true });

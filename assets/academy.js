@@ -16,7 +16,7 @@
     unconfirmed: "We have not received the payment confirmation yet. If you paid, contact us on WhatsApp with your name.",
     paid: "Payment confirmed. Your access code:", copy: "Save this code — you will use it to enter your course.", enter: "Enter my course",
     hello: n => `Welcome, ${n}`, join: "Join the live session", joinSoon: "The live session link will appear here before the first session.",
-    rec: "Recorded lessons", noRec: "No recorded lessons yet.", details: "Course details", dur: "Duration", aud: "Who is it for?", cur: "What you will learn", out: "What you will walk away with", close: "Close", sched: "Schedule", lvl: "Level", platform: { zoom: "Zoom", meet: "Google Meet" }
+    rec: "Recorded lessons", noRec: "No recorded lessons yet.", women: "Registration is currently open to women only — please confirm to continue.", details: "Course details", dur: "Duration", aud: "Who is it for?", cur: "What you will learn", out: "What you will walk away with", close: "Close", sched: "Schedule", lvl: "Level", platform: { zoom: "Zoom", meet: "Google Meet" }
   } : {
     tracks: { content: "صناعة المحتوى", marketing: "التسويق الرقمي", code: "البرمجة بالذكاء الاصطناعي", english: "الإنجليزية" },
     live: "مباشرة أونلاين", recorded: "مسجّلة", soon: "السعر يُعلن قريباً", lyd: "د.ل", seats: n => `بقي ${n} مقعداً`, full: "اكتمل العدد",
@@ -30,12 +30,13 @@
     unconfirmed: "لم يصلنا تأكيد الدفع بعد. إن كنت دفعت فراسلنا على واتساب باسمك.",
     paid: "تم تأكيد الدفع. رمز دخولك:", copy: "احتفظ بهذا الرمز — تدخل به إلى دورتك.", enter: "ادخل إلى دورتي",
     hello: n => `أهلاً ${n}`, join: "انضم إلى الجلسة المباشرة", joinSoon: "يظهر رابط الجلسة المباشرة هنا قبل الجلسة الأولى.",
-    rec: "الدروس المسجّلة", noRec: "لا توجد دروس مسجّلة بعد.", details: "التفاصيل", dur: "المدة", aud: "لمن هذه الدورة؟", cur: "ماذا ستتعلم", out: "ماذا ستخرج به", close: "إغلاق", sched: "المواعيد", lvl: "المستوى", platform: { zoom: "Zoom", meet: "Google Meet" }
+    rec: "الدروس المسجّلة", noRec: "لا توجد دروس مسجّلة بعد.", women: "التسجيل متاح حالياً للسيدات فقط — يرجى التأكيد للمتابعة.", details: "التفاصيل", dur: "المدة", aud: "لمن هذه الدورة؟", cur: "ماذا ستتعلم", out: "ماذا ستخرج به", close: "إغلاق", sched: "المواعيد", lvl: "المستوى", platform: { zoom: "Zoom", meet: "Google Meet" }
   };
   const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const L = (c, k) => (EN && c[k + "_en"]) || c[k] || "";
   let WA = "353870511344";
-  fetch("/api/settings").then(r => r.json()).then(s => { if (s.whatsapp_academy) WA = String(s.whatsapp_academy).replace(/\D/g, ""); $$("[data-wa-academy]").forEach(a => a.href = `https://wa.me/${WA}`); }).catch(() => {});
+  let WOMEN = true; document.querySelectorAll("[data-women]").forEach(x => x.hidden = false);
+  fetch("/api/settings").then(r => r.json()).then(s => { WOMEN = (s.academy_women_only ?? "1") === "1"; document.querySelectorAll("[data-women]").forEach(x => x.hidden = !WOMEN); if (s.whatsapp_academy) WA = String(s.whatsapp_academy).replace(/\D/g, ""); $$("[data-wa-academy]").forEach(a => a.href = `https://wa.me/${WA}`); }).catch(() => {});
   const wa = msg => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
 
   /* ─── الدورات ─── */
@@ -46,9 +47,9 @@
     const left = c.left == null ? "" : c.left === 0 ? `<span class="seats">${T.full}</span>` : `<span class="seats">${T.seats(c.left)}</span>`;
     const badge = c.mode === "live" ? `<span class="badge live">● ${T.live}${c.platform ? " · " + (T.platform[c.platform] || c.platform) : ""}</span>` : `<span class="badge">${T.recorded}</span>`;
     const meta = [c.starts_at && `${T.starts} ${esc(c.starts_at)}`, L(c, "duration") ? "⏱ " + esc(L(c, "duration")) : L(c, "schedule") && esc(L(c, "schedule")), c.lessons && T.lessons(c.lessons), L(c, "level") && esc(L(c, "level"))].filter(Boolean);
-    const cover = c.cover ? ` style="background-image:linear-gradient(180deg,rgba(11,11,12,.05),rgba(11,11,12,.75)),url('${esc(c.cover)}')"` : "";
+    const cover = c.cover ? `<img class="cvi" src="${esc(c.cover)}" alt="" loading="lazy">` : "";
     return `<article class="ac-card" data-track="${esc(c.track)}" data-mode="${esc(c.mode)}">
-      <div class="cv t-${esc(c.track)}"${cover}>${badge}<span class="trk">${esc(T.tracks[c.track] || "")}</span><strong>${esc(L(c, "title"))}</strong></div>
+      <div class="cv t-${esc(c.track)}${c.cover ? " has-img" : ""}">${cover}${badge}<span class="trk">${esc(T.tracks[c.track] || "")}</span><strong>${esc(L(c, "title"))}</strong></div>
       <div class="bd"><div class="meta">${meta.map(m => `<span>${m}</span>`).join("")}</div>
         <p>${esc(L(c, "summary"))}</p>${left}
         <button type="button" class="ac-more" data-details="${c.id}">${T.details} ←</button>
@@ -106,13 +107,15 @@
     e.preventDefault();
     const f = Object.fromEntries(new FormData(form));
     if (!f.course_id || !f.name.trim() || !f.phone.trim()) { form.reportValidity?.(); $$("[required]", form).find(x => !x.value.trim())?.focus(); return; }
+    if (WOMEN && !form.female.checked) { show(T.women, "warn"); form.female.focus(); return; }
     const c = courses.find(x => String(x.id) === f.course_id);
     btn.disabled = true; btn.textContent = T.sending;
     let vid = ""; try { vid = localStorage.getItem("lp_vid") || ""; } catch {}
     try {
-      const r = await fetch("/api/academy/enroll", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ ...f, vid }) });
+      const r = await fetch("/api/academy/enroll", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ ...f, female: form.female.checked, vid }) });
       const d = await r.json();
       if (d.error === "phone") { show(T.phone, "warn"); form.phone.focus(); return; }
+      if (d.error === "women") { show(T.women, "warn"); return; }
       if (d.error === "full") { show(T.fullErr, "warn"); return; }
       if (!r.ok) throw new Error(d.error);
       try { localStorage.setItem("lp_ac_ref", d.ref); } catch {}

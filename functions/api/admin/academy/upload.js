@@ -14,7 +14,7 @@ export async function onRequestPut({ request, env }) {
     if (!ext || size > 5e6) return bad("image");
     const key = `covers/${randomHex(12)}.${ext}`;
     await env.ACADEMY.put(key, request.body, { httpMetadata: { contentType: mime } });
-    if (c.cover) await env.ACADEMY.delete(c.cover);
+    if (c.cover && !c.cover.startsWith("/")) await env.ACADEMY.delete(c.cover);   // الأغلفة الافتراضية ملفات ثابتة في الموقع
     await env.DB.prepare("UPDATE courses SET cover = ? WHERE id = ?").bind(key, cid).run();
     return json({ ok: true, cover: key });
   }

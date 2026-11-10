@@ -1810,5 +1810,7 @@
  "رمز الدخول": "Access code",
  "html:دورات أونلاين عملية من فريق يدير حملات ويبني أنظمة حقيقية — جلسات مباشرة عبر <bdi dir=\"ltr\">Zoom</bdi> أو <bdi dir=\"ltr\">Google Meet</bdi>، ودروس مسجّلة، والدفع إلكترونياً عبر ماي باي.": "html:Practical online courses from a team that runs real campaigns and builds real systems — live sessions on <bdi dir=\"ltr\">Zoom</bdi> or <bdi dir=\"ltr\">Google Meet</bdi>, recorded lessons, and online payment via MyPay.",
  "html:<b>مباشرة أونلاين</b><span>جلسات حيّة عبر <bdi dir=\"ltr\">Zoom</bdi> أو <bdi dir=\"ltr\">Google Meet</bdi></span>": "html:<b>Live online</b><span>Live sessions on <bdi dir=\"ltr\">Zoom</bdi> or <bdi dir=\"ltr\">Google Meet</bdi></span>",
- "سجّل الآن": "Enroll now"
+ "سجّل الآن": "Enroll now",
+ "html:التسجيل في الأكاديمية متاح حالياً <b>للسيدات فقط</b>.": "html:Academy registration is currently open to <b>women only</b>.",
+ "أؤكد أنني سيدة": "I confirm I am a woman"
 }

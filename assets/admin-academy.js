@@ -13,7 +13,9 @@
   const date = t => t ? new Date(t).toLocaleString("ar-LY", { dateStyle: "short", timeStyle: "short" }) : "";
   let courses = [], rows = [], editing = null;
 
-  window.loadAcademy = async () => { await Promise.all([loadCourses(), loadEnr(), loadMyPay()]); };
+  window.loadAcademy = async () => { await Promise.all([loadCourses(), loadEnr(), loadMyPay(), loadWomen()]); };
+  async function loadWomen() { const s = await (await fetch("/api/admin/settings")).json(); $("#ac-women").checked = (s.academy_women_only ?? "1") === "1"; }
+  $("#ac-women").onchange = async e => { await fetch("/api/admin/settings", { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify({ academy_women_only: e.target.checked ? "1" : "0" }) }); };
 
   async function loadCourses() {
     courses = (await api("courses")).courses;
@@ -37,7 +39,7 @@
     form.scrollIntoView({ behavior: "smooth" });
   }
   function lessons(c) {
-    $("#ac-lessons").innerHTML = (c.cover ? `<p class="mut">الغلاف الحالي: <img src="/api/academy/cover/${esc(c.cover)}" alt="" style="height:60px;border-radius:8px;vertical-align:middle"></p>` : "") +
+    $("#ac-lessons").innerHTML = (c.cover ? `<p class="mut">الغلاف الحالي: <img src="${c.cover.startsWith("/") ? esc(c.cover) : "/api/academy/cover/" + esc(c.cover)}" alt="" style="height:60px;border-radius:8px;vertical-align:middle"></p>` : "") +
       (c.lessons.length ? `<table class="adm-table"><tbody>${c.lessons.map((l, i) => `<tr><td>${i + 1}</td><td><input value="${esc(l.title)}" data-lt="${l.id}"></td><td>${MB(l.size)}</td><td><button type="button" class="adm-ghost" data-ld="${l.id}">حذف</button></td></tr>`).join("")}</tbody></table>` : `<p class="mut">لا دروس مرفوعة.</p>`);
     $$("[data-lt]").forEach(i => i.onchange = () => api("lessons", { method: "PATCH", body: JSON.stringify({ id: +i.dataset.lt, title: i.value }) }));
     $$("[data-ld]").forEach(b => b.onclick = async () => { if (!confirm("حذف هذا الدرس وملفه نهائياً؟")) return; await api("lessons?id=" + b.dataset.ld, { method: "DELETE" }); loadCourses(); });

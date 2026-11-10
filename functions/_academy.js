@@ -29,7 +29,7 @@ export function publicCourse(c, taken, lessons) {
     audience: c.audience, audience_en: c.audience_en, curriculum: c.curriculum, curriculum_en: c.curriculum_en,
     outcomes: c.outcomes, outcomes_en: c.outcomes_en, price: c.price, seats: c.seats,
     left: c.seats ? Math.max(0, c.seats - (taken || 0)) : null, lessons: lessons || 0,
-    cover: c.cover ? `/api/academy/cover/${c.cover}` : null };
+    cover: !c.cover ? null : c.cover.startsWith("/") ? c.cover : `/api/academy/cover/${c.cover}` };
 }
 
 /* الدخول برمز الطالب: يعيد التسجيل المدفوع أو null */

@@ -709,7 +709,7 @@ html.reg-open{overflow:hidden}
 .ac-filters .sep{width:1px;background:var(--hair-2);margin:0 4px}
 .ac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .ac-card{background:var(--surface);border:1px solid var(--hair);border-radius:var(--r-card);overflow:hidden;display:flex;flex-direction:column}
-.ac-card .cv{min-height:150px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:16px 18px;color:#fff;background:#0B0B0C center/cover no-repeat}
+.ac-card .cv{min-height:190px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:16px 18px;color:#fff;background:#0B0B0C center/cover no-repeat}
 .ac-card .cv.t-content{background-color:#16171A}.ac-card .cv.t-marketing{background-color:#1D2026}.ac-card .cv.t-code{background-color:#111316}.ac-card .cv.t-english{background-color:#22252B}
 .ac-card .cv:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 0,rgba(30,143,225,.28),transparent 55%);pointer-events:none}
 .ac-card .cv>*{position:relative}
@@ -781,3 +781,10 @@ html.reg-open{overflow:hidden}
 .ac-dlg-foot{margin-top:24px;padding-top:16px;border-top:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center;gap:12px}
 .ac-dlg-foot b{font-size:20px}
 @media (max-width:560px){.ac-facts{grid-template-columns:1fr}.ac-dlg-in{padding:22px}}
+.ac-card .cv.has-img{min-height:0;aspect-ratio:16/9}
+.ac-card .cv .cvi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ac-card .cv.has-img:before{background:linear-gradient(180deg,rgba(11,11,12,0) 30%,rgba(11,11,12,.9))}
+.ac-card .cv .cvi{z-index:0}.ac-card .cv.has-img:before{z-index:1}.ac-card .cv.has-img>:not(.cvi){z-index:2}
+.ac-women{background:rgba(30,143,225,.08);border:1px solid rgba(30,143,225,.35);border-radius:12px;padding:10px 14px;font-size:14.5px;margin:0 0 14px}
+.ac-women-top{display:inline-block;margin-bottom:18px}
+.ac-form .ac-check{display:flex;flex-direction:row;align-items:center;gap:10px;font-size:15px}.ac-form .ac-check input{width:20px;height:20px;padding:0}
