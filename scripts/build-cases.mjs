@@ -84,6 +84,8 @@ const footer = `<footer class="footer">
         <a href="tel:+353873414360" class="numline" data-contact="phone_mkt1">التسويق <bdi dir="ltr" class="num">+353 87 341 4360</bdi></a>
         <a href="tel:+353892522727" class="numline" data-contact="phone_mkt2">التسويق <bdi dir="ltr" class="num">+353 89 252 2727</bdi></a>
         <a data-wa-mkt href="https://wa.me/353873414360" target="_blank" rel="noopener">واتساب التسويق</a>
+        <a href="tel:+353870511344" class="numline" data-contact="phone_academy">التدريب أونلاين <bdi dir="ltr" class="num">+353 87 051 1344</bdi></a>
+        <a data-wa-academy href="https://wa.me/353870511344" target="_blank" rel="noopener">واتساب الأكاديمية</a>
         <a href="#" class="numline" data-contact="email" hidden>البريد <bdi dir="ltr" class="lat num"></bdi></a>
       </div>
     </div>

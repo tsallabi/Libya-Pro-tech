@@ -33,6 +33,7 @@
       WHATSAPP = String(w).replace(/\D/g, "");
       $$("[data-wa]").forEach(a => { a.href = `https://wa.me/${WHATSAPP}`; });
     }
+    $$("[data-wa-academy]").forEach(a => { if (c.whatsapp_academy) a.href = `https://wa.me/${String(c.whatsapp_academy).replace(/\D/g, "")}`; });
     $$("[data-wa-mkt]").forEach(a => { if (c.whatsapp_mkt) a.href = `https://wa.me/${String(c.whatsapp_mkt).replace(/\D/g, "")}`; });
     $$("[data-contact]").forEach(a => {
       const v = c[a.dataset.contact];

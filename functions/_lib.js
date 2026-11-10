@@ -82,7 +82,7 @@ export const isBot = ua => /bot|crawler|spider|crawling|headless|lighthouse|prev
 export const clip = (v, n = 300) => (v == null ? null : String(v).slice(0, n));
 
 /* الإعدادات العامة لمعلومات الاتصال (تظهر في الموقع ويعدّلها المدير) */
-export const CONTACT_KEYS = ["whatsapp", "phone_ly", "phone_ie", "whatsapp_mkt", "phone_mkt1", "phone_mkt2", "email", "address", "meta_pixel", "google_tag", "whatsapp_academy", "academy_women_only"];
+export const CONTACT_KEYS = ["whatsapp", "phone_ly", "phone_ie", "whatsapp_mkt", "phone_mkt1", "phone_mkt2", "email", "address", "meta_pixel", "google_tag", "whatsapp_academy", "phone_academy", "academy_women_only"];
 export const CONTACT_DEFAULTS = {
   whatsapp: "353894435368",
   phone_ly: "+218 92 922 2122",
@@ -95,5 +95,6 @@ export const CONTACT_DEFAULTS = {
   meta_pixel: "",     // Meta (Facebook) Pixel ID — أرقام فقط
   google_tag: "",     // Google tag: G-XXXX (Analytics) أو AW-XXXX (Ads)
   whatsapp_academy: "353870511344",  // واتساب الأكاديمية (التسجيل والدفع اليدوي)
+  phone_academy: "+353 87 051 1344",  // هاتف الأكاديمية (التدريب أونلاين)
   academy_women_only: "1"            // الأكاديمية: التسجيل للنساء فقط حالياً ("1") أو للجميع ("0")
 };
