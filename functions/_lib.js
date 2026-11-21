@@ -98,3 +98,12 @@ export const CONTACT_DEFAULTS = {
   phone_academy: "+353 87 051 1344",  // هاتف الأكاديمية (التدريب أونلاين)
   academy_women_only: "1"            // الأكاديمية: التسجيل للنساء فقط حالياً ("1") أو للجميع ("0")
 };
+
+/* مواقع المجموعة الشقيقة التي تُرسل طلباتها إلى هذه اللوحة (استوديو أويا) */
+const SISTER = /^https:\/\/([a-z0-9-]+\.)?studio-oea\.pages\.dev$|^https:\/\/(www\.)?studiooea\.(com|ly)$/;
+export function cors(request) {
+  const o = request.headers.get("origin") || "";
+  return SISTER.test(o) ? { "access-control-allow-origin": o, "access-control-allow-methods": "GET, POST, OPTIONS",
+    "access-control-allow-headers": "content-type", "access-control-max-age": "86400", vary: "origin" } : {};
+}
+export const preflight = ({ request }) => new Response(null, { status: 204, headers: cors(request) });

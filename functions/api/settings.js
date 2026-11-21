@@ -1,7 +1,7 @@
 /* GET /api/settings — معلومات الاتصال العامة التي يعرضها الموقع (يعدّلها المدير من اللوحة) */
-import { json, CONTACT_KEYS, CONTACT_DEFAULTS } from "../_lib.js";
+import { json, CONTACT_KEYS, CONTACT_DEFAULTS, cors, preflight } from "../_lib.js";
 
-export async function onRequestGet({ env }) {
+export async function onRequestGet({ request, env }) {
   const out = { ...CONTACT_DEFAULTS };
   try {
     const { results } = await env.DB.prepare(
@@ -9,5 +9,6 @@ export async function onRequestGet({ env }) {
     ).bind(...CONTACT_KEYS).all();
     for (const r of results) out[r.key] = r.value;
   } catch {}
-  return json(out, 200, { "cache-control": "public, max-age=60" });
+  return json(out, 200, { "cache-control": "public, max-age=60", ...cors(request) });
 }
+export const onRequestOptions = preflight;

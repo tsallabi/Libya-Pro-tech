@@ -1,5 +1,37 @@
 [
  {
+  "id": "studio-oea",
+  "name": "Studio Oea",
+  "latin": "STUDIO OEA",
+  "tag": "Brand identity and website for a Tripoli marketing studio",
+  "sector": "marketing",
+  "desc": "A complete brand identity and website for a Tripoli marketing studio: a name taken from “Oea”, the ancient name of Tripoli, and a logo of three shapes — a circle for people, three bars for strategy and a triangle for technology — in limestone and orange. The site presents services, work and process, and the “Send us your page” form opens WhatsApp with a ready message and logs the lead in the admin dashboard.",
+  "tech": [
+   "Brand identity",
+   "HTML/CSS",
+   "Cloudflare Pages",
+   "WhatsApp",
+   "RTL"
+  ],
+  "repo": "tsallabi/studio-oea",
+  "demo": "",
+  "site": "https://studio-oea.pages.dev",
+  "shot": "assets/shots/oea-home.webp",
+  "shotAlt": "Studio Oea home page: “Marketing built on understanding people, powered by AI”",
+  "gallery": [
+   {
+    "src": "assets/shots/oea-work.webp",
+    "alt": "Work",
+    "cap": "“Our latest work”: real videos and campaigns"
+   },
+   {
+    "src": "assets/shots/oea-contact.webp",
+    "alt": "Contact",
+    "cap": "“Send us your page”: a form that opens WhatsApp with a ready message and logs the lead"
+   }
+  ]
+ },
+ {
   "id": "amanpro",
   "name": "AmanPro for Transfers",
   "tag": "Operational Collection and Accounting System",

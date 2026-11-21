@@ -1,6 +1,6 @@
 /* POST /api/lead — حفظ طلب عرض السعر من نموذج الموقع قبل تحويله إلى واتساب
    يربط الطلب بزيارة صاحبه (vid/sid) فيرى المدير ما تصفّحه قبل أن يتواصل. */
-import { json, bad, clip } from "../_lib.js";
+import { json, bad, clip, cors, preflight } from "../_lib.js";
 
 export async function onRequestPost({ request, env }) {
   let d;
@@ -25,7 +25,8 @@ export async function onRequestPost({ request, env }) {
           clip(d.sector, 60), clip(message, 4000), clip(d.page, 300), cf.country || null, cf.city || null,
           sess?.utm_source || null, sess?.utm_campaign || null, kind, clip(d.project, 60), answers)
     .run();
-  return json({ ok: true, id: r.meta?.last_row_id });
+  return json({ ok: true, id: r.meta?.last_row_id }, 200, cors(request));
 }
+export const onRequestOptions = preflight;
 
 export const onRequest = () => json({ error: "method" }, 405);
